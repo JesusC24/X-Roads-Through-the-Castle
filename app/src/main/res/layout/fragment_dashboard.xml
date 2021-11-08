@@ -13,17 +13,19 @@
 
         <ImageButton
             android:id="@+id/imgbtForo"
+            android:background="@color/color_primary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/icono_facebook"
-            android:contentDescription=""/>
+            app:srcCompat="@drawable/icono_foro"
+            android:contentDescription="@string/imgbtForo"/>
 
         <ImageButton
             android:id="@+id/imgbtNews"
+            android:background="@color/color_primary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/icono_facebook"
-            android:contentDescription=""/>
+            app:srcCompat="@drawable/icono_news"
+            android:contentDescription="@string/imgbtNoticias"/>
 
     </TableRow>
 
@@ -43,17 +45,19 @@
 
         <ImageButton
             android:id="@+id/imgbtGuia"
+            android:background="@color/color_primary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/icono_facebook"
-            android:contentDescription=""/>
+            app:srcCompat="@drawable/icono_guia"
+            android:contentDescription="@string/imgbtGuia"/>
 
         <ImageButton
             android:id="@+id/imgbtBugs"
+            android:background="@color/color_primary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/icono_bugs"
-            android:contentDescription=""/>
+            android:contentDescription="@string/imgbtBugs"/>
     </TableRow>
 
     <TableRow
@@ -73,17 +77,30 @@
 
         <ImageButton
             android:id="@+id/imgbtSettings"
+            android:background="@color/color_primary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/icono_settings"
-            android:contentDescription=""/>
+            android:contentDescription="@string/imgbtSettings"/>
 
         <ImageButton
             android:id="@+id/imgbtAboutUs"
+            android:background="@color/color_primary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/icono_about_us"
-            android:contentDescription=""/>
+            android:contentDescription="@string/imgbtAboutUs"/>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View android:layout_height="@dimen/frgdashboard_view_height"
+            android:layout_width="@dimen/frgdashboard_view_width"
+            android:layout_span="2">
+
+        </View>
     </TableRow>
 
     <TableRow
@@ -92,16 +109,18 @@
 
         <ImageButton
             android:id="@+id/imgbtUser"
+            android:background="@color/color_primary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/icono_user"
-            android:contentDescription=""/>
+            android:contentDescription="@string/imgbtUser"/>
 
         <ImageButton
             android:id="@+id/imgbtHelp"
+            android:background="@color/color_primary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/icono_help"
-            android:contentDescription=""/>
+            android:contentDescription="@string/imgbtHelp"/>
     </TableRow>
 </TableLayout>
