@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:stretchColumns="0,1"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:padding="@dimen/frgdasboard_tablelayout_padding">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ImageButton
+            android:id="@+id/imgbtForo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/icono_facebook"
+            android:contentDescription=""/>
+
+        <ImageButton
+            android:id="@+id/imgbtNews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/icono_facebook"
+            android:contentDescription=""/>
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View android:layout_height="@dimen/frgdashboard_view_height"
+            android:layout_width="@dimen/frgdashboard_view_width"
+            android:layout_span="2">
+        </View>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/imgbtGuia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/icono_facebook"
+            android:contentDescription=""/>
+
+        <ImageButton
+            android:id="@+id/imgbtBugs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/icono_bugs"
+            android:contentDescription=""/>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View android:layout_height="@dimen/frgdashboard_view_height"
+            android:layout_width="@dimen/frgdashboard_view_width"
+            android:layout_span="2">
+
+        </View>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ImageButton
+            android:id="@+id/imgbtSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/icono_settings"
+            android:contentDescription=""/>
+
+        <ImageButton
+            android:id="@+id/imgbtAboutUs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/icono_about_us"
+            android:contentDescription=""/>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ImageButton
+            android:id="@+id/imgbtUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/icono_user"
+            android:contentDescription=""/>
+
+        <ImageButton
+            android:id="@+id/imgbtHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/icono_help"
+            android:contentDescription=""/>
+    </TableRow>
+</TableLayout>

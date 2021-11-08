@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">X Roads Through the Castle</string>
+    <string name="tvTituloLogin">Login</string>
+    <string name="tieUserHint">Nombre de usuario</string>
+    <string name="tiePasswordHint">Introduzca la contraseña</string>
+    <string name="chxRemember">Recuérdame</string>
+    <string name="btSingUp">Registrar</string>
+    <string name="btSingIn">Login</string>
+    <string name="tvOtherLogin">Iniciar sesión con otras plataformas</string>
+    <string name="tvTitleSingUp">Registrar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tieEmailHint">Introduce tu email</string>
+    <string name="tieConfirmPassword">Confirmar contraseña</string>
+</resources>

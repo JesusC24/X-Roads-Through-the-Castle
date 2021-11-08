@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable-mdpi/shape_text_input_layout.xml" value="0.290625" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.38385416666666666" />
+        <entry key="app/src/main/res/drawable/ic_action_email.xml" value="0.21927083333333333" />
+        <entry key="app/src/main/res/drawable/ic_action_password.xml" value="0.21927083333333333" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.38385416666666666" />
+        <entry key="app/src/main/res/drawable/img_logo_background.xml" value="0.38385416666666666" />
+        <entry key="app/src/main/res/drawable/shape_chat_layout.xml" value="0.290625" />
+        <entry key="app/src/main/res/font/anton.xml" value="0.39791666666666664" />
+        <entry key="app/src/main/res/font/noto_sans.xml" value="0.39791666666666664" />
+        <entry key="app/src/main/res/font/noto_sans_bold.xml" value="0.39791666666666664" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.20380434782608695" />
+        <entry key="app/src/main/res/layout/activity_sing_up.xml" value="0.20380434782608695" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/chat_item.xml" value="0.27447916666666666" />
+        <entry key="app/src/main/res/layout/fragment_about_us.xml" value="0.20380434782608695" />
+        <entry key="app/src/main/res/layout/fragment_chat_list.xml" value="0.27447916666666666" />
+        <entry key="app/src/main/res/layout/fragment_crear_chat.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.29483695652173914" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.20380434782608695" />
+      </ProjectState>
+    </option>
+  </component>
+</project>

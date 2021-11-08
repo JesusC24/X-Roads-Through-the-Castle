@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="RTCTextInputLayout">
+        <item name="android:background">@drawable/shape_text_input_layout</item>
+        <item name="boxBackgroundMode">filled</item>
+        <item name="hintTextColor">@color/color_secondary</item>
+        <item name="boxBackgroundColor">@android:color/transparent</item>
+        <item name="boxStrokeColor">@color/color_secondary</item>
+    </style>
+
+    <style name="TextInputLayoutSingUp" parent="RTCTextInputLayout">
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="RTCTextInputLayout.Chat">
+        <item name="android:background">@drawable/shape_chat_layout</item>
+    </style>
+
+    <!-- La herencia se puede establecer con punto y no poner el atributo parent
+        <style name="IventoryTextInputLayout.SingUp" parent="IventoryTextInputLayout">
+        <item name="android:background">null</item>
+    </style> -->
+
+</resources>
