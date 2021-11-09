@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".ui.foro.ChatListFragment"
-    android:layout_margin="@dimen/crear_chat_layout_margin">
+    android:padding="@dimen/crear_chat_layout_margin">
 
     <TextView
         android:id="@+id/tvTitleCrearChat"
@@ -41,29 +41,20 @@
         android:layout_marginBottom="@dimen/crear_til_margin"
         android:text="@string/tvTipo" />
 
-    <RadioGroup
-        android:id="@+id/rgTipo"
+    <Spinner
+        android:id="@+id/spinner_tipo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:contentDescription="@string/spinner_tipo"/>
 
-        <RadioButton
-            android:id="@+id/rbPublico"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/rbPublico" />
-
-        <RadioButton
-            android:id="@+id/rbPrivado"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/rbPrivado" />
-    </RadioGroup>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilPassword"
         style="@style/TextInputLayoutWithoutBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:endIconMode="password_toggle"
         android:layout_marginTop="@dimen/crear_til_margin"
         android:layout_marginBottom="@dimen/crear_til_margin"
         app:startIconDrawable="@drawable/ic_action_password">
@@ -72,12 +63,14 @@
             android:id="@+id/tiePassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:hint="@string/tiePassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilConfirmPassword"
         style="@style/TextInputLayoutWithoutBackground"
+        app:endIconMode="password_toggle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/crear_til_margin"
@@ -88,6 +81,7 @@
             android:id="@+id/tieConfirmPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:hint="@string/tieConfirmPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -96,6 +90,7 @@
         style="@style/TextInputLayoutWithoutBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/crear_til_margin"
         android:layout_marginTop="@dimen/crear_til_margin"
         app:startIconDrawable="@drawable/ic_action_description">
 
@@ -113,4 +108,5 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/crear_chat_btCrear_marginTop"
         android:text="@string/btCrear" />
+
 </LinearLayout>

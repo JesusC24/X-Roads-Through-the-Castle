@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_dashboardFragment_to_crearChatFragment"
             app:destination="@id/crearChatFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_informarBug"
+            app:destination="@id/informarBug" />
     </fragment>
     <fragment
         android:id="@+id/aboutUsFragment"
@@ -23,4 +26,9 @@
         android:id="@+id/crearChatFragment"
         android:name="com.jesusc24.xroadsthroughthecastle.ui.foro.CrearChatFragment"
         android:label="CrearChatFragment" />
+    <fragment
+        android:id="@+id/informarBug"
+        android:name="com.jesusc24.xroadsthroughthecastle.ui.bugs.InformarBug"
+        android:label="fragment_informar_bug"
+        tools:layout="@layout/fragment_informar_bug" />
 </navigation>

@@ -29,4 +29,6 @@
     <string name="tvCrearChat">Crear chat</string>
 
     <string name="aboutUs_description">Creador del juego X_RTC. Apasionado de los videojuegos</string>
+    <string name="spinner_tipo">Spinner con los tipo Privado o Público</string>
+
 </resources>

@@ -26,11 +26,11 @@
     <dimen name="frgdashboard_view_height">20dp</dimen>
     <dimen name="frgdashboard_view_width">20dp</dimen>
 
-    <dimen name="crear_chat_layout_margin">50dp</dimen>
+    <dimen name="crear_chat_layout_margin">25dp</dimen>
     <dimen name="crear_chat_title_size">32sp</dimen>
-    <dimen name="crear_chat_tilName_marginTop">50dp</dimen>
-    <dimen name="crear_til_margin">10dp</dimen>
-    <dimen name="crear_chat_btCrear_marginTop">50dp</dimen>
+    <dimen name="crear_chat_tilName_marginTop">20dp</dimen>
+    <dimen name="crear_til_margin">5dp</dimen>
+    <dimen name="crear_chat_btCrear_marginTop">10dp</dimen>
 
 
 </resources>

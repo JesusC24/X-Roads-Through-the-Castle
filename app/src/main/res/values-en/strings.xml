@@ -25,4 +25,5 @@
     <string name="tieName">Name</string>
     <string name="tvCrearChat">Create chat</string>
     <string name="aboutUs_description">Creator of the game X_RTC. I love videogames</string>
+    <string name="spinner_tipo">Spinner with the types Private or Public</string>
 </resources>
