@@ -29,14 +29,14 @@
         android:layout_marginTop="32dp"
         android:fontFamily="@font/noto_sans_bold"
         android:text="@string/tvTitleSingUp"
-        android:textSize="@dimen/iventory_title_text_size"
+        android:textSize="@dimen/RTC_title_size"
         app:layout_constraintEnd_toStartOf="@+id/glEnd"
         app:layout_constraintStart_toStartOf="@+id/glStart"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tieUser"
-        style="@style/TextInputLayoutSingUp"
+        style="@style/TextInputLayoutWithoutBackground"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -54,7 +54,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tieEmail"
-        style="@style/TextInputLayoutSingUp"
+        style="@style/TextInputLayoutWithoutBackground"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -72,7 +72,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tiePassword"
-        style="@style/TextInputLayoutSingUp"
+        style="@style/TextInputLayoutWithoutBackground"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -90,7 +90,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tieConfirmPassword"
-        style="@style/TextInputLayoutSingUp"
+        style="@style/TextInputLayoutWithoutBackground"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"

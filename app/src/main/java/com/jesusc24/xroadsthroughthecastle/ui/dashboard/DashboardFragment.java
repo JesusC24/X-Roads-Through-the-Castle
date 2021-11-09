@@ -59,7 +59,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
             }
 
             case(R.id.imgbtForo): {
-                showAddInventory();
+                showChooseChat();
                 break;
             }
         }
@@ -75,7 +75,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     /**
      * Muestra el fragment que da de alta un inventario
      */
-    private void showAddInventory() {
+    private void showChooseChat() {
         NavHostFragment.findNavController(this).navigate(R.id.action_dashboardFragment_to_crearChatFragment);
     }
 

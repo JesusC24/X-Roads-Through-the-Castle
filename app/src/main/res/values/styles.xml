@@ -8,7 +8,7 @@
         <item name="boxStrokeColor">@color/color_secondary</item>
     </style>
 
-    <style name="TextInputLayoutSingUp" parent="RTCTextInputLayout">
+    <style name="TextInputLayoutWithoutBackground" parent="RTCTextInputLayout">
         <item name="android:background">@null</item>
     </style>
 
@@ -16,9 +16,5 @@
         <item name="android:background">@drawable/shape_chat_layout</item>
     </style>
 
-    <!-- La herencia se puede establecer con punto y no poner el atributo parent
-        <style name="IventoryTextInputLayout.SingUp" parent="IventoryTextInputLayout">
-        <item name="android:background">null</item>
-    </style> -->
-
+    <!-- La herencia se puede establecer con punto y no poner el atributo parent -->
 </resources>

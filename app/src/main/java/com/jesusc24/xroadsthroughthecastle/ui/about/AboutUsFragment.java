@@ -26,7 +26,7 @@ public class AboutUsFragment extends Fragment {
                 .setCover(R.mipmap.profile_cover)
                 .setName("Jesús Cortés Ocaña")
                 .setSubTitle("Mobile Devepoler")
-                .setBrief("I'm warmed of mobile technologies. Ideas maker, curious and nature lover.")
+                .setBrief("Creador del juego X_RTC. Apasionado de los videojuegos")
                 .setAppIcon(R.mipmap.img_icono)
                 .setAppName(R.string.app_name)
                 .addGitHubLink("https://github.com/JesusC24/")

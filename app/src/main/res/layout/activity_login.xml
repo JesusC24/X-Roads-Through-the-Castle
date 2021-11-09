@@ -18,7 +18,7 @@
         android:fontFamily="@font/noto_sans_bold"
         android:gravity="center"
         android:layout_marginTop="@dimen/login_tvTituloLogin_margin_top"
-        android:textSize="@dimen/iventory_title_text_size"
+        android:textSize="@dimen/RTC_title_size"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/tvTituloLogin" />

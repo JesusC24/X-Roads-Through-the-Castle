@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">X Roads Through the Castle</string>
+    <string name="tieUserHint">User name</string>
+    <string name="tiePasswordHint">Introduce password</string>
+    <string name="chxRemember">Remind me</string>
+    <string name="btSingUp">Sing up</string>
+    <string name="tvOtherLogin">Login with other platforms</string>
+    <string name="tvTitleSingUp">Sing up</string>
+    <string name="tieEmailHint">Introduce email</string>
+    <string name="imgbtHelp">Help</string>
+    <string name="imgbtUser">User</string>
+    <string name="imgbtAboutUs">About Us</string>
+    <string name="imgbtSettings">Settings</string>
+    <string name="imgbtNoticias">News</string>
+    <string name="tieConfirmPassword">Confirm password</string>
+    <string name="imgbtForo">Forum</string>
+    <string name="imgbtGuia">Guide</string>
+    <string name="btCrear">Create</string>
+    <string name="tieDescripcion">Description</string>
+    <string name="tiePassword">Password</string>
+    <string name="rbPrivado">Private</string>
+    <string name="rbPublico">Public</string>
+    <string name="tvTipo">Tipe</string>
+    <string name="tieName">Name</string>
+    <string name="tvCrearChat">Create chat</string>
+    <string name="aboutUs_description">Creator of the game X_RTC. I love videogames</string>
+</resources>
