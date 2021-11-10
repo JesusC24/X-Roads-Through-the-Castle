@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -18,71 +17,71 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="20dp"
+        app:layout_constraintGuide_end="@dimen/modificar_user_glEnd_end"
         app:layout_constraintStart_toEndOf="parent"/>
 
     <TextView
-        android:id="@+id/tvTitleSingUp"
+        android:id="@+id/tvTitleUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="@dimen/modificar_tvTitleSingUp_marginTop"
         android:fontFamily="@font/noto_sans_bold"
-        android:text="Usuario"
+        android:text="@string/tvTitleUser"
         android:textSize="@dimen/RTC_title_size"
         app:layout_constraintEnd_toStartOf="@+id/glEnd"
         app:layout_constraintStart_toStartOf="@+id/glStart"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tieUser"
+        android:id="@+id/tilUser"
         style="@style/TextInputLayoutWithoutBackground"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/modificar_user_tilUser_marginTop"
         app:layout_constraintEnd_toStartOf="@+id/glEnd"
         app:layout_constraintStart_toStartOf="@+id/glStart"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitleSingUp"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleUser"
         app:startIconDrawable="@drawable/ic_action_user">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tilUser"
+            android:id="@+id/tieUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="JesusCortesOcana"/>
+            android:hint="@string/tilUser"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tieEmail"
+        android:id="@+id/tilEmail"
         style="@style/TextInputLayoutWithoutBackground"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/modificar_user_tilEmail_marginTop"
         app:layout_constraintEnd_toStartOf="@+id/glEnd"
         app:layout_constraintStart_toStartOf="@+id/glStart"
-        app:layout_constraintTop_toBottomOf="@+id/tieUser"
+        app:layout_constraintTop_toBottomOf="@+id/tilUser"
         app:startIconDrawable="@drawable/ic_action_email">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tilEmail"
+            android:id="@+id/tieEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="al.jesus.cortes.ocana@iesportada.org" />
+            android:hint="@string/tieEmail" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tiePassword"
+        android:id="@+id/tilPassword"
         style="@style/TextInputLayoutWithoutBackground"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/modificar_user_tilPassword_marginTop"
         app:endIconMode="password_toggle"
         app:layout_constraintEnd_toStartOf="@+id/glEnd"
         app:layout_constraintStart_toStartOf="@+id/glStart"
-        app:layout_constraintTop_toBottomOf="@+id/tieEmail"
+        app:layout_constraintTop_toBottomOf="@+id/tilEmail"
         app:startIconDrawable="@drawable/ic_action_password">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tilPassword"
+            android:id="@+id/tiePassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
@@ -90,19 +89,19 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tieConfirmPassword"
+        android:id="@+id/tilConfirmPassword"
         style="@style/TextInputLayoutWithoutBackground"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/modificar_user_tilConfirmPassword_marginTop"
         app:endIconMode="password_toggle"
         app:layout_constraintEnd_toStartOf="@+id/glEnd"
         app:layout_constraintStart_toStartOf="@+id/glStart"
-        app:layout_constraintTop_toBottomOf="@+id/tiePassword"
+        app:layout_constraintTop_toBottomOf="@+id/tilPassword"
         app:startIconDrawable="@drawable/ic_action_password">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tilConfirmPassword"
+            android:id="@+id/tieConfirmPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
@@ -113,21 +112,21 @@
         android:id="@+id/btCambiarPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cambiar Contraseña"
+        android:text="@string/btCambiarPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/glEnd"
         app:layout_constraintStart_toStartOf="@+id/glStart"
-        app:layout_constraintTop_toBottomOf="@+id/tieConfirmPassword"
+        app:layout_constraintTop_toBottomOf="@+id/tilConfirmPassword"
         app:layout_constraintVertical_bias="0.32" />
 
     <Button
-        android:id="@+id/btConfirmarCambios"
+        android:id="@+id/btConfirmar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Confirmar cambios"
+        android:text="@string/btConfirmar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/glEnd"
         app:layout_constraintStart_toStartOf="@+id/glStart"
-        app:layout_constraintTop_toBottomOf="@+id/tieConfirmPassword"
+        app:layout_constraintTop_toBottomOf="@+id/tilConfirmPassword"
         app:layout_constraintVertical_bias="0.64" />
 </androidx.constraintlayout.widget.ConstraintLayout>

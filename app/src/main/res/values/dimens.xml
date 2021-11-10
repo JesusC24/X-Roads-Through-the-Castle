@@ -60,5 +60,34 @@
     <dimen name="informar_bug_spSO_marginTop">20dp</dimen>
     <dimen name="informar_bug_spSO_minHeight">48dp</dimen>
     <dimen name="informar_bug_tieDescripcion_marginTop">20dp</dimen>
+    <dimen name="chat_paddingTop">15dp</dimen>
+    <dimen name="chat_paddingBottom">15dp</dimen>
+    <dimen name="chat_item_tvDescripcion_marginTop">5dp</dimen>
+    <dimen name="chat_item_guideline2_begin">100dp</dimen>
+    <dimen name="chat_item_guideline3_end">100dp</dimen>
+    <dimen name="chat_item_imgChat_marginTop">20dp</dimen>
+    <dimen name="chat_item_ibStar_marginTop">10dp</dimen>
+    <dimen name="chat_item_ibStar_minHeight">48dp</dimen>
+    <dimen name="crear_chat_spTipo_minHeight">48dp</dimen>
+    <dimen name="crear_chat_tvTitleCrearChat_size">15sp</dimen>
+    <dimen name="crear_chat_tvTipo_marginTop">5dp</dimen>
+    <dimen name="crear_chat_tilConfirmPassword_marginTop">5dp</dimen>
+    <dimen name="configuracion_btSalirGoogle_marginStart">30dp</dimen>
+    <dimen name="configuracion_btSalirGoogle_marginTop">250dp</dimen>
+    <dimen name="configuracion_btSalirFacebook_marginTop">250dp</dimen>
+    <dimen name="configuracion_btSalirFacebook_marginEnd">30dp</dimen>
+    <dimen name="configuracion_tvIdioma_marginTop">50dp</dimen>
+    <dimen name="configuracion_tvLetra_marginTop">75dp</dimen>
+    <dimen name="configuracion_sbLetra_marginStart">15dp</dimen>
+    <dimen name="configuracion_sbLetra_marginTop">50dp</dimen>
+    <dimen name="configuracion_sbLetra_marginEnd">15dp</dimen>
+    <dimen name="configuracion_ivSpain_marginTop">20dp</dimen>
+    <dimen name="configuracion_ivUK_marginTop">20dp</dimen>
+    <dimen name="modificar_user_glEnd_end">20dp</dimen>
+    <dimen name="modificar_tvTitleSingUp_marginTop">32dp</dimen>
+    <dimen name="modificar_user_tilUser_marginTop">16dp</dimen>
+    <dimen name="modificar_user_tilEmail_marginTop">16dp</dimen>
+    <dimen name="modificar_user_tilPassword_marginTop">16dp</dimen>
+    <dimen name="modificar_user_tilConfirmPassword_marginTop">16dp</dimen>
 
 </resources>

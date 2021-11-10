@@ -14,12 +14,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="@string/tvCrearChat"
-        android:textSize="15sp" />
+        android:textSize="@dimen/crear_chat_tvTitleCrearChat_size" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:baselineAligned="false">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -46,14 +47,15 @@
                 android:id="@+id/tvTipo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="@dimen/crear_chat_tvTipo_marginTop"
                 android:text="@string/tvTipo" />
 
             <Spinner
                 android:id="@+id/spTipo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="48dp"></Spinner>
+                android:minHeight="@dimen/crear_chat_spTipo_minHeight"
+                android:contentDescription="@string/spTipo"/>
 
         </LinearLayout>
 
@@ -85,7 +87,7 @@
                 style="@style/TextInputLayoutWithoutBackground"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="@dimen/crear_chat_tilConfirmPassword_marginTop"
                 app:endIconMode="password_toggle"
                 app:startIconDrawable="@drawable/ic_action_password">
 
@@ -119,7 +121,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="@dimen/crear_chat_btCrear_marginTop"
         android:text="@string/btCrear" />
-
 </LinearLayout>

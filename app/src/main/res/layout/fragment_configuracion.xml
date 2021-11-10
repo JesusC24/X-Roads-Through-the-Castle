@@ -10,9 +10,9 @@
         android:id="@+id/btSalirGoogle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="250dp"
-        android:text="Salir Google"
+        android:layout_marginStart="@dimen/configuracion_btSalirGoogle_marginStart"
+        android:layout_marginTop="@dimen/configuracion_btSalirGoogle_marginTop"
+        android:text="@string/btSalirGoogle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sbLetra" />
 
@@ -20,9 +20,9 @@
         android:id="@+id/btSalirFacebook"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="250dp"
-        android:layout_marginEnd="30dp"
-        android:text="Salir Facebook"
+        android:layout_marginTop="@dimen/configuracion_btSalirFacebook_marginTop"
+        android:layout_marginEnd="@dimen/configuracion_btSalirFacebook_marginEnd"
+        android:text="@string/btSalirFacebook"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sbLetra" />
 
@@ -30,7 +30,7 @@
         android:id="@+id/btCerrarSesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cerrar Sesión"
+        android:text="@string/btCerrarSesion"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,8 +40,8 @@
         android:id="@+id/tvIdioma"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Idioma"
+        android:layout_marginTop="@dimen/configuracion_tvIdioma_marginTop"
+        android:text="@string/tvIdioma"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -49,8 +49,8 @@
         android:id="@+id/tvLetra"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
-        android:text="Tamaño letra"
+        android:layout_marginTop="@dimen/configuracion_tvLetra_marginTop"
+        android:text="@string/tvLetra"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvIdioma" />
 
@@ -58,38 +58,39 @@
         android:id="@+id/sbLetra"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginStart="@dimen/configuracion_sbLetra_marginStart"
+        android:layout_marginTop="@dimen/configuracion_sbLetra_marginTop"
+        android:layout_marginEnd="@dimen/configuracion_sbLetra_marginEnd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/barrier"
-        app:layout_constraintTop_toBottomOf="@+id/ivUK" />
+        app:layout_constraintTop_toBottomOf="@+id/ibUK" />
 
     <ImageView
-        android:id="@+id/ivSpain"
+        android:id="@+id/ibSpain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/configuracion_ivSpain_marginTop"
         android:src="@drawable/img_spain"
         app:layout_constraintStart_toStartOf="@id/barrier"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/ibSpain" />
 
     <ImageView
-        android:id="@+id/ivUK"
+        android:id="@+id/ibUK"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/configuracion_ivUK_marginTop"
         android:src="@drawable/img_uk"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.21"
-        app:layout_constraintStart_toEndOf="@+id/ivSpain"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/ibSpain"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/ibUK" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="right"
-        app:constraint_referenced_ids="tvIdioma,tvLetra"
-        tools:layout_editor_absoluteX="411dp" />
+        app:constraint_referenced_ids="tvIdioma,tvLetra"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

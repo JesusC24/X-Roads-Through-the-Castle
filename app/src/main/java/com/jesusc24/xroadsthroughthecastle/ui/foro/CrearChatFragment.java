@@ -46,19 +46,19 @@ public class CrearChatFragment extends Fragment {
         String password = binding.tilPassword.getEditText().getText().toString();
         String confirm_password = binding.tilConfirmPassword.getEditText().getText().toString();
 
-        if(ValidarDatos.validarString(nombre) == 0) {
+        if(ValidarDatos.validarString(nombre) != 0) {
             binding.tilName.setError(this.getString(ValidarDatos.validarString(nombre)));
         } else {
             binding.tilName.setError(null);
         }
 
-        if(ValidarDatos.esPasswordValida(password) == 0) {
+        if(ValidarDatos.esPasswordValida(password) != 0) {
             binding.tilPassword.setError(this.getString(ValidarDatos.esPasswordValida(password)));
         } else {
             binding.tilPassword.setError(null);
         }
 
-        if(ValidarDatos.esPasswordIgual(password, confirm_password) == 0) {
+        if(ValidarDatos.esPasswordIgual(password, confirm_password) != 0) {
             binding.tilConfirmPassword.setError(this.getString(ValidarDatos.esPasswordIgual(password, confirm_password)));
         } else {
             binding.tilConfirmPassword.setError(null);

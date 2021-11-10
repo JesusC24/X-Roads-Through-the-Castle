@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingTop="15dp"
-    android:paddingBottom="15dp">
+    android:paddingTop="@dimen/chat_paddingTop"
+    android:paddingBottom="@dimen/chat_paddingBottom">
 
     <TextView
         android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nombre del chat"
+        android:text="@string/prueba_tvName"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,8 +20,8 @@
         android:id="@+id/tvDescripcion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="Descripción"
+        android:layout_marginTop="@dimen/chat_item_tvDescripcion_marginTop"
+        android:text="@string/prueba_tvDescripcion"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/tvName" />
@@ -32,36 +31,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="100dp" />
+        app:layout_constraintGuide_begin="@dimen/chat_item_guideline2_begin" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="100dp" />
+        app:layout_constraintGuide_end="@dimen/chat_item_guideline3_end" />
 
     <ImageView
         android:id="@+id/imgChat"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/chat_item_imgChat_marginTop"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_action_chat" />
+        app:srcCompat="@drawable/ic_action_chat"
+        android:contentDescription="@string/imgChat" />
 
     <ImageButton
         android:id="@+id/ibStar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:minHeight="48dp"
+        android:layout_marginTop="@dimen/chat_item_ibStar_marginTop"
+        android:minHeight="@dimen/chat_item_ibStar_minHeight"
         android:background="@color/color_white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_action_start"
-        tools:ignore="SpeakableTextPresentCheck" />
-
+        android:contentDescription="@string/ibStar" />
 </androidx.constraintlayout.widget.ConstraintLayout>
