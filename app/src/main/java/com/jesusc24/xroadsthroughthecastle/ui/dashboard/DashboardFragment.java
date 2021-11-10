@@ -114,7 +114,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
      * Mostrar el fragment Bugs
      */
     private void showBugs() {
-        NavHostFragment.findNavController(this).navigate(R.id.action_dashboardFragment_to_informarBug);
+        NavHostFragment.findNavController(this).navigate(R.id.action_dashboardFragment_to_bugListFragment);
     }
 
     /**

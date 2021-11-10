@@ -16,7 +16,7 @@ import com.jesusc24.xroadsthroughthecastle.R;
 import com.jesusc24.xroadsthroughthecastle.data.RellenarSpinner;
 import com.jesusc24.xroadsthroughthecastle.databinding.FragmentInformarBugBinding;
 
-public class InformarBug extends Fragment {
+public class InformarBugFragment extends Fragment {
 
     FragmentInformarBugBinding binding;
 

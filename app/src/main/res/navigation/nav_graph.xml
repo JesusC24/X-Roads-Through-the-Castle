@@ -12,14 +12,14 @@
             android:id="@+id/action_dashboardFragment_to_aboutUsFragment"
             app:destination="@id/aboutUsFragment" />
         <action
-            android:id="@+id/action_dashboardFragment_to_informarBug"
-            app:destination="@id/informarBug" />
-        <action
             android:id="@+id/action_dashboardFragment_to_chatListFragment"
             app:destination="@id/chatListFragment" />
         <action
             android:id="@+id/action_dashboardFragment_to_configuracionFragment"
             app:destination="@id/configuracionFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_bugListFragment"
+            app:destination="@id/bugListFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutUsFragment"

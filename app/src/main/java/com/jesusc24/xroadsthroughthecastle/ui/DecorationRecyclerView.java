@@ -1,4 +1,4 @@
-package com.jesusc24.xroadsthroughthecastle.ui.foro;
+package com.jesusc24.xroadsthroughthecastle.ui;
 
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;

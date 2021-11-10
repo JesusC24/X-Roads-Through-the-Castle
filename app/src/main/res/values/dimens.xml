@@ -31,6 +31,10 @@
     <dimen name="crear_chat_tilName_marginTop">20dp</dimen>
     <dimen name="crear_til_margin">5dp</dimen>
     <dimen name="crear_chat_btCrear_marginTop">10dp</dimen>
+    <dimen name="fabChat_elevation">6dp</dimen>
+    <dimen name="fabChat_margin">16dp</dimen>
+    <dimen name="fabBug_elevation">6dp</dimen>
+    <dimen name="fabBug_margin">16dp</dimen>
 
 
 </resources>
