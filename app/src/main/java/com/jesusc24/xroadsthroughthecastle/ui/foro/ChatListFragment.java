@@ -7,10 +7,13 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.jesusc24.xroadsthroughthecastle.R;
 import com.jesusc24.xroadsthroughthecastle.databinding.FragmentChatListBinding;
 
 public class ChatListFragment extends Fragment {
@@ -27,13 +30,15 @@ public class ChatListFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initRvDependency();
+
+        binding.fabChat.setOnClickListener(v -> NavHostFragment.findNavController(this).navigate(R.id.action_chatListFragment_to_crearChatFragment));
     }
 
     /**
      * Este método iniciliza el componente recycler view
      */
     private void initRvDependency() {
-        //!. Será inicilizar el adapter
+        //1. Será inicilizar el adapter
         adapter = new ChatAdapter();
 
         //2. OBLIGATORIAMENTE se debe indicar qué diseño (layout) tendrá el recyclerview
@@ -44,5 +49,8 @@ public class ChatListFragment extends Fragment {
 
         //4. Asigno a la vista sus datos (modelo)
         binding.rvChat.setAdapter(adapter);
+
+        //5. Asignar decoracióm a los items
+        binding.rvChat.addItemDecoration(new DecorationRecyclerView(ContextCompat.getDrawable(getActivity(), R.drawable.item_decorator_chat)));
     }
 }

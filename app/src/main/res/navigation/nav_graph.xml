@@ -12,9 +12,6 @@
             android:id="@+id/action_dashboardFragment_to_aboutUsFragment"
             app:destination="@id/aboutUsFragment" />
         <action
-            android:id="@+id/action_dashboardFragment_to_crearChatFragment"
-            app:destination="@id/crearChatFragment" />
-        <action
             android:id="@+id/action_dashboardFragment_to_informarBug"
             app:destination="@id/informarBug" />
         <action

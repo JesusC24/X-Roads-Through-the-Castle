@@ -10,6 +10,7 @@
         <entry key="app/src/main/res/drawable/ic_action_password.xml" value="0.21927083333333333" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.38385416666666666" />
         <entry key="app/src/main/res/drawable/img_logo_background.xml" value="0.38385416666666666" />
+        <entry key="app/src/main/res/drawable/item_decorator_chat.xml" value="0.38385416666666666" />
         <entry key="app/src/main/res/drawable/shape_chat_layout.xml" value="0.290625" />
         <entry key="app/src/main/res/font/anton.xml" value="0.39791666666666664" />
         <entry key="app/src/main/res/font/noto_sans.xml" value="0.39791666666666664" />
