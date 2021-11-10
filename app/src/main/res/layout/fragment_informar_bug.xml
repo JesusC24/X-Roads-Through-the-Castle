@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.singup.SingUpActivity">
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/glStart"
@@ -19,16 +18,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="20dp"
+        app:layout_constraintGuide_end="@dimen/informar_bug_glEnd_end"
         app:layout_constraintStart_toEndOf="parent"/>
 
     <TextView
-        android:id="@+id/tvTitleSingUp"
+        android:id="@+id/tvTitleBug"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="@dimen/informar_bug_tvTitleSingUp_marginTop"
         android:fontFamily="@font/noto_sans_bold"
-        android:text="Informar Bug"
+        android:text="@string/tvTitleBug"
         android:textSize="@dimen/RTC_title_size"
         app:layout_constraintEnd_toStartOf="@+id/glEnd"
         app:layout_constraintStart_toStartOf="@+id/glStart"
@@ -39,10 +38,10 @@
         style="@style/TextInputLayoutWithoutBackground"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/informar_bug_tieUser_marginTop"
         app:layout_constraintEnd_toStartOf="@+id/glEnd"
         app:layout_constraintStart_toStartOf="@+id/glStart"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitleSingUp"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleBug"
         app:startIconDrawable="@drawable/ic_action_user">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -57,15 +56,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="end"
-        app:constraint_referenced_ids="tvTipo,tvGravedad,tvDispositivo,tvSO"
-        tools:layout_editor_absoluteX="78dp" />
+        app:constraint_referenced_ids="tvTipo,tvGravedad,tvDispositivo,tvSO"/>
 
     <TextView
         android:id="@+id/tvTipo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="Tipo"
+        android:layout_marginTop="@dimen/informar_bug_tvTipo_marginTop"
+        android:text="@string/tvTipo"
         app:layout_constraintStart_toStartOf="@+id/glStart"
         app:layout_constraintTop_toBottomOf="@+id/tieUser" />
 
@@ -73,19 +71,19 @@
         android:id="@+id/spTipo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:minHeight="48dp"
+        android:layout_marginTop="@dimen/informar_bug_spTipo_marginTop"
+        android:minHeight="@dimen/informar_bug_spTipo_height"
         app:layout_constraintEnd_toStartOf="@+id/glEnd"
         app:layout_constraintStart_toEndOf="@+id/barrier"
         app:layout_constraintTop_toBottomOf="@+id/tieUser"
-        tools:ignore="SpeakableTextPresentCheck" />
+        android:contentDescription="@string/spTipo"/>
 
     <TextView
         android:id="@+id/tvGravedad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Gravedad"
+        android:layout_marginTop="@dimen/informar_bug_tvGravedad_marginTop"
+        android:text="@string/tvGravedad"
         app:layout_constraintStart_toStartOf="@+id/glStart"
         app:layout_constraintTop_toBottomOf="@+id/tvTipo" />
 
@@ -93,19 +91,19 @@
         android:id="@+id/spGravedad"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:minHeight="48dp"
+        android:layout_marginTop="@dimen/informar_bug_spGravedad_marginTop"
+        android:minHeight="@dimen/informar_bug_spGravedad_minHeight"
         app:layout_constraintEnd_toStartOf="@+id/glEnd"
         app:layout_constraintStart_toEndOf="@+id/barrier"
         app:layout_constraintTop_toBottomOf="@+id/spTipo"
-        tools:ignore="SpeakableTextPresentCheck" />
+        android:contentDescription="@string/spGravedad"/>
 
     <TextView
         android:id="@+id/tvDispositivo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Dispositivo"
+        android:layout_marginTop="@dimen/informar_bug_tvDispositivo_marginTop"
+        android:text="@string/tvDispositivo"
         app:layout_constraintStart_toStartOf="@+id/glStart"
         app:layout_constraintTop_toBottomOf="@+id/tvGravedad" />
 
@@ -113,19 +111,19 @@
         android:id="@+id/spDispositivo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:minHeight="48dp"
+        android:layout_marginTop="@dimen/informar_bug_spDispositivo_marginTop"
+        android:minHeight="@dimen/informar_bug_spDispositivo_minHeight"
         app:layout_constraintEnd_toStartOf="@+id/glEnd"
         app:layout_constraintStart_toEndOf="@+id/barrier"
         app:layout_constraintTop_toBottomOf="@+id/spGravedad"
-        tools:ignore="SpeakableTextPresentCheck" />
+        android:contentDescription="@string/spDispositivo"/>
 
     <TextView
         android:id="@+id/tvSO"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Sistema Operativo"
+        android:layout_marginTop="@dimen/informar_bug_tvSO_marginTop"
+        android:text="@string/tvSO"
         app:layout_constraintStart_toStartOf="@+id/glStart"
         app:layout_constraintTop_toBottomOf="@+id/tvDispositivo" />
 
@@ -133,19 +131,19 @@
         android:id="@+id/spSO"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:minHeight="48dp"
+        android:layout_marginTop="@dimen/informar_bug_spSO_marginTop"
+        android:minHeight="@dimen/informar_bug_spSO_minHeight"
         app:layout_constraintEnd_toStartOf="@+id/glEnd"
         app:layout_constraintStart_toEndOf="@+id/barrier"
         app:layout_constraintTop_toBottomOf="@+id/spDispositivo"
-        tools:ignore="SpeakableTextPresentCheck" />
+        android:contentDescription="@string/spSO"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tieDescripcion"
         style="@style/TextInputLayoutWithoutBackground"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/informar_bug_tieDescripcion_marginTop"
         app:layout_constraintEnd_toStartOf="@+id/glEnd"
         app:layout_constraintStart_toStartOf="@+id/glStart"
         app:layout_constraintTop_toBottomOf="@+id/spSO"
@@ -163,13 +161,9 @@
         android:id="@+id/btConfirmar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Confirmar"
+        android:text="@string/btConfirmar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/glEnd"
         app:layout_constraintStart_toStartOf="@+id/glStart"
         app:layout_constraintTop_toBottomOf="@+id/tieDescripcion" />
-
-    <!-- TODO poner los strings y poner los errores de los textInputLayout-->
-
 </androidx.constraintlayout.widget.ConstraintLayout>
-

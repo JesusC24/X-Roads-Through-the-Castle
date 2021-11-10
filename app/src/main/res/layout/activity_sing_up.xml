@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -18,14 +17,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="20dp"
+        app:layout_constraintGuide_end="@dimen/sing_up_glEnd"
         app:layout_constraintStart_toEndOf="parent"/>
 
     <TextView
         android:id="@+id/tvTitleSingUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="@dimen/sing_up_TitleSingUp_marginTop"
         android:fontFamily="@font/noto_sans_bold"
         android:text="@string/tvTitleSingUp"
         android:textSize="@dimen/RTC_title_size"
@@ -38,7 +37,7 @@
         style="@style/TextInputLayoutWithoutBackground"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/sing_up_tieUser"
         app:layout_constraintEnd_toStartOf="@+id/glEnd"
         app:layout_constraintStart_toStartOf="@+id/glStart"
         app:layout_constraintTop_toBottomOf="@+id/tvTitleSingUp"
@@ -56,7 +55,7 @@
         style="@style/TextInputLayoutWithoutBackground"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/sing_up_tieEmail_marginTop"
         app:layout_constraintEnd_toStartOf="@+id/glEnd"
         app:layout_constraintStart_toStartOf="@+id/glStart"
         app:layout_constraintTop_toBottomOf="@+id/tieUser"
@@ -74,7 +73,7 @@
         style="@style/TextInputLayoutWithoutBackground"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/sing_up_tiePassword_marginTop"
         app:endIconMode="password_toggle"
         app:layout_constraintEnd_toStartOf="@+id/glEnd"
         app:layout_constraintStart_toStartOf="@+id/glStart"
@@ -94,7 +93,7 @@
         style="@style/TextInputLayoutWithoutBackground"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/sing_up_tieConfirmPassword_marginTop"
         app:endIconMode="password_toggle"
         app:layout_constraintEnd_toStartOf="@+id/glEnd"
         app:layout_constraintStart_toStartOf="@+id/glStart"

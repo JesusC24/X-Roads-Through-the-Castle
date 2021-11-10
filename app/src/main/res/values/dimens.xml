@@ -35,6 +35,30 @@
     <dimen name="fabChat_margin">16dp</dimen>
     <dimen name="fabBug_elevation">6dp</dimen>
     <dimen name="fabBug_margin">16dp</dimen>
-
+    <dimen name="sing_up_glEnd">20dp</dimen>
+    <dimen name="sing_up_TitleSingUp_marginTop">32dp</dimen>
+    <dimen name="sing_up_tieUser">16dp</dimen>
+    <dimen name="sing_up_tieEmail_marginTop">16dp</dimen>
+    <dimen name="sing_up_tiePassword_marginTop">16dp</dimen>
+    <dimen name="sing_up_tieConfirmPassword_marginTop">16dp</dimen>
+    <dimen name="bug_item_tvName_size">24sp</dimen>
+    <dimen name="bug_item_tvName_marginTop">15dp</dimen>
+    <dimen name="bug_item_tvName_paddingBottom">15dp</dimen>
+    <dimen name="informar_bug_glEnd_end">20dp</dimen>
+    <dimen name="informar_bug_tvTitleSingUp_marginTop">32dp</dimen>
+    <dimen name="informar_bug_tieUser_marginTop">16dp</dimen>
+    <dimen name="informar_bug_tvTipo_marginTop">25dp</dimen>
+    <dimen name="informar_bug_spTipo_marginTop">20dp</dimen>
+    <dimen name="informar_bug_spTipo_height">48dp</dimen>
+    <dimen name="informar_bug_tvGravedad_marginTop">50dp</dimen>
+    <dimen name="informar_bug_spGravedad_marginTop">20dp</dimen>
+    <dimen name="informar_bug_spGravedad_minHeight">48dp</dimen>
+    <dimen name="informar_bug_tvDispositivo_marginTop">50dp</dimen>
+    <dimen name="informar_bug_spDispositivo_marginTop">20dp</dimen>
+    <dimen name="informar_bug_spDispositivo_minHeight">48dp</dimen>
+    <dimen name="informar_bug_tvSO_marginTop">50dp</dimen>
+    <dimen name="informar_bug_spSO_marginTop">20dp</dimen>
+    <dimen name="informar_bug_spSO_minHeight">48dp</dimen>
+    <dimen name="informar_bug_tieDescripcion_marginTop">20dp</dimen>
 
 </resources>

@@ -67,7 +67,7 @@
             android:fontFamily="@font/noto_sans"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="80"
+            android:layout_weight="20"
             android:text="@string/chxRemember"/>
 
         <Button
@@ -77,7 +77,7 @@
             android:fontFamily="@font/noto_sans"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="20"
+            android:layout_weight="80"
             android:textAllCaps="true"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:text="@string/btSingUp"/>
@@ -85,11 +85,11 @@
 
     <Button
         android:id="@+id/btSingIn"
-        android:fontFamily="@font/noto_sans"
         android:layout_width="@dimen/login_btSingIn_layout_width"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/login_btSingIn_margin_top"
+        android:fontFamily="@font/noto_sans"
         android:text="@string/btSingIn" />
 
     <TextView
@@ -115,7 +115,7 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             app:srcCompat="@drawable/icono_google"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:contentDescription="@string/btGoogle" />
 
         <ImageButton
             android:id="@+id/btFacebook"
@@ -124,16 +124,7 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             app:srcCompat="@drawable/icono_facebook"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:contentDescription="@string/btFacebook" />
     </LinearLayout>
-
-    <ProgressBar
-        android:id="@+id/loading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="64dp"
-        android:layout_marginBottom="64dp"
-        android:visibility="gone" />
 
 </LinearLayout>

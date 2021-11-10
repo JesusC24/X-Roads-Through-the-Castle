@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -9,12 +8,12 @@
         android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Título del bug"
+        android:layout_marginTop="@dimen/bug_item_tvName_marginTop"
+        android:text="@string/prueba_bug_item_tvName"
         android:textStyle="bold"
-        android:textSize="24sp"
+        android:textSize="@dimen/bug_item_tvName_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:paddingBottom="15dp"/>
+        android:paddingBottom="@dimen/bug_item_tvName_paddingBottom"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

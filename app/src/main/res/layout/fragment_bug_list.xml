@@ -11,7 +11,8 @@
         android:elevation="@dimen/fabBug_elevation"
         android:src="@drawable/ic_action_add"
         android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fabBug_margin"/>
+        android:layout_margin="@dimen/fabBug_margin"
+        android:focusable="true" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvBug"

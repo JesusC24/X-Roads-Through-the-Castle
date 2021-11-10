@@ -11,6 +11,7 @@
 
     <string name="tieEmailHint">Introduce tu email</string>
     <string name="tieConfirmPassword">Confirmar contraseña</string>
+
     <string name="imgbtNoticias">Noticias</string>
     <string name="imgbtForo">Foro</string>
     <string name="imgbtGuia">Guía</string>
@@ -19,7 +20,9 @@
     <string name="imgbtAboutUs">Sobre nosotros</string>
     <string name="imgbtUser">Usuario</string>
     <string name="imgbtHelp">Ayuda</string>
+
     <string name="btCrear">Crear</string>
+
     <string name="tieDescripcion">Descripción</string>
     <string name="tiePassword">Contraseña</string>
     <string name="rbPrivado">Privado</string>
@@ -29,14 +32,26 @@
     <string name="tvCrearChat">Crear chat</string>
 
     <string name="aboutUs_description">Creador del juego X_RTC. Apasionado de los videojuegos</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="fabChat">Añadir nuevo chat</string>
     <string name="fabBug">Añadir nuevo bug</string>
     <string name="aboutUs_subTitle">Desarrollador Móvil</string>
     <string name="aboutUs_brief">Creador del juego X_RTC. Apasionado de los videojuegos</string>
     <string name="validarDatos_string">Nombre inválido, solo letras</string>
-    <string name="validarDatos_password">Contraseña incorrecta</string>
+    <string name="validarDatos_password">Contraseña incorrecta, mínimo 8 caracteres</string>
     <string name="validarDatos_paswordIgual">Las contraseñas no son iguales</string>
     <string name="validarDatos_email">El formato del email no es válido</string>
+    <string name="btGoogle">Iniciar sesión en Google</string>
+    <string name="btFacebook">Iniciar sesión de Facebook</string>
+    <string name="splash_img_logo">Logo de la aplicación</string>
+    <string name="prueba_bug_item_tvName">Título del bug</string>
+    <string name="tvTitleBug">Informar Bug</string>
+    <string name="tvGravedad">Gravedad</string>
+    <string name="tvDispositivo">Dispositivo</string>
+    <string name="tvSO">Sistema Operativo</string>
+    <string name="btConfirmar">Confirmar</string>
+    <string name="spTipo">Elige entre diferentes tipo</string>
+    <string name="spGravedad">Elige entre los diferentes tipos de gravedad</string>
+    <string name="spDispositivo">Elige entre los diferentes tipos de dispositivos</string>
+    <string name="spSO">Elige entre los diferentes sistemas operativos</string>
 </resources>

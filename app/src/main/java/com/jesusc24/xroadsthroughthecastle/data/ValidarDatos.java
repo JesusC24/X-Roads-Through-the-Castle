@@ -46,6 +46,7 @@ public class ValidarDatos {
      * Para validar que un email tenga el formato correcto
      */
     public static int validarEmail(String email) {
+        //TODO no funciona validarEmail
         Pattern pattern = Patterns.EMAIL_ADDRESS;
         if(pattern.matcher(email).matches()) {
             return R.string.validarDatos_email;
