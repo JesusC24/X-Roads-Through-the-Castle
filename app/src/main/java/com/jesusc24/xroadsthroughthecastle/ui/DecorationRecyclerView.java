@@ -7,6 +7,9 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+/**
+ * Sirve para añadir un elemento decorativo (en esta ocasión una línea) a cada item del recyclerView
+ */
 public class DecorationRecyclerView extends RecyclerView.ItemDecoration {
     private Drawable mDivider;
     public DecorationRecyclerView(Drawable divider) {

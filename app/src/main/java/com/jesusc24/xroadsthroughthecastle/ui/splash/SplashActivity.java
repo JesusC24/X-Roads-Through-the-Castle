@@ -7,8 +7,11 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.jesusc24.xroadsthroughthecastle.R;
-import com.jesusc24.xroadsthroughthecastle.ui.user.login.LoginActivity;
+import com.jesusc24.xroadsthroughthecastle.ui.login.LoginActivity;
 
+/**
+ * Activity que se muestra al principio de la aplicación
+ */
 public class SplashActivity extends AppCompatActivity {
 
     //Vamos a declarar una constante privada
@@ -32,9 +35,9 @@ public class SplashActivity extends AppCompatActivity {
 
     private void startLogin(){
         startActivity(new Intent(this, LoginActivity.class));
-        //Voy a llamar de forma explícita al metodo finish() de una Activity, para eleminar
-        //esta activity de la pila de actividades, porque si el usuario pulsa BACK
-        //no queremos que se visualice
+        /*Voy a llamar de forma explícita al metodo finish() de una Activity, para eleminar
+        esta activity de la pila de actividades, porque si el usuario pulsa BACK
+        no queremos que se visualice*/
         finish();
     }
 }

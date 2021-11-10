@@ -1,4 +1,4 @@
-package com.jesusc24.xroadsthroughthecastle.ui.user.login;
+package com.jesusc24.xroadsthroughthecastle.ui.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,8 +7,11 @@ import android.os.Bundle;
 
 import com.jesusc24.xroadsthroughthecastle.ui.MainActivity;
 import com.jesusc24.xroadsthroughthecastle.databinding.ActivityLoginBinding;
-import com.jesusc24.xroadsthroughthecastle.ui.user.singup.SingUpActivity;
+import com.jesusc24.xroadsthroughthecastle.ui.singup.SingUpActivity;
 
+/**
+ * Clase para que el usuario pueda iniciar sesión
+ */
 public class LoginActivity extends AppCompatActivity {
 
     private ActivityLoginBinding binding;

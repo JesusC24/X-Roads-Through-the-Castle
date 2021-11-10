@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.XRoadsThroughTheCastle">
         <activity
-            android:name=".ui.user.singup.SingUpActivity"
+            android:name=".ui.singup.SingUpActivity"
             android:exported="false"
             android:theme="@style/Theme.XRoadsThroughTheCastle.NoActionBar"/>
         <activity
@@ -23,7 +23,7 @@
         </intent-filter>
         </activity>
         <activity
-            android:name=".ui.user.login.LoginActivity"
+            android:name=".ui.login.LoginActivity"
             android:exported="false"
             android:theme="@style/Theme.XRoadsThroughTheCastle.NoActionBar"/>
         <activity

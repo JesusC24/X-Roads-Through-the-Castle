@@ -6,6 +6,9 @@ import android.os.Bundle;
 
 import com.jesusc24.xroadsthroughthecastle.databinding.ActivityMainBinding;
 
+/**
+ * Activity que contendrá a los fragments de la aplicación
+ */
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;

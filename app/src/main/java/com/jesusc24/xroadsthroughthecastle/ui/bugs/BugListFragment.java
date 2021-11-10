@@ -17,12 +17,15 @@ import com.jesusc24.xroadsthroughthecastle.R;
 import com.jesusc24.xroadsthroughthecastle.databinding.FragmentBugListBinding;
 import com.jesusc24.xroadsthroughthecastle.ui.DecorationRecyclerView;
 
+/**
+ * Fragmente que crea la lista de todos los bugs que se encuentran registrados
+ */
 public class BugListFragment extends Fragment {
     FragmentBugListBinding binding;
     private BugAdapter adapter;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentBugListBinding.inflate(inflater);
         return binding.getRoot();
     }

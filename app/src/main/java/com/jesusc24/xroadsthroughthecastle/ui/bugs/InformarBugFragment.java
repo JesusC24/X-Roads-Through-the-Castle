@@ -10,12 +10,14 @@ import androidx.navigation.fragment.NavHostFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Spinner;
 
 import com.jesusc24.xroadsthroughthecastle.R;
 import com.jesusc24.xroadsthroughthecastle.data.RellenarSpinner;
 import com.jesusc24.xroadsthroughthecastle.databinding.FragmentInformarBugBinding;
 
+/**
+ * Fragment que se utiliza para poder crear un nuevo Bug
+ */
 public class InformarBugFragment extends Fragment {
 
     FragmentInformarBugBinding binding;
@@ -27,7 +29,7 @@ public class InformarBugFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentInformarBugBinding.inflate(inflater);
         return binding.getRoot();
     }
@@ -41,8 +43,6 @@ public class InformarBugFragment extends Fragment {
         RellenarSpinner.information(binding.spTipo, R.array.tipo_bugs_array, this);
         RellenarSpinner.information(binding.spSO, R.array.so_bugs_array, this);
 
-        binding.btConfirmar.setOnClickListener(v -> {
-            NavHostFragment.findNavController(this).popBackStack();
-        });
+        binding.btConfirmar.setOnClickListener(v -> NavHostFragment.findNavController(this).popBackStack());
     }
 }

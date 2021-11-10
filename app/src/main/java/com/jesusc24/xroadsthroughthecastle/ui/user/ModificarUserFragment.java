@@ -1,6 +1,5 @@
 package com.jesusc24.xroadsthroughthecastle.ui.user;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,10 +13,13 @@ import android.view.ViewGroup;
 
 import com.jesusc24.xroadsthroughthecastle.databinding.FragmentModificarUserBinding;
 
+/**
+ * Fragment que se usa para poder modificar un usuario ya existente
+ */
 public class ModificarUserFragment extends Fragment {
     FragmentModificarUserBinding binding;
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentModificarUserBinding.inflate(inflater);
         return binding.getRoot();
     }

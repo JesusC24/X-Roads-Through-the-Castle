@@ -13,11 +13,15 @@ import com.jesusc24.xroadsthroughthecastle.data.model.Bug;
 
 import java.util.ArrayList;
 
+/**
+ * Adapter que sirve para poder rellenar un recyclerView
+ */
 public class BugAdapter extends RecyclerView.Adapter<BugAdapter.ViewHolder> {
 
     private ArrayList<Bug> list;
 
     public BugAdapter() {
+        //De momento solo vamos a mostrar el nombre, esto es un ejemplo de como se verá con datos reales
         this.list = new ArrayList<>();
         list.add(new Bug("Primer bug"));
         list.add(new Bug("Segundo bug"));
@@ -53,7 +57,7 @@ public class BugAdapter extends RecyclerView.Adapter<BugAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        //Se crea los elementos que tenemos hecho en el depedency_item.xml
+        //Se crea los elementos que tengo hecho en el bug_item.xml
         TextView tvNombre;
 
         public ViewHolder(@NonNull View itemView) {

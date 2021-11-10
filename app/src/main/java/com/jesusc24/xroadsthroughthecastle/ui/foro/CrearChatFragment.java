@@ -16,7 +16,9 @@ import com.jesusc24.xroadsthroughthecastle.data.RellenarSpinner;
 import com.jesusc24.xroadsthroughthecastle.data.ValidarDatos;
 import com.jesusc24.xroadsthroughthecastle.databinding.FragmentCrearChatBinding;
 
-
+/**
+ * Clase que crea un nuevo Chat que se mostrará en ChatListFragment
+ */
 public class CrearChatFragment extends Fragment {
 
     private FragmentCrearChatBinding binding;
@@ -44,9 +46,23 @@ public class CrearChatFragment extends Fragment {
         String password = binding.tilPassword.getEditText().getText().toString();
         String confirm_password = binding.tilConfirmPassword.getEditText().getText().toString();
 
-        binding.tilName.setError(ValidarDatos.validarString(nombre));
-        binding.tilPassword.setError(ValidarDatos.esPasswordValida(password));
-        binding.tilConfirmPassword.setError(ValidarDatos.esPasswordIgual(password, confirm_password));
+        if(ValidarDatos.validarString(nombre) == 0) {
+            binding.tilName.setError(this.getString(ValidarDatos.validarString(nombre)));
+        } else {
+            binding.tilName.setError(null);
+        }
+
+        if(ValidarDatos.esPasswordValida(password) == 0) {
+            binding.tilPassword.setError(this.getString(ValidarDatos.esPasswordValida(password)));
+        } else {
+            binding.tilPassword.setError(null);
+        }
+
+        if(ValidarDatos.esPasswordIgual(password, confirm_password) == 0) {
+            binding.tilConfirmPassword.setError(this.getString(ValidarDatos.esPasswordIgual(password, confirm_password)));
+        } else {
+            binding.tilConfirmPassword.setError(null);
+        }
 
         return binding.tilName.getError() == null && binding.tilPassword.getError() == null && binding.tilConfirmPassword.getError() == null;
     }

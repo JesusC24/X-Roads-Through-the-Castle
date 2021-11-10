@@ -10,12 +10,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.textfield.TextInputEditText;
 import com.jesusc24.xroadsthroughthecastle.R;
 import com.jesusc24.xroadsthroughthecastle.data.model.Chat;
 
 import java.util.ArrayList;
 
+/**
+ * Adapter que sirve para poder rellenar un recyclerView
+ */
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder>{
 
     private ArrayList<Chat> list;
@@ -56,7 +58,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder>{
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        //Se crea los elementos que tenemos hecho en el depedency_item.xml
+        //Se crea los elementos que tenemos hecho en el chat_item.xml
         TextView tvNombre;
         TextView tvDescripcion;
         ImageButton ibStar;

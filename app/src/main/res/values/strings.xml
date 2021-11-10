@@ -33,4 +33,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="fabChat">Añadir nuevo chat</string>
     <string name="fabBug">Añadir nuevo bug</string>
+    <string name="aboutUs_subTitle">Desarrollador Móvil</string>
+    <string name="aboutUs_brief">Creador del juego X_RTC. Apasionado de los videojuegos</string>
+    <string name="validarDatos_string">Nombre inválido, solo letras</string>
+    <string name="validarDatos_password">Contraseña incorrecta</string>
+    <string name="validarDatos_paswordIgual">Las contraseñas no son iguales</string>
+    <string name="validarDatos_email">El formato del email no es válido</string>
 </resources>

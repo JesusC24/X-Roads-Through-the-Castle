@@ -19,7 +19,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
 
     @Override
     public View onCreateView(
-            LayoutInflater inflater, ViewGroup container,
+            @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
 
@@ -49,7 +49,6 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
 
     /**
      * Este método es el método que maneja los eventos click de la interfaz
-     * @param view
      */
     @Override
     public void onClick(View view) {

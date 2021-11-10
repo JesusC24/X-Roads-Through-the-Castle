@@ -13,6 +13,9 @@ import com.jesusc24.xroadsthroughthecastle.R;
 import com.vansuita.materialabout.builder.AboutBuilder;
 import com.vansuita.materialabout.views.AboutView;
 
+/**
+ * Fragment que muestra el AboutUs que se usa una libería de terceros para poder hacerlo
+ */
 public class AboutUsFragment extends Fragment {
 
     private static final String TAG = "SendMesssageProject";
@@ -25,11 +28,12 @@ public class AboutUsFragment extends Fragment {
                 .setPhoto(R.mipmap.profile_picture)
                 .setCover(R.mipmap.profile_cover)
                 .setName("Jesús Cortés Ocaña")
-                .setSubTitle("Mobile Devepoler")
-                .setBrief("Creador del juego X_RTC. Apasionado de los videojuegos")
+                .setSubTitle(R.string.aboutUs_subTitle)
+                .setBrief(R.string.aboutUs_brief)
                 .setAppIcon(R.mipmap.img_icono)
                 .setAppName(R.string.app_name)
                 .addGitHubLink("https://github.com/JesusC24/")
+                .addTwitterLink("https://twitter.com/jesuscortes2408")
                 .addFiveStarsAction()
                 .setVersionNameAsAppSubTitle()
                 .addShareAction(R.string.app_name)
