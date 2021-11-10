@@ -2,6 +2,9 @@ package com.jesusc24.xroadsthroughthecastle.data.model;
 
 import java.util.Objects;
 
+/**
+ * POJO User para guardar y poder editar la información de los diferentes usuarios del sistema
+ */
 public class User {
     String name, email, password;
 

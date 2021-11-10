@@ -1,5 +1,8 @@
 package com.jesusc24.xroadsthroughthecastle.data.model;
 
+/**
+ * POJO Mensaje que se utilizará dentro de un Chat
+ */
 public class Mensaje {
     String texto, usuario, fecha_envio;
 
@@ -41,5 +44,7 @@ public class Mensaje {
                 ", fecha_envio='" + fecha_envio + '\'' +
                 '}';
     }
+
+    //No tiene sentido implementar el método equals porque los mensajes no se diferencian entre sí
 }
 

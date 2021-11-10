@@ -2,6 +2,9 @@ package com.jesusc24.xroadsthroughthecastle.data.model;
 
 import java.util.Objects;
 
+/**
+ * POJO Bug que se utiliza en la entidad bug
+ */
 public class Bug {
     String nombre, tipo, gravedad, dispositivo, so, descripcion;
     int id;

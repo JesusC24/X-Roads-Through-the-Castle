@@ -2,6 +2,9 @@ package com.jesusc24.xroadsthroughthecastle.data.model;
 
 import java.util.Objects;
 
+/**
+ * POJO Chat que se utilizar dentro de la entidad Foro
+ */
 public class Chat {
     private String nombre, tipo, password, descripcion;
     private int id;
