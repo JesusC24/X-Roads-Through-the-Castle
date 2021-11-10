@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_dashboardFragment_to_chatListFragment"
             app:destination="@id/chatListFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_configuracionFragment"
+            app:destination="@id/configuracionFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutUsFragment"

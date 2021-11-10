@@ -80,7 +80,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
             }
 
             case(R.id.imgbtSettings): {
-                showMessage("Congiguración se encuentra en desarollo");
+                showConfiguracion();
                 break;
             }
 
@@ -116,6 +116,14 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     private void showBugs() {
         NavHostFragment.findNavController(this).navigate(R.id.action_dashboardFragment_to_informarBug);
     }
+
+    /**
+     * Mostrar el fragment Configuración
+     */
+    private void showConfiguracion(){
+        NavHostFragment.findNavController(this).navigate(R.id.action_dashboardFragment_to_configuracionFragment);
+    }
+
 
     private void showMessage(String message) {
         Toast.makeText(this.getContext(),message,Toast.LENGTH_SHORT).show();

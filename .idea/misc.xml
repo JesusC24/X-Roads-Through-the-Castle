@@ -6,6 +6,7 @@
         <entry key="../../../../layout/custom_preview.xml" value="0.22135416666666666" />
         <entry key="app/src/main/res/drawable-mdpi/shape_text_input_layout.xml" value="0.290625" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.38385416666666666" />
+        <entry key="app/src/main/res/drawable/ic_action_chat.xml" value="0.38385416666666666" />
         <entry key="app/src/main/res/drawable/ic_action_email.xml" value="0.21927083333333333" />
         <entry key="app/src/main/res/drawable/ic_action_password.xml" value="0.21927083333333333" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.38385416666666666" />
@@ -22,6 +23,7 @@
         <entry key="app/src/main/res/layout/chat_item.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_about_us.xml" value="0.20380434782608695" />
         <entry key="app/src/main/res/layout/fragment_chat_list.xml" value="0.27447916666666666" />
+        <entry key="app/src/main/res/layout/fragment_configuracion.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_crear_chat.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.29483695652173914" />
         <entry key="app/src/main/res/layout/fragment_informar_bug.xml" value="0.20625" />
@@ -37,7 +39,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.20380434782608695" />
+        <option name="scale" value="0.335" />
       </ProjectState>
     </option>
   </component>
