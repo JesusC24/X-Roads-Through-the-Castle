@@ -1,4 +1,4 @@
-package com.jesusc24.xroadsthroughthecastle.ui.singup;
+package com.jesusc24.xroadsthroughthecastle.ui.user.singup;
 
 import androidx.appcompat.app.AppCompatActivity;
 

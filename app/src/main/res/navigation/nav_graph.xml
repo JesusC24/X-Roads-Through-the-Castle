@@ -7,7 +7,8 @@
     <fragment
         android:id="@+id/dashboardFragment"
         android:name="com.jesusc24.xroadsthroughthecastle.ui.dashboard.DashboardFragment"
-        android:label="DashboardFragment" >
+        android:label="DashboardFragment"
+        tools:layout="@layout/fragment_dashboard">
         <action
             android:id="@+id/action_dashboardFragment_to_aboutUsFragment"
             app:destination="@id/aboutUsFragment" />
@@ -20,15 +21,20 @@
         <action
             android:id="@+id/action_dashboardFragment_to_bugListFragment"
             app:destination="@id/bugListFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_modificarUserFragment"
+            app:destination="@id/modificarUserFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutUsFragment"
         android:name="com.jesusc24.xroadsthroughthecastle.ui.about.AboutUsFragment"
-        android:label="AboutUsFragment" />
+        android:label="AboutUsFragment"
+        tools:layout="@layout/fragment_about_us"/>
     <fragment
         android:id="@+id/crearChatFragment"
         android:name="com.jesusc24.xroadsthroughthecastle.ui.foro.CrearChatFragment"
-        android:label="CrearChatFragment" />
+        android:label="CrearChatFragment"
+        tools:layout="@layout/fragment_crear_chat"/>
     <fragment
         android:id="@+id/informarBug"
         android:name="com.jesusc24.xroadsthroughthecastle.ui.bugs.InformarBug"

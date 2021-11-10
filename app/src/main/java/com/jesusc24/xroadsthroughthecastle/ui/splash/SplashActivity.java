@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.jesusc24.xroadsthroughthecastle.R;
-import com.jesusc24.xroadsthroughthecastle.ui.login.LoginActivity;
+import com.jesusc24.xroadsthroughthecastle.ui.user.login.LoginActivity;
 
 public class SplashActivity extends AppCompatActivity {
 

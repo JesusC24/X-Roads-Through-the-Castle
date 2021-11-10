@@ -29,6 +29,7 @@
         <entry key="app/src/main/res/layout/fragment_crear_chat.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.29483695652173914" />
         <entry key="app/src/main/res/layout/fragment_informar_bug.xml" value="0.20625" />
+        <entry key="app/src/main/res/layout/fragment_modificar_user.xml" value="0.2755208333333333" />
       </map>
     </option>
   </component>

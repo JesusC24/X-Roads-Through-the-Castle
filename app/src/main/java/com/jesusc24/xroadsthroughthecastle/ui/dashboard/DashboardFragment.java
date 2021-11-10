@@ -85,7 +85,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
             }
 
             case(R.id.imgbtUser): {
-                showMessage("Usuario se encuentra en desarollo");
+                showUser();
                 break;
             }
 
@@ -122,6 +122,13 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
      */
     private void showConfiguracion(){
         NavHostFragment.findNavController(this).navigate(R.id.action_dashboardFragment_to_configuracionFragment);
+    }
+
+    /**
+     * Mostrar el fragment Usuario
+     */
+    private void showUser(){
+        NavHostFragment.findNavController(this).navigate(R.id.action_dashboardFragment_to_modificarUserFragment);
     }
 
 
