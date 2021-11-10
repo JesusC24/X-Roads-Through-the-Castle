@@ -22,7 +22,7 @@ public class ValidarDatos {
 
     public static String esPasswordIgual(String password, String confirmarPassword) {
         //TODO no va esta función para saber que las dos password sean iguales
-        if(confirmarPassword.equals(password)) {
+        if(confirmarPassword.contentEquals(password)) {
             return "Las contraseñas no son iguales";
         } else {
             return null;

@@ -43,7 +43,6 @@ public class CrearChatFragment extends Fragment {
         String nombre = binding.tilName.getEditText().getText().toString();
         String password = binding.tilPassword.getEditText().getText().toString();
         String confirm_password = binding.tilConfirmPassword.getEditText().getText().toString();
-        String descripcion = binding.tilDescripcion.getEditText().getText().toString();
 
         binding.tilName.setError(ValidarDatos.validarString(nombre));
         binding.tilPassword.setError(ValidarDatos.esPasswordValida(password));
