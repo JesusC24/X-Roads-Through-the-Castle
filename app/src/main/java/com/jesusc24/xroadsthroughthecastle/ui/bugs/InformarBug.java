@@ -36,10 +36,10 @@ public class InformarBug extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        RellenarSpinner.information((Spinner) binding.spDispositivo, R.array.dispositivo_bugs_array, this);
-        RellenarSpinner.information((Spinner) binding.spGravedad, R.array.gravedad_bugs_array, this);
-        RellenarSpinner.information((Spinner) binding.spTipo, R.array.tipo_bugs_array, this);
-        RellenarSpinner.information((Spinner) binding.spSO, R.array.so_bugs_array, this);
+        RellenarSpinner.information(binding.spDispositivo, R.array.dispositivo_bugs_array, this);
+        RellenarSpinner.information(binding.spGravedad, R.array.gravedad_bugs_array, this);
+        RellenarSpinner.information(binding.spTipo, R.array.tipo_bugs_array, this);
+        RellenarSpinner.information(binding.spSO, R.array.so_bugs_array, this);
 
         binding.btConfirmar.setOnClickListener(v -> {
             NavHostFragment.findNavController(this).popBackStack();

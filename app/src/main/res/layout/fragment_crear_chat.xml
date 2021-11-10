@@ -73,6 +73,7 @@
         app:endIconMode="password_toggle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:endIconMode="password_toggle"
         android:layout_marginTop="@dimen/crear_til_margin"
         android:layout_marginBottom="@dimen/crear_til_margin"
         app:startIconDrawable="@drawable/ic_action_password">
