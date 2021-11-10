@@ -80,10 +80,10 @@
     <dimen name="crear_chat_tvTipo_marginTop">5dp</dimen>
     <dimen name="crear_chat_tilConfirmPassword_marginTop">5dp</dimen>
 
-    <dimen name="configuracion_btSalirGoogle_marginStart">30dp</dimen>
+    <dimen name="configuracion_btSalirGoogle_marginStart">10dp</dimen>
     <dimen name="configuracion_btSalirGoogle_marginTop">250dp</dimen>
     <dimen name="configuracion_btSalirFacebook_marginTop">250dp</dimen>
-    <dimen name="configuracion_btSalirFacebook_marginEnd">30dp</dimen>
+    <dimen name="configuracion_btSalirFacebook_marginEnd">10dp</dimen>
     <dimen name="configuracion_tvIdioma_marginTop">50dp</dimen>
     <dimen name="configuracion_tvLetra_marginTop">75dp</dimen>
     <dimen name="configuracion_sbLetra_marginStart">15dp</dimen>
