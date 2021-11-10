@@ -16,6 +16,7 @@
         <entry key="app/src/main/res/font/anton.xml" value="0.39791666666666664" />
         <entry key="app/src/main/res/font/noto_sans.xml" value="0.39791666666666664" />
         <entry key="app/src/main/res/font/noto_sans_bold.xml" value="0.39791666666666664" />
+        <entry key="app/src/main/res/layout-land/fragment_crear_chat.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.20380434782608695" />
         <entry key="app/src/main/res/layout/activity_sing_up.xml" value="0.335" />
