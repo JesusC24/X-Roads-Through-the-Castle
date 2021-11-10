@@ -107,7 +107,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
      * Muestra el fragment que da de alta un inventario
      */
     private void showChooseChat() {
-        NavHostFragment.findNavController(this).navigate(R.id.action_dashboardFragment_to_crearChatFragment);
+        NavHostFragment.findNavController(this).navigate(R.id.action_dashboardFragment_to_chatListFragment);
     }
 
     /**

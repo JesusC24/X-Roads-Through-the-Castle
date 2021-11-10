@@ -6,10 +6,9 @@ public class Chat {
     private String nombre, tipo, password, descripcion;
     private int id;
 
-    public Chat(String nombre, String tipo, String password, String descripcion, int id) {
+    public Chat(String nombre, String tipo, String descripcion, int id) {
         this.nombre = nombre;
         this.tipo = tipo;
-        this.password = password;
         this.descripcion = descripcion;
         this.id = id;
     }

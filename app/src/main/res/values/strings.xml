@@ -29,4 +29,7 @@
     <string name="tvCrearChat">Crear chat</string>
 
     <string name="aboutUs_description">Creador del juego X_RTC. Apasionado de los videojuegos</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fabChat">Añadir nuevo chat</string>
 </resources>
