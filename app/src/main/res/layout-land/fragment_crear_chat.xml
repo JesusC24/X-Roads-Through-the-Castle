@@ -30,7 +30,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilName"
-                style="@style/TextInputLayoutWithoutBackground"
+                style="@style/TextInputLayout.Local"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
@@ -67,7 +67,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilPassword"
-                style="@style/TextInputLayoutWithoutBackground"
+                style="@style/TextInputLayout.Local"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
@@ -84,7 +84,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilConfirmPassword"
-                style="@style/TextInputLayoutWithoutBackground"
+                style="@style/TextInputLayout.Local"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/crear_chat_tilConfirmPassword_marginTop"
@@ -104,7 +104,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilDescripcion"
-        style="@style/TextInputLayoutWithoutBackground"
+        style="@style/TextInputLayout.Local"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:startIconDrawable="@drawable/ic_action_description">

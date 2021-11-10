@@ -34,7 +34,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tieUser"
-        style="@style/TextInputLayoutWithoutBackground"
+        style="@style/RTCTextInputLayout.WithoutBackground"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/sing_up_tieUser"
@@ -52,7 +52,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tieEmail"
-        style="@style/TextInputLayoutWithoutBackground"
+        style="@style/RTCTextInputLayout.WithoutBackground"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/sing_up_tieEmail_marginTop"
@@ -70,7 +70,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tiePassword"
-        style="@style/TextInputLayoutWithoutBackground"
+        style="@style/RTCTextInputLayout.WithoutBackground"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/sing_up_tiePassword_marginTop"
@@ -90,7 +90,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tieConfirmPassword"
-        style="@style/TextInputLayoutWithoutBackground"
+        style="@style/RTCTextInputLayout.WithoutBackground"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/sing_up_tieConfirmPassword_marginTop"

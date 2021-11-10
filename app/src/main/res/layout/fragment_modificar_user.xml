@@ -34,7 +34,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilUser"
-        style="@style/TextInputLayoutWithoutBackground"
+        style="@style/RTCTextInputLayout.WithoutBackground"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/modificar_user_tilUser_marginTop"
@@ -52,7 +52,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilEmail"
-        style="@style/TextInputLayoutWithoutBackground"
+        style="@style/RTCTextInputLayout.WithoutBackground"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/modificar_user_tilEmail_marginTop"
@@ -70,7 +70,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilPassword"
-        style="@style/TextInputLayoutWithoutBackground"
+        style="@style/RTCTextInputLayout.WithoutBackground"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/modificar_user_tilPassword_marginTop"
@@ -90,7 +90,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilConfirmPassword"
-        style="@style/TextInputLayoutWithoutBackground"
+        style="@style/RTCTextInputLayout.WithoutBackground"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/modificar_user_tilConfirmPassword_marginTop"
