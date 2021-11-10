@@ -12,6 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:fontFamily">@font/noto_sans</item>
     </style>
 
     <style name="Theme.XRoadsThroughTheCastle.NoActionBar" parent="Theme.XRoadsThroughTheCastle">

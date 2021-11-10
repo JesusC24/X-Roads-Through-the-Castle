@@ -54,8 +54,6 @@
     <string name="spGravedad">Elige entre los diferentes tipos de gravedad</string>
     <string name="spDispositivo">Elige entre los diferentes tipos de dispositivos</string>
     <string name="spSO">Elige entre los diferentes sistemas operativos</string>
-    <string name="tvName">Nombre del chat</string>
-    <string name="tvDescripcion">Descripción</string>
     <string name="prueba_tvName">Nombre del chat</string>
     <string name="prueba_tvDescripcion">Descripción</string>
     <string name="imgChat">Muestra el logo de un chat</string>
@@ -65,8 +63,8 @@
     <string name="btCerrarSesion">Cerrar Sesión</string>
     <string name="tvIdioma">Idioma</string>
     <string name="tvLetra">Tamaño de la letra</string>
-    <string name="ibSpain">Idioma Español</string>
-    <string name="ibUK">Idioma inglés</string>
+    <string name="ibSpain">Español</string>
+    <string name="ibUK">Inglés</string>
     <string name="tvTitleUser">Usuario</string>
     <string name="tilUser">Nombre</string>
     <string name="tieEmail">Email</string>

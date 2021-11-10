@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="tipo_array">
+        <item>Public</item>
+        <item>Private</item>
+    </string-array>
+
+    <string-array name="tipo_bugs_array">
+        <item>Logic</item>
+        <item>Dseign</item>
+        <item>Content</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="gravedad_bugs_array">
+        <item>Insignificant</item>
+        <item>Limited</item>
+        <item>Normal</item>
+        <item>Serious</item>
+        <item>Critical</item>
+    </string-array>
+
+    <string-array name="dispositivo_bugs_array">
+        <item>PC</item>
+        <item>Mac</item>
+        <item>Mobil</item>
+        <item>Tablet</item>
+    </string-array>
+
+    <string-array name="so_bugs_array">
+        <item>Windows</item>
+        <item>Mac OS X</item>
+        <item>Linux</item>
+        <item>Android</item>
+        <item>IOS</item>
+    </string-array>
+</resources>
