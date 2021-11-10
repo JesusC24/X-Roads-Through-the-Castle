@@ -59,7 +59,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
             }
 
             case(R.id.imgbtNews): {
-                showMessage("Noticias se encuentra en desarollo");
+                showMessage(getString(R.string.dashboard_news));
                 break;
             }
 
@@ -69,7 +69,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
             }
 
             case(R.id.imgbtGuia): {
-                showMessage("Guía se encuentra en desarollo");
+                showMessage(getString(R.string.dashboard_guia));
                 break;
             }
 
@@ -89,7 +89,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
             }
 
             case(R.id.imgbtHelp): {
-                showMessage("Ayuda se encuentra en desarollo");
+                showMessage(getString(R.string.dashboard_help));
                 break;
             }
         }

@@ -69,4 +69,7 @@
     <string name="tilUser">Nombre</string>
     <string name="tieEmail">Email</string>
     <string name="btCambiarPassword">Cambiar contraseña</string>
+    <string name="dashboard_guia">Guía se encuentra en desarollo</string>
+    <string name="dashboard_news">Noticias se encuentra en desarrollo</string>
+    <string name="dashboard_help">Ayuda se encuentra en desarollo</string>
 </resources>

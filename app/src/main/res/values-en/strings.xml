@@ -61,4 +61,7 @@
     <string name="tilUser">Name</string>
     <string name="tieEmail">Email</string>
     <string name="btCambiarPassword">Change password</string>
+    <string name="dashboard_guia">Guide is under development</string>
+    <string name="dashboard_news">News is under development</string>
+    <string name="dashboard_help">Help is under development</string>
 </resources>

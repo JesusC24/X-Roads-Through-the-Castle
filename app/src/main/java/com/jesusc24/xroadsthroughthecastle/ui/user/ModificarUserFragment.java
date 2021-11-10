@@ -35,6 +35,6 @@ public class ModificarUserFragment extends Fragment {
             binding.tilConfirmPassword.setVisibility(View.VISIBLE);
         });
 
-        binding.btConfirmarCambios.setOnClickListener(v -> NavHostFragment.findNavController(this).popBackStack());
+        binding.btConfirmar.setOnClickListener(v -> NavHostFragment.findNavController(this).popBackStack());
     }
 }
