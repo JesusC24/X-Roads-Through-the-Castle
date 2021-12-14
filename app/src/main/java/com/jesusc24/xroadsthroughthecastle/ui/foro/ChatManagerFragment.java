@@ -15,11 +15,14 @@ import com.jesusc24.xroadsthroughthecastle.R;
 import com.jesusc24.xroadsthroughthecastle.data.RellenarSpinner;
 import com.jesusc24.xroadsthroughthecastle.data.ValidarDatos;
 import com.jesusc24.xroadsthroughthecastle.databinding.FragmentCrearChatBinding;
+import com.jesusc24.xroadsthroughthecastle.ui.base.OnRepositoryListCallback;
+
+import java.util.ArrayList;
 
 /**
  * Clase que crea un nuevo Chat que se mostrará en ChatListFragment
  */
-public class CrearChatFragment extends Fragment {
+public class ChatManagerFragment extends Fragment implements ChatManagerContract.View, OnRepositoryListCallback {
 
     private FragmentCrearChatBinding binding;
     @Override
@@ -66,4 +69,60 @@ public class CrearChatFragment extends Fragment {
 
         return binding.tilName.getError() == null && binding.tilPassword.getError() == null && binding.tilConfirmPassword.getError() == null;
     }
+
+    //region Métodos por la barra de progeso
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void hideProgress() {
+
+    }
+    //endregion
+
+    //region Métodos por la respuesta del repositorio
+    @Override
+    public void onFailure(String message) {
+
+    }
+
+    @Override
+    public <T> void onSuccess(ArrayList<T> list) {
+
+    }
+
+    @Override
+    public void onDeleteSuccess(String message) {
+
+    }
+
+    @Override
+    public void onUndoSuccess(String message) {
+
+    }
+    //endregion
+
+    //region Método dados por el presenter (CASOS DE USO)
+    @Override
+    public void setElementEmpty(String message) {
+
+    }
+
+    @Override
+    public void setErrorName() {
+
+    }
+
+    @Override
+    public void setCaracteresEspeciales(String message) {
+
+    }
+
+    @Override
+    public void setErrorPassword() {
+
+    }
+    //endregion
 }

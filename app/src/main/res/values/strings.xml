@@ -72,4 +72,5 @@
     <string name="dashboard_guia">Guía se encuentra en desarollo</string>
     <string name="dashboard_news">Noticias se encuentra en desarrollo</string>
     <string name="dashboard_help">Ayuda se encuentra en desarollo</string>
+    <string name="menu_chat_ordenar">Ordenar por nombre</string>
 </resources>

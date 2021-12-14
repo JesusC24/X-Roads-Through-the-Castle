@@ -14,6 +14,7 @@ import com.jesusc24.xroadsthroughthecastle.R;
 import com.jesusc24.xroadsthroughthecastle.data.model.Chat;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Adapter que sirve para poder rellenar un recyclerView
@@ -21,13 +22,18 @@ import java.util.ArrayList;
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder>{
 
     private ArrayList<Chat> list;
+    private OnManageChatList listener;
 
-    public ChatAdapter() {
-        this.list = new ArrayList<>();
-        list.add(new Chat("Primer chat", "Público", null, 1));
-        list.add(new Chat("Segundo chat", "Público", null, 2));
-        list.add(new Chat("Tercer chat", "Público", null, 3));
-        list.add(new Chat("Cuarto chat", "Público", null, 4));
+    public ChatAdapter(ArrayList<Chat> list, OnManageChatList listener) {
+        this.list = list;
+        this.listener = listener;
+    }
+
+    public interface OnManageChatList {
+        //Si se hace click en una dependencia se edita (onClickListener)
+        void OnEditChat(Chat chat);
+        //Si se hace una pulsación larga en la dependencia se elimina (onLongClickListener)
+        void OnDeleteChat(Chat chat);
     }
 
     /**
@@ -45,6 +51,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull ChatAdapter.ViewHolder holder, int position) {
         holder.tvNombre.setText(list.get(position).getNombre());
+        holder.tvDescripcion.setText(list.get(position).getDescripcion());
+        holder.bind(list.get(position), listener);
     }
 
     /**
@@ -71,5 +79,46 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder>{
             ibStar = itemView.findViewById(R.id.ibStar);
             imgChat = itemView.findViewById(R.id.imgChat);
         }
+
+        public void bind(Chat chat, OnManageChatList listener) {
+            itemView.setOnClickListener(v -> {
+                listener.OnEditChat(chat);
+            });
+
+            itemView.setOnLongClickListener(v -> {
+                listener.OnDeleteChat(chat);
+                return true;
+            });
+        }
+    }
+
+    public void update(ArrayList<Chat> list) {
+        this.list.clear();
+        this.list.addAll(list);
+        notifyDataSetChanged();
+    }
+
+    public void delete(Chat chat) {
+        list.remove(chat);
+        notifyDataSetChanged();
+    }
+
+    public boolean isEmpty() {
+        return list.isEmpty();
+    }
+
+    public void undo(Chat chat) {
+        list.add(chat);
+        notifyDataSetChanged();
+    }
+
+    public void order() {
+        Collections.sort(list);
+        notifyDataSetChanged();
+    }
+
+    public void inverseOrder() {
+        Collections.reverse(list);
+        notifyDataSetChanged();
     }
 }

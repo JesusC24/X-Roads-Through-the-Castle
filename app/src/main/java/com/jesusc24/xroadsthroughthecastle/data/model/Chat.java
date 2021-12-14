@@ -1,11 +1,12 @@
 package com.jesusc24.xroadsthroughthecastle.data.model;
 
-import java.util.Objects;
+import androidx.annotation.Nullable;
+
 
 /**
  * POJO Chat que se utilizar dentro de la entidad Foro
  */
-public class Chat {
+public class Chat implements Comparable{
     private String nombre, tipo, password, descripcion;
     private int id;
 
@@ -57,21 +58,6 @@ public class Chat {
     }
 
     @Override
-    public boolean equals(Object o) {
-        Chat chat = (Chat) o;
-        if(this.nombre.equals(chat.getNombre())) {
-            return true;
-        }
-
-        return false;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(nombre, tipo, password, descripcion, id);
-    }
-
-    @Override
     public String toString() {
         return "Chat{" +
                 "nombre='" + nombre + '\'' +
@@ -80,5 +66,20 @@ public class Chat {
                 ", descripcion='" + descripcion + '\'' +
                 ", id=" + id +
                 '}';
+    }
+
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        return ((Chat)obj).getNombre().equals(getNombre());
+    }
+
+
+    @Override
+    public int compareTo(Object o) {
+        if(equals(o)) {
+            return ((Chat)o).getDescripcion().compareTo(getDescripcion());
+        } else {
+            return ((Chat)o).getNombre().compareTo(getNombre());
+        }
     }
 }

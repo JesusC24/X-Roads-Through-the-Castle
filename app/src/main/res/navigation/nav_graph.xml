@@ -32,7 +32,7 @@
         tools:layout="@layout/fragment_about_us"/>
     <fragment
         android:id="@+id/crearChatFragment"
-        android:name="com.jesusc24.xroadsthroughthecastle.ui.foro.CrearChatFragment"
+        android:name="com.jesusc24.xroadsthroughthecastle.ui.foro.ChatManagerFragment"
         android:label="CrearChatFragment"
         tools:layout="@layout/fragment_crear_chat"/>
     <fragment

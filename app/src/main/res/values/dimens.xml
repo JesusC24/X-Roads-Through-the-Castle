@@ -98,5 +98,6 @@
     <dimen name="modificar_user_tilEmail_marginTop">16dp</dimen>
     <dimen name="modificar_user_tilPassword_marginTop">16dp</dimen>
     <dimen name="modificar_user_tilConfirmPassword_marginTop">16dp</dimen>
+    <dimen name="tvNoData_dependencylist">30sp</dimen>
 
 </resources>

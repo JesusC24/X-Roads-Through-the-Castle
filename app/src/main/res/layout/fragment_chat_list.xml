@@ -5,6 +5,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.foro.ChatListFragment">
 
+    <!-- Si tengo que mostrar un NO DATA hay que poner un LinerLayout
+    y se muestra una imagen y un texto que indica que no hay datos-->
+
+    <LinearLayout
+        android:id="@+id/llNoData_dependency"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/imgNoData"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.7"
+            android:src="@drawable/img_no_data"/>
+
+        <TextView
+            android:id="@+id/tvNoData"
+            android:fontFamily="@font/noto_sans"
+            android:textSize="@dimen/tvNoData_dependencylist"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.3"/>
+
+    </LinearLayout>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabChat"
         android:layout_width="wrap_content"
@@ -20,6 +48,16 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvChat"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent" >
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <include
+        android:id="@+id/include_progressbar"
+        layout="@layout/layout_progressbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
