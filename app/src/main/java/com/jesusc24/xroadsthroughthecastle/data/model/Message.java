@@ -3,10 +3,10 @@ package com.jesusc24.xroadsthroughthecastle.data.model;
 /**
  * POJO Mensaje que se utilizará dentro de un Chat
  */
-public class Mensaje {
+public class Message {
     String texto, usuario, fecha_envio;
 
-    public Mensaje(String texto, String usuario, String fecha_envio) {
+    public Message(String texto, String usuario, String fecha_envio) {
         this.texto = texto;
         this.usuario = usuario;
         this.fecha_envio = fecha_envio;

@@ -22,7 +22,7 @@
         android:text="@string/tvTituloLogin" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilUser"
+        android:id="@+id/tilEmail"
         style="@style/RTCTextInputLayout"
         android:layout_marginTop="@dimen/login_tilUser_margin_top"
         android:layout_width="match_parent"
@@ -30,11 +30,11 @@
         app:errorEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tieUser"
+            android:id="@+id/tieEmail"
             android:fontFamily="@font/noto_sans"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/tieUserHint" />
+            android:hint="@string/tieEmailHint" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -91,13 +91,22 @@
         android:fontFamily="@font/noto_sans"
         android:text="@string/btSingIn" />
 
+    <!-- Con la etiqueta include se añade un progressBar o dialog, que inicialmente está
+    oculto y se mostrará en las operaciones asíncronas-->
+    <include
+        android:id="@+id/include_progressbar"
+        layout="@layout/layout_progressbar"
+        android:layout_width="match_parent"
+        android:visibility="invisible"
+        android:layout_weight="1"
+        android:layout_height="0dp"/>
+
     <TextView
         android:id="@+id/tvOtherLogin"
         android:textStyle="bold"
         android:gravity="bottom|center_horizontal"
-        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:paddingBottom="@dimen/login_tvOtherLogin_padding_botoom"
         android:text="@string/tvOtherLogin"/>
 

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "751565801750",
+    "project_id": "x-roads-through-the-castle",
+    "storage_bucket": "x-roads-through-the-castle.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:751565801750:android:9d5417426de5006be9a837",
+        "android_client_info": {
+          "package_name": "com.jesusc24.xroadsthroughthecastle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "751565801750-uqbur7sbpgs9tiou98ua4dbm34ht3lg9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJEXIhJbVyJZ7UdNR8f1OXzLbgw-4SKVw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "751565801750-uqbur7sbpgs9tiou98ua4dbm34ht3lg9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

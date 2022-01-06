@@ -73,4 +73,11 @@
     <string name="dashboard_news">Noticias se encuentra en desarrollo</string>
     <string name="dashboard_help">Ayuda se encuentra en desarollo</string>
     <string name="menu_chat_ordenar">Ordenar por nombre</string>
+    <string name="errEmailEmpty">Email no puede ser vacío</string>
+    <string name="errPasswordEmpty">Contraseña no puede ser vacío</string>
+    <string name="errPassword">Error en el formato de la contraseña</string>
+    <string name="errEmail">Error en el formato del email</string>
+    <string name="errUserEmpty">Usuario no puede estar vacío</string>
+    <string name="errConfirmPasswordEmpty">La contraseña no puede estar vacío</string>
+    <string name="errConfirmPassword">No coinciden las contraseñas</string>
 </resources>

@@ -33,7 +33,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tieUser"
+        android:id="@+id/tilUser"
         style="@style/RTCTextInputLayout.WithoutBackground"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -44,32 +44,32 @@
         app:startIconDrawable="@drawable/ic_action_user">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tilUser"
+            android:id="@+id/tieUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/tieUserHint"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tieEmail"
+        android:id="@+id/tilEmail"
         style="@style/RTCTextInputLayout.WithoutBackground"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/sing_up_tieEmail_marginTop"
         app:layout_constraintEnd_toStartOf="@+id/glEnd"
         app:layout_constraintStart_toStartOf="@+id/glStart"
-        app:layout_constraintTop_toBottomOf="@+id/tieUser"
+        app:layout_constraintTop_toBottomOf="@+id/tilUser"
         app:startIconDrawable="@drawable/ic_action_email">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tilEmail"
+            android:id="@+id/tieEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/tieEmailHint" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tiePassword"
+        android:id="@+id/tilPassword"
         style="@style/RTCTextInputLayout.WithoutBackground"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -77,11 +77,11 @@
         app:endIconMode="password_toggle"
         app:layout_constraintEnd_toStartOf="@+id/glEnd"
         app:layout_constraintStart_toStartOf="@+id/glStart"
-        app:layout_constraintTop_toBottomOf="@+id/tieEmail"
+        app:layout_constraintTop_toBottomOf="@+id/tilEmail"
         app:startIconDrawable="@drawable/ic_action_password">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tilPassword"
+            android:id="@+id/tiePassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
@@ -89,7 +89,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tieConfirmPassword"
+        android:id="@+id/tilConfirmPassword"
         style="@style/RTCTextInputLayout.WithoutBackground"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -97,11 +97,11 @@
         app:endIconMode="password_toggle"
         app:layout_constraintEnd_toStartOf="@+id/glEnd"
         app:layout_constraintStart_toStartOf="@+id/glStart"
-        app:layout_constraintTop_toBottomOf="@+id/tiePassword"
+        app:layout_constraintTop_toBottomOf="@+id/tilPassword"
         app:startIconDrawable="@drawable/ic_action_password">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tilConfirmPassword"
+            android:id="@+id/tieConfirmPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
@@ -116,5 +116,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/glEnd"
         app:layout_constraintStart_toStartOf="@+id/glStart"
-        app:layout_constraintTop_toBottomOf="@+id/tieConfirmPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/tilConfirmPassword" />
 </androidx.constraintlayout.widget.ConstraintLayout>

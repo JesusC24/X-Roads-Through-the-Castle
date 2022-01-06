@@ -34,6 +34,7 @@
         <entry key="app/src/main/res/layout/fragment_informar_bug.xml" value="0.20625" />
         <entry key="app/src/main/res/layout/fragment_modificar_user.xml" value="0.2755208333333333" />
         <entry key="app/src/main/res/layout/layout_progressbar.xml" value="0.19635416666666666" />
+        <entry key="app/src/main/res/layout/layout_progressdialog.xml" value="0.27219202898550726" />
         <entry key="app/src/main/res/menu/menu_chat_fragment.xml" value="0.18854166666666666" />
       </map>
     </option>

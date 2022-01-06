@@ -1,12 +1,10 @@
-package com.jesusc24.xroadsthroughthecastle.ui.login;
+package com.jesusc24.xroadsthroughthecastle.ui.singUp;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -15,63 +13,50 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.jesusc24.xroadsthroughthecastle.R;
 import com.jesusc24.xroadsthroughthecastle.data.model.User;
-import com.jesusc24.xroadsthroughthecastle.databinding.ActivityLoginBinding;
-import com.jesusc24.xroadsthroughthecastle.ui.MainActivity;
+import com.jesusc24.xroadsthroughthecastle.databinding.ActivitySingUpBinding;
 import com.jesusc24.xroadsthroughthecastle.ui.base.Event;
-import com.jesusc24.xroadsthroughthecastle.ui.singUp.SignUpActivity;
 import com.jesusc24.xroadsthroughthecastle.utils.CommonUtils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
-public class LoginActivity extends AppCompatActivity implements LoginContract.View {
 
-    private ActivityLoginBinding binding;
-    private LoginContract.Presenter presenter;
+public class SignUpActivity extends AppCompatActivity implements SignUpContract.View {
+
+    private ActivitySingUpBinding binding;
+    SignUpContract.Presenter presenter;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        binding = ActivitySingUpBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.btSingUp.setOnClickListener(view -> startSingUpActivity());
+        presenter = new SignUpPresenter(this);
 
-        binding.btSingIn.setOnClickListener(view -> presenter.validateCredetials(new User(binding.tieEmail.getText().toString(), binding.tiePassword.getText().toString())));
+        binding.tieUser.addTextChangedListener(new SignUpTextWatcher(binding.tieUser));
+        binding.tieEmail.addTextChangedListener(new SignUpTextWatcher(binding.tieEmail));
+        binding.tiePassword.addTextChangedListener(new SignUpTextWatcher(binding.tiePassword));
 
-        binding.tieEmail.addTextChangedListener(new LoginTextWatcher(binding.tieEmail));
-        binding.tiePassword.addTextChangedListener(new LoginTextWatcher(binding.tiePassword));
+        binding.btSingUp.setOnClickListener(v -> presenter.validateSingUp(new User(binding.tieUser.getText().toString(), binding.tieEmail.getText().toString(), binding.tiePassword.getText().toString(), binding.tieConfirmPassword.getText().toString())));
 
-        presenter = new LoginPresenter(this);
-
-        //La vista se registra como subscriptor del Event Bus
         EventBus.getDefault().register(this);
-    }
-
-    void startSingUpActivity() {
-        startActivity(new Intent(this, SignUpActivity.class));
-    }
-
-    void startMainActivity() {
-        startActivity(new Intent(this, MainActivity.class));
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        presenter.onDestroy(); //Se evitaría un futuro memmory leaks
-        presenter = null;
-        //Se quita como subscriptor de Event Bus
         EventBus.getDefault().unregister(this);
+        presenter.onDestroy();
+        presenter = null;
     }
 
+    @Override
+    public void setUserEmptyError() {
+        binding.tilUser.setError(getString(R.string.errUserEmpty));
+    }
 
-    //region Métodos del contrato View-Presente
-
-    /**
-     * Activa el error en el componente en TextInputLayout y mostrar el texto oportuno
-     */
     @Override
     public void setEmailEmptyError() {
         binding.tilEmail.setError(getString(R.string.errEmailEmpty));
@@ -80,6 +65,11 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     @Override
     public void setPasswordEmptyError() {
         binding.tilPassword.setError(getString(R.string.errPasswordEmpty));
+    }
+
+    @Override
+    public void setConfirmPasswordEmptyError() {
+        binding.tilConfirmPassword.setError(getString(R.string.errConfirmPasswordEmpty));
     }
 
     @Override
@@ -92,17 +82,14 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         binding.tilEmail.setError(getString(R.string.errEmail));
     }
 
-    //Secuencia normal: el usuario existe en la base de datos, usuario-contraseña correctos.
+    @Override
+    public void setPasswordDontMatch() {
+        binding.tilConfirmPassword.setError(getString(R.string.errConfirmPassword));
+    }
+
     @Override
     public void onSuccess(String message) {
-        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
-
-        if(binding.chxRemember.isChecked()) {
-            editor.putString(User.TAG, binding.tieEmail.getText().toString());
-            editor.apply();
-        }
-
-        startMainActivity();
+        finish();
     }
 
     @Override
@@ -110,24 +97,13 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    public void showProgress() {
-        binding.includeProgressbar.llProgressBar.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void hideProgress() {
-        binding.includeProgressbar.llProgressBar.setVisibility(View.INVISIBLE);
-    }
-    //endregion
-
     // region Clase interna que controla cada vez que el usuario introduce un carácter en un
     // Editable si cumple o no las reglas de validación.
 
-    class LoginTextWatcher implements TextWatcher {
+    class SignUpTextWatcher implements TextWatcher {
         private View view;
 
-        LoginTextWatcher(View view) {
+        SignUpTextWatcher(View view) {
             this.view = view;
         }
 
@@ -144,6 +120,9 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         @Override
         public void afterTextChanged(Editable editable) {
             switch (view.getId()) {
+                case R.id.tieUser:
+                    validateUser(((EditText) view).getText().toString());
+                    binding.tilUser.setError(null);
                 case R.id.tieEmail:
                     validateEmail(((EditText) view).getText().toString());
                     break;
@@ -151,6 +130,15 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
                     validatePassword(((EditText) view).getText().toString());
                     break;
             }
+        }
+    }
+
+    private void validateUser(String user) {
+        if (TextUtils.isEmpty(user)) {
+            binding.tilUser.setError(getString(R.string.errUserEmpty));
+        } else {
+            // Desaparece el error.
+            binding.tilUser.setError(null);
         }
     }
 
@@ -163,7 +151,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     private void validateEmail(String email) {
         if (TextUtils.isEmpty(email)) {
             binding.tilEmail.setError(getString(R.string.errEmailEmpty));
-        } else if (!CommonUtils.isEmailValid(email)) {
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             binding.tilEmail.setError(getString(R.string.errEmail));
         } else {
             // Desaparece el error.
@@ -188,7 +176,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     //region Método que se ejecuta cuando hay un evento del Repositorio
     @Subscribe
     public void onEvent(Event event) {
-        hideProgress();
         Toast.makeText(this, event.getMessage(),Toast.LENGTH_SHORT).show();
     }
     //endregion

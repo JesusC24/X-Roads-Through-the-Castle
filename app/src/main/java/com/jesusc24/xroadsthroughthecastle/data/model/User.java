@@ -1,21 +1,22 @@
 package com.jesusc24.xroadsthroughthecastle.data.model;
 
-import java.util.Objects;
-
 /**
  * POJO User para guardar y poder editar la información de los diferentes usuarios del sistema
  */
 public class User {
-    String name, email, password;
+    public static final String TAG = "user";
+    String user, email, password, confirmPassword;
 
-    public User(String name, String email, String password) {
-        this.name = name;
-        this.email = email;
+    public User(String usuario, String password) {
+        this.email = usuario;
         this.password = password;
     }
 
-    public String getName() {
-        return name;
+    public User(String usuario, String email, String password, String confirmPassword) {
+        user = usuario;
+        this.email = email;
+        this.password = password;
+        this.confirmPassword = confirmPassword;
     }
 
     public String getEmail() {
@@ -26,16 +27,19 @@ public class User {
         return password;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(name, user.name);
+    public String getUser() {
+        return user;
     }
 
+    public String getConfirmPassword() { return confirmPassword; }
+
     @Override
-    public int hashCode() {
-        return Objects.hash(name, email, password);
+    public String toString() {
+        return "User{" +
+                "user='" + user + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", confirmPassword='" + confirmPassword + '\'' +
+                '}';
     }
 }

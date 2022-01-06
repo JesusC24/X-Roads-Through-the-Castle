@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 
 import com.jesusc24.xroadsthroughthecastle.R;
+import com.jesusc24.xroadsthroughthecastle.data.model.User;
+import com.jesusc24.xroadsthroughthecastle.ui.MainActivity;
 import com.jesusc24.xroadsthroughthecastle.ui.login.LoginActivity;
 
 /**
@@ -30,7 +33,13 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        new Handler().postDelayed(() -> startLogin(), WAIT_TIME);
+        new Handler().postDelayed(() ->  {
+            if(saveSession()) {
+                starApp();
+            } else {
+                startLogin();
+            }
+        }, WAIT_TIME);
     }
 
     private void startLogin(){
@@ -38,6 +47,20 @@ public class SplashActivity extends AppCompatActivity {
         /*Voy a llamar de forma explícita al metodo finish() de una Activity, para eleminar
         esta activity de la pila de actividades, porque si el usuario pulsa BACK
         no queremos que se visualice*/
+        finish();
+    }
+
+    /**
+     * Método que comprueba si el usuario ha iniciado sesión y se ha guardado su email en el
+     * fichero de preferencias DefaultSharePreferences
+     * @return
+     */
+    private boolean saveSession() {
+        return PreferenceManager.getDefaultSharedPreferences(this).contains(User.TAG);
+    }
+
+    private void starApp() {
+        startActivity(new Intent(this, MainActivity.class));
         finish();
     }
 }
