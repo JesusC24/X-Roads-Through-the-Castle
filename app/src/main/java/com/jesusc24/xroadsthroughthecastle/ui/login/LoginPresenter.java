@@ -1,6 +1,9 @@
 package com.jesusc24.xroadsthroughthecastle.ui.login;
 
 
+import android.app.Activity;
+import android.content.Intent;
+
 import com.jesusc24.xroadsthroughthecastle.data.model.User;
 
 public class LoginPresenter implements LoginContract.Presenter, LoginContract.OnInteractorListener {
@@ -18,6 +21,21 @@ public class LoginPresenter implements LoginContract.Presenter, LoginContract.On
     public void validateCredetials(User user) {
         interactor.validateCredentials(user);
         view.showProgress();
+    }
+
+    @Override
+    public void loginWithGoogle(String token, Activity activity) {
+        interactor.loginWithGoogle(token, activity);
+    }
+
+    @Override
+    public void loginWithFacebook() {
+
+    }
+
+    @Override
+    public void resultGoogle(int requestCode, int resultCode, Intent data) {
+        interactor.resultGoogle(requestCode, resultCode, data);
     }
     //endregion
 

@@ -2,8 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <item android:id="@+id/menu_chat_buscar"
+       android:orderInCategory="1"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_action_lupa"
+        android:title="@string/menu_chat_lupa" />
     <item android:id="@+id/menu_chat_ordenar"
         android:title="@string/menu_chat_ordenar"
-        android:orderInCategory="1"
+        android:orderInCategory="2"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/menu_chat_ordenar_favorito"
+        android:title="@string/menu_chat_ordenar_favorito"
+        android:orderInCategory="3"
         app:showAsAction="never"/>
 </menu>

@@ -1,21 +1,23 @@
-package com.jesusc24.xroadsthroughthecastle.ui.foro;
+package com.jesusc24.xroadsthroughthecastle.ui.bugs;
 
-import com.jesusc24.xroadsthroughthecastle.data.model.Chat;
+import com.jesusc24.xroadsthroughthecastle.data.model.Bug;
 
 import java.util.ArrayList;
 
-public class CharListPresenter implements ChatListContract.Presenter, ChatListContract.OnInteractorListener {
-    ChatListContract.View view;
-    ChatListInteractor listener;
+public class BugListPresenter implements BugListContract.Presenter, BugListContract.OnInteractorListener {
+    BugListContract.View view;
+    BugListInteractor listener;
     boolean order = false;
 
-    public CharListPresenter(ChatListContract.View view) {
+    public BugListPresenter(BugListContract.View view) {
         this.view = view;
-        listener = new ChatListInteractor(this);
+        listener = new BugListInteractor(this);
     }
+
     @Override
     public void onDestroy() {
-
+        view = null;
+        listener = null;
     }
 
     @Override
@@ -48,13 +50,13 @@ public class CharListPresenter implements ChatListContract.Presenter, ChatListCo
     }
 
     @Override
-    public void delete(Chat chat) {
-        listener.delete(chat);
+    public void delete(Bug bug) {
+        listener.delete(bug);
     }
 
     @Override
-    public void undo(Chat chat) {
-        listener.undo(chat);
+    public void undo(Bug bug) {
+        listener.undo(bug);
     }
 
     @Override

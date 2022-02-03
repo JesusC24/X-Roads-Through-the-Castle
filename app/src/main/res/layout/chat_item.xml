@@ -14,7 +14,8 @@
         android:text="@string/prueba_tvName"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/tvName_margin_top"/>
 
     <TextView
         android:id="@+id/tvDescripcion"
@@ -61,6 +62,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_action_start"
+        app:srcCompat="@drawable/ic_action_star_border"
+        android:tag="star_border"
         android:contentDescription="@string/ibStar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

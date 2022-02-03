@@ -1,13 +1,21 @@
 package com.jesusc24.xroadsthroughthecastle.data.repository;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.jesusc24.xroadsthroughthecastle.data.model.User;
 import com.jesusc24.xroadsthroughthecastle.ui.base.Event;
 import com.jesusc24.xroadsthroughthecastle.ui.base.OnRepositoryCallback;
@@ -16,16 +24,17 @@ import com.jesusc24.xroadsthroughthecastle.ui.singUp.SignUpContract;
 
 import org.greenrobot.eventbus.EventBus;
 
-public class UserRepositoryImpl implements SignUpContract.Repository, LoginContract.Repository{
+public class UserRepository implements SignUpContract.Repository, LoginContract.Repository{
 
-    private static final String  TAG = UserRepositoryImpl.class.getName(); //Imprime el nombre de la clase
+    private static final String  TAG = UserRepository.class.getName(); //Imprime el nombre de la clase
+    private static final int GOOGLE_SING_IN = 100;
 
-    private static UserRepositoryImpl instance;
+    private static UserRepository instance;
     private OnRepositoryCallback callback;
 
-    public static UserRepositoryImpl getInstance(OnRepositoryCallback listener) {
+    public static UserRepository getInstance(OnRepositoryCallback listener) {
         if(instance==null) {
-            instance = new UserRepositoryImpl();
+            instance = new UserRepository();
         }
         instance.callback = listener;
         return instance;
@@ -57,6 +66,8 @@ public class UserRepositoryImpl implements SignUpContract.Repository, LoginContr
                 });
     }
 
+
+
     @Override
     public void signUp(User user) {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -81,4 +92,43 @@ public class UserRepositoryImpl implements SignUpContract.Repository, LoginContr
                     }
                 });
     }
+
+    @Override
+    public void firebaseAuthWithGoogle(String idToken, Activity activity) {
+        GoogleSignInOptions googleConf = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(idToken)
+                .requestEmail()
+                .build();
+
+        GoogleSignInClient googleCliente = GoogleSignIn.getClient(activity, googleConf);
+
+        activity.startActivityForResult(googleCliente.getSignInIntent(), GOOGLE_SING_IN);
+    }
+
+    @Override
+    public void resultGoogle(int requestCode, int resultCode, Intent data) {
+        if(requestCode == GOOGLE_SING_IN) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+
+            GoogleSignInAccount acount = task.getResult();
+
+            if(acount != null) {
+                AuthCredential credential = GoogleAuthProvider.getCredential(acount.getIdToken(), null);
+                FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener(task1 -> {
+                    if(task1.isSuccessful()) {
+                        callback.onSuccess("Logeado con exito");
+                    }
+                });
+            }
+        }
+    }
+
+    @Override
+    public void firebaseAuthWithFacebook(String idToken) {
+
+    }
+
+
+
+
 }

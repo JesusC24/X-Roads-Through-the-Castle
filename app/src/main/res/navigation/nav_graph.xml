@@ -16,14 +16,14 @@
             android:id="@+id/action_dashboardFragment_to_chatListFragment"
             app:destination="@id/chatListFragment" />
         <action
-            android:id="@+id/action_dashboardFragment_to_configuracionFragment"
-            app:destination="@id/configuracionFragment" />
-        <action
             android:id="@+id/action_dashboardFragment_to_bugListFragment"
             app:destination="@id/bugListFragment" />
         <action
             android:id="@+id/action_dashboardFragment_to_modificarUserFragment"
             app:destination="@id/modificarUserFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutUsFragment"
@@ -31,10 +31,15 @@
         android:label="AboutUsFragment"
         tools:layout="@layout/fragment_about_us"/>
     <fragment
-        android:id="@+id/crearChatFragment"
+        android:id="@+id/chatManagerFragment"
         android:name="com.jesusc24.xroadsthroughthecastle.ui.foro.ChatManagerFragment"
-        android:label="CrearChatFragment"
-        tools:layout="@layout/fragment_crear_chat"/>
+        android:label="chatManagerFragment"
+        tools:layout="@layout/fragment_crear_chat">
+        <argument
+            android:name="chat"
+            app:argType="com.jesusc24.xroadsthroughthecastle.data.model.Chat"
+            app:nullable="true" />
+    </fragment>
     <fragment
         android:id="@+id/informarBug"
         android:name="com.jesusc24.xroadsthroughthecastle.ui.bugs.InformarBug"

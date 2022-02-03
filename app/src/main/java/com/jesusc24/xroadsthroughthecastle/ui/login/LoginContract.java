@@ -1,5 +1,7 @@
 package com.jesusc24.xroadsthroughthecastle.ui.login;
 
+import android.app.Activity;
+import android.content.Intent;
 
 import com.jesusc24.xroadsthroughthecastle.data.model.User;
 import com.jesusc24.xroadsthroughthecastle.ui.base.BasePresenter;
@@ -27,6 +29,9 @@ public interface LoginContract {
      */
     interface Presenter extends BasePresenter {
         void validateCredetials(User user);
+        void loginWithGoogle(String token, Activity activity);
+        void loginWithFacebook();
+        void resultGoogle(int requestCode, int resultCode, Intent data);
     }
 
     /**
@@ -35,6 +40,9 @@ public interface LoginContract {
      */
     interface Repository {
         void login(User user);
+        void firebaseAuthWithGoogle(String idToken, Activity activity);
+        void resultGoogle(int requestCode, int resultCode, Intent data);
+        void firebaseAuthWithFacebook(String idToken);
     }
 
     /**

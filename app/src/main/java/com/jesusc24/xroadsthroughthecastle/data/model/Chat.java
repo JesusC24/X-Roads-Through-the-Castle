@@ -2,19 +2,47 @@ package com.jesusc24.xroadsthroughthecastle.data.model;
 
 import androidx.annotation.Nullable;
 
+import java.io.Serializable;
+
 
 /**
  * POJO Chat que se utilizar dentro de la entidad Foro
  */
-public class Chat implements Comparable{
-    private String nombre, tipo, password, descripcion;
+public class Chat implements Comparable, Serializable {
+    public static final String PUBLICO = "publico";
+    public static final String PRIVADO = "privado";
+    public static final String TAG = "chat";
+
+    private String nombre, tipo, password, descripcion, confirmPassword;
     private int id;
+    private boolean favorito;
 
     public Chat(String nombre, String tipo, String descripcion, int id) {
         this.nombre = nombre;
         this.tipo = tipo;
         this.descripcion = descripcion;
         this.id = id;
+        this.favorito = false;
+    }
+
+    public Chat() {
+
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+
+    public boolean isFavorito() {
+        return favorito;
+    }
+
+    public void setFavorito(boolean favorito) {
+        this.favorito = favorito;
     }
 
     public String getNombre() {

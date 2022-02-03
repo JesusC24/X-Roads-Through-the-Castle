@@ -43,11 +43,11 @@ public interface ChatListContract {
      */
     interface Repository {
         //Cargar los daots
-        void getList();
+        void getList(OnRepositoryListCallback callback);
         //Cuando se realiza una pulsación larga se elimina
-        void delete(Chat chat);
+        void delete(Chat chat, OnRepositoryListCallback callback);
         //Cuando el usuario pulsa la opción undo del SnackBar
-        void undo(Chat chat);
+        void undo(Chat chat, OnRepositoryListCallback callback);
     }
 
     /**

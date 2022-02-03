@@ -1,13 +1,14 @@
 package com.jesusc24.xroadsthroughthecastle.ui.login;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Handler;
 import android.text.TextUtils;
 
 import com.jesusc24.xroadsthroughthecastle.data.model.User;
-import com.jesusc24.xroadsthroughthecastle.data.repository.UserRepositoryImpl;
+import com.jesusc24.xroadsthroughthecastle.data.repository.UserRepository;
 import com.jesusc24.xroadsthroughthecastle.ui.base.OnRepositoryCallback;
 import com.jesusc24.xroadsthroughthecastle.utils.CommonUtils;
-
 
 public class LoginInteractor implements OnRepositoryCallback {
 
@@ -43,9 +44,21 @@ public class LoginInteractor implements OnRepositoryCallback {
                     return;
                 }
 
-                UserRepositoryImpl.getInstance(LoginInteractor.this).login(user);
+                UserRepository.getInstance(LoginInteractor.this).login(user);
             }
         }, 2000);
+    }
+
+    public void loginWithGoogle(String token, Activity activity) {
+        UserRepository.getInstance(LoginInteractor.this).firebaseAuthWithGoogle(token, activity);
+    }
+
+    public void loginWithFacebook() {
+
+    }
+
+    public void resultGoogle(int requestCode, int resultCode, Intent data) {
+        UserRepository.getInstance(this).resultGoogle(requestCode, resultCode, data);
     }
 
 

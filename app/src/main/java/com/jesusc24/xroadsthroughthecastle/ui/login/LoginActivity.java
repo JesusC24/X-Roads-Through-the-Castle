@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.jesusc24.xroadsthroughthecastle.R;
@@ -40,6 +41,14 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
         binding.btSingIn.setOnClickListener(view -> presenter.validateCredetials(new User(binding.tieEmail.getText().toString(), binding.tiePassword.getText().toString())));
 
+        binding.btGoogle.setOnClickListener(view -> {
+            presenter.loginWithGoogle(getString(R.string.defaul_web_client_id), this);
+        });
+
+        binding.btFacebook.setOnClickListener(v -> {
+            Toast.makeText(this, getString(R.string.prepareFacebook), Toast.LENGTH_SHORT).show();
+        });
+
         binding.tieEmail.addTextChangedListener(new LoginTextWatcher(binding.tieEmail));
         binding.tiePassword.addTextChangedListener(new LoginTextWatcher(binding.tiePassword));
 
@@ -47,6 +56,12 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
         //La vista se registra como subscriptor del Event Bus
         EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        presenter.resultGoogle(requestCode, resultCode, data);
     }
 
     void startSingUpActivity() {

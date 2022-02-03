@@ -3,7 +3,7 @@ package com.jesusc24.xroadsthroughthecastle.ui.singUp;
 import android.text.TextUtils;
 
 import com.jesusc24.xroadsthroughthecastle.data.model.User;
-import com.jesusc24.xroadsthroughthecastle.data.repository.UserRepositoryImpl;
+import com.jesusc24.xroadsthroughthecastle.data.repository.UserRepository;
 import com.jesusc24.xroadsthroughthecastle.ui.base.OnRepositoryCallback;
 import com.jesusc24.xroadsthroughthecastle.utils.CommonUtils;
 
@@ -52,7 +52,7 @@ public class SignUpInteractor implements OnRepositoryCallback {
             return;
         }
 
-        UserRepositoryImpl.getInstance(SignUpInteractor.this).signUp(user);
+        UserRepository.getInstance(SignUpInteractor.this).signUp(user);
     }
 
 

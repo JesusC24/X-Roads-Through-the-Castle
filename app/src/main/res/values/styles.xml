@@ -8,10 +8,6 @@
         <item name="boxStrokeColor">@color/color_secondary</item>
     </style>
 
-    <style name="TextInputLayout.Local" parent="RTCTextInputLayout">
-        <item name="android:background">@drawable/shape_bugs_layout</item>
-    </style>
-
     <style name="RTCTextInputLayout.WithoutBackground">
         <item name="android:background">@null</item>
     </style>

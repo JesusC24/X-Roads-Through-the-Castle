@@ -72,6 +72,7 @@
     <string name="dashboard_guia">Guía se encuentra en desarollo</string>
     <string name="dashboard_news">Noticias se encuentra en desarrollo</string>
     <string name="dashboard_help">Ayuda se encuentra en desarollo</string>
+
     <string name="menu_chat_ordenar">Ordenar por nombre</string>
     <string name="errEmailEmpty">Email no puede ser vacío</string>
     <string name="errPasswordEmpty">Contraseña no puede ser vacío</string>
@@ -80,4 +81,47 @@
     <string name="errUserEmpty">Usuario no puede estar vacío</string>
     <string name="errConfirmPasswordEmpty">La contraseña no puede estar vacío</string>
     <string name="errConfirmPassword">No coinciden las contraseñas</string>
+    <string name="notification_header">Notificaciones</string>
+    <string name="help_header">Ayuda</string>
+    <string name="help_point">Punto de ayuda</string>
+    <string name="privacy_and_condition">Privacidad y condiciones</string>
+    <string name="key_help_point">help_point</string>
+    <string name="key_notification_chat">notification</string>
+    <string name="key_ringtone_chat">ringtone</string>
+    <string name="title_ringtone_chat">Tono</string>
+    <string name="summary_ringtone_chat">El sonido que tendrá la notificación</string>
+    <string name="key_user">user</string>
+    <string name="title_user">Usuario</string>
+    <string name="summary_user">Opciones para modificar tu usuario</string>
+
+    <string name="summaty_notification_chat">Activar las notificaciones de los mensajes del chat</string>
+    <string name="title_notification_chat">Activar notificaciones</string>
+    <string name="defaul_web_client_id">751565801750-uqbur7sbpgs9tiou98ua4dbm34ht3lg9.apps.googleusercontent.com</string>
+    <string name="key_user_change_password">user_change_password</string>
+    <string name="user_change_password">Cambiar contraseña</string>
+    <string name="summary_user_change_password">Cambia la contraseña de tu usuario</string>
+    <string name="key_user_name">user_name</string>
+    <string name="user_name">Nombre de usuario</string>
+    <string name="summary_user_name">Cambia tu nombre de usuario</string>
+    <string name="key_languages">languages</string>
+    <string name="summary_languages">Idioma principal de la aplicación</string>
+    <string name="title_languages">Idioma</string>
+    <string name="menu_chat_ordenar_favorito">Ordenar por favoritos</string>
+    <string name="errNameEmpty">El nombre no puede estar vacío</string>
+    <string name="title_edit_chat">Editar chat</string>
+
+    <string name="facebook_app_id">1047312215828067</string>
+    <string name="fb_login_protocol_scheme">fb1047312215828067</string>
+    <string name="prepareFacebook">el incio de sesión con facebook se encuentra en desarollo</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_list_chat">Listar chat</string>
+    <string name="title_list_bug">Listar bug</string>
+    <string name="title_edit_bug">Editar bug</string>
+    <string name="menu_chat_lupa">Lupa</string>
+    <string name="menu_bug_lupa">Lupa</string>
+    <string name="menu_bug_ordenar_resultado">Ordernar por resuelto</string>
+    <string name="title_add_bug">Añadir bug</string>
+    <string name="bug_item_hint">Esto es un bug</string>
+
 </resources>

@@ -9,7 +9,7 @@
     y se muestra una imagen y un texto que indica que no hay datos-->
 
     <LinearLayout
-        android:id="@+id/llNoData_dependency"
+        android:id="@+id/llNoData_chat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"

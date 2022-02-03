@@ -2,30 +2,35 @@ package com.jesusc24.xroadsthroughthecastle.ui.foro;
 
 import com.jesusc24.xroadsthroughthecastle.data.model.Chat;
 import com.jesusc24.xroadsthroughthecastle.ui.base.BasePresenter;
-import com.jesusc24.xroadsthroughthecastle.ui.base.IProgressView;
-import com.jesusc24.xroadsthroughthecastle.ui.base.OnRepositoryListCallback;
-
+import com.jesusc24.xroadsthroughthecastle.ui.base.OnRepositoryManageCallback;
 
 
 public interface ChatManagerContract {
 
-    interface View extends OnRepositoryListCallback, IProgressView {
-        void setElementEmpty(String message);
-        void setErrorName();
-        void setCaracteresEspeciales(String message);
-        void setErrorPassword();
+    interface View extends OnRepositoryManageCallback {
+        void setNameEmptyError();
+        void setPasswordError();
+        void setConfirmPasswordError();
+        void setPasswordDontMatch();
     }
 
 
     interface Presenter extends BasePresenter {
-        void validarDatos(Chat chat);
+        void add(Chat chat);
+        void edit(Chat chat);
     }
 
+    interface Repository {
+        //Para añadir un chat
+        void add(Chat chat, OnRepositoryManageCallback callback);
+        //Para editar un chat
+        void edit(Chat chat, OnRepositoryManageCallback callback);
+    }
 
-    interface OnInteractorListener extends OnRepositoryListCallback {
-        void valoresNulo(String message);
-        void nombreCorto();
-        void errorCaracteresEspeciales(String message);
-        void errorPassword(String message);
+    interface OnInteractorListener extends OnRepositoryManageCallback {
+        void onNameEmptyError();
+        void onPasswordError();
+        void onConfirmPasswordError();
+        void onPasswordDontMatch();
     }
 }

@@ -3,15 +3,18 @@ package com.jesusc24.xroadsthroughthecastle.ui.bugs;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.jesusc24.xroadsthroughthecastle.R;
+import com.jesusc24.xroadsthroughthecastle.data.constantes.ConstBugs;
 import com.jesusc24.xroadsthroughthecastle.data.model.Bug;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Adapter que sirve para poder rellenar un recyclerView
@@ -19,14 +22,19 @@ import java.util.ArrayList;
 public class BugAdapter extends RecyclerView.Adapter<BugAdapter.ViewHolder> {
 
     private ArrayList<Bug> list;
+    private OnManageBugList listener;
 
-    public BugAdapter() {
+    public BugAdapter(ArrayList<Bug> list, BugAdapter.OnManageBugList listener) {
         //De momento solo vamos a mostrar el nombre, esto es un ejemplo de como se verá con datos reales
         this.list = new ArrayList<>();
-        list.add(new Bug("Primer bug"));
-        list.add(new Bug("Segundo bug"));
-        list.add(new Bug("Tercer bug"));
-        list.add(new Bug("Cuarto bug"));
+        this.listener = listener;
+    }
+
+    public interface OnManageBugList {
+        //Si se hace click en un bug se edita (onClickListener)
+        void onEditBug(Bug bug);
+        //Si se hace una pulsación larga en el bug se elimina (onLongClickListener)
+        void onDeleteBug(Bug bug);
     }
 
     /**
@@ -44,6 +52,20 @@ public class BugAdapter extends RecyclerView.Adapter<BugAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull BugAdapter.ViewHolder holder, int position) {
         holder.tvNombre.setText(list.get(position).getNombre());
+
+        String estado = list.get(position).getEstado();
+
+        if(ConstBugs.Estado.ENVIADO.equals(estado)) {
+            holder.ivEstado.setImageResource(R.drawable.ic_action_bug_send);
+        } else if(ConstBugs.Estado.APROBADO.equals(estado)) {
+            holder.ivEstado.setImageResource(R.drawable.ic_action_bug_passed);
+        } else if(ConstBugs.Estado.ARREGLADO.equals(estado)) {
+            holder.ivEstado.setImageResource(R.drawable.ic_action_bug_result);
+        } else if(ConstBugs.Estado.DENEGADO.equals(estado)) {
+            holder.ivEstado.setImageResource(R.drawable.ic_action_bug_denied);
+        }
+
+        holder.bind(list.get(position), listener);
     }
 
     /**
@@ -59,10 +81,53 @@ public class BugAdapter extends RecyclerView.Adapter<BugAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
         //Se crea los elementos que tengo hecho en el bug_item.xml
         TextView tvNombre;
+        ImageView ivEstado;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvNombre = itemView.findViewById(R.id.tvName);
+            ivEstado = itemView.findViewById(R.id.tvImagenEstado);
         }
+
+        public void bind(Bug bug, OnManageBugList listener) {
+            itemView.setOnClickListener(v -> {
+                listener.onEditBug(bug);
+            });
+
+            itemView.setOnLongClickListener(v -> {
+                listener.onDeleteBug(bug);
+                return true;
+            });
+        }
+    }
+
+    public void update(ArrayList<Bug> list) {
+        this.list.clear();
+        this.list.addAll(list);
+        notifyDataSetChanged();
+    }
+
+    public void delete(Bug bug) {
+        list.remove(bug);
+        notifyDataSetChanged();
+    }
+
+    public boolean isEmpty() {
+        return list.isEmpty();
+    }
+
+    public void undo(Bug bug) {
+        list.add(bug);
+        notifyDataSetChanged();
+    }
+
+    public void order() {
+        Collections.sort(list);
+        notifyDataSetChanged();
+    }
+
+    public void inverseOrder() {
+        Collections.reverse(list);
+        notifyDataSetChanged();
     }
 }

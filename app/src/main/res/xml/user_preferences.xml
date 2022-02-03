@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <EditTextPreference
+        android:defaultValue="Default value"
+        android:key="@string/key_user_name"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/user_name"
+        app:summary="@string/summary_user_name"/>
+
+    <EditTextPreference
+        android:key="@string/key_user_change_password"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/user_change_password"
+        app:summary="@string/summary_user_change_password"/>
+
+
+    <ListPreference
+        android:entries="@array/languages"
+        android:entryValues="@array/languages_values"
+        app:key="@string/key_languages"
+        app:summary="@string/summary_languages"
+        app:title="@string/title_languages" />
+</PreferenceScreen>

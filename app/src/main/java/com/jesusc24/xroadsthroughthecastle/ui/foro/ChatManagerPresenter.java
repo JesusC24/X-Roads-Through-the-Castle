@@ -2,12 +2,30 @@ package com.jesusc24.xroadsthroughthecastle.ui.foro;
 
 import com.jesusc24.xroadsthroughthecastle.data.model.Chat;
 
-import java.util.ArrayList;
-
 public class ChatManagerPresenter implements ChatManagerContract.Presenter, ChatManagerContract.OnInteractorListener {
+
+    private ChatManagerContract.View view;
+    private ChatManagerInteractor interactor;
+
+    public ChatManagerPresenter(ChatManagerContract.View view) {
+        this.view = view;
+        interactor = new ChatManagerInteractor(this);
+    }
+
     @Override
     public void onDestroy() {
+        view = null;
+        interactor = null;
+    }
 
+    @Override
+    public void onAddSuccess(String message) {
+        view.onAddSuccess(message);
+    }
+
+    @Override
+    public void onEditSucess(String message) {
+        view.onEditSucess(message);
     }
 
     @Override
@@ -16,41 +34,32 @@ public class ChatManagerPresenter implements ChatManagerContract.Presenter, Chat
     }
 
     @Override
-    public <T> void onSuccess(ArrayList<T> list) {
-
+    public void add(Chat chat) {
+        interactor.add(chat);
     }
 
     @Override
-    public void onDeleteSuccess(String message) {
-
+    public void edit(Chat chat) {
+        interactor.edit(chat);
     }
 
     @Override
-    public void onUndoSuccess(String message) {
+    public void onNameEmptyError() {
+        view.setNameEmptyError();
     }
 
     @Override
-    public void validarDatos(Chat chat) {
-
+    public void onPasswordError() {
+        view.setPasswordError();
     }
 
     @Override
-    public void valoresNulo(String message) {
-
+    public void onConfirmPasswordError() {
+        view.setConfirmPasswordError();
     }
 
     @Override
-    public void nombreCorto() {
-
-    }
-
-    @Override
-    public void errorCaracteresEspeciales(String message) {
-
-    }
-
-    @Override
-    public void errorPassword(String message) {
-
+    public void onPasswordDontMatch() {
+        view.setPasswordDontMatch();
     }
 }

@@ -31,9 +31,11 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder>{
 
     public interface OnManageChatList {
         //Si se hace click en una dependencia se edita (onClickListener)
-        void OnEditChat(Chat chat);
+        void onEditChat(Chat chat);
         //Si se hace una pulsación larga en la dependencia se elimina (onLongClickListener)
-        void OnDeleteChat(Chat chat);
+        void onDeleteChat(Chat chat);
+        //Cambia el estado de favorito
+        void onActiveStar(boolean status, Chat chat);
     }
 
     /**
@@ -77,17 +79,30 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder>{
             tvNombre = itemView.findViewById(R.id.tvName);
             tvDescripcion = itemView.findViewById(R.id.tvDescripcion);
             ibStar = itemView.findViewById(R.id.ibStar);
+            ibStar.setSelected(false);
             imgChat = itemView.findViewById(R.id.imgChat);
         }
 
         public void bind(Chat chat, OnManageChatList listener) {
             itemView.setOnClickListener(v -> {
-                listener.OnEditChat(chat);
+                listener.onEditChat(chat);
             });
 
             itemView.setOnLongClickListener(v -> {
-                listener.OnDeleteChat(chat);
+                listener.onDeleteChat(chat);
                 return true;
+            });
+
+            ibStar.setOnClickListener((v) -> {
+                if(ibStar.getTag().equals("star_border")) {
+                    ibStar.setTag("star");
+                    ibStar.setImageResource(R.drawable.ic_action_star_border);
+                    listener.onActiveStar(false, chat);
+                } else {
+                    ibStar.setTag("star_border");
+                    ibStar.setImageResource(R.drawable.ic_action_star);
+                    listener.onActiveStar(true, chat);
+                }
             });
         }
     }

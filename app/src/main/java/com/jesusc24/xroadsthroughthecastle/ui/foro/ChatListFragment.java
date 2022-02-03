@@ -7,13 +7,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentResultListener;
+
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,7 +38,7 @@ public class ChatListFragment extends Fragment implements ChatListContract.View,
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        presenter = new CharListPresenter(this);
+        presenter = new ChatListPresenter(this);
     }
 
     @Override
@@ -51,13 +50,16 @@ public class ChatListFragment extends Fragment implements ChatListContract.View,
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        getActivity().setTitle(R.string.title_list_chat);
         initRvChat();
         initFavChat();
     }
 
     private void initFavChat() {
-        binding.fabChat.setOnClickListener(v ->
-                NavHostFragment.findNavController(this).navigate(R.id.action_chatListFragment_to_crearChatFragment));
+        binding.fabChat.setOnClickListener(v -> {
+            ChatListFragmentDirections.ActionChatListFragmentToCrearChatFragment action = ChatListFragmentDirections.actionChatListFragmentToCrearChatFragment(null);
+            NavHostFragment.findNavController(this).navigate(action);
+        });
     }
 
     @Override
@@ -154,7 +156,7 @@ public class ChatListFragment extends Fragment implements ChatListContract.View,
 
     @Override
     public void showNoData() {
-
+        //TODO showNoData
     }
 
     @Override
@@ -171,12 +173,13 @@ public class ChatListFragment extends Fragment implements ChatListContract.View,
     //region Métodos por el Adapter
 
     @Override
-    public void OnEditChat(Chat chat) {
-        Toast.makeText(getContext(), "se quiere editar el chat " + chat.getNombre(), Toast.LENGTH_SHORT).show();
+    public void onEditChat(Chat chat) {
+        ChatListFragmentDirections.ActionChatListFragmentToCrearChatFragment action = ChatListFragmentDirections.actionChatListFragmentToCrearChatFragment(chat);
+        NavHostFragment.findNavController(this).navigate(action);
     }
 
     @Override
-    public void OnDeleteChat(Chat chat) {
+    public void onDeleteChat(Chat chat) {
         Bundle bundle = new Bundle();
         bundle.putString(BaseDialogFragment.TITLE, "Eliminar chat");
         bundle.putString(BaseDialogFragment.MESSAGE, String.format("¿Seguro que desea borrar el chat %1$s?", chat.getNombre()));
@@ -189,5 +192,11 @@ public class ChatListFragment extends Fragment implements ChatListContract.View,
             }
         });
     }
+
+    @Override
+    public void onActiveStar(boolean status, Chat chat) {
+        chat.setFavorito(status);
+    }
+
     //endregion
 }

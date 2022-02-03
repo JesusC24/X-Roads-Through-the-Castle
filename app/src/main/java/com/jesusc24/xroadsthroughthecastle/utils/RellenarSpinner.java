@@ -1,4 +1,4 @@
-package com.jesusc24.xroadsthroughthecastle.data;
+package com.jesusc24.xroadsthroughthecastle.utils;
 
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;

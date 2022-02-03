@@ -15,7 +15,7 @@ import com.jesusc24.xroadsthroughthecastle.databinding.ActivityMainBinding;
 /**
  * Activity que contendrá a los fragments de la aplicación
  */
-public class MainActivity extends AppCompatActivity { // implements PreferenceFragmentCompat.OnPreferenceStartFragmentCallback{
+public class MainActivity extends AppCompatActivity implements PreferenceFragmentCompat.OnPreferenceStartFragmentCallback{
 
     private ActivityMainBinding binding;
 
@@ -27,12 +27,12 @@ public class MainActivity extends AppCompatActivity { // implements PreferenceFr
         setContentView(binding.getRoot());
     }
 
-    /*@Override
+    @Override
     public boolean onPreferenceStartFragment(PreferenceFragmentCompat caller, androidx.preference.Preference pref) {
         NavController navController = Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment);
-        if(pref.getKey().equals(getString(R.string.key_account))) {
-            navController.navigate(R.id.action_settingsFragment_to_accountFragment);
+        if(pref.getKey().equals(getString(R.string.key_user))) {
+            navController.navigate(R.id.action_settingsFragment_to_userFragment);
         }
         return true;
-    }*/
+    }
 }

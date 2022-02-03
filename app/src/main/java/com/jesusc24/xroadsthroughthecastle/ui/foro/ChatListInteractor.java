@@ -14,15 +14,15 @@ public class ChatListInteractor implements OnRepositoryListCallback {
     }
 
     public void load() {
-        ChatRepositoryStatic.getInstance(this).getList();
+        ChatRepositoryStatic.getInstance().getList(this);
     }
 
     public void undo(Chat chat) {
-        ChatRepositoryStatic.getInstance(this).undo(chat);
+        ChatRepositoryStatic.getInstance().undo(chat, this);
     }
 
     public void delete(Chat chat) {
-        ChatRepositoryStatic.getInstance(this).delete(chat);
+        ChatRepositoryStatic.getInstance().delete(chat, this);
     }
 
     @Override

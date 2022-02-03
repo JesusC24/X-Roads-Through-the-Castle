@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -19,18 +20,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:baselineAligned="false">
+        android:baselineAligned="false"
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="5"
             android:layout_height="wrap_content"
+            android:layout_weight="5"
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilName"
-                style="@style/TextInputLayout.Local"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
@@ -54,20 +54,19 @@
                 android:id="@+id/spTipo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="@dimen/crear_chat_spTipo_minHeight"
-                android:contentDescription="@string/spTipo"/>
+                android:contentDescription="@string/spTipo"
+                android:minHeight="@dimen/crear_chat_spTipo_minHeight" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="5"
             android:layout_height="wrap_content"
+            android:layout_weight="5"
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilPassword"
-                style="@style/TextInputLayout.Local"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
@@ -84,7 +83,6 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilConfirmPassword"
-                style="@style/TextInputLayout.Local"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/crear_chat_tilConfirmPassword_marginTop"
@@ -104,7 +102,6 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilDescripcion"
-        style="@style/TextInputLayout.Local"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:startIconDrawable="@drawable/ic_action_description">

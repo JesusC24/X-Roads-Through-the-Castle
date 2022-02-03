@@ -120,7 +120,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
      * Mostrar el fragment Configuración
      */
     private void showConfiguracion(){
-        NavHostFragment.findNavController(this).navigate(R.id.action_dashboardFragment_to_configuracionFragment);
+        NavHostFragment.findNavController(this).navigate(R.id.action_dashboardFragment_to_settingsFragment);
     }
 
     /**

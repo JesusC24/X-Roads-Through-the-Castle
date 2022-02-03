@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/tvImagenEstado"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_action_bug_send"
+        android:paddingLeft="20dp"/>
 
     <TextView
         android:id="@+id/tvName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/bug_item_tvName_marginTop"
-        android:text="@string/prueba_bug_item_tvName"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:hint="@string/bug_item_hint"
+        android:gravity="center"
         android:textStyle="bold"
-        android:textSize="@dimen/bug_item_tvName_size"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:paddingBottom="@dimen/bug_item_tvName_paddingBottom"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:textSize="16sp"
+        android:paddingEnd="20dp"/>
+
+</LinearLayout>

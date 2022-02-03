@@ -2,6 +2,8 @@ package com.jesusc24.xroadsthroughthecastle.utils;
 
 import android.util.Patterns;
 
+import com.jesusc24.xroadsthroughthecastle.R;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -18,6 +20,7 @@ public final class CommonUtils {
      * - Debe contener al menos un carácter en mayúsucula
      * - Debe contener al menos un carácter en minúscula
      * - Su longitud máxima es de 8 y máxima 20
+     * @return
      */
     public static boolean isPasswordValid(String password) {
         Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
@@ -29,5 +32,16 @@ public final class CommonUtils {
         Pattern pattern = Pattern.compile(Patterns.EMAIL_ADDRESS.toString());
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
+    }
+
+    /**
+     * Para validar que solo contiene letras el string
+     */
+    public static int validarString(String nombre) {
+        Pattern patron = Pattern.compile("^[a-zA-Z ]+$");
+        if (!patron.matcher(nombre).matches() || nombre.length() > 30) {
+            return R.string.validarDatos_string;
+        }
+        return 0;
     }
 }

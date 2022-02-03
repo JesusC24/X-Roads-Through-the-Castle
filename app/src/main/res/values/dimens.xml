@@ -2,7 +2,6 @@
 <resources>
     <dimen name="RTC_title_size">36sp</dimen>
 
-    <!-- splash -->
     <dimen name="splash_img_logo_marginStart">50dp</dimen>
     <dimen name="splash_img_logo_marginTop">150dp</dimen>
     <dimen name="splash_img_logo_marginEnd">50dp</dimen>
@@ -98,6 +97,11 @@
     <dimen name="modificar_user_tilEmail_marginTop">16dp</dimen>
     <dimen name="modificar_user_tilPassword_marginTop">16dp</dimen>
     <dimen name="modificar_user_tilConfirmPassword_marginTop">16dp</dimen>
+
     <dimen name="tvNoData_dependencylist">30sp</dimen>
+    <dimen name="tvName_margin_top">10dp</dimen>
+    <dimen name="fab_margin">10dp</dimen>
+    <dimen name="informar_bug_padding">25dp</dimen>
+    <dimen name="bug_margin">10dp</dimen>
 
 </resources>
