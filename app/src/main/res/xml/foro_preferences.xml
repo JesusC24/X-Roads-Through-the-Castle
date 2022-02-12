@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <SwitchPreference
+        android:defaultValue="false"
+        app:key="@string/key_favorito_chat"
+        app:summary="@string/summary_favorito_chat"
+        app:title="@string/title_favorito_chat" />
+
+    <SwitchPreference
+        android:defaultValue="false"
+        app:key="@string/key_order_favorito_chat"
+        app:summary="@string/summary_order_favorito_chat"
+        app:title="@string/title_order_favorito_chat" />
+</PreferenceScreen>

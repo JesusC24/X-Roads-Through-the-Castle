@@ -3,8 +3,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="color_primary">#061F3A</color>
-    <color name="color_primary_variant">#3518D3</color>
-    <color name="color_secondary">#CCB60D</color>
-    <color name="color_secondary_variant">#CDCD44</color>
+    <color name="color_primary_variant">#053973</color>
+    <color name="color_secondary">#E1C700</color>
+    <color name="color_secondary_variant">#CCB60D</color>
     <color name="color_white">#FFFFFF</color>
+    <color name="color_shadow">#006FA3</color>
+    <color name="colorBottomNavigationView">#D5D5D5</color>
 </resources>

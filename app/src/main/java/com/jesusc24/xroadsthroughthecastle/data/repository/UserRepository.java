@@ -50,7 +50,8 @@ public class UserRepository implements SignUpContract.Repository, LoginContract.
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
-                            callback.onSuccess("usuario correcto");
+                            callback.onSuccess("usuario correcto", user);
+
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
@@ -66,8 +67,6 @@ public class UserRepository implements SignUpContract.Repository, LoginContract.
                 });
     }
 
-
-
     @Override
     public void signUp(User user) {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -76,9 +75,8 @@ public class UserRepository implements SignUpContract.Repository, LoginContract.
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
-                            callback.onSuccess("usuario creado");
+                            callback.onSuccess("usuario creado", user);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
@@ -112,11 +110,13 @@ public class UserRepository implements SignUpContract.Repository, LoginContract.
 
             GoogleSignInAccount acount = task.getResult();
 
+            User user = new User(acount.getDisplayName(), acount.getEmail());
+
             if(acount != null) {
                 AuthCredential credential = GoogleAuthProvider.getCredential(acount.getIdToken(), null);
                 FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener(task1 -> {
                     if(task1.isSuccessful()) {
-                        callback.onSuccess("Logeado con exito");
+                        callback.onSuccess("Logeado con exito", user);
                     }
                 });
             }
@@ -125,7 +125,7 @@ public class UserRepository implements SignUpContract.Repository, LoginContract.
 
     @Override
     public void firebaseAuthWithFacebook(String idToken) {
-
+        //TODO implementar pra que el usuario pueda inicar sesión en Facebook
     }
 
 

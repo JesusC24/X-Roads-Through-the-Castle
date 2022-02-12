@@ -64,8 +64,8 @@ public class LoginInteractor implements OnRepositoryCallback {
 
     //Estos métodos vienen de la respuesta que nos de el Repositorio
     @Override
-    public void onSuccess(String message) {
-        listener.onSuccess(message);
+    public void onSuccess(String message, User user) {
+        listener.onSuccess(message, user);
     }
 
     @Override

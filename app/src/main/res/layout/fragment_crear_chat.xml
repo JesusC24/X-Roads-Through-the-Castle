@@ -17,20 +17,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tvTitleCrearChat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tvCrearChat"
-                android:textSize="@dimen/crear_chat_title_size"
-                android:layout_gravity="top|center"/>
-
-
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="70dp"
+                android:layout_marginTop="@dimen/crear_chat_tilName_marginTop"
                 app:startIconDrawable="@drawable/ic_action_user">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -45,6 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:textColor="@color/color_primary"
                 android:text="@string/tvTipo" />
 
             <Spinner
@@ -115,9 +107,9 @@
         android:clickable="true"
         android:contentDescription="@string/fabChat"
         android:elevation="@dimen/fabChat_elevation"
+        android:layout_margin="@dimen/fab_margin"
         android:src="@drawable/ic_action_add"
         android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
         android:focusable="true"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

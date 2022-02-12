@@ -3,28 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/dashboardFragment">
-    <fragment
-        android:id="@+id/dashboardFragment"
-        android:name="com.jesusc24.xroadsthroughthecastle.ui.dashboard.DashboardFragment"
-        android:label="DashboardFragment"
-        tools:layout="@layout/fragment_dashboard">
-        <action
-            android:id="@+id/action_dashboardFragment_to_aboutUsFragment"
-            app:destination="@id/aboutUsFragment" />
-        <action
-            android:id="@+id/action_dashboardFragment_to_chatListFragment"
-            app:destination="@id/chatListFragment" />
-        <action
-            android:id="@+id/action_dashboardFragment_to_bugListFragment"
-            app:destination="@id/bugListFragment" />
-        <action
-            android:id="@+id/action_dashboardFragment_to_modificarUserFragment"
-            app:destination="@id/modificarUserFragment" />
-        <action
-            android:id="@+id/action_dashboardFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
-    </fragment>
+    app:startDestination="@id/chatListFragment">
     <fragment
         android:id="@+id/aboutUsFragment"
         android:name="com.jesusc24.xroadsthroughthecastle.ui.about.AboutUsFragment"
@@ -33,7 +12,7 @@
     <fragment
         android:id="@+id/chatManagerFragment"
         android:name="com.jesusc24.xroadsthroughthecastle.ui.foro.ChatManagerFragment"
-        android:label="chatManagerFragment"
+        android:label="@string/title_edit_chat"
         tools:layout="@layout/fragment_crear_chat">
         <argument
             android:name="chat"
@@ -41,8 +20,111 @@
             app:nullable="true" />
     </fragment>
     <fragment
-        android:id="@+id/informarBug"
-        android:name="com.jesusc24.xroadsthroughthecastle.ui.bugs.InformarBug"
-        android:label="fragment_informar_bug"
-        tools:layout="@layout/fragment_informar_bug" />
+        android:id="@+id/bugManagerFragment"
+        android:name="com.jesusc24.xroadsthroughthecastle.ui.bugs.BugManagerFragment"
+        android:label="@string/title_edit_bug"
+        tools:layout="@layout/fragment_informar_bug">
+        <argument
+            android:name="bug"
+            app:argType="com.jesusc24.xroadsthroughthecastle.data.model.Bug"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatListFragment"
+        android:name="com.jesusc24.xroadsthroughthecastle.ui.foro.ChatListFragment"
+        android:label="@string/title_list_chat"
+        tools:layout="@layout/fragment_chat_list">
+        <action
+            android:id="@+id/action_chatListFragment_to_crearChatFragment"
+            app:destination="@id/chatManagerFragment" />
+        <action
+            android:id="@+id/action_chatListFragment_to_chatFragment"
+            app:destination="@id/messageFragment" />
+        <action
+            android:id="@+id/action_chatListFragment_to_baseDialogFragment"
+            app:destination="@id/baseDialogFragment" />
+        <action
+            android:id="@+id/action_chatListFragment_to_passwordDialogFragment"
+            app:destination="@id/passwordDialogFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bugListFragment"
+        android:name="com.jesusc24.xroadsthroughthecastle.ui.bugs.BugListFragment"
+        android:label="@string/title_list_bug"
+        tools:layout="@layout/fragment_bug_list">
+        <action
+            android:id="@+id/action_bugListFragment_to_informarBug"
+            app:destination="@id/bugManagerFragment" />
+        <action
+            android:id="@+id/action_bugListFragment_to_baseDialogFragment"
+            app:destination="@id/baseDialogFragment" />
+        <action
+            android:id="@+id/action_bugListFragment_to_bugFragment"
+            app:destination="@id/bugFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/baseDialogFragment"
+        android:name="com.jesusc24.xroadsthroughthecastle.ui.base.BaseDialogFragment"
+        android:label="BaseDialogFragment" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.jesusc24.xroadsthroughthecastle.ui.configuracion.SettingsFragment"
+        android:label="SettingsFragment" >
+        <action
+            android:id="@+id/action_settingsFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_bugFragment2"
+            app:destination="@id/bugFragment2" />
+        <action
+            android:id="@+id/action_settingsFragment_to_foroFragment"
+            app:destination="@id/foroFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.jesusc24.xroadsthroughthecastle.ui.configuracion.UserFragment"
+        android:label="UserFragment" />
+    <fragment
+        android:id="@+id/messageFragment"
+        android:name="com.jesusc24.xroadsthroughthecastle.ui.foro.message.MessageFragment"
+        android:label="@string/title_messages">
+        <argument
+            android:name="chat"
+            app:argType="com.jesusc24.xroadsthroughthecastle.data.model.Chat"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_chatFragment_to_chatManagerFragment"
+            app:destination="@id/chatManagerFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/passwordDialogFragment"
+        android:name="com.jesusc24.xroadsthroughthecastle.ui.base.PasswordDialogFragment"
+        android:label="PasswordDialogFragment" >
+        <action
+            android:id="@+id/action_passwordDialogFragment_to_messageFragment"
+            app:destination="@id/messageFragment" />
+    </dialog>
+    <fragment
+        android:id="@+id/bugFragment"
+        android:name="com.jesusc24.xroadsthroughthecastle.ui.bugs.BugFragment"
+        android:label="@string/title_bug">
+        <argument
+            android:name="bug"
+            app:argType="com.jesusc24.xroadsthroughthecastle.data.model.Bug" />
+        <action
+            android:id="@+id/action_bugFragment_to_bugManagerFragment"
+            app:destination="@id/bugManagerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/guiaFragment"
+        android:name="com.jesusc24.xroadsthroughthecastle.ui.guia.GuiaFragment"
+        android:label="GuiaFragment" />
+    <fragment
+        android:id="@+id/bugFragment2"
+        android:name="com.jesusc24.xroadsthroughthecastle.ui.configuracion.BugFragment"
+        android:label="BugFragment" />
+    <fragment
+        android:id="@+id/foroFragment"
+        android:name="com.jesusc24.xroadsthroughthecastle.ui.configuracion.ForoFragment"
+        android:label="ForoFragment" />
 </navigation>

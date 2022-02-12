@@ -5,7 +5,7 @@ import com.jesusc24.xroadsthroughthecastle.ui.base.BasePresenter;
 import com.jesusc24.xroadsthroughthecastle.ui.base.IProgressView;
 import com.jesusc24.xroadsthroughthecastle.ui.base.OnRepositoryListCallback;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface ChatListContract {
     /**
@@ -15,12 +15,15 @@ public interface ChatListContract {
      * - Los métodos necesario para gestionar los datos de un RecycleView
      */
     interface View extends OnRepositoryListCallback, IProgressView {
-        <T> void showData(ArrayList<T> list);
+        <T> void showData(List<T> list);
         void showNoData();
         //Ordena de la A-Z
         void showDataOrder();
         //Ordena de la Z-A
         void showDataInverseOrder();
+        void showDataStar();
+        void showSearch();
+        void hideSearch();
     }
 
     /**
@@ -35,6 +38,12 @@ public interface ChatListContract {
         void undo(Chat chat);
         //Que la lista se ordene por nombre
         void order();
+        //Que la lista se ordene por favorito
+        void orderByStar();
+        //Activa la opción de buscar
+        void search();
+
+        void updateStar(Chat chat);
     }
 
     /**
@@ -48,6 +57,8 @@ public interface ChatListContract {
         void delete(Chat chat, OnRepositoryListCallback callback);
         //Cuando el usuario pulsa la opción undo del SnackBar
         void undo(Chat chat, OnRepositoryListCallback callback);
+
+        void updateStar(Chat chat, OnRepositoryListCallback callback);
     }
 
     /**

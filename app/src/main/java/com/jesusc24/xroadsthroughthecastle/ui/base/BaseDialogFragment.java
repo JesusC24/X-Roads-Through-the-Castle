@@ -13,6 +13,7 @@ public class BaseDialogFragment extends DialogFragment {
     public static final String REQUEST = "requestDialog";
     public static final String KEY_BUNDLE = "result";
     public static final String TITLE = "titulo";
+    public static final String CHAT = "chat";
     public static final String MESSAGE = "message";
 
     @NonNull

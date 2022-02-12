@@ -1,6 +1,9 @@
 package com.jesusc24.xroadsthroughthecastle.ui.bugs;
 
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,14 +17,15 @@ import androidx.navigation.NavDeepLinkBuilder;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.jesusc24.xroadsthroughthecastle.R;
+import com.jesusc24.xroadsthroughthecastle.XRTCApplication;
 import com.jesusc24.xroadsthroughthecastle.data.constantes.ConstBugs;
 import com.jesusc24.xroadsthroughthecastle.data.model.Bug;
 import com.jesusc24.xroadsthroughthecastle.databinding.FragmentInformarBugBinding;
+import com.jesusc24.xroadsthroughthecastle.ui.MainActivity;
 import com.jesusc24.xroadsthroughthecastle.utils.RellenarSpinner;
 
-//TODO cambiar el título de crear chat, y quitar el TextView
-//TODO al ser uno privado, pedir contraseña para editar
-//TODO poner la observación de un BUG (sin implementar), ahí tiene que estar el botón para editar
+import java.util.Random;
+
 /**
  * Fragment que se utiliza para poder crear un nuevo Bug
  */
@@ -53,13 +57,13 @@ public class BugManagerFragment extends Fragment implements BugManagerContract.V
         if(BugManagerFragmentArgs.fromBundle(getArguments()).getBug() != null) {
             //Se trata de editar
             //1. Cambiar el título
-            getActivity().setTitle(R.string.title_edit_bug);
+            ((MainActivity)getActivity()).getSupportActionBar().setTitle(R.string.title_edit_bug);
             //2. Rellenar los campos con los datos
             initView(BugManagerFragmentArgs.fromBundle(getArguments()).getBug());
             //3. Modifico el icono del FloatingActionButtom
             initFabEdit();
         } else {
-            getActivity().setTitle(R.string.title_add_bug);
+            ((MainActivity)getActivity()).getSupportActionBar().setTitle(R.string.title_add_bug);
             initFabAdd();
         }
 
@@ -72,6 +76,7 @@ public class BugManagerFragment extends Fragment implements BugManagerContract.V
      * @param bug
      */
     private void initView(Bug bug) {
+
         binding.tieName.setText(bug.getNombre());
         binding.tieDescripcion.setText(bug.getDescripcion());
 
@@ -99,11 +104,16 @@ public class BugManagerFragment extends Fragment implements BugManagerContract.V
             }
         }
 
+        if(BugManagerFragmentArgs.fromBundle(getArguments()).getBug()!=null) {
+            bug.setId(BugManagerFragmentArgs.fromBundle(getArguments()).getBug().getId());
+        }
+
         binding.tvEstado.setText(bug.getEstado());
 
     }
 
     private void initFabEdit() {
+        binding.tieName.setEnabled(false);
         binding.fab.setImageResource(R.drawable.ic_action_edit);
         binding.fab.setOnClickListener(v -> presenter.edit(getBug()));
     }
@@ -123,6 +133,10 @@ public class BugManagerFragment extends Fragment implements BugManagerContract.V
         bug.setSo(binding.spSO.getSelectedItem().toString());
         bug.setEstado(binding.tvEstado.getText().toString());
 
+        if(BugManagerFragmentArgs.fromBundle(getArguments()).getBug()!=null){
+            bug.setId(BugManagerFragmentArgs.fromBundle(getArguments()).getBug().getId());
+        }
+
         return bug;
     }
 
@@ -135,27 +149,22 @@ public class BugManagerFragment extends Fragment implements BugManagerContract.V
         bundle.putSerializable(Bug.TAG, getBug());
 
 
-        //4. Si se utiiz el componente Navigation se utiliza el GRAFO de navegación
-        //ERROR DIFICL DE DETECTAR Y ES, EL TAG DEL BUNDLE SE DEBE LLAMAR IGUAL QUE EL ARGUMENTO QUE SE HA ESTABLECIDO EN SAFEARGS
-        //-> Que crea automaticamente un método según el nombre del argumento.
-        //Dependency.TAG = dependency
-        //Y el método de SAFE ARGS es getDependency()
         PendingIntent pendingIntent = new NavDeepLinkBuilder(getActivity())
                 .setGraph(R.navigation.nav_graph)
-                .setDestination(R.id.bugManagerFragment)
+                .setDestination(R.id.bugFragment)
                 .setArguments(bundle)
                 .createPendingIntent();
 
-        /*//5. Crear la notificación
-        Notification.Builder builder = new Notification.Builder(getActivity(), InventoryApplication.IDCHANNEL)
+        //5. Crear la notificación
+        Notification.Builder builder = new Notification.Builder(getActivity(), XRTCApplication.IDCHANNEL)
                 .setSmallIcon(R.drawable.ic_add_alert)
-                .setContentTitle(getString(R.string.notification_title_add_dependency))
+                .setContentTitle(getString(R.string.notification_title_add_bug))
                 .setContentText(message)
                 .setContentIntent(pendingIntent);
 
         //6. Añadir la notificación al Manager
         NotificationManager notificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(new Random().nextInt(1000), builder.build());*/
+        notificationManager.notify(new Random().nextInt(1000), builder.build());
 
         NavHostFragment.findNavController(this).popBackStack();
     }

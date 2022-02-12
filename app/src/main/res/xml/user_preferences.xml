@@ -17,11 +17,17 @@
         android:title="@string/user_change_password"
         app:summary="@string/summary_user_change_password"/>
 
+    <EditTextPreference
+        android:key="@string/key_user_closed_session"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/user_closed_session"
+        app:summary="@string/summary_user_closed_session"/>
 
-    <ListPreference
-        android:entries="@array/languages"
-        android:entryValues="@array/languages_values"
-        app:key="@string/key_languages"
-        app:summary="@string/summary_languages"
-        app:title="@string/title_languages" />
+    <EditTextPreference
+        android:key="@string/key_user_delete"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/user_delete"
+        app:summary="@string/summary_user_delete"/>
 </PreferenceScreen>

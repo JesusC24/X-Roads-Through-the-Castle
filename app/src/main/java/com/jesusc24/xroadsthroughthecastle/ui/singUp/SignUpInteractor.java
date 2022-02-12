@@ -57,8 +57,8 @@ public class SignUpInteractor implements OnRepositoryCallback {
 
 
     @Override
-    public void onSuccess(String message) {
-        presenter.onSuccess(message);
+    public void onSuccess(String message, User user) {
+        presenter.onSuccess(message, user);
     }
 
     @Override

@@ -2,7 +2,7 @@ package com.jesusc24.xroadsthroughthecastle.ui.bugs;
 
 import com.jesusc24.xroadsthroughthecastle.data.model.Bug;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class BugListPresenter implements BugListContract.Presenter, BugListContract.OnInteractorListener {
     BugListContract.View view;
@@ -26,7 +26,8 @@ public class BugListPresenter implements BugListContract.Presenter, BugListContr
     }
 
     @Override
-    public <T> void onSuccess(ArrayList<T> list) {
+    public <T> void onSuccess(List<T> list) {
+        view.hideProgress();
         if(list.size() == 0) {
             view.showNoData();
         } else {
@@ -40,12 +41,13 @@ public class BugListPresenter implements BugListContract.Presenter, BugListContr
     }
 
     @Override
-    public void onUndoSuccess(String message) {
-        view.onUndoSuccess(message);
+    public void onUndoSuccess() {
+        view.onUndoSuccess();
     }
 
     @Override
     public void load() {
+        view.showProgress();
         listener.load();
     }
 
@@ -68,5 +70,10 @@ public class BugListPresenter implements BugListContract.Presenter, BugListContr
             order = true;
             view.showDataOrder();
         }
+    }
+
+    @Override
+    public void orderByEstado() {
+        view.showByEstadoOrder();
     }
 }

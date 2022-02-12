@@ -1,7 +1,7 @@
 package com.jesusc24.xroadsthroughthecastle.ui.foro;
 
 import com.jesusc24.xroadsthroughthecastle.data.model.Chat;
-import com.jesusc24.xroadsthroughthecastle.data.repository.ChatRepositoryStatic;
+import com.jesusc24.xroadsthroughthecastle.data.repository.ChatRepository;
 import com.jesusc24.xroadsthroughthecastle.ui.base.OnRepositoryManageCallback;
 import com.jesusc24.xroadsthroughthecastle.utils.CommonUtils;
 
@@ -20,12 +20,12 @@ public class ChatManagerInteractor implements OnRepositoryManageCallback {
         }
 
         if(chat.getTipo().equals(Chat.PRIVADO)) {
-            if(chat.getPassword().isEmpty() || !(CommonUtils.isPasswordValid(chat.getPassword()))) {
+            if(chat.getPassword().isEmpty() || !(CommonUtils.isPasswordValidBug(chat.getPassword()))) {
                 listener.onPasswordError();
                 return false;
             }
 
-            if(chat.getConfirmPassword().isEmpty() ||!(CommonUtils.isPasswordValid(chat.getConfirmPassword()))) {
+            if(chat.getConfirmPassword().isEmpty() ||!(CommonUtils.isPasswordValidBug(chat.getConfirmPassword()))) {
                 listener.onConfirmPasswordError();
                 return false;
             }
@@ -41,13 +41,13 @@ public class ChatManagerInteractor implements OnRepositoryManageCallback {
 
     public void add(Chat chat) {
         if(validarDatos(chat)) {
-            ChatRepositoryStatic.getInstance().add(chat, this);
+            ChatRepository.getInstance().add(chat, this);
         }
     }
 
     public void edit(Chat chat) {
         if(validarDatos(chat)) {
-            ChatRepositoryStatic.getInstance().edit(chat, this);
+            ChatRepository.getInstance().edit(chat, this);
         }
     }
 

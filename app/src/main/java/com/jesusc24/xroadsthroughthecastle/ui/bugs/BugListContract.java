@@ -5,17 +5,18 @@ import com.jesusc24.xroadsthroughthecastle.ui.base.BasePresenter;
 import com.jesusc24.xroadsthroughthecastle.ui.base.IProgressView;
 import com.jesusc24.xroadsthroughthecastle.ui.base.OnRepositoryListCallback;
 
-import java.util.ArrayList;
+import java.util.List;
 
 
 public interface BugListContract {
     interface View extends OnRepositoryListCallback, IProgressView {
-        <T> void showData(ArrayList<T> list);
+        <T> void showData(List<T> list);
         void showNoData();
         //Ordena de la A-Z
         void showDataOrder();
         //Ordena de la Z-A
         void showDataInverseOrder();
+        void showByEstadoOrder();
     }
 
     /**
@@ -30,6 +31,7 @@ public interface BugListContract {
         void undo(Bug bug);
         //Que la lista se ordene por nombre
         void order();
+        void orderByEstado();
     }
 
     /**

@@ -53,9 +53,9 @@ public final class ConstBugs {
 
     public static class Estado {
         public final static int TOTAL = 4;
-        public final static String ENVIADO = "Enviado";
-        public final static String APROBADO = "Aprobado";
-        public final static String ARREGLADO = "Arreglado";
+        public final static String ENVIADO = "C_Enviado";
+        public final static String APROBADO = "B_Aprobado";
+        public final static String ARREGLADO = "A_Arreglado";
         public final static String DENEGADO = "Denegado";
     }
 

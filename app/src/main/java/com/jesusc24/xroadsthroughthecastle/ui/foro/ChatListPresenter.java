@@ -2,21 +2,23 @@ package com.jesusc24.xroadsthroughthecastle.ui.foro;
 
 import com.jesusc24.xroadsthroughthecastle.data.model.Chat;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class ChatListPresenter implements ChatListContract.Presenter, ChatListContract.OnInteractorListener {
     ChatListContract.View view;
-    ChatListInteractor listener;
+    ChatListInteractor interactor;
     boolean order = false;
+    boolean orderStar = false;
+    boolean searchName = false;
 
     public ChatListPresenter(ChatListContract.View view) {
         this.view = view;
-        listener = new ChatListInteractor(this);
+        interactor = new ChatListInteractor(this);
     }
     @Override
     public void onDestroy() {
         view = null;
-        listener = null;
+        interactor = null;
     }
 
     @Override
@@ -25,7 +27,8 @@ public class ChatListPresenter implements ChatListContract.Presenter, ChatListCo
     }
 
     @Override
-    public <T> void onSuccess(ArrayList<T> list) {
+    public <T> void onSuccess(List<T> list) {
+        view.hideProgress();
         if(list.size() == 0) {
             view.showNoData();
         } else {
@@ -39,23 +42,24 @@ public class ChatListPresenter implements ChatListContract.Presenter, ChatListCo
     }
 
     @Override
-    public void onUndoSuccess(String message) {
-        view.onUndoSuccess(message);
+    public void onUndoSuccess() {
+        view.onUndoSuccess();
     }
 
     @Override
     public void load() {
-        listener.load();
+        view.showProgress();
+        interactor.load();
     }
 
     @Override
     public void delete(Chat chat) {
-        listener.delete(chat);
+        interactor.delete(chat);
     }
 
     @Override
     public void undo(Chat chat) {
-        listener.undo(chat);
+        interactor.undo(chat);
     }
 
     @Override
@@ -67,5 +71,27 @@ public class ChatListPresenter implements ChatListContract.Presenter, ChatListCo
             order = true;
             view.showDataOrder();
         }
+    }
+
+    @Override
+    public void orderByStar() {
+        view.showDataStar();
+    }
+
+    @Override
+    public void search() {
+        if(searchName) {
+            view.hideSearch();
+        } else {
+            view.showSearch();
+        }
+
+        searchName =! searchName;
+
+    }
+
+    @Override
+    public void updateStar(Chat chat) {
+        interactor.updateStar(chat);
     }
 }

@@ -1,7 +1,7 @@
 package com.jesusc24.xroadsthroughthecastle.ui.bugs;
 
 import com.jesusc24.xroadsthroughthecastle.data.model.Bug;
-import com.jesusc24.xroadsthroughthecastle.data.repository.BugRepositoryStatic;
+import com.jesusc24.xroadsthroughthecastle.data.repository.BugRepository;
 import com.jesusc24.xroadsthroughthecastle.ui.base.OnRepositoryManageCallback;
 
 public class BugManagerInteractor implements OnRepositoryManageCallback {
@@ -12,11 +12,11 @@ public class BugManagerInteractor implements OnRepositoryManageCallback {
     }
 
     public void add(Bug bug) {
-        BugRepositoryStatic.getInstance().add(bug, this);
+        BugRepository.getInstance().add(bug, this);
     }
 
     public void edit(Bug bug) {
-        BugRepositoryStatic.getInstance().edit(bug, this);
+        BugRepository.getInstance().edit(bug, this);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.jesusc24.xroadsthroughthecastle.ui.foro;
 
+
 import com.jesusc24.xroadsthroughthecastle.data.model.Chat;
 
 public class ChatManagerPresenter implements ChatManagerContract.Presenter, ChatManagerContract.OnInteractorListener {

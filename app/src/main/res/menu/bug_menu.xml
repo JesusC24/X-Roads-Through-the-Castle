@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="@string/bug_info"
+        android:id="@+id/action_bug_info"
+        android:icon="@drawable/ic_action_info"/>
+
+    <item android:title="@string/bug_description"
+        android:id="@+id/action_bug_description"
+        android:icon="@drawable/ic_action_description"/>
+
+    <item android:title="@string/bug_comentarios"
+        android:id="@+id/action_bug_comentarios"
+        android:icon="@drawable/ic_action_comment"/>
+</menu>

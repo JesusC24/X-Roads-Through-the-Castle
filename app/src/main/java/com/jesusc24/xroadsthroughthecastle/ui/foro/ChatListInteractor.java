@@ -1,10 +1,10 @@
 package com.jesusc24.xroadsthroughthecastle.ui.foro;
 
 import com.jesusc24.xroadsthroughthecastle.data.model.Chat;
-import com.jesusc24.xroadsthroughthecastle.data.repository.ChatRepositoryStatic;
+import com.jesusc24.xroadsthroughthecastle.data.repository.ChatRepository;
 import com.jesusc24.xroadsthroughthecastle.ui.base.OnRepositoryListCallback;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class ChatListInteractor implements OnRepositoryListCallback {
     private ChatListContract.OnInteractorListener presenter;
@@ -14,15 +14,19 @@ public class ChatListInteractor implements OnRepositoryListCallback {
     }
 
     public void load() {
-        ChatRepositoryStatic.getInstance().getList(this);
+        ChatRepository.getInstance().getList(this);
     }
 
     public void undo(Chat chat) {
-        ChatRepositoryStatic.getInstance().undo(chat, this);
+        ChatRepository.getInstance().undo(chat, this);
     }
 
     public void delete(Chat chat) {
-        ChatRepositoryStatic.getInstance().delete(chat, this);
+        ChatRepository.getInstance().delete(chat, this);
+    }
+
+    public void updateStar(Chat chat) {
+        ChatRepository.getInstance().updateStar(chat, this);
     }
 
     @Override
@@ -31,7 +35,7 @@ public class ChatListInteractor implements OnRepositoryListCallback {
     }
 
     @Override
-    public <T> void onSuccess(ArrayList<T> list) {
+    public <T> void onSuccess(List<T> list) {
         presenter.onSuccess(list);
     }
 
@@ -41,7 +45,7 @@ public class ChatListInteractor implements OnRepositoryListCallback {
     }
 
     @Override
-    public void onUndoSuccess(String message) {
-        presenter.onUndoSuccess(message);
+    public void onUndoSuccess() {
+        presenter.onUndoSuccess();
     }
 }

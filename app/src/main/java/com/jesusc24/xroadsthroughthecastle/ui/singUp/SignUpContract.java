@@ -3,7 +3,6 @@ package com.jesusc24.xroadsthroughthecastle.ui.singUp;
 
 import com.jesusc24.xroadsthroughthecastle.data.model.User;
 import com.jesusc24.xroadsthroughthecastle.ui.base.BasePresenter;
-import com.jesusc24.xroadsthroughthecastle.ui.base.IProgressView;
 import com.jesusc24.xroadsthroughthecastle.ui.base.OnRepositoryCallback;
 import com.jesusc24.xroadsthroughthecastle.ui.login.LoginContract;
 

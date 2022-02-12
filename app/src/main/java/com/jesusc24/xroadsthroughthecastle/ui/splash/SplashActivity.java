@@ -1,11 +1,11 @@
 package com.jesusc24.xroadsthroughthecastle.ui.splash;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceManager;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
 import com.jesusc24.xroadsthroughthecastle.R;
 import com.jesusc24.xroadsthroughthecastle.data.model.User;
@@ -56,7 +56,7 @@ public class SplashActivity extends AppCompatActivity {
      * @return
      */
     private boolean saveSession() {
-        return PreferenceManager.getDefaultSharedPreferences(this).contains(User.TAG);
+        return PreferenceManager.getDefaultSharedPreferences(this).getBoolean(User.REMBEBER, false);
     }
 
     private void starApp() {

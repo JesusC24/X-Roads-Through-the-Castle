@@ -13,6 +13,7 @@ import java.util.regex.Pattern;
  */
 public final class CommonUtils {
     static final String PASSWORD_PATTERN = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$*?¡\\-_])(?!.*\\s).{8,20}$";
+    static final String PASSSWORD_BUG_PATTERN = "^.{8,99}$";
     //Todos sus métodos serán STATICS
     /**
      * Método que comprueba que la contraseña cumple los siguientes requisitos
@@ -24,6 +25,17 @@ public final class CommonUtils {
      */
     public static boolean isPasswordValid(String password) {
         Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
+        Matcher matcher = pattern.matcher(password);
+        return matcher.matches();
+    }
+
+    /**
+     * Requisitos que tiene que tener una contraseña para poder ser un bug privado
+     * @param password
+     * @return
+     */
+    public static boolean isPasswordValidBug(String password) {
+        Pattern pattern = Pattern.compile(PASSSWORD_BUG_PATTERN);
         Matcher matcher = pattern.matcher(password);
         return matcher.matches();
     }

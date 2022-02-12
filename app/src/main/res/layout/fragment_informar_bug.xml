@@ -31,33 +31,20 @@
                 app:layout_constraintGuide_end="@dimen/informar_bug_glEnd_end"
                 app:layout_constraintStart_toEndOf="parent"/>
 
-            <TextView
-                android:id="@+id/tvTitleBug"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/informar_bug_tvTitleSingUp_marginTop"
-                android:fontFamily="@font/noto_sans_bold"
-                android:text="@string/tvTitleBug"
-                android:textSize="@dimen/RTC_title_size"
-                app:layout_constraintEnd_toStartOf="@+id/glEnd"
-                app:layout_constraintStart_toStartOf="@+id/glStart"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/informar_bug_tieUser_marginTop"
                 app:layout_constraintEnd_toStartOf="@+id/glEnd"
                 app:layout_constraintStart_toStartOf="@+id/glStart"
-                app:layout_constraintTop_toBottomOf="@+id/tvTitleBug"
+                app:layout_constraintTop_toTopOf="parent"
                 app:startIconDrawable="@drawable/ic_action_user">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tieName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/tieName"/>
+                    android:hint="@string/tieName" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.constraintlayout.widget.Barrier

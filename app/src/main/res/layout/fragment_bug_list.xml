@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
-        android:id="@+id/llNoData_chat"
+        android:id="@+id/llNoData_bug"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -12,20 +13,24 @@
 
         <ImageView
             android:id="@+id/imgNoData"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/imgNoData_layout_width"
+            android:layout_gravity="center"
+            android:paddingTop="150dp"
             android:layout_height="0dp"
-            android:layout_weight="0.7"
+            android:layout_weight="0.6"
             android:src="@drawable/img_no_data"/>
 
         <TextView
             android:id="@+id/tvNoData"
             android:fontFamily="@font/noto_sans"
             android:textSize="@dimen/tvNoData_dependencylist"
-            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:gravity="top|center"
+            android:text="@string/no_data"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.3"/>
-
+            android:layout_weight="0.4" />
     </LinearLayout>
 
 
@@ -45,4 +50,10 @@
         android:id="@+id/rvBug"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <include
+        android:id="@+id/include_progressbar"
+        layout="@layout/layout_progressbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

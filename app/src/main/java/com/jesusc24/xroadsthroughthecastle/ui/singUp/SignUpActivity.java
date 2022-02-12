@@ -1,6 +1,8 @@
 package com.jesusc24.xroadsthroughthecastle.ui.singUp;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -39,9 +41,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
         binding.tieEmail.addTextChangedListener(new SignUpTextWatcher(binding.tieEmail));
         binding.tiePassword.addTextChangedListener(new SignUpTextWatcher(binding.tiePassword));
 
-        binding.btSingUp.setOnClickListener(v -> presenter.validateSingUp(new User(binding.tieUser.getText().toString(), binding.tieEmail.getText().toString(), binding.tiePassword.getText().toString(), binding.tieConfirmPassword.getText().toString())));
-
-        EventBus.getDefault().register(this);
+        binding.btSingUp.setOnClickListener(v -> presenter.validateSingUp(new User(binding.tieEmail.getText().toString(), binding.tiePassword.getText().toString(), binding.tieUser.getText().toString(), binding.tieConfirmPassword.getText().toString())));
     }
 
     @Override
@@ -88,7 +88,13 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
     }
 
     @Override
-    public void onSuccess(String message) {
+    public void onSuccess(String message, User user) {
+        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
+
+        editor.putString(getString(R.string.key_user_name), user.getUser());
+        editor.putString(User.EMAIL, user.getEmail());
+        editor.apply();
+
         finish();
     }
 

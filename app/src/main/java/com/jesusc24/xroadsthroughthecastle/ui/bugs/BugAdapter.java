@@ -12,19 +12,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.jesusc24.xroadsthroughthecastle.R;
 import com.jesusc24.xroadsthroughthecastle.data.constantes.ConstBugs;
 import com.jesusc24.xroadsthroughthecastle.data.model.Bug;
+import com.jesusc24.xroadsthroughthecastle.data.model.BugComparator;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * Adapter que sirve para poder rellenar un recyclerView
  */
 public class BugAdapter extends RecyclerView.Adapter<BugAdapter.ViewHolder> {
 
-    private ArrayList<Bug> list;
+    private List<Bug> list;
     private OnManageBugList listener;
 
-    public BugAdapter(ArrayList<Bug> list, BugAdapter.OnManageBugList listener) {
+    public BugAdapter(List<Bug> list, BugAdapter.OnManageBugList listener) {
         //De momento solo vamos a mostrar el nombre, esto es un ejemplo de como se verá con datos reales
         this.list = new ArrayList<>();
         this.listener = listener;
@@ -32,7 +34,7 @@ public class BugAdapter extends RecyclerView.Adapter<BugAdapter.ViewHolder> {
 
     public interface OnManageBugList {
         //Si se hace click en un bug se edita (onClickListener)
-        void onEditBug(Bug bug);
+        void onShowBug(Bug bug);
         //Si se hace una pulsación larga en el bug se elimina (onLongClickListener)
         void onDeleteBug(Bug bug);
     }
@@ -91,7 +93,7 @@ public class BugAdapter extends RecyclerView.Adapter<BugAdapter.ViewHolder> {
 
         public void bind(Bug bug, OnManageBugList listener) {
             itemView.setOnClickListener(v -> {
-                listener.onEditBug(bug);
+                listener.onShowBug(bug);
             });
 
             itemView.setOnLongClickListener(v -> {
@@ -101,7 +103,7 @@ public class BugAdapter extends RecyclerView.Adapter<BugAdapter.ViewHolder> {
         }
     }
 
-    public void update(ArrayList<Bug> list) {
+    public void update(List<Bug> list) {
         this.list.clear();
         this.list.addAll(list);
         notifyDataSetChanged();
@@ -128,6 +130,11 @@ public class BugAdapter extends RecyclerView.Adapter<BugAdapter.ViewHolder> {
 
     public void inverseOrder() {
         Collections.reverse(list);
+        notifyDataSetChanged();
+    }
+
+    public void orderByEstado() {
+        Collections.sort(list, new BugComparator());
         notifyDataSetChanged();
     }
 }

@@ -54,8 +54,8 @@ public class SignUpPresenter implements SignUpContract.Presenter, SignUpContract
     }
 
     @Override
-    public void onSuccess(String message) {
-        view.onSuccess(message);
+    public void onSuccess(String message, User user) {
+        view.onSuccess(message, user);
     }
 
     @Override

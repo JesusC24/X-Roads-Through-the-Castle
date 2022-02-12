@@ -74,47 +74,39 @@
     <string name="dashboard_help">Ayuda se encuentra en desarollo</string>
 
     <string name="menu_chat_ordenar">Ordenar por nombre</string>
-    <string name="errEmailEmpty">Email no puede ser vacío</string>
-    <string name="errPasswordEmpty">Contraseña no puede ser vacío</string>
-    <string name="errPassword">Error en el formato de la contraseña</string>
-    <string name="errEmail">Error en el formato del email</string>
-    <string name="errUserEmpty">Usuario no puede estar vacío</string>
-    <string name="errConfirmPasswordEmpty">La contraseña no puede estar vacío</string>
-    <string name="errConfirmPassword">No coinciden las contraseñas</string>
     <string name="notification_header">Notificaciones</string>
     <string name="help_header">Ayuda</string>
     <string name="help_point">Punto de ayuda</string>
     <string name="privacy_and_condition">Privacidad y condiciones</string>
-    <string name="key_help_point">help_point</string>
-    <string name="key_notification_chat">notification</string>
-    <string name="key_ringtone_chat">ringtone</string>
+    <string name="key_help_point" translatable="false">help_point</string>
+    <string name="key_notification_chat" translatable="false">notification</string>
+    <string name="key_ringtone_chat" translatable="false">ringtone</string>
     <string name="title_ringtone_chat">Tono</string>
     <string name="summary_ringtone_chat">El sonido que tendrá la notificación</string>
-    <string name="key_user">user</string>
+    <string name="key_user" translatable="false">user</string>
     <string name="title_user">Usuario</string>
     <string name="summary_user">Opciones para modificar tu usuario</string>
 
     <string name="summaty_notification_chat">Activar las notificaciones de los mensajes del chat</string>
     <string name="title_notification_chat">Activar notificaciones</string>
-    <string name="defaul_web_client_id">751565801750-uqbur7sbpgs9tiou98ua4dbm34ht3lg9.apps.googleusercontent.com</string>
-    <string name="key_user_change_password">user_change_password</string>
+    <string name="defaul_web_client_id" translatable="false">751565801750-uqbur7sbpgs9tiou98ua4dbm34ht3lg9.apps.googleusercontent.com</string>
+    <string name="key_user_change_password" translatable="false">user_change_password</string>
     <string name="user_change_password">Cambiar contraseña</string>
     <string name="summary_user_change_password">Cambia la contraseña de tu usuario</string>
-    <string name="key_user_name">user_name</string>
+    <string name="key_user_name" translatable="false">user_name</string>
     <string name="user_name">Nombre de usuario</string>
     <string name="summary_user_name">Cambia tu nombre de usuario</string>
-    <string name="key_languages">languages</string>
+    <string name="key_languages" translatable="false">languages</string>
     <string name="summary_languages">Idioma principal de la aplicación</string>
     <string name="title_languages">Idioma</string>
     <string name="menu_chat_ordenar_favorito">Ordenar por favoritos</string>
     <string name="errNameEmpty">El nombre no puede estar vacío</string>
     <string name="title_edit_chat">Editar chat</string>
 
-    <string name="facebook_app_id">1047312215828067</string>
-    <string name="fb_login_protocol_scheme">fb1047312215828067</string>
+    <string name="facebook_app_id" translatable="false">1047312215828067</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb1047312215828067</string>
     <string name="prepareFacebook">el incio de sesión con facebook se encuentra en desarollo</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="title_list_chat">Listar chat</string>
     <string name="title_list_bug">Listar bug</string>
     <string name="title_edit_bug">Editar bug</string>
@@ -123,5 +115,77 @@
     <string name="menu_bug_ordenar_resultado">Ordernar por resuelto</string>
     <string name="title_add_bug">Añadir bug</string>
     <string name="bug_item_hint">Esto es un bug</string>
+    <string name="exampleChat">Aquí se mostrarán los mensajes</string>
+    <string name="hint_tvMessage">Mensaje</string>
+    <string name="menu_messages_edit">editar</string>
+    <string name="title_add_chat">Añadir chat</string>
+    <string name="title_messages">Mensajes</string>
+    <string name="entrar">Entrar</string>
+    <string name="salir">Salir</string>
+    <string name="errPasswordIncorrect">La contraseña es incorrecta</string>
+    <string name="no_data">No hay datos</string>
+    <string name="name_channel" translatable="false">XRTC_channel</string>
+    <string name="action_foro">Foro</string>
+    <string name="action_bug">Bugs</string>
+    <string name="action_guia">Guía</string>
+    <string name="menu_options">Opciones</string>
+    <string name="action_aboutus">Sobre nosotros</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="tvUser" translatable="false">JesusC24</string>
+    <string name="tvEmailr" translatable="false">jesus.cortesocana2408@gmail.com</string>
+    <string name="putPasswoord">Poner la contraseña</string>
+    <string name="delete_chat">Eliminar chat</string>
+    <string name="ask">¿Seguro que desea borrar el chat</string>
+    <string name="delete_chat_success">"Se ha borrado el chat "</string>
+    <string name="undo_success">Operación cancelada</string>
+    <string name="editSuccessChat">"Se ha editado el chat "</string>
+    <string name="exit">" con exito"</string>
+    
+    <string name="bug_description">Descripcion</string>
+    <string name="bug_comentarios">Comentarios</string>
+    <string name="bug_info">Info</string>
+    <string name="title_foro">Foro</string>
+    <string name="summary_foro">Opciones para modificar el foro y los chats</string>
+    <string name="key_foro">foro</string>
+    <string name="key_bug">bug</string>
+    <string name="summary_bug">Opciones para modificar los bugs</string>
+    <string name="title_bug">Bug</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="notification_title_add_dependency">Chat añadido</string>
+    <string name="notification_title_add_bug">Añadido bug</string>
+    <string name="errEditBug">No se puede editar un bug que está resuelto o denegado</string>
+    <string name="user_closed_session">Cerrar sesión</string>
+    <string name="summary_user_closed_session">Cierra sesión del usuario</string>
+    <string name="key_user_closed_session">user_closed_session</string>
+    <string name="key_favorito_chat">favorito_chat</string>
+    <string name="summaty_favorito_chat">Mostrar chat favoritos</string>
+    <string name="title_favorito_chat">Mostrar chats favoritos</string>
+    <string name="summary_favorito_chat">Muestra solo aquellos chats que están marcado como favoritos</string>
+    <string name="key_user_delete">user delete</string>
+    <string name="user_delete">Eliminar cuenta</string>
+    <string name="summary_user_delete">Cierra la cuenta y la elimina del sistema permanentemente</string>
+    <string name="key_resultado_bug">resultado_bug</string>
+    <string name="summary_resultado_bug">Mostrar la lista ordena por los que se han resultado</string>
+    <string name="title_resuelto_bug">Ordenar por bug resuelto</string>
+    <string name="tvBugTipo">Tipo</string>
+    <string name="tvBugGravedad">Gravedad</string>
+    <string name="tvBugDispositivo">Dispositivo</string>
+    <string name="tvBugSO">Sistema operativo</string>
+    <string name="key_order_favorito_chat">order_favorito_chat</string>
+    <string name="summary_order_favorito_chat">Ordena por favoritos la lista de Chats</string>
+    <string name="title_order_favorito_chat">Ordenar por favoritos</string>
 
 </resources>

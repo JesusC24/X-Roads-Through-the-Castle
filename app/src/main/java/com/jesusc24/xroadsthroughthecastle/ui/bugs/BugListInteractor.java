@@ -1,10 +1,10 @@
 package com.jesusc24.xroadsthroughthecastle.ui.bugs;
 
 import com.jesusc24.xroadsthroughthecastle.data.model.Bug;
-import com.jesusc24.xroadsthroughthecastle.data.repository.BugRepositoryStatic;
+import com.jesusc24.xroadsthroughthecastle.data.repository.BugRepository;
 import com.jesusc24.xroadsthroughthecastle.ui.base.OnRepositoryListCallback;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class BugListInteractor implements OnRepositoryListCallback {
     private BugListContract.OnInteractorListener presenter;
@@ -14,15 +14,15 @@ public class BugListInteractor implements OnRepositoryListCallback {
     }
 
     public void load() {
-        BugRepositoryStatic.getInstance().getList(this);
+        BugRepository.getInstance().getList(this);
     }
 
     public void undo(Bug bug) {
-        BugRepositoryStatic.getInstance().undo(bug, this);
+        BugRepository.getInstance().undo(bug, this);
     }
 
     public void delete(Bug bug) {
-        BugRepositoryStatic.getInstance().delete(bug, this);
+        BugRepository.getInstance().delete(bug, this);
     }
 
     @Override
@@ -31,7 +31,7 @@ public class BugListInteractor implements OnRepositoryListCallback {
     }
 
     @Override
-    public <T> void onSuccess(ArrayList<T> list) {
+    public <T> void onSuccess(List<T> list) {
         presenter.onSuccess(list);
     }
 
@@ -41,7 +41,7 @@ public class BugListInteractor implements OnRepositoryListCallback {
     }
 
     @Override
-    public void onUndoSuccess(String message) {
-        presenter.onUndoSuccess(message);
+    public void onUndoSuccess() {
+        presenter.onUndoSuccess();
     }
 }

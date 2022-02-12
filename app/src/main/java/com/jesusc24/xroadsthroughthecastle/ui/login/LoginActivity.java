@@ -18,12 +18,10 @@ import com.jesusc24.xroadsthroughthecastle.R;
 import com.jesusc24.xroadsthroughthecastle.data.model.User;
 import com.jesusc24.xroadsthroughthecastle.databinding.ActivityLoginBinding;
 import com.jesusc24.xroadsthroughthecastle.ui.MainActivity;
-import com.jesusc24.xroadsthroughthecastle.ui.base.Event;
 import com.jesusc24.xroadsthroughthecastle.ui.singUp.SignUpActivity;
 import com.jesusc24.xroadsthroughthecastle.utils.CommonUtils;
 
 import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.View {
 
@@ -53,9 +51,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         binding.tiePassword.addTextChangedListener(new LoginTextWatcher(binding.tiePassword));
 
         presenter = new LoginPresenter(this);
-
-        //La vista se registra como subscriptor del Event Bus
-        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -109,11 +104,11 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     //Secuencia normal: el usuario existe en la base de datos, usuario-contraseña correctos.
     @Override
-    public void onSuccess(String message) {
+    public void onSuccess(String message, User user) {
         SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
 
         if(binding.chxRemember.isChecked()) {
-            editor.putString(User.TAG, binding.tieEmail.getText().toString());
+            editor.putBoolean(User.REMBEBER, true);
             editor.apply();
         }
 
@@ -200,11 +195,4 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     }
     // endregion
 
-    //region Método que se ejecuta cuando hay un evento del Repositorio
-    @Subscribe
-    public void onEvent(Event event) {
-        hideProgress();
-        Toast.makeText(this, event.getMessage(),Toast.LENGTH_SHORT).show();
-    }
-    //endregion
 }

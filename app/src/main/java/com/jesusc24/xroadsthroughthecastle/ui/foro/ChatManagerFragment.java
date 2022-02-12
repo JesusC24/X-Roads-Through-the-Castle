@@ -1,6 +1,9 @@
 package com.jesusc24.xroadsthroughthecastle.ui.foro;
 
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,11 +18,14 @@ import androidx.navigation.NavDeepLinkBuilder;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.jesusc24.xroadsthroughthecastle.R;
+import com.jesusc24.xroadsthroughthecastle.XRTCApplication;
 import com.jesusc24.xroadsthroughthecastle.data.model.Chat;
 import com.jesusc24.xroadsthroughthecastle.databinding.FragmentCrearChatBinding;
+import com.jesusc24.xroadsthroughthecastle.ui.MainActivity;
 import com.jesusc24.xroadsthroughthecastle.utils.RellenarSpinner;
 
-//TODO poner la observación de un CHAT (sin implementar), ahí tiene que estar el botón para editar
+import java.util.Random;
+
 /**
  * Clase que crea un nuevo Chat que se mostrará en ChatListFragment
  */
@@ -43,12 +49,14 @@ public class ChatManagerFragment extends Fragment implements ChatManagerContract
         if(ChatManagerFragmentArgs.fromBundle(getArguments()).getChat() != null) {
             //Se trata de editar
             //1. Cambiar el título
-            getActivity().setTitle(R.string.title_edit_chat);
+            ((MainActivity)getActivity()).getSupportActionBar().setTitle(R.string.title_edit_chat);
+
             //2. Rellenar los campos con los datos
             initView(ChatManagerFragmentArgs.fromBundle(getArguments()).getChat());
             //3. Modifico el icono del FloatingActionButtom
             initFabEdit();
         } else {
+            ((MainActivity)getActivity()).getSupportActionBar().setTitle(R.string.title_add_chat);
             initFabAdd();
         }
 
@@ -85,6 +93,8 @@ public class ChatManagerFragment extends Fragment implements ChatManagerContract
             binding.spTipo.setSelection(0);
         } else {
             binding.spTipo.setSelection(1);
+            binding.tiePassword.setText(chat.getPassword());
+            binding.tieConfirmPassword.setText(chat.getConfirmPassword());
         }
     }
 
@@ -118,6 +128,12 @@ public class ChatManagerFragment extends Fragment implements ChatManagerContract
 
         chat.setDescripcion(binding.tieDescripcion.getText().toString());
 
+        if(ChatManagerFragmentArgs.fromBundle(getArguments()).getChat()!=null){
+            chat.setId(ChatManagerFragmentArgs.fromBundle(getArguments()).getChat().getId());
+        }
+
+        chat.setFavorito(false);
+
         return chat;
     }
 
@@ -140,26 +156,16 @@ public class ChatManagerFragment extends Fragment implements ChatManagerContract
         //1. Crear un bundle que almacene la DEPENDENCIA
         Bundle bundle = new Bundle();
         bundle.putSerializable(Chat.TAG, getChat());
+        bundle.putSerializable(MainActivity.TAG, "");
 
-        //2. Crear un intent (ESTO ES EN EL CASO DE TRABAJAR CON ACTIVIDADES)
-        //Intent intent = new Intent(getActivity(), SplashActivity.class);
-        //intent.putExtras(bundle);
-        //3. Crear PendingIntent que contiene el Intent
-        //PendingIntent pendingIntent = PendingIntent.getActivity(getActivity(), new Random().nextInt(1000), intent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-        //4. Si se utiiz el componente Navigation se utiliza el GRAFO de navegación
-        //ERROR DIFICL DE DETECTAR Y ES, EL TAG DEL BUNDLE SE DEBE LLAMAR IGUAL QUE EL ARGUMENTO QUE SE HA ESTABLECIDO EN SAFEARGS
-        //-> Que crea automaticamente un método según el nombre del argumento.
-        //Dependency.TAG = dependency
-        //Y el método de SAFE ARGS es getDependency()
         PendingIntent pendingIntent = new NavDeepLinkBuilder(getActivity())
                 .setGraph(R.navigation.nav_graph)
-                .setDestination(R.id.chatManagerFragment)
+                .setDestination(R.id.messageFragment)
                 .setArguments(bundle)
                 .createPendingIntent();
 
-        /*//5. Crear la notificación
-        Notification.Builder builder = new Notification.Builder(getActivity(), InventoryApplication.IDCHANNEL)
+        //5. Crear la notificación
+        Notification.Builder builder = new Notification.Builder(getActivity(), XRTCApplication.IDCHANNEL)
                 .setSmallIcon(R.drawable.ic_add_alert)
                 .setContentTitle(getString(R.string.notification_title_add_dependency))
                 .setContentText(message)
@@ -167,14 +173,14 @@ public class ChatManagerFragment extends Fragment implements ChatManagerContract
 
         //6. Añadir la notificación al Manager
         NotificationManager notificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(new Random().nextInt(1000), builder.build());*/
+        notificationManager.notify(new Random().nextInt(1000), builder.build());
 
         NavHostFragment.findNavController(this).popBackStack();
     }
 
     @Override
     public void onEditSucess(String message) {
-        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), getString(R.string.editSuccessChat) + message + getString(R.string.exit), Toast.LENGTH_SHORT).show();
         NavHostFragment.findNavController(this).popBackStack();
     }
 
@@ -187,12 +193,12 @@ public class ChatManagerFragment extends Fragment implements ChatManagerContract
 
     @Override
     public void setPasswordError() {
-        binding.tilPassword.setError(getString(R.string.errPassword));
+        binding.tilPassword.setError(getString(R.string.errPasswordBug));
     }
 
     @Override
     public void setConfirmPasswordError() {
-        binding.tilConfirmPassword.setError(getString(R.string.errPassword));
+        binding.tilConfirmPassword.setError(getString(R.string.errPasswordBug));
     }
 
     @Override

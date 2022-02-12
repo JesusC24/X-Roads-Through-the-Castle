@@ -1,5 +1,6 @@
 package com.jesusc24.xroadsthroughthecastle.ui.foro;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -7,28 +8,32 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.jesusc24.xroadsthroughthecastle.R;
-
 import com.jesusc24.xroadsthroughthecastle.data.model.Chat;
 import com.jesusc24.xroadsthroughthecastle.databinding.FragmentChatListBinding;
 import com.jesusc24.xroadsthroughthecastle.ui.DecorationRecyclerView;
 import com.jesusc24.xroadsthroughthecastle.ui.base.BaseDialogFragment;
+import com.jesusc24.xroadsthroughthecastle.ui.base.PasswordDialogFragment;
+import com.jesusc24.xroadsthroughthecastle.ui.base.PasswordDialogFragmentDirections;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class ChatListFragment extends Fragment implements ChatListContract.View, ChatAdapter.OnManageChatList {
+public class ChatListFragment extends Fragment implements ChatListContract.View, ChatAdapter.OnManageChatList, SearchView.OnQueryTextListener {
     FragmentChatListBinding binding;
     private ChatAdapter adapter;
     private ChatListContract.Presenter presenter;
@@ -50,9 +55,13 @@ public class ChatListFragment extends Fragment implements ChatListContract.View,
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        getActivity().setTitle(R.string.title_list_chat);
         initRvChat();
         initFavChat();
+        initSearch();
+    }
+
+    private void initSearch() {
+        binding.txtBuscar.setOnQueryTextListener(this);
     }
 
     private void initFavChat() {
@@ -66,6 +75,12 @@ public class ChatListFragment extends Fragment implements ChatListContract.View,
     public void onStart() {
         super.onStart();
         presenter.load();
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+
+        if(sharedPreferences.getBoolean(getString(R.string.key_favorito_chat), false)) {
+            presenter.orderByStar();
+        }
     }
 
     @Override
@@ -81,6 +96,13 @@ public class ChatListFragment extends Fragment implements ChatListContract.View,
                 presenter.order();
                 return true;
 
+            case R.id.menu_chat_ordenar_favorito:
+                presenter.orderByStar();
+                return true;
+
+            case R.id.menu_chat_buscar:
+                presenter.search();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
 
@@ -110,12 +132,12 @@ public class ChatListFragment extends Fragment implements ChatListContract.View,
     //region Método por el progress bar
     @Override
     public void showProgress() {
-
+        binding.includeProgressbar.llProgressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideProgress() {
-
+        binding.includeProgressbar.llProgressBar.setVisibility(View.GONE);
     }
     //endregion
 
@@ -126,12 +148,12 @@ public class ChatListFragment extends Fragment implements ChatListContract.View,
     }
 
     @Override
-    public <T> void onSuccess(ArrayList<T> list) {
+    public <T> void onSuccess(List<T> list) {
     }
 
     @Override
     public void onDeleteSuccess(String message) {
-        Snackbar.make(getView(), message, BaseTransientBottomBar.LENGTH_SHORT).setAction("UNDO", (View.OnClickListener) view ->
+        Snackbar.make(getView(), getString(R.string.delete_chat_success) + message, BaseTransientBottomBar.LENGTH_SHORT).setAction("UNDO", (View.OnClickListener) view ->
             presenter.undo(deleted)
         ).show();
 
@@ -143,20 +165,26 @@ public class ChatListFragment extends Fragment implements ChatListContract.View,
     }
 
     @Override
-    public void onUndoSuccess(String message) {
+    public void onUndoSuccess() {
+        Toast.makeText(getContext(), R.string.undo_success, Toast.LENGTH_SHORT).show();
         adapter.undo(deleted);
     }
     //endregion
 
     //region Método que vienen por el PRESENTER
     @Override
-    public <T> void showData(ArrayList<T> list) {
-        adapter.update((ArrayList<Chat>) list);
+    public <T> void showData(List<T> list) {
+        if(binding.llNoDataChat.getVisibility()==View.VISIBLE) {
+            binding.llNoDataChat.setVisibility(View.GONE);
+        }
+        adapter.update((List<Chat>) list);
     }
 
     @Override
     public void showNoData() {
-        //TODO showNoData
+        if(binding.llNoDataChat.getVisibility()==View.GONE) {
+            binding.llNoDataChat.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -168,21 +196,54 @@ public class ChatListFragment extends Fragment implements ChatListContract.View,
     public void showDataInverseOrder() {
         adapter.inverseOrder();
     }
+
+    @Override
+    public void showDataStar() {
+        adapter.orderByStar();
+    }
+
+    @Override
+    public void showSearch() {
+        binding.rvChat.setPadding(0, getResources().getDimensionPixelSize(R.dimen.rvChat_margin_top), 0, 0);
+        binding.llBuscar.setVisibility(View.VISIBLE);
+    }
+
+    @Override public void hideSearch() {
+        binding.rvChat.setPadding(0, 0, 0, 0);
+        binding.llBuscar.setVisibility(View.GONE);
+    }
+
     //endregion
 
     //region Métodos por el Adapter
 
     @Override
-    public void onEditChat(Chat chat) {
-        ChatListFragmentDirections.ActionChatListFragmentToCrearChatFragment action = ChatListFragmentDirections.actionChatListFragmentToCrearChatFragment(chat);
-        NavHostFragment.findNavController(this).navigate(action);
+    public void onOpenMessages(Chat chat) {
+
+        if(chat.getTipo().equals(Chat.PRIVADO)) {
+            Bundle bundle = new Bundle();
+            bundle.putString(PasswordDialogFragment.TITLE, getString(R.string.putPasswoord));
+            bundle.putSerializable(PasswordDialogFragment.CHAT, chat);
+            NavHostFragment.findNavController(this).navigate(R.id.action_chatListFragment_to_passwordDialogFragment, bundle);
+
+            getActivity().getSupportFragmentManager().setFragmentResultListener(PasswordDialogFragment.REQUEST, this, (requestKey, result) -> {
+                if(result.getBoolean(PasswordDialogFragment.KEY_BUNDLE)) {
+                    PasswordDialogFragmentDirections.ActionPasswordDialogFragmentToMessageFragment action = PasswordDialogFragmentDirections.actionPasswordDialogFragmentToMessageFragment(chat);
+                    NavHostFragment.findNavController(this).navigate(action);
+                }
+            });
+        } else {
+            ChatListFragmentDirections.ActionChatListFragmentToChatFragment action = ChatListFragmentDirections.actionChatListFragmentToChatFragment(chat);
+            NavHostFragment.findNavController(this).navigate(action);
+        }
     }
+
 
     @Override
     public void onDeleteChat(Chat chat) {
         Bundle bundle = new Bundle();
-        bundle.putString(BaseDialogFragment.TITLE, "Eliminar chat");
-        bundle.putString(BaseDialogFragment.MESSAGE, String.format("¿Seguro que desea borrar el chat %1$s?", chat.getNombre()));
+        bundle.putString(BaseDialogFragment.TITLE, getString(R.string.delete_chat));
+        bundle.putString(BaseDialogFragment.MESSAGE, String.format(getString(R.string.ask) + " %1$s?", chat.getNombre()));
         NavHostFragment.findNavController(this).navigate(R.id.action_chatListFragment_to_baseDialogFragment, bundle);
 
         getActivity().getSupportFragmentManager().setFragmentResultListener(BaseDialogFragment.REQUEST, this, (requestKey, result) -> {
@@ -196,7 +257,18 @@ public class ChatListFragment extends Fragment implements ChatListContract.View,
     @Override
     public void onActiveStar(boolean status, Chat chat) {
         chat.setFavorito(status);
+        presenter.updateStar(chat);
+    }
+    //endregion
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
     }
 
-    //endregion
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        adapter.filtrado(newText);
+        return true;
+    }
 }

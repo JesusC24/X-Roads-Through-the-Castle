@@ -1,5 +1,6 @@
 package com.jesusc24.xroadsthroughthecastle.ui.bugs;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -13,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,10 +27,9 @@ import com.jesusc24.xroadsthroughthecastle.ui.DecorationRecyclerView;
 import com.jesusc24.xroadsthroughthecastle.ui.base.BaseDialogFragment;
 
 import java.util.ArrayList;
+import java.util.List;
 
 //TODO implementar la búsqueda
-//TODO implementar ordenar por nombre
-//TODO implementar ordenar por favoritos
 /**
  * Fragmente que crea la lista de todos los bugs que se encuentran registrados
  */
@@ -90,6 +91,12 @@ public class BugListFragment extends Fragment implements BugListContract.View, B
     public void onStart() {
         super.onStart();
         presenter.load();
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+
+        if(sharedPreferences.getBoolean(getString(R.string.key_resultado_bug), false)) {
+            presenter.orderByEstado();
+        }
     }
 
     @Override
@@ -98,14 +105,15 @@ public class BugListFragment extends Fragment implements BugListContract.View, B
         inflater.inflate(R.menu.menu_bug_fragment, menu);
     }
 
-    //Todo hacer las opciones del menu tanto de bug como de chat
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menu_chat_ordenar:
+            case R.id.menu_bug_ordenar:
                 presenter.order();
                 return true;
 
+            case R.id.menu_bug_ordenar_resultsado:
+                presenter.orderByEstado();
             default:
                 return super.onOptionsItemSelected(item);
 
@@ -115,12 +123,12 @@ public class BugListFragment extends Fragment implements BugListContract.View, B
 
     @Override
     public void showProgress() {
-
+        binding.includeProgressbar.llProgressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideProgress() {
-
+        binding.includeProgressbar.llProgressBar.setVisibility(View.GONE);
     }
 
     @Override
@@ -129,7 +137,7 @@ public class BugListFragment extends Fragment implements BugListContract.View, B
     }
 
     @Override
-    public <T> void onSuccess(ArrayList<T> list) {
+    public <T> void onSuccess(List<T> list) {
 
     }
 
@@ -147,18 +155,23 @@ public class BugListFragment extends Fragment implements BugListContract.View, B
     }
 
     @Override
-    public void onUndoSuccess(String message) {
+    public void onUndoSuccess() {
         adapter.undo(deleted);
     }
 
     @Override
-    public <T> void showData(ArrayList<T> list) {
-        adapter.update((ArrayList<Bug>) list);
+    public <T> void showData(List<T> list) {
+        if(binding.llNoDataBug.getVisibility()==View.VISIBLE) {
+            binding.llNoDataBug.setVisibility(View.GONE);
+        }
+        adapter.update((List<Bug>) list);
     }
 
     @Override
     public void showNoData() {
-        //TODO poner el showNoData
+        if(binding.llNoDataBug.getVisibility()==View.GONE) {
+            binding.llNoDataBug.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -172,8 +185,13 @@ public class BugListFragment extends Fragment implements BugListContract.View, B
     }
 
     @Override
-    public void onEditBug(Bug bug) {
-        BugListFragmentDirections.ActionBugListFragmentToInformarBug action = BugListFragmentDirections.actionBugListFragmentToInformarBug(bug);
+    public void showByEstadoOrder() {
+        adapter.orderByEstado();
+    }
+
+    @Override
+    public void onShowBug(Bug bug) {
+        BugListFragmentDirections.ActionBugListFragmentToBugFragment action = BugListFragmentDirections.actionBugListFragmentToBugFragment(bug);
         NavHostFragment.findNavController(this).navigate(action);
     }
 

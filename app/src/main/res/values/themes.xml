@@ -1,22 +1,29 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.XRoadsThroughTheCastle" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.XRoadsThroughTheCastle" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/color_primary</item>
         <item name="colorPrimaryVariant">@color/color_primary_variant</item>
+        <item name="colorPrimaryDark">@color/color_primary</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/color_secondary</item>
         <item name="colorSecondaryVariant">@color/color_secondary_variant</item>
         <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="android:fontFamily">@font/noto_sans</item>
+
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+
+        <item name="fontFamily">@font/noto_sans</item>
     </style>
 
     <style name="Theme.XRoadsThroughTheCastle.NoActionBar" parent="Theme.XRoadsThroughTheCastle">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
+    <style name="Theme.XRoadsThroughTheCastle.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="Theme.XRoadsThroughTheCastle.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
