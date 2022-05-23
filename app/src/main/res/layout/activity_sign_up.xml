@@ -71,6 +71,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/tieUserHint"
                     android:textSize="@dimen/_13ssp"
+                    android:textColor="@color/secondary_text"
                     android:text="@={viewmodel.name}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -88,6 +89,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/tieEmailHint"
                     android:textSize="@dimen/_13ssp"
+                    android:textColor="@color/secondary_text"
                     android:text="@={viewmodel.email}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -107,6 +109,7 @@
                     android:inputType="textPassword"
                     android:hint="@string/tiePasswordHint"
                     android:textSize="@dimen/_13ssp"
+                    android:textColor="@color/secondary_text"
                     android:text="@={viewmodel.password}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -126,6 +129,7 @@
                     android:inputType="textPassword"
                     android:hint="@string/tieConfirmPassword"
                     android:textSize="@dimen/_13ssp"
+                    android:textColor="@color/secondary_text"
                     android:text="@={viewmodel.confirmPassword}"/>
             </com.google.android.material.textfield.TextInputLayout>
 

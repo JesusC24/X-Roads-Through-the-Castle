@@ -11,7 +11,7 @@ data class Chat(@NonNull var nombre: String? = null,
                 @NonNull var tipo: String? = null,
                 var password: String? = null,
                 var descripcion: String? = null,
-                @Ignore var id: String? = null,
+                var id: String? = null,
                 @PrimaryKey(autoGenerate = true) var idSQL: Int? = null,
                 @NonNull var favorito: Boolean = false) : Serializable, Comparable<Chat> {
 

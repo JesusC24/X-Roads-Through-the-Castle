@@ -206,9 +206,11 @@ public class ChatListFragment extends Fragment implements ChatListContract.View,
     public void showSearch() {
         binding.rvChat.setPadding(0, getResources().getDimensionPixelSize(R.dimen.rvChat_margin_top), 0, 0);
         binding.llBuscar.setVisibility(View.VISIBLE);
+        binding.txtBuscar.onActionViewExpanded();
     }
 
     @Override public void hideSearch() {
+        binding.txtBuscar.onActionViewCollapsed();
         binding.rvChat.setPadding(0, 0, 0, 0);
         binding.llBuscar.setVisibility(View.GONE);
     }

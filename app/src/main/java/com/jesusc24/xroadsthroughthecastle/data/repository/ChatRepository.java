@@ -14,6 +14,7 @@ import com.jesusc24.xroadsthroughthecastle.ui.foro.ChatManagerContract;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class ChatRepository implements ChatListContract.Repository, ChatManagerContract.Repository {
     public static ChatRepository instance;
@@ -88,7 +89,11 @@ public class ChatRepository implements ChatListContract.Repository, ChatManagerC
 
     @Override
     public void updateStar(Chat chat, OnRepositoryListCallback callback) {
-        XRTCDatabase.databaseWriteExecutor.submit(() -> chatDAO.update(chat));
+        if(chat.getFavorito()) {
+            XRTCDatabase.databaseWriteExecutor.submit(() -> chatDAO.insert(chat));
+        } else {
+            XRTCDatabase.databaseWriteExecutor.submit(() -> chatDAO.delete(chat.getId()));
+        }
     }
 
     @Override
@@ -129,5 +134,17 @@ public class ChatRepository implements ChatListContract.Repository, ChatManagerC
                 })
 
                 .addOnFailureListener(exception -> callback.onFailure(exception.getMessage()));
+    }
+
+    public List<Chat> listStar() {
+        List<Chat> chatStar = new ArrayList<>();
+        try {
+            chatStar = XRTCDatabase.databaseWriteExecutor.submit(() -> chatDAO.select()).get();
+
+        } catch (ExecutionException | InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return chatStar;
     }
 }

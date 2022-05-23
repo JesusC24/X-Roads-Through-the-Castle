@@ -87,7 +87,6 @@ public class ChatListPresenter implements ChatListContract.Presenter, ChatListCo
         }
 
         searchName =! searchName;
-
     }
 
     @Override

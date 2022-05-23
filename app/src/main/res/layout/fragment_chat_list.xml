@@ -10,12 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        android:elevation="2dp">
+        android:elevation="@dimen/_2sdp">
 
         <SearchView
             android:id="@+id/txt_buscar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:iconifiedByDefault="false"/>
     </LinearLayout>
 
     <!-- Si tengo que mostrar un NO DATA hay que poner un LinerLayout
@@ -30,9 +31,9 @@
 
         <ImageView
             android:id="@+id/imgNoData"
-            android:layout_width="@dimen/imgNoData_layout_width"
+            android:layout_width="@dimen/_200sdp"
             android:layout_gravity="center"
-            android:paddingTop="150dp"
+            android:paddingTop="@dimen/_150sdp"
             android:layout_height="0dp"
             android:layout_weight="0.6"
             android:src="@drawable/img_no_data"/>
@@ -40,7 +41,7 @@
         <TextView
             android:id="@+id/tvNoData"
             android:fontFamily="@font/noto_sans"
-            android:textSize="@dimen/tvNoData_dependencylist"
+            android:textSize="@dimen/_30ssp"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:gravity="top|center"
@@ -51,18 +52,18 @@
             android:visibility="visible"/>
     </LinearLayout>
 
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabChat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/_30sdp"
         android:clickable="true"
         android:contentDescription="@string/fabChat"
-        android:elevation="@dimen/fabChat_elevation"
-        android:src="@drawable/ic_action_add"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fabChat_margin"
-        android:focusable="true"/>
-
+        android:elevation="@dimen/_3sdp"
+        android:focusable="true"
+        android:src="@drawable/ic_action_add" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvChat"

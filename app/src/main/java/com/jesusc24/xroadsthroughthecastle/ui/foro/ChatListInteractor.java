@@ -36,6 +36,15 @@ public class ChatListInteractor implements OnRepositoryListCallback {
 
     @Override
     public <T> void onSuccess(List<T> list) {
+        List<Chat> listStar = ChatRepository.getInstance().listStar();
+
+        for(int i=0; i<list.size(); i++) {
+            for(int j=0; j<listStar.size(); j++) {
+                if(((List<Chat>) list).get(i).getId().equals(listStar.get(j).getId())) {
+                    ((List<Chat>) list).get(i).setFavorito(listStar.get(j).getFavorito());
+                }
+            }
+        }
         presenter.onSuccess(list);
     }
 

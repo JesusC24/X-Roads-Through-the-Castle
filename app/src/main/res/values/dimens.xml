@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="RTC_title_size">36sp</dimen>
 
-    <dimen name="splash_img_logo_marginStart">50dp</dimen>
-    <dimen name="splash_img_logo_marginTop">150dp</dimen>
-    <dimen name="splash_img_logo_marginEnd">50dp</dimen>
-    <dimen name="splash_img_logo_marginBottom">150dp</dimen>
-    <dimen name="splash_tvName_marginStart">50dp</dimen>
-    <dimen name="splash_tvName_marginTop">92dp</dimen>
-    <dimen name="splash_tvName_marginEnd">50dp</dimen>
 
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
@@ -37,13 +29,6 @@
     <dimen name="fabBug_elevation">3dp</dimen>
     <dimen name="fabBug_margin">34dp</dimen>
 
-    <dimen name="sing_up_glEnd">20dp</dimen>
-    <dimen name="sing_up_TitleSingUp_marginTop">32dp</dimen>
-    <dimen name="sing_up_tieUser">16dp</dimen>
-    <dimen name="sing_up_tieEmail_marginTop">16dp</dimen>
-    <dimen name="sing_up_tiePassword_marginTop">16dp</dimen>
-    <dimen name="sing_up_tieConfirmPassword_marginTop">16dp</dimen>
-
     <dimen name="bug_item_tvName_size">24sp</dimen>
     <dimen name="bug_item_tvName_marginTop">15dp</dimen>
     <dimen name="bug_item_tvName_paddingBottom">15dp</dimen>
@@ -64,20 +49,6 @@
     <dimen name="informar_bug_spSO_marginTop">20dp</dimen>
     <dimen name="informar_bug_spSO_minHeight">48dp</dimen>
     <dimen name="informar_bug_tieDescripcion_marginTop">20dp</dimen>
-
-    <dimen name="chat_paddingTop">15dp</dimen>
-    <dimen name="chat_paddingBottom">15dp</dimen>
-    <dimen name="chat_item_tvDescripcion_marginTop">5dp</dimen>
-    <dimen name="chat_item_guideline2_begin">100dp</dimen>
-    <dimen name="chat_item_guideline3_end">100dp</dimen>
-    <dimen name="chat_item_imgChat_marginTop">20dp</dimen>
-    <dimen name="chat_item_ibStar_marginTop">10dp</dimen>
-    <dimen name="chat_item_ibStar_minHeight">48dp</dimen>
-
-    <dimen name="crear_chat_spTipo_minHeight">48dp</dimen>
-    <dimen name="crear_chat_tvTitleCrearChat_size">15sp</dimen>
-    <dimen name="crear_chat_tvTipo_marginTop">5dp</dimen>
-    <dimen name="crear_chat_tilConfirmPassword_marginTop">5dp</dimen>
 
     <dimen name="configuracion_btSalirGoogle_marginStart">10dp</dimen>
     <dimen name="configuracion_btSalirGoogle_marginTop">250dp</dimen>

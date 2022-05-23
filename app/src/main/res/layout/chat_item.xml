@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingTop="@dimen/chat_paddingTop"
-    android:paddingBottom="@dimen/chat_paddingBottom">
+    android:paddingTop="@dimen/_15sdp"
+    android:paddingBottom="@dimen/_15sdp">
 
     <TextView
         android:id="@+id/tvName"
@@ -13,19 +13,19 @@
         android:layout_height="wrap_content"
         android:text="@string/prueba_tvName"
         android:textStyle="bold"
-        android:textColor="@color/color_primary"
+        android:textColor="@color/primary_text"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="@dimen/tvName_margin_top"/>
+        android:layout_marginTop="@dimen/_15sdp"/>
 
     <TextView
         android:id="@+id/tvDescripcion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/chat_item_tvDescripcion_marginTop"
+        android:layout_marginTop="@dimen/_5sdp"
         android:text="@string/prueba_tvDescripcion"
-        android:textColor="@color/color_primary"
+        android:textColor="@color/secondary_text"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/tvName" />
@@ -35,20 +35,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="@dimen/chat_item_guideline2_begin" />
+        app:layout_constraintGuide_begin="@dimen/_100sdp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="@dimen/chat_item_guideline3_end" />
+        app:layout_constraintGuide_end="@dimen/_100sdp" />
 
     <ImageView
         android:id="@+id/imgChat"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/chat_item_imgChat_marginTop"
+        android:layout_marginTop="@dimen/_20sdp"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -59,8 +59,8 @@
         android:id="@+id/ibStar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/chat_item_ibStar_marginTop"
-        android:minHeight="@dimen/chat_item_ibStar_minHeight"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:minHeight="@dimen/_48sdp"
         android:background="@color/color_white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
