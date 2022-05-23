@@ -5,7 +5,7 @@
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/crear_chat_layout_margin"
+    android:padding="@dimen/_25sdp"
     tools:context=".ui.foro.ChatListFragment">
 
     <ScrollView
@@ -21,13 +21,14 @@
                 android:id="@+id/tilName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/crear_chat_tilName_marginTop"
+                android:layout_marginTop="@dimen/_10sdp"
                 app:startIconDrawable="@drawable/ic_action_user">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tieName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/secondary_text"
                     android:hint="@string/tieName" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -35,23 +36,23 @@
                 android:id="@+id/tvTipo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:textColor="@color/color_primary"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:textColor="@color/primary_text"
                 android:text="@string/tvTipo" />
 
             <Spinner
                 android:id="@+id/spTipo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/_20sdp"
                 android:contentDescription="@string/spTipo"
-                android:minHeight="@dimen/crear_chat_spTipo_minHeight" />
+                android:minHeight="@dimen/_48sdp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/_20sdp"
                 android:visibility="gone"
                 app:endIconMode="password_toggle"
                 app:startIconDrawable="@drawable/ic_action_password">
@@ -68,7 +69,7 @@
                 android:id="@+id/tilConfirmPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/_20sdp"
                 android:visibility="gone"
                 app:endIconMode="password_toggle"
                 app:startIconDrawable="@drawable/ic_action_password">
@@ -85,7 +86,7 @@
                 android:id="@+id/tilDescripcion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/_20sdp"
                 app:startIconDrawable="@drawable/ic_action_description"
                 android:hint="@string/tieDescripcion"
                 android:gravity="top">
@@ -94,7 +95,8 @@
                     android:id="@+id/tieDescripcion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textMultiLine"/>
+                    android:inputType="textMultiLine"
+                    android:textColor="@color/secondary_text"/>
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
@@ -106,8 +108,8 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:contentDescription="@string/fabChat"
-        android:elevation="@dimen/fabChat_elevation"
-        android:layout_margin="@dimen/fab_margin"
+        android:elevation="@dimen/_3sdp"
+        android:layout_margin="@dimen/_5sdp"
         android:src="@drawable/ic_action_add"
         android:layout_gravity="bottom|end"
         android:focusable="true"/>
