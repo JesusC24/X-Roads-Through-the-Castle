@@ -1,9 +1,6 @@
 package com.jesusc24.xroadsthroughthecastle.ui.foro;
 
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,17 +11,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavDeepLinkBuilder;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.jesusc24.xroadsthroughthecastle.R;
-import com.jesusc24.xroadsthroughthecastle.XRTCApplication;
 import com.jesusc24.xroadsthroughthecastle.data.model.Chat;
 import com.jesusc24.xroadsthroughthecastle.databinding.FragmentCrearChatBinding;
 import com.jesusc24.xroadsthroughthecastle.ui.MainActivity;
 import com.jesusc24.xroadsthroughthecastle.utils.RellenarSpinner;
-
-import java.util.Random;
 
 /**
  * Clase que crea un nuevo Chat que se mostrará en ChatListFragment
@@ -154,26 +147,12 @@ public class ChatManagerFragment extends Fragment implements ChatManagerContract
         //Crear la notificación, pero ANTES se tiene que:
 
         //1. Crear un bundle que almacene la DEPENDENCIA
-        Bundle bundle = new Bundle();
-        bundle.putSerializable(Chat.TAG, getChat());
-        bundle.putSerializable(MainActivity.TAG, "");
+        Intent intent = new Intent("com.jesus24.xroadsthroughthecastle");
+        intent.putExtra("title", getString(R.string.title_add_chat));
+        intent.putExtra("message", message);
+        intent.putExtra(Chat.TAG, getChat());
 
-        PendingIntent pendingIntent = new NavDeepLinkBuilder(getActivity())
-                .setGraph(R.navigation.nav_graph)
-                .setDestination(R.id.messageFragment)
-                .setArguments(bundle)
-                .createPendingIntent();
-
-        //5. Crear la notificación
-        Notification.Builder builder = new Notification.Builder(getActivity(), XRTCApplication.IDCHANNEL)
-                .setSmallIcon(R.drawable.ic_add_alert)
-                .setContentTitle(getString(R.string.notification_title_add_dependency))
-                .setContentText(message)
-                .setContentIntent(pendingIntent);
-
-        //6. Añadir la notificación al Manager
-        NotificationManager notificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(new Random().nextInt(1000), builder.build());
+        getActivity().sendBroadcast(intent);
 
         NavHostFragment.findNavController(this).popBackStack();
     }

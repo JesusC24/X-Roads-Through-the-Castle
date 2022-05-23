@@ -1,5 +1,6 @@
 package com.jesusc24.xroadsthroughthecastle.ui.configuracion;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -9,9 +10,13 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.jesusc24.xroadsthroughthecastle.R;
+import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants;
+import com.jesusc24.xroadsthroughthecastle.ui.login.LoginActivity;
+import com.jesusc24.xroadsthroughthecastle.utils.PreferenceManager;
 
 public class UserFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener {
 
+    private PreferenceManager preferenceManager;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -34,6 +39,7 @@ public class UserFragment extends PreferenceFragmentCompat implements SharedPref
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
 
         Preference preference = findPreference(key);
+        preferenceManager = new PreferenceManager(getContext());
 
         if(key.equals(getString(R.string.key_languages))) {
             //Como he comprobado previamente que la preferencia que se ha modificado es la lista,
@@ -53,6 +59,11 @@ public class UserFragment extends PreferenceFragmentCompat implements SharedPref
             EditTextPreference editTextPreference = (EditTextPreference) preference;
             preference.setSummary(editTextPreference.getText());
 
+        }
+
+        if(key.equals(getString(R.string.key_user_closed_session))) {
+            preferenceManager.putBoolean(Constants.REMEMBER_USER, false);
+            startActivity(new Intent(getContext(), LoginActivity.class));
         }
     }
 }

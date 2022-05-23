@@ -38,8 +38,8 @@ public abstract class XRTCDatabase extends RoomDatabase {
                             .addCallback(new Callback() {
                                 @Override
                                 public void onCreate(@NonNull SupportSQLiteDatabase db) {
-                                    super.onCreate(db);
                                     databaseWriteExecutor.execute(() -> prepopulate(context));
+                                    super.onCreate(db);
                                 }
                             })
                             .build();

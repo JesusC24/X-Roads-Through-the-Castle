@@ -1,7 +1,10 @@
 package com.jesusc24.xroadsthroughthecastle.data.model
 
-import java.sql.Timestamp
-
 data class Message(var texto: String,
-                   var usuario: String,
-                   var fecha_envio: Timestamp)
+                   var envioId: String,
+                   var chatId: String,
+                   var fecha_envio: String)
+
+
+
+

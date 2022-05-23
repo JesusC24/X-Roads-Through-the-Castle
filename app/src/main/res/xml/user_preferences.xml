@@ -18,16 +18,15 @@
         app:summary="@string/summary_user_change_password"/>
 
     <EditTextPreference
-        android:key="@string/key_user_closed_session"
-        android:selectAllOnFocus="true"
-        android:singleLine="true"
-        android:title="@string/user_closed_session"
-        app:summary="@string/summary_user_closed_session"/>
-
-    <EditTextPreference
         android:key="@string/key_user_delete"
         android:selectAllOnFocus="true"
         android:singleLine="true"
         android:title="@string/user_delete"
         app:summary="@string/summary_user_delete"/>
+
+    <Preference
+        android:key="@string/key_user_closed_session"
+        android:selectAllOnFocus="true"
+        android:title="@string/user_closed_session"
+        app:summary="@string/summary_user_closed_session"/>
 </PreferenceScreen>

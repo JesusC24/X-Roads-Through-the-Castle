@@ -3,6 +3,7 @@
     package="com.jesusc24.xroadsthroughthecastle">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".XRTCApplication"
@@ -13,18 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.XRoadsThroughTheCastle">
         <activity
-            android:name=".ui.MainActivity"
-            android:exported="true"
-            android:theme="@style/Theme.XRoadsThroughTheCastle">
-        </activity>
-        <activity
             android:name=".ui.splash.SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.XRoadsThroughTheCastle.NoActionBar">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".ui.login.LoginActivity"
@@ -34,6 +30,18 @@
             android:name=".ui.singUp.SignUpActivity"
             android:exported="false"
             android:theme="@style/Theme.XRoadsThroughTheCastle.NoActionBar"/>
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.XRoadsThroughTheCastle">
+        </activity>
+        <receiver android:name=".EjemploIntentPersonalizado"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.jesus24.xroadsthroughthecastle"/>
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>

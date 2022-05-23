@@ -4,7 +4,7 @@
     <group android:checkableBehavior="single">
     <item android:title="@string/action_foro"
         android:id="@+id/chatListFragment"
-        android:icon="@drawable/ic_icono_foro"/><!--TODO arreglar los iconos-->
+        android:icon="@drawable/ic_icono_foro"/>
 
     <item android:title="@string/action_bug"
         android:id="@+id/bugListFragment"

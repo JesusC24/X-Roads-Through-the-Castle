@@ -7,7 +7,6 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.jesusc24.xroadsthroughthecastle.data.model.Bug;
-
 import java.util.List;
 
 @Dao

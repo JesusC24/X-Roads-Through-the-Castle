@@ -1,8 +1,6 @@
 package com.jesusc24.xroadsthroughthecastle.ui;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,8 +12,12 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.jesusc24.xroadsthroughthecastle.R;
-import com.jesusc24.xroadsthroughthecastle.data.model.User;
+import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants;
 import com.jesusc24.xroadsthroughthecastle.databinding.ActivityMainBinding;
+import com.jesusc24.xroadsthroughthecastle.utils.CommonUtils;
+import com.jesusc24.xroadsthroughthecastle.utils.PreferenceManager;
+import com.makeramen.roundedimageview.RoundedImageView;
+import com.mikhaellopez.circularimageview.CircularImageView;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -23,11 +25,12 @@ import java.util.Set;
 /**
  * Activity que contendrá a los fragments de la aplicación
  */
-public class MainActivity extends AppCompatActivity implements PreferenceFragmentCompat.OnPreferenceStartFragmentCallback, SharedPreferences.OnSharedPreferenceChangeListener {
+public class MainActivity extends AppCompatActivity implements PreferenceFragmentCompat.OnPreferenceStartFragmentCallback {
 
     private ActivityMainBinding binding;
     private NavController navController;
     private AppBarConfiguration appBarConfiguration;
+    private PreferenceManager preferenceManager;
     Toolbar toolbar;
 
     public final static String TAG = "MainActivity";
@@ -38,24 +41,19 @@ public class MainActivity extends AppCompatActivity implements PreferenceFragmen
 
         inicializarVista();
 
-        //Personalizar navitagtion drawer
-        //OPCIÓN 2: Hay que comentar estas dos lineas para que el icono de la flecha no acuta como HOME
-        //getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_menu);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(this);
-
-        String email = PreferenceManager.getDefaultSharedPreferences(this).getString(User.EMAIL, "");
-        String user;
-
-        if(!(sharedPreferences.getString(getString(R.string.key_user_name), "").equals(""))) {
-            user = sharedPreferences.getString(getString(R.string.key_user_name), "");
-        } else {
-            user = PreferenceManager.getDefaultSharedPreferences(this).getString(User.EMAIL, "");
-        }
+        preferenceManager = new PreferenceManager(getApplicationContext());
+        String email = preferenceManager.getString(Constants.KEY_EMAIL);
+        String user = preferenceManager.getString(Constants.KEY_NAME);
+        String imagen = preferenceManager.getString(Constants.KEY_IMAGE);
 
         ((TextView)binding.navigationView.getHeaderView(0).findViewById(R.id.tvUser)).setText(user);
         ((TextView)binding.navigationView.getHeaderView(0).findViewById(R.id.tvEmail)).setText(email);
+
+        if(imagen != null) {
+            ((RoundedImageView)(binding.navigationView.getHeaderView(0).findViewById(R.id.imgUser))).setImageBitmap(CommonUtils.decodeImage(imagen));
+        } else {
+            ((RoundedImageView)(binding.navigationView.getHeaderView(0).findViewById(R.id.imgUser))).setImageResource(R.drawable.img_logo);
+        }
 
         //Inicializar el controlador de navegación de la aplicación
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -126,11 +124,5 @@ public class MainActivity extends AppCompatActivity implements PreferenceFragmen
         setContentView(binding.getRoot());
 
         toolbar = binding.include.toolbar;
-    }
-
-    //TODO cambiar el usuario
-    @Override
-    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
-
     }
 }

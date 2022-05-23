@@ -3,6 +3,7 @@ package com.jesusc24.xroadsthroughthecastle;
 import android.app.Application;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
@@ -22,6 +23,9 @@ public class XRTCApplication extends Application {
         //Se crea la base de datos en la primera ejecución de la aplicación
         XRTCDatabase.create(this);
 
+        EjemploIntentPersonalizado ejemploIntentPersonalizado = new EjemploIntentPersonalizado();
+        IntentFilter intentFilter = new IntentFilter("com.jesus24.xroadsthroughthecastle");
+        registerReceiver(ejemploIntentPersonalizado, intentFilter);
     }
 
 

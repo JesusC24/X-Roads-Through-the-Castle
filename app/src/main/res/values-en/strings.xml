@@ -116,4 +116,6 @@
     <string name="title_add_chat">Add chat</string>
     <string name="title_messages">Messages</string>
     <string name="action_foro">Forum</string>
+    <string name="tvTituloLogin">Login</string>
+    <string name="btSingIn">Login</string>
 </resources>

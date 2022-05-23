@@ -2,96 +2,96 @@ package com.jesusc24.xroadsthroughthecastle.data.repository;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.util.Log;
 
-import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModel;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants;
 import com.jesusc24.xroadsthroughthecastle.data.model.User;
-import com.jesusc24.xroadsthroughthecastle.ui.base.Event;
-import com.jesusc24.xroadsthroughthecastle.ui.base.OnRepositoryCallback;
-import com.jesusc24.xroadsthroughthecastle.ui.login.LoginContract;
-import com.jesusc24.xroadsthroughthecastle.ui.singUp.SignUpContract;
+import com.jesusc24.xroadsthroughthecastle.ui.login.LoginActivity;
+import com.jesusc24.xroadsthroughthecastle.ui.login.LoginViewModel;
+import com.jesusc24.xroadsthroughthecastle.ui.singUp.SignUpActivity;
+import com.jesusc24.xroadsthroughthecastle.ui.singUp.SignUpViewModel;
+import com.jesusc24.xroadsthroughthecastle.utils.PreferenceManager;
 
-import org.greenrobot.eventbus.EventBus;
+import java.util.HashMap;
 
-public class UserRepository implements SignUpContract.Repository, LoginContract.Repository{
+public class UserRepository {
 
-    private static final String  TAG = UserRepository.class.getName(); //Imprime el nombre de la clase
+    private static final String TAG = UserRepository.class.getName(); //Imprime el nombre de la clase
     private static final int GOOGLE_SING_IN = 100;
-
+    private static PreferenceManager preferenceManager;
     private static UserRepository instance;
-    private OnRepositoryCallback callback;
+    private static ViewModel callback;
 
-    public static UserRepository getInstance(OnRepositoryCallback listener) {
-        if(instance==null) {
+    public static UserRepository getInstance(ViewModel activity) {
+        if(instance == null) {
             instance = new UserRepository();
         }
-        instance.callback = listener;
+
+        callback = activity;
         return instance;
     }
 
-    @Override
     public void login(User user) {
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        mAuth.signInWithEmailAndPassword(user.getEmail(), user.getPassword())
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "createUserWithEmail:success");
-                            callback.onSuccess("usuario correcto", user);
+        FirebaseFirestore database = FirebaseFirestore.getInstance();
+        preferenceManager = new PreferenceManager(LoginActivity.context);
 
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            //callback.onFailure("Error autenticación" + task.getException().toString());
-                            //Se crea un evento mediante EventBus
-                            Event loginEvent = new Event();
-                            loginEvent.setEventType(Event.onLoginError);
-                            loginEvent.setMessage(task.getException().toString());
-                            //Publica un evento mediante el método post()
-                            EventBus.getDefault().post(loginEvent);
-                        }
+        database.collection(Constants.KEY_COLLECTION_USERS)
+                .whereEqualTo(Constants.KEY_EMAIL, user.getEmail())
+                .whereEqualTo(Constants.KEY_PASSWORD, user.getPassword())
+                .get()
+
+                .addOnCompleteListener(task -> {
+                    if(task.isSuccessful() && task.getResult() != null && task.getResult().getDocuments().size() > 0) {
+                        DocumentSnapshot documentSnapshot = task.getResult().getDocuments().get(0);
+                        preferenceManager.putString(Constants.KEY_USER_ID, documentSnapshot.getId());
+                        preferenceManager.putString(Constants.KEY_NAME, documentSnapshot.getString(Constants.KEY_NAME));
+                        preferenceManager.putString(Constants.KEY_IMAGE, documentSnapshot.getString(Constants.KEY_IMAGE));
+                        preferenceManager.putString(Constants.KEY_EMAIL, documentSnapshot.getString(Constants.KEY_EMAIL));
+                        ((LoginViewModel)callback).onSuccess();
+                    } else {
+                        ((LoginViewModel)callback).onFailure();
                     }
                 });
+
     }
 
-    @Override
+
     public void signUp(User user) {
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        mAuth.createUserWithEmailAndPassword(user.getEmail(), user.getPassword())
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Log.d(TAG, "createUserWithEmail:success");
-                            callback.onSuccess("usuario creado", user);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            //Se crea un evento mediante EventBus
-                            Event loginEvent = new Event();
-                            loginEvent.setEventType(Event.onSingUpError);
-                            loginEvent.setMessage(task.getException().toString());
-                            //Publica un evento mediante el método post()
-                            EventBus.getDefault().post(loginEvent);
-                        }
-                    }
-                });
+        FirebaseFirestore database = FirebaseFirestore.getInstance();
+        HashMap<String, Object> newUser = new HashMap<>();
+        newUser.put(Constants.KEY_NAME, user.getName());
+        newUser.put(Constants.KEY_EMAIL, user.getEmail());
+        newUser.put(Constants.KEY_PASSWORD, user.getPassword());
+        newUser.put(Constants.KEY_IMAGE, user.getImage());
+
+        preferenceManager = new PreferenceManager(SignUpActivity.context);
+
+        database.collection(Constants.KEY_COLLECTION_USERS)
+                .add(newUser)
+
+                .addOnSuccessListener(documentReference -> {
+                    preferenceManager.putString(Constants.KEY_USER_ID, documentReference.getId());
+                    preferenceManager.putString(Constants.KEY_NAME, user.getName());
+                    preferenceManager.putString(Constants.KEY_IMAGE, user.getImage());
+                    preferenceManager.putString(Constants.KEY_EMAIL, user.getEmail());
+                    ((SignUpViewModel)callback).onSuccess();
+                })
+
+                .addOnFailureListener(exception -> ((SignUpViewModel)callback).onFailure());
     }
 
-    @Override
+
     public void firebaseAuthWithGoogle(String idToken, Activity activity) {
         GoogleSignInOptions googleConf = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(idToken)
@@ -103,7 +103,7 @@ public class UserRepository implements SignUpContract.Repository, LoginContract.
         activity.startActivityForResult(googleCliente.getSignInIntent(), GOOGLE_SING_IN);
     }
 
-    @Override
+
     public void resultGoogle(int requestCode, int resultCode, Intent data) {
         if(requestCode == GOOGLE_SING_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
@@ -116,14 +116,13 @@ public class UserRepository implements SignUpContract.Repository, LoginContract.
                 AuthCredential credential = GoogleAuthProvider.getCredential(acount.getIdToken(), null);
                 FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener(task1 -> {
                     if(task1.isSuccessful()) {
-                        callback.onSuccess("Logeado con exito", user);
+                        //callback.onSuccess("Logeado con exito", user);
                     }
                 });
             }
         }
     }
 
-    @Override
     public void firebaseAuthWithFacebook(String idToken) {
         //TODO implementar pra que el usuario pueda inicar sesión en Facebook
     }

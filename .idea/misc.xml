@@ -8,6 +8,10 @@
         <entry key="app/src/main/res/drawable-mdpi/shape_text_input_layout.xml" value="0.290625" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.38385416666666666" />
         <entry key="app/src/main/res/drawable-xxxhdpi/selector_color_bottom_navigation.xml" value="0.255" />
+        <entry key="app/src/main/res/drawable/background_image.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/drawable/background_input.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/drawable/background_received_message.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/drawable/background_sent_message.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/drawable/ic_action_add.xml" value="0.1855" />
         <entry key="app/src/main/res/drawable/ic_action_bug_denied.xml" value="0.1855" />
         <entry key="app/src/main/res/drawable/ic_action_bug_passed.xml" value="0.1855" />
@@ -38,8 +42,10 @@
         <entry key="app/src/main/res/layout/activity_content.xml" value="0.3614583333333333" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.20380434782608695" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.3170289855072464" />
         <entry key="app/src/main/res/layout/activity_sing_up.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/background_send_message.xml" value="0.32065217391304346" />
         <entry key="app/src/main/res/layout/bug_item.xml" value="0.3170289855072464" />
         <entry key="app/src/main/res/layout/chat_item.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_about_us.xml" value="0.20380434782608695" />
@@ -55,14 +61,18 @@
         <entry key="app/src/main/res/layout/fragment_crear_chat.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.29483695652173914" />
         <entry key="app/src/main/res/layout/fragment_informar_bug.xml" value="0.20625" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.32065217391304346" />
         <entry key="app/src/main/res/layout/fragment_message.xml" value="0.3614583333333333" />
         <entry key="app/src/main/res/layout/fragment_modificar_user.xml" value="0.2755208333333333" />
         <entry key="app/src/main/res/layout/header_nav.xml" value="0.3614583333333333" />
-        <entry key="app/src/main/res/layout/layout_progressbar.xml" value="0.19635416666666666" />
+        <entry key="app/src/main/res/layout/item_container_received_message.xml" value="0.32065217391304346" />
+        <entry key="app/src/main/res/layout/item_container_sent_message.xml" value="0.32065217391304346" />
+        <entry key="app/src/main/res/layout/layout_progressbar.xml" value="0.375" />
         <entry key="app/src/main/res/layout/layout_progressdialog.xml" value="0.27219202898550726" />
         <entry key="app/src/main/res/layout/password_dialog.xml" value="0.3614583333333333" />
         <entry key="app/src/main/res/menu/activity_menu.xml" value="0.3614583333333333" />
         <entry key="app/src/main/res/menu/bug_menu.xml" value="0.3609375" />
+        <entry key="app/src/main/res/menu/edit_menu.xml" value="0.35833333333333334" />
         <entry key="app/src/main/res/menu/menu_bug_fragment.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/menu/menu_chat_fragment.xml" value="0.18854166666666666" />
         <entry key="app/src/main/res/menu/menu_message_fragment.xml" value="0.24074074074074073" />

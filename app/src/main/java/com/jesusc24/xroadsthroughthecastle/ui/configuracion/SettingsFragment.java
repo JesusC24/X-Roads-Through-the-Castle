@@ -45,6 +45,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         Preference preference = findPreference(key);
+        //TODO error al activar o destactivar las notificaciones
         //Voy a buscar si la preferencia es mi lista ringtone
         if(key.equals(getString(R.string.key_ringtone_chat))) {
             //Como he comprobado previamente que la preferencia que se ha modificado es la lista,

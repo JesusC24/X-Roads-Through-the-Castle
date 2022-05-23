@@ -219,7 +219,6 @@ public class ChatListFragment extends Fragment implements ChatListContract.View,
 
     @Override
     public void onOpenMessages(Chat chat) {
-
         if(chat.getTipo().equals(Chat.PRIVADO)) {
             Bundle bundle = new Bundle();
             bundle.putString(PasswordDialogFragment.TITLE, getString(R.string.putPasswoord));

@@ -5,7 +5,6 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.io.Serializable
 
-//TODO ordenar por estado
 /**
  * POJO Bug que se utiliza en la entidad bug
  */

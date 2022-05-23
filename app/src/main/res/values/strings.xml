@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">X Roads Through the Castle</string>
-    <string name="tvTituloLogin" translatable="false">Login</string>
+    <string name="tvTituloLogin">Iniciar sesión</string>
     <string name="tieUserHint">Nombre de usuario</string>
     <string name="tiePasswordHint">Introduzca la contraseña</string>
     <string name="chxRemember">Recuérdame</string>
     <string name="btSingUp">Registrar</string>
-    <string name="btSingIn" translatable="false">Login</string>
+    <string name="btSingIn">Iniciar sesión</string>
     <string name="tvOtherLogin">Iniciar sesión con otras plataformas</string>
     <string name="tvTitleSingUp">Registrar</string>
 
@@ -187,5 +187,9 @@
     <string name="key_order_favorito_chat">order_favorito_chat</string>
     <string name="summary_order_favorito_chat">Ordena por favoritos la lista de Chats</string>
     <string name="title_order_favorito_chat">Ordenar por favoritos</string>
+    <string name="anadir_imagen">Añadir imagen</string>
+
+    <string name="on_sucess_login">Se ha iniciado sesión</string>
+    <string name="err_auth">Error de autenticación</string>
 
 </resources>

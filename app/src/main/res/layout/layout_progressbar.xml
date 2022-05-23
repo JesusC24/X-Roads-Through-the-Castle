@@ -4,14 +4,13 @@
     android:layout_height="match_parent"
     android:id="@+id/llProgressBar"
     android:gravity="center"
-    android:visibility="gone">
-
+    android:visibility="visible">
 
     <ProgressBar
         android:id="@+id/progressBar"
         android:indeterminate="true"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_30sdp"
         android:layout_weight="1" />
 </LinearLayout>

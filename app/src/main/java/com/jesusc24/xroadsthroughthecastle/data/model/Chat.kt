@@ -2,6 +2,7 @@ package com.jesusc24.xroadsthroughthecastle.data.model
 
 import androidx.annotation.NonNull
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import java.io.Serializable
 
@@ -10,7 +11,8 @@ data class Chat(@NonNull var nombre: String? = null,
                 @NonNull var tipo: String? = null,
                 var password: String? = null,
                 var descripcion: String? = null,
-                @PrimaryKey(autoGenerate = true) var id: Int? = null,
+                @Ignore var id: String? = null,
+                @PrimaryKey(autoGenerate = true) var idSQL: Int? = null,
                 @NonNull var favorito: Boolean = false) : Serializable, Comparable<Chat> {
 
     var confirmPassword: String? = null
