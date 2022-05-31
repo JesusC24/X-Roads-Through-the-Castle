@@ -118,7 +118,7 @@
     <fragment
         android:id="@+id/guiaFragment"
         android:name="com.jesusc24.xroadsthroughthecastle.ui.guia.GuiaFragment"
-        android:label="GuiaFragment" />
+        android:label="@string/action_guia" />
     <fragment
         android:id="@+id/bugFragment2"
         android:name="com.jesusc24.xroadsthroughthecastle.ui.configuracion.BugFragment"

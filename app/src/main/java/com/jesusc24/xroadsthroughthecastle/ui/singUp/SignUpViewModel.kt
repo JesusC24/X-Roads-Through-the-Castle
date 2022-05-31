@@ -50,7 +50,6 @@ class SignUpViewModel : ViewModel(), OnRepositoryCallback {
         }
     }
 
-
     //region Métodos callback del repositorio
     override fun onSuccess() {
         state.postValue(State.Success(R.string.on_sucess_login))
