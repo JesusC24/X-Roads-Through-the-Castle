@@ -93,7 +93,7 @@ public class MessageFragment extends Fragment implements MessageContract.View {
                 binding.tieSendMessage.getText().toString(),
                 preferenceManager.getString(Constants.KEY_USER_ID),
                 receiverChat.getId().toString(),
-                getReadableDateTime(new Date())
+                new Date()
         );
 
         return message;
@@ -169,7 +169,7 @@ public class MessageFragment extends Fragment implements MessageContract.View {
                             documentChange.getDocument().getString(Constants.KEY_MESSAGE),
                             documentChange.getDocument().getString(Constants.KEY_SENDER_ID),
                             documentChange.getDocument().getString(Constants.KEY_FORO_ID),
-                            documentChange.getDocument().getString(Constants.KEY_TIMESTAMP));
+                            documentChange.getDocument().getDate(Constants.KEY_TIMESTAMP));
 
                     messages.add(message);
 

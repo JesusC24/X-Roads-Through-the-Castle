@@ -70,11 +70,7 @@ public class ChatRepository implements ChatListContract.Repository, ChatManagerC
     @Override
     public void undo(Chat chat, OnRepositoryListCallback callback) {
         FirebaseFirestore database = FirebaseFirestore.getInstance();
-        HashMap<String, Object> newChat = new HashMap<>();
-        newChat.put(Constants.KEY_NAME, chat.getNombre());
-        newChat.put(Constants.KEY_TYPE, chat.getTipo());
-        newChat.put(Constants.KEY_PASSWORD, chat.getPassword());
-        newChat.put(Constants.KEY_DESCRIPTION, chat.getDescripcion());
+        HashMap<String, Object> newChat = createHashMap(chat);
 
         database.collection(Constants.KEY_COLLECTION_FORO)
                 .add(newChat)
@@ -99,11 +95,7 @@ public class ChatRepository implements ChatListContract.Repository, ChatManagerC
     @Override
     public void add(Chat chat, OnRepositoryManageCallback callback) {
         FirebaseFirestore database = FirebaseFirestore.getInstance();
-        HashMap<String, Object> newChat = new HashMap<>();
-        newChat.put(Constants.KEY_NAME, chat.getNombre());
-        newChat.put(Constants.KEY_TYPE, chat.getTipo());
-        newChat.put(Constants.KEY_PASSWORD, chat.getPassword());
-        newChat.put(Constants.KEY_DESCRIPTION, chat.getDescripcion());
+        HashMap<String, Object> newChat = createHashMap(chat);
 
         database.collection(Constants.KEY_COLLECTION_FORO)
                 .add(newChat)
@@ -119,11 +111,7 @@ public class ChatRepository implements ChatListContract.Repository, ChatManagerC
     @Override
     public void edit(Chat chat, OnRepositoryManageCallback callback) {
         FirebaseFirestore database = FirebaseFirestore.getInstance();
-        HashMap<String, Object> newChat = new HashMap<>();
-        newChat.put(Constants.KEY_NAME, chat.getNombre());
-        newChat.put(Constants.KEY_TYPE, chat.getTipo());
-        newChat.put(Constants.KEY_PASSWORD, chat.getPassword());
-        newChat.put(Constants.KEY_DESCRIPTION, chat.getDescripcion());
+        HashMap<String, Object> newChat = createHashMap(chat);
 
         database.collection(Constants.KEY_COLLECTION_FORO)
                 .document(chat.getId())
@@ -146,5 +134,14 @@ public class ChatRepository implements ChatListContract.Repository, ChatManagerC
         }
 
         return chatStar;
+    }
+
+    private static HashMap<String, Object> createHashMap(Chat chat) {
+        HashMap<String, Object> newChat = new HashMap<>();
+        newChat.put(Constants.KEY_NAME, chat.getNombre());
+        newChat.put(Constants.KEY_TYPE, chat.getTipo());
+        newChat.put(Constants.KEY_PASSWORD, chat.getPassword());
+        newChat.put(Constants.KEY_DESCRIPTION, chat.getDescripcion());
+        return newChat;
     }
 }

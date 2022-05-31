@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:id="@+id/llProgressBar"
     android:gravity="center"
-    android:visibility="visible">
+    android:visibility="invisible">
 
     <ProgressBar
         android:id="@+id/progressBar"

@@ -131,10 +131,11 @@ public class BugManagerFragment extends Fragment implements BugManagerContract.V
         bug.setGravedad(binding.spGravedad.getSelectedItem().toString());
         bug.setDispositivo(binding.spDispositivo.getSelectedItem().toString());
         bug.setSo(binding.spSO.getSelectedItem().toString());
-        bug.setEstado(binding.tvEstado.getText().toString());
+        bug.setEstado(ConstBugs.Estado.ENVIADO);
 
         if(BugManagerFragmentArgs.fromBundle(getArguments()).getBug()!=null){
             bug.setId(BugManagerFragmentArgs.fromBundle(getArguments()).getBug().getId());
+            bug.setEstado(BugManagerFragmentArgs.fromBundle(getArguments()).getBug().getEstado());
         }
 
         return bug;

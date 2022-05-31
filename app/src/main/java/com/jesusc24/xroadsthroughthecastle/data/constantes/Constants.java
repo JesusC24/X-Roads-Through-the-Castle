@@ -18,4 +18,9 @@ public class Constants {
     public static final String KEY_TIMESTAMP = "timestamp";
     public static final String KEY_DESCRIPTION = "description";
     public static final String KEY_TYPE = "type";
+    public static final String KEY_COLLECTION_BUGS = "bugs";
+    public static final String KEY_DISPOSITIVO = "dispositivo";
+    public static final String KEY_ESTADO = "estado";
+    public static final String KEY_GRAVEDAD = "gravedad";
+    public static final String KEY_SO = "so";
 }

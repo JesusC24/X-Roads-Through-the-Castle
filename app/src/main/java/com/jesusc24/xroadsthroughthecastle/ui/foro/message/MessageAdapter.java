@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.jesusc24.xroadsthroughthecastle.data.model.Message;
 import com.jesusc24.xroadsthroughthecastle.databinding.ItemContainerReceivedMessageBinding;
 import com.jesusc24.xroadsthroughthecastle.databinding.ItemContainerSentMessageBinding;
+import com.jesusc24.xroadsthroughthecastle.utils.CommonUtils;
 
 import java.util.List;
 
@@ -81,7 +82,7 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         void setData(Message message) {
             binding.textMessage.setText(message.getTexto());
-            binding.textDateTime.setText(message.getFecha_envio());
+            binding.textDateTime.setText(CommonUtils.getReadableDateTime(message.getFecha_envio()));
         }
     }
 
@@ -95,8 +96,9 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
 
         void setData(Message message) {
+            //binding.textUser.setText(message.getEnvioId());
             binding.textMessage.setText(message.getTexto());
-            binding.textDateTime.setText(message.getFecha_envio());
+            binding.textDateTime.setText(CommonUtils.getReadableDateTime(message.getFecha_envio()));
         }
 
     }

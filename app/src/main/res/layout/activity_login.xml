@@ -98,7 +98,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/_10sdp"
-            android:fontFamily="@font/noto_sans"
             android:text="@string/btSingIn"
             android:onClick="@{() -> viewmodel.validateCredentials()}"/>
 
@@ -108,7 +107,6 @@
             android:id="@+id/include_progressbar"
             layout="@layout/layout_progressbar"
             android:layout_width="match_parent"
-            android:visibility="invisible"
             android:layout_weight="1"
             android:layout_height="0dp"/>
 

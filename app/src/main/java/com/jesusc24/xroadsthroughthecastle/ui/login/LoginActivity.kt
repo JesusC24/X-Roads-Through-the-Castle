@@ -41,12 +41,20 @@ class LoginActivity : AppCompatActivity() {
 
         //Creamos el observador
         loginViewModel.state.observe(this) {
+            resetError()
             when (it) {
+                is State.ResetError -> resetError()
                 is State.EmailError -> setEmailError(it.message)
                 is State.PasswordError -> setPasswordError(it.message)
-                is State.AuthError -> setToast(it.message)
-                is State.Loading -> setProgressBar(it.process)
-                is State.Success -> startMainActivity()
+                is State.AuthError ->  {
+                    setProgressBar(false)
+                    setToast(it.message)
+                }
+                is State.Loading ->  setProgressBar(it.process)
+                is State.Success ->  {
+                    setProgressBar(false)
+                    startMainActivity()
+                }
             }
         }
     }
@@ -66,13 +74,14 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setProgressBar(process: Boolean) {
         if(process) {
-            binding.includeProgressbar.progressBar.visibility = View.VISIBLE
+            binding.includeProgressbar.llProgressBar.visibility = View.VISIBLE
         } else {
-            binding.includeProgressbar.progressBar.visibility = View.INVISIBLE
+            binding.includeProgressbar.llProgressBar.visibility  = View.INVISIBLE
         }
     }
 
     private fun startSingUpActivity() {
+
         startActivity(Intent(this, SignUpActivity::class.java))
     }
 
@@ -82,5 +91,10 @@ class LoginActivity : AppCompatActivity() {
         }
 
         startActivity(Intent(this, MainActivity::class.java))
+    }
+
+    private fun resetError() {
+        binding.tilPassword.error = ""
+        binding.tilEmail.error = ""
     }
 }
