@@ -12,13 +12,11 @@ sealed class State {
     data class EmailError(val message: Int) : State()
     data class PasswordError(val message: Int) : State()
     data class Loading(val process : Boolean) : State()
-    data class ResetError(val process: Boolean) : State()
 
     //Estos dos estados se definen después de la respuesta del reposiorio
     //se controlan a través de la interfaz OnRepositoryCallback
     data class AuthError(val message: Int) : State()
     data class Success(val message: Int) : State()
-
 }
 
 class LoginViewModel : ViewModel(), OnRepositoryCallback {
@@ -40,15 +38,18 @@ class LoginViewModel : ViewModel(), OnRepositoryCallback {
         }
     }
 
+    fun validateGoogle() {
+        state.postValue(State.AuthError(R.string.err_noDisponible))
+        //UserRepository.getInstance(this).firebaseAuthWithGoogle(R.string.)
+    }
+
     //region Métodos callback del repositorio
     override fun onSuccess() {
         state.postValue(State.Success(R.string.on_sucess_login))
     }
 
-    override fun onFailure() {
-        state.postValue(State.AuthError(R.string.err_auth))
+    override fun onFailure(message : Int) {
+        state.postValue(State.AuthError(message))
     }
     //endregion
-
-
 }

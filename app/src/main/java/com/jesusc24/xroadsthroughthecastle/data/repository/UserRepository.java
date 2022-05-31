@@ -1,20 +1,10 @@
 package com.jesusc24.xroadsthroughthecastle.data.repository;
 
-import android.app.Activity;
-import android.content.Intent;
-
 import androidx.lifecycle.ViewModel;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.jesusc24.xroadsthroughthecastle.R;
 import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants;
 import com.jesusc24.xroadsthroughthecastle.data.model.User;
 import com.jesusc24.xroadsthroughthecastle.ui.login.LoginActivity;
@@ -60,7 +50,7 @@ public class UserRepository {
                         preferenceManager.putString(Constants.KEY_EMAIL, documentSnapshot.getString(Constants.KEY_EMAIL));
                         ((LoginViewModel)callback).onSuccess();
                     } else {
-                        ((LoginViewModel)callback).onFailure();
+                        ((LoginViewModel)callback).onFailure(R.string.err_auth);
                     }
                 });
 
@@ -78,21 +68,35 @@ public class UserRepository {
         preferenceManager = new PreferenceManager(SignUpActivity.context);
 
         database.collection(Constants.KEY_COLLECTION_USERS)
-                .add(newUser)
+                .whereEqualTo(Constants.KEY_EMAIL, user.getEmail())
+                .get()
+                .addOnCompleteListener(task -> {
+                    if(task.isSuccessful()) {
+                        if(task.getResult().isEmpty()) {
+                            database.collection(Constants.KEY_COLLECTION_USERS)
+                                    .add(newUser)
 
-                .addOnSuccessListener(documentReference -> {
-                    preferenceManager.putString(Constants.KEY_USER_ID, documentReference.getId());
-                    preferenceManager.putString(Constants.KEY_NAME, user.getName());
-                    preferenceManager.putString(Constants.KEY_IMAGE, user.getImage());
-                    preferenceManager.putString(Constants.KEY_EMAIL, user.getEmail());
-                    ((SignUpViewModel)callback).onSuccess();
+                                    .addOnSuccessListener(documentReference -> {
+                                        preferenceManager.putString(Constants.KEY_USER_ID, documentReference.getId());
+                                        preferenceManager.putString(Constants.KEY_NAME, user.getName());
+                                        preferenceManager.putString(Constants.KEY_IMAGE, user.getImage());
+                                        preferenceManager.putString(Constants.KEY_EMAIL, user.getEmail());
+                                        ((SignUpViewModel)callback).onSuccess();
+                                    })
+
+                                    .addOnFailureListener(exception -> ((SignUpViewModel)callback).onFailure(R.string.err_auth));
+                        } else {
+                            ((SignUpViewModel)callback).onFailure(R.string.err_emailRepeat);
+                        }
+                    }
                 })
 
-                .addOnFailureListener(exception -> ((SignUpViewModel)callback).onFailure());
+                .addOnFailureListener(exception -> ((SignUpViewModel)callback).onFailure(R.string.err_auth));
+
     }
 
 
-    public void firebaseAuthWithGoogle(String idToken, Activity activity) {
+    /*public void firebaseAuthWithGoogle(String idToken, Activity activity) {
         GoogleSignInOptions googleConf = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(idToken)
                 .requestEmail()
@@ -121,13 +125,5 @@ public class UserRepository {
                 });
             }
         }
-    }
-
-    public void firebaseAuthWithFacebook(String idToken) {
-        //TODO implementar pra que el usuario pueda inicar sesión en Facebook
-    }
-
-
-
-
+    }*/
 }

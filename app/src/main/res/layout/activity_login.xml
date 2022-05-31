@@ -133,16 +133,9 @@
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 app:srcCompat="@drawable/icono_google"
-                android:contentDescription="@string/btGoogle" />
+                android:contentDescription="@string/btGoogle"
+                android:onClick="@{() -> viewmodel.validateGoogle()}"/>
 
-            <ImageButton
-                android:id="@+id/btFacebook"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@android:color/transparent"
-                app:srcCompat="@drawable/icono_facebook"
-                android:contentDescription="@string/btFacebook" />
         </LinearLayout>
     </LinearLayout>
 </layout>

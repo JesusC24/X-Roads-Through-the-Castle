@@ -18,7 +18,7 @@ public class MessageInteractor implements OnRepositoryCallback {
     }
 
     @Override
-    public void onFailure() {
+    public void onFailure(int message) {
 
     }
 
@@ -26,4 +26,6 @@ public class MessageInteractor implements OnRepositoryCallback {
         MessageRepository.getInstance().sendMessage(message);
         listener.clean();
     }
+
+
 }

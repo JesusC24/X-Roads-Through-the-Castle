@@ -28,12 +28,10 @@ class SignUpViewModel : ViewModel(), OnRepositoryCallback {
     val email = MutableLiveData<String>()
     val password = MutableLiveData<String>()
     val confirmPassword = MutableLiveData<String>()
-    val result = MutableLiveData<Boolean>()
     var state = MutableLiveData<State>()
 
 
     fun validateCredentials() {
-        state.postValue(State.Loading(true))
 
         val imagen = SignUpActivity.encodedImage
 
@@ -45,21 +43,21 @@ class SignUpViewModel : ViewModel(), OnRepositoryCallback {
             !(CommonUtils.isPasswordValid(password.value)) -> state.postValue(State.PasswordError(R.string.errPasswordIncorrect))
             confirmPassword.value == null -> state.postValue(State.ConfirmPasswordError(R.string.errConfirmPasswordEmpty))
             !(password.value.equals(confirmPassword.value)) -> state.postValue(State.ConfirmPasswordError(R.string.errConfirmPassword))
-            else -> UserRepository.getInstance(this).signUp(User(email.value.toString(), password.value.toString(), name.value.toString(), imagen))
-
+            else -> {
+                state.postValue(State.Loading(true))
+                UserRepository.getInstance(this).signUp(User(email.value.toString(), password.value.toString(), name.value.toString(), imagen))
+            }
         }
     }
 
 
     //region Métodos callback del repositorio
     override fun onSuccess() {
-        state.postValue(State.Loading(false))
         state.postValue(State.Success(R.string.on_sucess_login))
     }
 
-    override fun onFailure() {
-        state.postValue(State.Loading(false))
-        state.postValue(State.AuthError(R.string.err_auth))
+    override fun onFailure(message : Int) {
+        state.postValue(State.AuthError(message))
     }
     //endregion
 

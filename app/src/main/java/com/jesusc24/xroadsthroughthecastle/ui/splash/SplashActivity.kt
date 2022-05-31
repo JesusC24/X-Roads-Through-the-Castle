@@ -35,7 +35,6 @@ class SplashActivity : AppCompatActivity() {
         }
 
         Handler(Looper.getMainLooper()).postDelayed(r, WAIT_TIME)
-
     }
 
     private fun startLogin() {

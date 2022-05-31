@@ -43,7 +43,6 @@ class LoginActivity : AppCompatActivity() {
         loginViewModel.state.observe(this) {
             resetError()
             when (it) {
-                is State.ResetError -> resetError()
                 is State.EmailError -> setEmailError(it.message)
                 is State.PasswordError -> setPasswordError(it.message)
                 is State.AuthError ->  {
@@ -81,7 +80,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun startSingUpActivity() {
-
         startActivity(Intent(this, SignUpActivity::class.java))
     }
 
@@ -94,7 +92,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun resetError() {
-        binding.tilPassword.error = ""
-        binding.tilEmail.error = ""
+        binding.tilPassword.error = null
+        binding.tilEmail.error = null
     }
 }

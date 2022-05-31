@@ -191,5 +191,7 @@
 
     <string name="on_sucess_login">Se ha iniciado sesión</string>
     <string name="err_auth">Error de autenticación</string>
+    <string name="err_emailRepeat">El email ya se encuentra registrado</string>
+    <string name="err_noDisponible">Esta opción no se encuentra desponible</string>
 
 </resources>

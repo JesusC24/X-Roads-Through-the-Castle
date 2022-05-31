@@ -44,16 +44,30 @@ class SignUpActivity : AppCompatActivity() {
 
         //Creamos el observador
         signUpViewModel.state.observe(this) {
+            resetError()
             when (it) {
                 is State.NameEmptyError -> setNameEmpty(it.message)
                 is State.EmailError -> setEmailError(it.message)
                 is State.PasswordError -> setPasswordError(it.message)
                 is State.ConfirmPasswordError -> setConfirmPasswordError(it.message)
-                is State.AuthError -> setToast(it.message)
+                is State.AuthError -> {
+                    setProgressBar(false)
+                    setToast(it.message)
+                }
                 is State.Loading -> setProgressBar(it.process)
-                is State.Success -> onSuccess(it.message)
+                is State.Success -> {
+                    setProgressBar(false)
+                    onSuccess()
+                }
             }
         }
+    }
+
+    private fun resetError() {
+        binding.tilUser.error = null
+        binding.tilEmail.error = null
+        binding.tilPassword.error = null
+        binding.tilConfirmPassword.error = null
     }
 
     private fun setNameEmpty(message: Int) {
@@ -74,9 +88,9 @@ class SignUpActivity : AppCompatActivity() {
 
     private fun setProgressBar(process: Boolean) {
         if(process) {
-            binding.progressBar.visibility = View.VISIBLE
+            binding.includeProgressbar.llProgressBar.visibility = View.VISIBLE
         } else {
-            binding.progressBar.visibility = View.INVISIBLE
+            binding.includeProgressbar.llProgressBar.visibility = View.INVISIBLE
         }
     }
 
@@ -103,7 +117,7 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
-    fun onSuccess(message: Int) {
+    fun onSuccess() {
         finish()
     }
 
