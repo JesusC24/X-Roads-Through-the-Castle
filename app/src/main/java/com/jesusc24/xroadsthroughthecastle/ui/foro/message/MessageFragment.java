@@ -19,7 +19,7 @@ import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants;
 import com.jesusc24.xroadsthroughthecastle.data.model.Chat;
 import com.jesusc24.xroadsthroughthecastle.data.model.Message;
 import com.jesusc24.xroadsthroughthecastle.databinding.FragmentMessageBinding;
-import com.jesusc24.xroadsthroughthecastle.utils.PreferenceManager;
+import com.jesusc24.xroadsthroughthecastle.utils.PreferencesManager;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -35,7 +35,7 @@ public class MessageFragment extends Fragment implements MessageContract.View {
     private Chat receiverChat;
     private List<Message> messages = new ArrayList<>();
     private MessageAdapter adapter;
-    private PreferenceManager preferenceManager;
+    private PreferencesManager preferenceManager;
     private MessageContract.Presenter presenter;
 
     @Override
@@ -67,7 +67,7 @@ public class MessageFragment extends Fragment implements MessageContract.View {
     }
 
     private void init() {
-        preferenceManager = new PreferenceManager(getContext());
+        preferenceManager = new PreferencesManager(getContext());
     }
 
     private void initRvMessages() {

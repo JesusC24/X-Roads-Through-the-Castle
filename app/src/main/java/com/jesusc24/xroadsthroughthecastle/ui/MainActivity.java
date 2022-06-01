@@ -15,9 +15,8 @@ import com.jesusc24.xroadsthroughthecastle.R;
 import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants;
 import com.jesusc24.xroadsthroughthecastle.databinding.ActivityMainBinding;
 import com.jesusc24.xroadsthroughthecastle.utils.CommonUtils;
-import com.jesusc24.xroadsthroughthecastle.utils.PreferenceManager;
+import com.jesusc24.xroadsthroughthecastle.utils.PreferencesManager;
 import com.makeramen.roundedimageview.RoundedImageView;
-import com.mikhaellopez.circularimageview.CircularImageView;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -30,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements PreferenceFragmen
     private ActivityMainBinding binding;
     private NavController navController;
     private AppBarConfiguration appBarConfiguration;
-    private PreferenceManager preferenceManager;
+    private PreferencesManager preferenceManager;
     Toolbar toolbar;
 
     public final static String TAG = "MainActivity";
@@ -41,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements PreferenceFragmen
 
         inicializarVista();
 
-        preferenceManager = new PreferenceManager(getApplicationContext());
+        preferenceManager = new PreferencesManager(getApplicationContext());
         String email = preferenceManager.getString(Constants.KEY_EMAIL);
         String user = preferenceManager.getString(Constants.KEY_NAME);
         String imagen = preferenceManager.getString(Constants.KEY_IMAGE);
@@ -81,7 +80,6 @@ public class MainActivity extends AppCompatActivity implements PreferenceFragmen
 
         //Con este método gestionamos la BARRA DE ACCIÓN, cuando hay varios niveles de navegación
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-
     }
 
     /**
@@ -91,6 +89,10 @@ public class MainActivity extends AppCompatActivity implements PreferenceFragmen
      */
     @Override
     public boolean onSupportNavigateUp() {
+        String user = preferenceManager.getString(Constants.KEY_NAME);
+        String imagen = preferenceManager.getString(Constants.KEY_IMAGE);
+
+        ((TextView)binding.navigationView.getHeaderView(0).findViewById(R.id.tvUser)).setText(user);
         return NavigationUI.navigateUp(navController, appBarConfiguration) || super.onSupportNavigateUp();
 
     }

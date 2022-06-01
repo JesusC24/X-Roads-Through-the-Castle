@@ -2,15 +2,11 @@ package com.jesusc24.xroadsthroughthecastle.ui.configuracion;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.preference.ListPreference;
-import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
 import com.jesusc24.xroadsthroughthecastle.R;
-
 
 public class SettingsFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener {
 
@@ -23,11 +19,6 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey);
-        Preference preference = getPreferenceManager().findPreference(getString(R.string.key_help_point));
-        preference.setOnPreferenceClickListener(preference1 -> {
-            Toast.makeText(getActivity(), "Se ha pulsado sobre la ayuda", Toast.LENGTH_SHORT).show();
-            return false; //No puede devolve43+erwrue para que no se consuma el evento y así se envie el intent
-        });
     }
 
     @Override
@@ -44,8 +35,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        Preference preference = findPreference(key);
-        //TODO error al activar o destactivar las notificaciones
+        /*Preference preference = findPreference(key);
         //Voy a buscar si la preferencia es mi lista ringtone
         if(key.equals(getString(R.string.key_ringtone_chat))) {
             //Como he comprobado previamente que la preferencia que se ha modificado es la lista,
@@ -59,6 +49,6 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
             } else {
                 preference.setSummary(sharedPreferences.getString(key, ""));
             }
-        }
+        }*/
     }
 }

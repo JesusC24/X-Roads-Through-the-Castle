@@ -5,13 +5,12 @@ import android.content.SharedPreferences;
 
 import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants;
 
-public class PreferenceManager {
+public class PreferencesManager {
 
     private final SharedPreferences sharedPreferences;
 
-    public PreferenceManager(Context context) {
+    public PreferencesManager(Context context) {
         sharedPreferences = context.getSharedPreferences(Constants.KEY_PREFERENCE_NAME, Context.MODE_PRIVATE);
-
     }
 
     public void putBoolean(String key, Boolean value) {

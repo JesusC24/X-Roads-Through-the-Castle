@@ -7,7 +7,7 @@ public class Constants {
     public static final String KEY_EMAIL = "email";
     public static final String KEY_PASSWORD = "password";
     public static final String KEY_IMAGE = "image";
-    public static final String KEY_PREFERENCE_NAME = "xrtcPreferences";
+    public static final String KEY_PREFERENCE_NAME = "com.jesusc24.xroadsthroughthecastle_preferences";
     public static final String KEY_USER_ID = "userId";
     public static final String REMEMBER_USER = "remember";
     public static final String KEY_COLLECTION_CHAT = "chat";

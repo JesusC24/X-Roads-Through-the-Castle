@@ -12,5 +12,20 @@
         <item name="android:background">@null</item>
     </style>
 
+    <!--<style name="positiveButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="background">@drawable/background_buttom_yes</item>
+        <item name="android:textColor">@color/color_yes</item>
+    </style>
+
+    <style name="negativeButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="background">@drawable/background_buttom_no</item>
+        <item name="android:textColor">@color/color_yes</item>
+    </style>
+
+    <style name="AlertDialogTheme" parent="ThemeOverlay.AppCompat.Dialog.Alert">
+        <item name="buttonBarNegativeButtonStyle">@style/negativeButtonStyle</item>
+        <item name="buttonBarPositiveButtonStyle">@style/positiveButtonStyle</item>
+    </style>-->
+
     <!-- La herencia se puede establecer con punto y no poner el atributo parent -->
 </resources>

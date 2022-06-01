@@ -11,19 +11,21 @@
 
     <Preference
         android:fragment="com.jesusc24.xroadsthroughthecastle.ui.configuracion.ForoFragment"
+        app:icon="@drawable/ic_foro_menu"
         app:key="@string/key_foro"
         app:summary="@string/summary_foro"
         app:title="@string/title_foro" />
 
     <Preference
         android:fragment="com.jesusc24.xroadsthroughthecastle.ui.configuracion.BugFragment"
-        app:icon="@drawable/icono_bugs"
+        app:icon="@drawable/ic_bug_menu"
         app:key="@string/key_bug"
         app:summary="@string/summary_bug"
         app:title="@string/title_bug" />
 
     <!-- Preferencias con las opciones de las motificaciones -->
-    <PreferenceCategory app:title="@string/notification_header">
+    <PreferenceCategory app:title="@string/notification_header"
+        app:icon="@drawable/ic_notification_menu">
 
         <SwitchPreference
             android:defaultValue="true"
@@ -42,7 +44,8 @@
 
 
     <!-- Preferencias con las opciones de la AYUDA, que se mostrará una página WEB-->
-    <PreferenceCategory app:title="@string/help_header">
+    <PreferenceCategory app:title="@string/help_header"
+        app:icon="@drawable/ic_help_menu">
 
         <Preference
             app:key="@string/key_help_point"
@@ -51,11 +54,5 @@
                 android:action="android.intent.action.VIEW"
                 android:data="http://sru-wiki.achisoft.net/tiki-index.php" />
         </Preference>
-        <Preference app:title="@string/privacy_and_condition">
-            <intent
-                android:action="android.intent.action.VIEW"
-                android:data="https://faq.whatspp.com" />
-        </Preference>
-
     </PreferenceCategory>
 </PreferenceScreen>

@@ -6,4 +6,22 @@
         app:key="@string/key_resultado_bug"
         app:summary="@string/summary_resultado_bug"
         app:title="@string/title_resuelto_bug" />
+
+    <!-- Preferencias con las opciones de las motificaciones -->
+    <PreferenceCategory app:title="@string/notification_header">
+
+        <SwitchPreference
+            android:defaultValue="true"
+            app:key="@string/key_notification_chat"
+            app:summary="@string/summaty_notification_chat"
+            app:title="@string/title_notification_chat" />
+
+        <ListPreference
+            android:dependency="@string/key_notification_chat"
+            android:entries="@array/ringtone"
+            android:entryValues="@array/ringtone_values"
+            app:key="@string/key_ringtone_chat"
+            app:summary="@string/summary_ringtone_chat"
+            app:title="@string/title_ringtone_chat" />
+    </PreferenceCategory>
 </PreferenceScreen>

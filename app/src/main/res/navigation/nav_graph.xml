@@ -69,7 +69,7 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.jesusc24.xroadsthroughthecastle.ui.configuracion.SettingsFragment"
-        android:label="SettingsFragment" >
+        android:label="@string/action_settings">
         <action
             android:id="@+id/action_settingsFragment_to_userFragment"
             app:destination="@id/userFragment" />
@@ -83,7 +83,14 @@
     <fragment
         android:id="@+id/userFragment"
         android:name="com.jesusc24.xroadsthroughthecastle.ui.configuracion.UserFragment"
-        android:label="UserFragment" />
+        android:label="@string/user_preferences">
+        <action
+            android:id="@+id/action_userFragment_to_confirmDialogFragment"
+            app:destination="@id/confirmDialogFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_changePasswordDialogFragment"
+            app:destination="@id/changePasswordDialogFragment" />
+    </fragment>
     <fragment
         android:id="@+id/messageFragment"
         android:name="com.jesusc24.xroadsthroughthecastle.ui.foro.message.MessageFragment"
@@ -127,4 +134,12 @@
         android:id="@+id/foroFragment"
         android:name="com.jesusc24.xroadsthroughthecastle.ui.configuracion.ForoFragment"
         android:label="ForoFragment" />
+    <dialog
+        android:id="@+id/confirmDialogFragment"
+        android:name="com.jesusc24.xroadsthroughthecastle.ui.base.ConfirmDialogFragment"
+        android:label="ConfirmDialogFragment" />
+    <dialog
+        android:id="@+id/changePasswordDialogFragment"
+        android:name="com.jesusc24.xroadsthroughthecastle.ui.base.ChangePasswordDialogFragment"
+        android:label="ChangePasswordDialogFragment" />
 </navigation>

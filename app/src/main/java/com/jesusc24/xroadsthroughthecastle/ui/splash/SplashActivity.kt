@@ -9,7 +9,7 @@ import com.jesusc24.xroadsthroughthecastle.R
 import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants
 import com.jesusc24.xroadsthroughthecastle.ui.MainActivity
 import com.jesusc24.xroadsthroughthecastle.ui.login.LoginActivity
-import com.jesusc24.xroadsthroughthecastle.utils.PreferenceManager
+import com.jesusc24.xroadsthroughthecastle.utils.PreferencesManager
 
 class SplashActivity : AppCompatActivity() {
     //Vamos a declarar una constante privada
@@ -51,7 +51,9 @@ class SplashActivity : AppCompatActivity() {
      * @return
      */
     private fun saveSession(): Boolean {
-        return PreferenceManager(applicationContext).getBoolean(Constants.REMEMBER_USER)
+        return PreferencesManager(
+            applicationContext
+        ).getBoolean(Constants.REMEMBER_USER)
     }
 
     private fun starApp() {

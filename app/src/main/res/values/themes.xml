@@ -17,6 +17,10 @@
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
 
         <item name="fontFamily">@font/noto_sans</item>
+
+        <!--<item name="alertDialogTheme">@style/AlertDialogTheme</item>
+        <item name="materialAlertDialogTheme">@style/AlertDialogTheme</item>
+        <item name="alertDialogStyle">@style/AlertDialogTheme</item>-->
     </style>
 
     <style name="Theme.XRoadsThroughTheCastle.NoActionBar" parent="Theme.XRoadsThroughTheCastle">

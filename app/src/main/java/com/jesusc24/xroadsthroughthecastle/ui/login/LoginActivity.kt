@@ -2,23 +2,20 @@ package com.jesusc24.xroadsthroughthecastle.ui.login
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants
-import com.jesusc24.xroadsthroughthecastle.data.model.User
-import com.jesusc24.xroadsthroughthecastle.data.repository.UserRepository
 import com.jesusc24.xroadsthroughthecastle.databinding.ActivityLoginBinding
 import com.jesusc24.xroadsthroughthecastle.ui.MainActivity
 import com.jesusc24.xroadsthroughthecastle.ui.singUp.SignUpActivity
-import com.jesusc24.xroadsthroughthecastle.utils.PreferenceManager
+import com.jesusc24.xroadsthroughthecastle.utils.PreferencesManager
 
 class LoginActivity : AppCompatActivity() {
     private val loginViewModel = LoginViewModel()
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var preferenceManager: PreferenceManager
+    private lateinit var preferenceManager: PreferencesManager
     companion object {
         lateinit var context : Context
     }
@@ -29,7 +26,8 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         context = applicationContext
-        preferenceManager = PreferenceManager(applicationContext)
+        preferenceManager =
+            PreferencesManager(context)
 
         //Inicializar Data Binding
         binding.viewmodel = loginViewModel
@@ -89,6 +87,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 
     private fun resetError() {

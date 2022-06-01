@@ -196,6 +196,19 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="my_name">Jesús Cortés Ocaña</string>
+    <string name="confirmCloseSession">¿Estás seguro que quieres cerrar la sesión?</string>
+    <string name="yes">Sí</string>
+    <string name="no">No</string>
+    <string name="confirmDeleteAccount">¿Estás seguro que deseas borrar permanentemente tu cuenta?</string>
+    <string name="user_preferences">Preferencias de usario</string>
+    <string name="err_deleteAccount">Error al borrar la cuenta</string>
+    <string name="KEY_NAME">name</string>
+    <string name="err_changeUser">No se ha podido cambiar el usuario</string>
+    <string name="tiePasswordActual">Introduzca la contraseña actual</string>
+    <string name="tiePasswordNew">Nueva contraseña</string>
+    <string name="err_changePassword">No se ha podido cambiar correctamente la contraseña</string>
+    <string name="changePassword">Cambiar contraseña</string>
+    <string name="errPasswordAllComplete">Algún campo está vacío</string>
 
 
 </resources>

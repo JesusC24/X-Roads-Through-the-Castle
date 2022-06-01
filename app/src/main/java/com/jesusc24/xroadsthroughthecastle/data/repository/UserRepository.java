@@ -1,29 +1,27 @@
 package com.jesusc24.xroadsthroughthecastle.data.repository;
 
-import androidx.lifecycle.ViewModel;
-
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.jesusc24.xroadsthroughthecastle.R;
 import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants;
 import com.jesusc24.xroadsthroughthecastle.data.model.User;
+import com.jesusc24.xroadsthroughthecastle.ui.base.OnRepositoryCallback;
 import com.jesusc24.xroadsthroughthecastle.ui.login.LoginActivity;
-import com.jesusc24.xroadsthroughthecastle.ui.login.LoginViewModel;
 import com.jesusc24.xroadsthroughthecastle.ui.singUp.SignUpActivity;
-import com.jesusc24.xroadsthroughthecastle.ui.singUp.SignUpViewModel;
-import com.jesusc24.xroadsthroughthecastle.utils.PreferenceManager;
+import com.jesusc24.xroadsthroughthecastle.utils.PreferencesManager;
 
 import java.util.HashMap;
 
+//TODO crear interfaz que debe tener toda clase que quiera usar este repositorio
 public class UserRepository {
 
     private static final String TAG = UserRepository.class.getName(); //Imprime el nombre de la clase
     private static final int GOOGLE_SING_IN = 100;
-    private static PreferenceManager preferenceManager;
+    private static PreferencesManager preferenceManager;
     private static UserRepository instance;
-    private static ViewModel callback;
+    private static OnRepositoryCallback callback;
 
-    public static UserRepository getInstance(ViewModel activity) {
+    public static UserRepository getInstance(OnRepositoryCallback activity) {
         if(instance == null) {
             instance = new UserRepository();
         }
@@ -34,7 +32,7 @@ public class UserRepository {
 
     public void login(User user) {
         FirebaseFirestore database = FirebaseFirestore.getInstance();
-        preferenceManager = new PreferenceManager(LoginActivity.context);
+        preferenceManager = new PreferencesManager(LoginActivity.context);
 
         database.collection(Constants.KEY_COLLECTION_USERS)
                 .whereEqualTo(Constants.KEY_EMAIL, user.getEmail())
@@ -48,9 +46,10 @@ public class UserRepository {
                         preferenceManager.putString(Constants.KEY_NAME, documentSnapshot.getString(Constants.KEY_NAME));
                         preferenceManager.putString(Constants.KEY_IMAGE, documentSnapshot.getString(Constants.KEY_IMAGE));
                         preferenceManager.putString(Constants.KEY_EMAIL, documentSnapshot.getString(Constants.KEY_EMAIL));
-                        ((LoginViewModel)callback).onSuccess();
+                        preferenceManager.putString(Constants.KEY_PASSWORD, documentSnapshot.getString(Constants.KEY_PASSWORD));
+                        callback.onSuccess();
                     } else {
-                        ((LoginViewModel)callback).onFailure(R.string.err_auth);
+                        callback.onFailure(R.string.err_auth);
                     }
                 });
 
@@ -65,7 +64,7 @@ public class UserRepository {
         newUser.put(Constants.KEY_PASSWORD, user.getPassword());
         newUser.put(Constants.KEY_IMAGE, user.getImage());
 
-        preferenceManager = new PreferenceManager(SignUpActivity.context);
+        preferenceManager = new PreferencesManager(SignUpActivity.context);
 
         database.collection(Constants.KEY_COLLECTION_USERS)
                 .whereEqualTo(Constants.KEY_EMAIL, user.getEmail())
@@ -81,20 +80,52 @@ public class UserRepository {
                                         preferenceManager.putString(Constants.KEY_NAME, user.getName());
                                         preferenceManager.putString(Constants.KEY_IMAGE, user.getImage());
                                         preferenceManager.putString(Constants.KEY_EMAIL, user.getEmail());
-                                        ((SignUpViewModel)callback).onSuccess();
+                                        callback.onSuccess();
                                     })
 
-                                    .addOnFailureListener(exception -> ((SignUpViewModel)callback).onFailure(R.string.err_auth));
+                                    .addOnFailureListener(exception -> callback.onFailure(R.string.err_auth));
                         } else {
-                            ((SignUpViewModel)callback).onFailure(R.string.err_emailRepeat);
+                            callback.onFailure(R.string.err_emailRepeat);
                         }
                     }
                 })
 
-                .addOnFailureListener(exception -> ((SignUpViewModel)callback).onFailure(R.string.err_auth));
+                .addOnFailureListener(exception -> callback.onFailure(R.string.err_auth));
 
     }
 
+    public void deleteUser(String idUser) {
+        FirebaseFirestore database = FirebaseFirestore.getInstance();
+        database.collection(Constants.KEY_COLLECTION_USERS)
+                .document(idUser)
+                .delete()
+                .addOnSuccessListener(unused -> callback.onSuccess())
+                .addOnFailureListener(e -> callback.onFailure(R.string.err_deleteAccount));
+    }
+
+    public void updateNameUser(String name, String idUser) {
+        FirebaseFirestore database = FirebaseFirestore.getInstance();
+        HashMap<String, Object> newUser = new HashMap<>();
+        newUser.put(Constants.KEY_NAME, name);
+
+        database.collection(Constants.KEY_COLLECTION_USERS)
+                .document(idUser)
+                .update(newUser)
+
+                .addOnFailureListener(exception -> callback.onFailure(R.string.err_changeUser));
+    }
+
+    public void updatePassword(String password, String idUser) {
+        FirebaseFirestore database = FirebaseFirestore.getInstance();
+        HashMap<String, Object> newUser = new HashMap<>();
+        newUser.put(Constants.KEY_PASSWORD, password);
+
+        database.collection(Constants.KEY_COLLECTION_USERS)
+                .document(idUser)
+                .update(newUser)
+
+                .addOnFailureListener(exception -> callback.onFailure(R.string.err_changePassword));
+    }
 
     /*public void firebaseAuthWithGoogle(String idToken, Activity activity) {
         GoogleSignInOptions googleConf = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)

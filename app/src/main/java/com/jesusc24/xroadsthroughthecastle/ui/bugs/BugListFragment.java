@@ -120,7 +120,6 @@ public class BugListFragment extends Fragment implements BugListContract.View, B
         }
     }
 
-
     @Override
     public void showProgress() {
         binding.includeProgressbar.llProgressBar.setVisibility(View.VISIBLE);

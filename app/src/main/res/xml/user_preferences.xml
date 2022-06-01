@@ -3,14 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <EditTextPreference
-        android:defaultValue="Default value"
-        android:key="@string/key_user_name"
+        android:key="@string/KEY_NAME"
         android:selectAllOnFocus="true"
         android:singleLine="true"
         android:title="@string/user_name"
         app:summary="@string/summary_user_name"/>
 
-    <EditTextPreference
+    <Preference
         android:key="@string/key_user_change_password"
         android:selectAllOnFocus="true"
         android:singleLine="true"
@@ -18,6 +17,13 @@
         app:summary="@string/summary_user_change_password"/>
 
     <EditTextPreference
+        android:key="@string/key_user_change_password"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="Cambiar imagen"
+        app:summary="@string/summary_user_change_password"/>
+
+    <Preference
         android:key="@string/key_user_delete"
         android:selectAllOnFocus="true"
         android:singleLine="true"
