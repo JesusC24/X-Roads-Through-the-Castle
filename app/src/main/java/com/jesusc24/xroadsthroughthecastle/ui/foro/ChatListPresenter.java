@@ -23,7 +23,7 @@ public class ChatListPresenter implements ChatListContract.Presenter, ChatListCo
 
     @Override
     public void onFailure(String message) {
-
+        view.onFailure(message);
     }
 
     @Override

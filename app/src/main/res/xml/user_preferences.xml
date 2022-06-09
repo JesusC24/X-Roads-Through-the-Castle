@@ -16,12 +16,11 @@
         android:title="@string/user_change_password"
         app:summary="@string/summary_user_change_password"/>
 
-    <EditTextPreference
-        android:key="@string/key_user_change_password"
+    <Preference
+        android:key="@string/key_user_change_image"
         android:selectAllOnFocus="true"
-        android:singleLine="true"
         android:title="Cambiar imagen"
-        app:summary="@string/summary_user_change_password"/>
+        app:summary="@string/summary_user_change_image"/>
 
     <Preference
         android:key="@string/key_user_delete"

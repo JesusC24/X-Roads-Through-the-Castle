@@ -64,6 +64,6 @@ public class ChatManagerInteractor implements OnRepositoryManageCallback {
 
     @Override
     public void onFailure(String message) {
-
+        listener.onFailure(message);
     }
 }

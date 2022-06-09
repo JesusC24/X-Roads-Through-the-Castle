@@ -4,18 +4,14 @@
 
     <SwitchPreference
         android:defaultValue="false"
-        app:key="@string/key_favorito_chat"
-        app:summary="@string/summary_favorito_chat"
-        app:title="@string/title_favorito_chat" />
-
-    <SwitchPreference
-        android:defaultValue="false"
         app:key="@string/key_order_favorito_chat"
         app:summary="@string/summary_order_favorito_chat"
         app:title="@string/title_order_favorito_chat" />
 
+
     <!-- Preferencias con las opciones de las motificaciones -->
-    <PreferenceCategory app:title="@string/notification_header">
+    <PreferenceCategory app:title="@string/notification_header"
+        app:icon="@drawable/ic_notification_menu">
 
         <SwitchPreference
             android:defaultValue="true"

@@ -209,6 +209,12 @@
     <string name="err_changePassword">No se ha podido cambiar correctamente la contraseña</string>
     <string name="changePassword">Cambiar contraseña</string>
     <string name="errPasswordAllComplete">Algún campo está vacío</string>
+    <string name="key_user_change_image">user_change_image</string>
+    <string name="summary_user_change_image">Cambia la imagen de tu usuario</string>
+    <string name="err_changeImage">No se ha podido actualizar la imagen</string>
+    <string name="foro_preferences">Preferencias del foro</string>
+    <string name="key_notification_bug">key_notification_bug</string>
+    <string name="key_order_bug">key_order_bug</string>
 
 
 </resources>

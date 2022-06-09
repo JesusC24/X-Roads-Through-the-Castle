@@ -5,12 +5,10 @@ import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants;
 import com.jesusc24.xroadsthroughthecastle.data.model.Message;
 
 import java.util.HashMap;
-import java.util.List;
 
 public class MessageRepository {
 
     private static MessageRepository instance;
-    private List<Message> list;
 
     public static MessageRepository getInstance() {
         if(instance == null) {
@@ -19,8 +17,6 @@ public class MessageRepository {
 
         return instance;
     }
-
-
 
     public void sendMessage(Message message) {
         FirebaseFirestore database = FirebaseFirestore.getInstance();

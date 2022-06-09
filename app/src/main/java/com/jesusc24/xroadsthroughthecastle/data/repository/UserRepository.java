@@ -12,7 +12,6 @@ import com.jesusc24.xroadsthroughthecastle.utils.PreferencesManager;
 
 import java.util.HashMap;
 
-//TODO crear interfaz que debe tener toda clase que quiera usar este repositorio
 public class UserRepository {
 
     private static final String TAG = UserRepository.class.getName(); //Imprime el nombre de la clase
@@ -125,6 +124,18 @@ public class UserRepository {
                 .update(newUser)
 
                 .addOnFailureListener(exception -> callback.onFailure(R.string.err_changePassword));
+    }
+
+    public void changeImage(String image, String idUser) {
+        FirebaseFirestore database = FirebaseFirestore.getInstance();
+        HashMap<String, Object> newUser = new HashMap<>();
+        newUser.put(Constants.KEY_IMAGE, image);
+
+        database.collection(Constants.KEY_COLLECTION_USERS)
+                .document(idUser)
+                .update(newUser)
+
+                .addOnFailureListener(exception -> callback.onFailure(R.string.err_changeImage));
     }
 
     /*public void firebaseAuthWithGoogle(String idToken, Activity activity) {

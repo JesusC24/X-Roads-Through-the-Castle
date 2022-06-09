@@ -148,7 +148,6 @@ public class MessageFragment extends Fragment implements MessageContract.View {
         return new SimpleDateFormat("MMMM dd, yyyy - hh:mm a", Locale.getDefault()).format(date);
     }
 
-
     private void listenMessages() {
         FirebaseFirestore database = FirebaseFirestore.getInstance();
         database.collection(Constants.KEY_COLLECTION_CHAT)

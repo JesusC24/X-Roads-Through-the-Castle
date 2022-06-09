@@ -31,7 +31,7 @@ public class ChatManagerPresenter implements ChatManagerContract.Presenter, Chat
 
     @Override
     public void onFailure(String message) {
-
+        view.onFailure(message);
     }
 
     @Override

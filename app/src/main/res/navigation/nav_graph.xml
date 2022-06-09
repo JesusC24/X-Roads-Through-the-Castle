@@ -133,7 +133,7 @@
     <fragment
         android:id="@+id/foroFragment"
         android:name="com.jesusc24.xroadsthroughthecastle.ui.configuracion.ForoFragment"
-        android:label="ForoFragment" />
+        android:label="@string/foro_preferences" />
     <dialog
         android:id="@+id/confirmDialogFragment"
         android:name="com.jesusc24.xroadsthroughthecastle.ui.base.ConfirmDialogFragment"

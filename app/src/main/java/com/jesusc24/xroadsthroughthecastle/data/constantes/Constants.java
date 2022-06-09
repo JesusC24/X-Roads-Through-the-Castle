@@ -23,4 +23,8 @@ public class Constants {
     public static final String KEY_ESTADO = "estado";
     public static final String KEY_GRAVEDAD = "gravedad";
     public static final String KEY_SO = "so";
+    public static final String KEY_ORDER_CHAT = "order chat";
+    public static final String KEY_NOTIFICATION_CHAT = "notification chat";
+    public static final String KEY_RIGNTONE_CHAT = "ringtone chat";
+    public static final String KEY_ORDER_BUG = "order bug";
 }

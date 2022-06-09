@@ -1,10 +1,14 @@
 package com.jesusc24.xroadsthroughthecastle.ui.configuracion;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
@@ -18,10 +22,15 @@ import com.jesusc24.xroadsthroughthecastle.ui.base.ConfirmDialogFragment;
 import com.jesusc24.xroadsthroughthecastle.ui.base.OnRepositoryCallback;
 import com.jesusc24.xroadsthroughthecastle.ui.base.PasswordDialogFragment;
 import com.jesusc24.xroadsthroughthecastle.ui.login.LoginActivity;
+import com.jesusc24.xroadsthroughthecastle.utils.CommonUtils;
 import com.jesusc24.xroadsthroughthecastle.utils.PreferencesManager;
+
+import java.io.IOException;
 
 public class UserFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener, PreferenceManager.OnPreferenceTreeClickListener, OnRepositoryCallback {
 
+    private static final int PICK_IMAGE = 100;
+    private static final int RESULT_OK = -1;
     private PreferencesManager preferenceManager;
 
     @Override
@@ -29,9 +38,6 @@ public class UserFragment extends PreferenceFragmentCompat implements Preference
 
         addPreferencesFromResource(R.xml.user_preferences);
         preferenceManager = new PreferencesManager(getContext());
-
-        Preference preference = findPreference(getString(R.string.KEY_NAME));
-        preference.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -78,6 +84,10 @@ public class UserFragment extends PreferenceFragmentCompat implements Preference
                     Toast.makeText(getContext(), result.getString(ChangePasswordDialogFragment.KEY_ERROR), Toast.LENGTH_SHORT).show();
                 }
             });
+        } else if(preference.getKey().equals(getString(R.string.key_user_change_image))) {
+            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            startActivityForResult(intent, PICK_IMAGE);
         }
         return false;
     }
@@ -105,5 +115,24 @@ public class UserFragment extends PreferenceFragmentCompat implements Preference
         }
 
         return false;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(resultCode == RESULT_OK) {
+            Uri uri = data.getData();
+            Bitmap bitmap = null;
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), uri);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            String encodeImage = CommonUtils.encodeImage(bitmap);
+            preferenceManager.putString(Constants.KEY_IMAGE, encodeImage);
+            UserRepository.getInstance(this).changeImage(encodeImage, preferenceManager.getString(Constants.KEY_USER_ID));
+        }
     }
 }

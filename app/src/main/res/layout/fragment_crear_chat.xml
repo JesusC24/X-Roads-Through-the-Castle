@@ -22,6 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
+                style="@style/RTCTextInputLayout.WithoutBackground"
                 app:startIconDrawable="@drawable/ic_action_user">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -54,6 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:visibility="gone"
+                style="@style/RTCTextInputLayout.WithoutBackground"
                 app:endIconMode="password_toggle"
                 app:startIconDrawable="@drawable/ic_action_password">
 
@@ -71,6 +73,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:visibility="gone"
+                style="@style/RTCTextInputLayout.WithoutBackground"
                 app:endIconMode="password_toggle"
                 app:startIconDrawable="@drawable/ic_action_password">
 
@@ -87,6 +90,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_20sdp"
+                style="@style/RTCTextInputLayout.WithoutBackground"
                 app:startIconDrawable="@drawable/ic_action_description"
                 android:hint="@string/tieDescripcion"
                 android:gravity="top">

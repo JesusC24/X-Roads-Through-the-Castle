@@ -1,31 +1,34 @@
 package com.jesusc24.xroadsthroughthecastle.ui.configuracion;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
-import androidx.preference.PreferenceManager;
-import androidx.preference.SwitchPreference;
 
 import com.jesusc24.xroadsthroughthecastle.R;
+import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants;
+import com.jesusc24.xroadsthroughthecastle.utils.PreferencesManager;
 
-public class BugFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener{
+public class BugFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener {
+
+    private PreferencesManager preferenceManager;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-        setPreferencesFromResource(R.xml.bug_preferences, rootKey);
+        addPreferencesFromResource(R.xml.bug_preferences);
+        preferenceManager = new PreferencesManager(getContext());
     }
 
-    @Override
-    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        Preference preference = findPreference(key);
-        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
 
-        if(key.equals(getString(R.string.key_resultado_bug))) {
-            SwitchPreference switchPreference = (SwitchPreference) preference;
-            editor.putBoolean(getString(R.string.key_resultado_bug), switchPreference.isChecked());
+    @Override
+    public boolean onPreferenceChange(@NonNull Preference preference, Object newValue) {
+        if(preference.getKey().equals(getString(R.string.key_order_bug))) {
+            preferenceManager.putBoolean(Constants.KEY_ORDER_BUG, (Boolean)newValue);
+            return true;
         }
+
+        return false;
     }
 
 }

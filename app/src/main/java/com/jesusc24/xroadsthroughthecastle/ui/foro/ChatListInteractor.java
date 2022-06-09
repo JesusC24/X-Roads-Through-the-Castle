@@ -31,7 +31,7 @@ public class ChatListInteractor implements OnRepositoryListCallback {
 
     @Override
     public void onFailure(String message) {
-
+        presenter.onFailure(message);
     }
 
     @Override

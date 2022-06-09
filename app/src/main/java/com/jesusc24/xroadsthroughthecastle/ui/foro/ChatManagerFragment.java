@@ -139,7 +139,7 @@ public class ChatManagerFragment extends Fragment implements ChatManagerContract
     //region Métodos por la respuesta del repositorio
     @Override
     public void onFailure(String message) {
-
+        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -162,7 +162,6 @@ public class ChatManagerFragment extends Fragment implements ChatManagerContract
         Toast.makeText(getContext(), getString(R.string.editSuccessChat) + message + getString(R.string.exit), Toast.LENGTH_SHORT).show();
         NavHostFragment.findNavController(this).popBackStack();
     }
-
 
     //region Casos de usos
     @Override

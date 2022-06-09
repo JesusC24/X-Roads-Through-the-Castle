@@ -58,7 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/_30sdp"
+        android:layout_margin="@dimen/_15sdp"
         android:clickable="true"
         android:contentDescription="@string/fabChat"
         android:elevation="@dimen/_3sdp"

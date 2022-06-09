@@ -144,7 +144,7 @@ public class ChatListFragment extends Fragment implements ChatListContract.View,
     //region Método definidos por el repositorio
     @Override
     public void onFailure(String message) {
-
+        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT);
     }
 
     @Override
@@ -272,4 +272,6 @@ public class ChatListFragment extends Fragment implements ChatListContract.View,
         adapter.filtrado(newText);
         return true;
     }
+
+
 }

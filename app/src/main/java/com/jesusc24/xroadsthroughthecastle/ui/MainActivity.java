@@ -41,18 +41,7 @@ public class MainActivity extends AppCompatActivity implements PreferenceFragmen
         inicializarVista();
 
         preferenceManager = new PreferencesManager(getApplicationContext());
-        String email = preferenceManager.getString(Constants.KEY_EMAIL);
-        String user = preferenceManager.getString(Constants.KEY_NAME);
-        String imagen = preferenceManager.getString(Constants.KEY_IMAGE);
-
-        ((TextView)binding.navigationView.getHeaderView(0).findViewById(R.id.tvUser)).setText(user);
-        ((TextView)binding.navigationView.getHeaderView(0).findViewById(R.id.tvEmail)).setText(email);
-
-        if(imagen != null) {
-            ((RoundedImageView)(binding.navigationView.getHeaderView(0).findViewById(R.id.imgUser))).setImageBitmap(CommonUtils.decodeImage(imagen));
-        } else {
-            ((RoundedImageView)(binding.navigationView.getHeaderView(0).findViewById(R.id.imgUser))).setImageResource(R.drawable.img_logo);
-        }
+        actualizarDatos();
 
         //Inicializar el controlador de navegación de la aplicación
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -89,10 +78,7 @@ public class MainActivity extends AppCompatActivity implements PreferenceFragmen
      */
     @Override
     public boolean onSupportNavigateUp() {
-        String user = preferenceManager.getString(Constants.KEY_NAME);
-        String imagen = preferenceManager.getString(Constants.KEY_IMAGE);
-
-        ((TextView)binding.navigationView.getHeaderView(0).findViewById(R.id.tvUser)).setText(user);
+        actualizarDatos();
         return NavigationUI.navigateUp(navController, appBarConfiguration) || super.onSupportNavigateUp();
 
     }
@@ -126,5 +112,20 @@ public class MainActivity extends AppCompatActivity implements PreferenceFragmen
         setContentView(binding.getRoot());
 
         toolbar = binding.include.toolbar;
+    }
+
+    public void actualizarDatos() {
+        String email = preferenceManager.getString(Constants.KEY_EMAIL);
+        String user = preferenceManager.getString(Constants.KEY_NAME);
+        String imagen = preferenceManager.getString(Constants.KEY_IMAGE);
+
+        ((TextView)binding.navigationView.getHeaderView(0).findViewById(R.id.tvUser)).setText(user);
+        ((TextView)binding.navigationView.getHeaderView(0).findViewById(R.id.tvEmail)).setText(email);
+
+        if(imagen != null) {
+            ((RoundedImageView)(binding.navigationView.getHeaderView(0).findViewById(R.id.imgUser))).setImageBitmap(CommonUtils.decodeImage(imagen));
+        } else {
+            ((RoundedImageView)(binding.navigationView.getHeaderView(0).findViewById(R.id.imgUser))).setImageResource(R.drawable.img_logo);
+        }
     }
 }
