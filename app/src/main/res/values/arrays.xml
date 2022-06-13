@@ -16,26 +16,4 @@
         <item>piano</item>
         <item>flow</item>
     </string-array>
-
-    <string-array name="languages">
-        <item>Español</item>
-        <item>English</item>
-        <item>Français</item>
-    </string-array>
-
-    <string-array name="languages_values">
-        <item>es</item>
-        <item>en</item>
-        <item>fr</item>
-    </string-array>
-    <!-- Reply Preference -->
-    <string-array name="reply_entries">
-        <item>Reply</item>
-        <item>Reply to all</item>
-    </string-array>
-
-    <string-array name="reply_values">
-        <item>reply</item>
-        <item>reply_all</item>
-    </string-array>
 </resources>

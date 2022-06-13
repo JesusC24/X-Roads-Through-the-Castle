@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants
-import com.jesusc24.xroadsthroughthecastle.data.repository.UserRepository
 import com.jesusc24.xroadsthroughthecastle.databinding.FragmentGuiaBinding
 import com.jesusc24.xroadsthroughthecastle.utils.PreferencesManager
 
@@ -14,7 +13,7 @@ class GuiaFragment : Fragment() {
 
     private lateinit var binding: FragmentGuiaBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentGuiaBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -25,14 +24,13 @@ class GuiaFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        val preferenceManager = PreferencesManager(context)
-        preferenceManager.putBoolean(Constants.KEY_AVAILABILITY, true)
+        PreferencesManager(context).putBoolean(Constants.KEY_AVAILABILITY, true)
+
     }
 
     override fun onPause() {
         super.onPause()
-        val preferenceManager = PreferencesManager(context)
-        preferenceManager.putBoolean(Constants.KEY_AVAILABILITY, true)
+        PreferencesManager(context).putBoolean(Constants.KEY_AVAILABILITY, false)
     }
 
 }

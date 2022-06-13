@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="@dimen/fabMessage_margin"
+            android:layout_margin="@dimen/_6sdp"
             android:layout_marginStart="@dimen/_4sdp"
             android:layout_marginLeft="@dimen/_4sdp"
             android:clickable="true"
@@ -58,7 +58,7 @@
             android:id="@+id/tieSendMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/tieSendMessage_layoutMarginStart"
+            android:layout_marginStart="@dimen/_10sdp"
             android:textColor="@color/secondary_text"
             android:background="@drawable/background_chat_input"
             android:hint="@string/hint_tvMessage" />

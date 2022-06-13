@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:bind="http://schemas.android.com/tools"
     android:id="@+id/coordinator_informar_bug"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/informar_bug_padding">
+    android:padding="@dimen/_25sdp">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -28,7 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_end="@dimen/informar_bug_glEnd_end"
+                app:layout_constraintGuide_end="@dimen/_20sdp"
                 app:layout_constraintStart_toEndOf="parent"/>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -58,7 +57,7 @@
                 android:id="@+id/tvTipo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/informar_bug_tvTipo_marginTop"
+                android:layout_marginTop="@dimen/_25sdp"
                 android:text="@string/tvTipo"
                 app:layout_constraintStart_toStartOf="@+id/glStart"
                 app:layout_constraintTop_toBottomOf="@+id/tilName" />
@@ -67,8 +66,8 @@
                 android:id="@+id/spTipo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/informar_bug_spTipo_marginTop"
-                android:minHeight="@dimen/informar_bug_spTipo_height"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:minHeight="@dimen/_48sdp"
                 app:layout_constraintEnd_toStartOf="@+id/glEnd"
                 app:layout_constraintStart_toEndOf="@+id/barrier"
                 app:layout_constraintTop_toBottomOf="@+id/tilName"
@@ -78,7 +77,7 @@
                 android:id="@+id/tvGravedad"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/informar_bug_tvGravedad_marginTop"
+                android:layout_marginTop="@dimen/_50sdp"
                 android:text="@string/tvGravedad"
                 app:layout_constraintStart_toStartOf="@+id/glStart"
                 app:layout_constraintTop_toBottomOf="@+id/tvTipo" />
@@ -87,8 +86,8 @@
                 android:id="@+id/spGravedad"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/informar_bug_spGravedad_marginTop"
-                android:minHeight="@dimen/informar_bug_spGravedad_minHeight"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:minHeight="@dimen/_48sdp"
                 app:layout_constraintEnd_toStartOf="@+id/glEnd"
                 app:layout_constraintStart_toEndOf="@+id/barrier"
                 app:layout_constraintTop_toBottomOf="@+id/spTipo"
@@ -98,7 +97,7 @@
                 android:id="@+id/tvDispositivo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/informar_bug_tvDispositivo_marginTop"
+                android:layout_marginTop="@dimen/_50sdp"
                 android:text="@string/tvDispositivo"
                 app:layout_constraintStart_toStartOf="@+id/glStart"
                 app:layout_constraintTop_toBottomOf="@+id/tvGravedad" />
@@ -107,18 +106,17 @@
                 android:id="@+id/spDispositivo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/informar_bug_spDispositivo_marginTop"
-                android:minHeight="@dimen/informar_bug_spDispositivo_minHeight"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:minHeight="@dimen/_48sdp"
                 app:layout_constraintEnd_toStartOf="@+id/glEnd"
                 app:layout_constraintStart_toEndOf="@+id/barrier"
                 app:layout_constraintTop_toBottomOf="@+id/spGravedad"
                 android:contentDescription="@string/spDispositivo"/>
-
             <TextView
                 android:id="@+id/tvSO"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/informar_bug_tvSO_marginTop"
+                android:layout_marginTop="@dimen/_50sdp"
                 android:text="@string/tvSO"
                 app:layout_constraintStart_toStartOf="@+id/glStart"
                 app:layout_constraintTop_toBottomOf="@+id/tvDispositivo" />
@@ -127,8 +125,8 @@
                 android:id="@+id/spSO"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/informar_bug_spSO_marginTop"
-                android:minHeight="@dimen/informar_bug_spSO_minHeight"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:minHeight="@dimen/_48sdp"
                 app:layout_constraintEnd_toStartOf="@+id/glEnd"
                 app:layout_constraintStart_toEndOf="@+id/barrier"
                 app:layout_constraintTop_toBottomOf="@+id/spDispositivo"
@@ -138,7 +136,7 @@
                 android:id="@+id/tilescripcion"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/informar_bug_tieDescripcion_marginTop"
+                android:layout_marginTop="@dimen/_20sdp"
                 app:layout_constraintEnd_toStartOf="@+id/glEnd"
                 app:layout_constraintStart_toStartOf="@+id/glStart"
                 app:layout_constraintTop_toBottomOf="@+id/spSO"
@@ -162,10 +160,10 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:contentDescription="@string/fabBug"
-        android:elevation="@dimen/fabBug_elevation"
+        android:elevation="@dimen/_3sdp"
         android:src="@drawable/ic_action_add"
         android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/bug_margin"
+        android:layout_margin="@dimen/_10sdp"
         android:focusable="true"/>
 
     <TextView
@@ -173,6 +171,5 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:visibility="gone"/>
-
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

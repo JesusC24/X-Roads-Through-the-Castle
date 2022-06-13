@@ -17,6 +17,8 @@ public interface BugListContract {
         //Ordena de la Z-A
         void showDataInverseOrder();
         void showByEstadoOrder();
+        void hideSearch();
+        void showSearch();
     }
 
     /**
@@ -32,6 +34,7 @@ public interface BugListContract {
         //Que la lista se ordene por nombre
         void order();
         void orderByEstado();
+        void search();
     }
 
     /**

@@ -23,7 +23,6 @@ import com.google.android.material.snackbar.Snackbar;
 import com.jesusc24.xroadsthroughthecastle.R;
 import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants;
 import com.jesusc24.xroadsthroughthecastle.data.model.Chat;
-import com.jesusc24.xroadsthroughthecastle.data.repository.UserRepository;
 import com.jesusc24.xroadsthroughthecastle.databinding.FragmentChatListBinding;
 import com.jesusc24.xroadsthroughthecastle.ui.DecorationRecyclerView;
 import com.jesusc24.xroadsthroughthecastle.ui.base.BaseDialogFragment;
@@ -210,7 +209,7 @@ public class ChatListFragment extends Fragment implements ChatListContract.View,
 
     @Override
     public void showSearch() {
-        binding.rvChat.setPadding(0, getResources().getDimensionPixelSize(R.dimen.rvChat_margin_top), 0, 0);
+        binding.rvChat.setPadding(0, getResources().getDimensionPixelSize(R.dimen._50sdp), 0, 0);
         binding.llBuscar.setVisibility(View.VISIBLE);
         binding.txtBuscar.onActionViewExpanded();
     }

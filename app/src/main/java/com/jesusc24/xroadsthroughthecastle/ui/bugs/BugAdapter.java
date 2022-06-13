@@ -17,6 +17,7 @@ import com.jesusc24.xroadsthroughthecastle.data.model.BugComparator;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Adapter que sirve para poder rellenar un recyclerView
@@ -24,12 +25,14 @@ import java.util.List;
 public class BugAdapter extends RecyclerView.Adapter<BugAdapter.ViewHolder> {
 
     private List<Bug> list;
+    private List<Bug> listOriginal;
     private OnManageBugList listener;
 
     public BugAdapter(List<Bug> list, BugAdapter.OnManageBugList listener) {
         //De momento solo vamos a mostrar el nombre, esto es un ejemplo de como se verá con datos reales
         this.list = new ArrayList<>();
         this.listener = listener;
+        listOriginal = new ArrayList<>();
     }
 
     public interface OnManageBugList {
@@ -106,11 +109,14 @@ public class BugAdapter extends RecyclerView.Adapter<BugAdapter.ViewHolder> {
     public void update(List<Bug> list) {
         this.list.clear();
         this.list.addAll(list);
+        listOriginal.clear();
+        listOriginal.addAll(list);
         notifyDataSetChanged();
     }
 
     public void delete(Bug bug) {
         list.remove(bug);
+        listOriginal.remove(bug);
         notifyDataSetChanged();
     }
 
@@ -120,6 +126,7 @@ public class BugAdapter extends RecyclerView.Adapter<BugAdapter.ViewHolder> {
 
     public void undo(Bug bug) {
         list.add(bug);
+        listOriginal.add(bug);
         notifyDataSetChanged();
     }
 
@@ -135,6 +142,21 @@ public class BugAdapter extends RecyclerView.Adapter<BugAdapter.ViewHolder> {
 
     public void orderByEstado() {
         Collections.sort(list, new BugComparator());
+        notifyDataSetChanged();
+    }
+
+    public void filtrado(String buscado) {
+        if(buscado.length() != 0) {
+            List<Bug> collecion = list.stream()
+                    .filter(i -> i.getNombre().toLowerCase().contains(buscado.toLowerCase()))
+                    .collect(Collectors.toList());
+            list.clear();
+            list.addAll(collecion);
+        } else {
+            list.clear();
+            list.addAll(listOriginal);
+        }
+
         notifyDataSetChanged();
     }
 }

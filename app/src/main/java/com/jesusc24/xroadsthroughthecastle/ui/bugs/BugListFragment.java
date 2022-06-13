@@ -8,6 +8,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -36,7 +37,7 @@ import java.util.List;
 /**
  * Fragmente que crea la lista de todos los bugs que se encuentran registrados
  */
-public class BugListFragment extends Fragment implements BugListContract.View, BugAdapter.OnManageBugList {
+public class BugListFragment extends Fragment implements BugListContract.View, BugAdapter.OnManageBugList, SearchView.OnQueryTextListener {
     FragmentBugListBinding binding;
     private BugAdapter adapter;
     private BugListContract.Presenter presenter;
@@ -63,6 +64,7 @@ public class BugListFragment extends Fragment implements BugListContract.View, B
         getActivity().setTitle(R.string.title_list_bug);
         initRvBug();
         initFavBug();
+        initSearch();
     }
 
     public void initFavBug() {
@@ -70,6 +72,10 @@ public class BugListFragment extends Fragment implements BugListContract.View, B
             BugListFragmentDirections.ActionBugListFragmentToInformarBug action = BugListFragmentDirections.actionBugListFragmentToInformarBug(null);
             NavHostFragment.findNavController(this).navigate(action);
         });
+    }
+
+    private void initSearch() {
+        binding.txtBuscar.setOnQueryTextListener(this);
     }
 
     /**
@@ -116,9 +122,12 @@ public class BugListFragment extends Fragment implements BugListContract.View, B
             case R.id.menu_bug_ordenar:
                 presenter.order();
                 return true;
-
             case R.id.menu_bug_ordenar_resultsado:
                 presenter.orderByEstado();
+                return true;
+            case R.id.menu_bug_buscar:
+                presenter.search();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
 
@@ -200,6 +209,19 @@ public class BugListFragment extends Fragment implements BugListContract.View, B
     }
 
     @Override
+    public void showSearch() {
+        binding.rvBug.setPadding(0, getResources().getDimensionPixelSize(R.dimen._50sdp), 0, 0);
+        binding.llBuscar.setVisibility(View.VISIBLE);
+        binding.txtBuscar.onActionViewExpanded();
+    }
+
+    @Override public void hideSearch() {
+        binding.txtBuscar.onActionViewCollapsed();
+        binding.rvBug.setPadding(0, 0, 0, 0);
+        binding.llBuscar.setVisibility(View.GONE);
+    }
+
+    @Override
     public void onShowBug(Bug bug) {
         BugListFragmentDirections.ActionBugListFragmentToBugFragment action = BugListFragmentDirections.actionBugListFragmentToBugFragment(bug);
         NavHostFragment.findNavController(this).navigate(action);
@@ -230,6 +252,17 @@ public class BugListFragment extends Fragment implements BugListContract.View, B
     public void onPause() {
         super.onPause();
         UserRepository.setAvailability(false, preferenceManager.getString(Constants.KEY_USER_ID));
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        adapter.filtrado(newText);
+        return true;
     }
 
 }

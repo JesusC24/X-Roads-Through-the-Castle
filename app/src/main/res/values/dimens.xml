@@ -1,86 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
 
-    <dimen name="login_tvTituloLogin_margin_top">50dp</dimen>
-    <dimen name="login_tilUser_margin_top">10dp</dimen>
-    <dimen name="login_tilPassword_margin_top">10dp</dimen>
-    <dimen name="linear_checkBox_margin_top">15dp</dimen>
-    <dimen name="login_btSingIn_layout_width">150dp</dimen>
-    <dimen name="login_btSingIn_margin_top">10dp</dimen>
-    <dimen name="login_tvOtherLogin_padding_botoom">10dp</dimen>
 
-    <dimen name="frgdasboard_tablelayout_padding">20dp</dimen>
-    <dimen name="frgdashboard_view_height">20dp</dimen>
-    <dimen name="frgdashboard_view_width">20dp</dimen>
 
-    <dimen name="crear_chat_layout_margin">25dp</dimen>
-    <dimen name="crear_chat_title_size">32sp</dimen>
-    <dimen name="crear_chat_tilName_marginTop">20dp</dimen>
-    <dimen name="crear_til_margin">5dp</dimen>
-    <dimen name="crear_chat_btCrear_marginTop">10dp</dimen>
 
-    <dimen name="fabChat_elevation">3dp</dimen>
-    <dimen name="fabChat_margin">34dp</dimen>
 
-    <dimen name="fabBug_elevation">3dp</dimen>
-    <dimen name="fabBug_margin">34dp</dimen>
 
-    <dimen name="bug_item_tvName_size">24sp</dimen>
-    <dimen name="bug_item_tvName_marginTop">15dp</dimen>
-    <dimen name="bug_item_tvName_paddingBottom">15dp</dimen>
 
-    <dimen name="informar_bug_glEnd_end">20dp</dimen>
-    <dimen name="informar_bug_tvTitleSingUp_marginTop">32dp</dimen>
-    <dimen name="informar_bug_tieUser_marginTop">16dp</dimen>
-    <dimen name="informar_bug_tvTipo_marginTop">25dp</dimen>
-    <dimen name="informar_bug_spTipo_marginTop">20dp</dimen>
-    <dimen name="informar_bug_spTipo_height">48dp</dimen>
-    <dimen name="informar_bug_tvGravedad_marginTop">50dp</dimen>
-    <dimen name="informar_bug_spGravedad_marginTop">20dp</dimen>
-    <dimen name="informar_bug_spGravedad_minHeight">48dp</dimen>
-    <dimen name="informar_bug_tvDispositivo_marginTop">50dp</dimen>
-    <dimen name="informar_bug_spDispositivo_marginTop">20dp</dimen>
-    <dimen name="informar_bug_spDispositivo_minHeight">48dp</dimen>
-    <dimen name="informar_bug_tvSO_marginTop">50dp</dimen>
-    <dimen name="informar_bug_spSO_marginTop">20dp</dimen>
-    <dimen name="informar_bug_spSO_minHeight">48dp</dimen>
-    <dimen name="informar_bug_tieDescripcion_marginTop">20dp</dimen>
-
-    <dimen name="configuracion_btSalirGoogle_marginStart">10dp</dimen>
-    <dimen name="configuracion_btSalirGoogle_marginTop">250dp</dimen>
-    <dimen name="configuracion_btSalirFacebook_marginTop">250dp</dimen>
-    <dimen name="configuracion_btSalirFacebook_marginEnd">10dp</dimen>
-    <dimen name="configuracion_tvIdioma_marginTop">50dp</dimen>
-    <dimen name="configuracion_tvLetra_marginTop">75dp</dimen>
-    <dimen name="configuracion_sbLetra_marginStart">15dp</dimen>
-    <dimen name="configuracion_sbLetra_marginTop">50dp</dimen>
-    <dimen name="configuracion_sbLetra_marginEnd">15dp</dimen>
-    <dimen name="configuracion_ivSpain_marginTop">20dp</dimen>
-    <dimen name="configuracion_ivUK_marginTop">20dp</dimen>
-
-    <dimen name="modificar_user_glEnd_end">20dp</dimen>
-    <dimen name="modificar_tvTitleSingUp_marginTop">32dp</dimen>
-    <dimen name="modificar_user_tilUser_marginTop">16dp</dimen>
-    <dimen name="modificar_user_tilEmail_marginTop">16dp</dimen>
-    <dimen name="modificar_user_tilPassword_marginTop">16dp</dimen>
-    <dimen name="modificar_user_tilConfirmPassword_marginTop">16dp</dimen>
-
-    <dimen name="tvNoData_dependencylist">30sp</dimen>
-    <dimen name="tvName_margin_top">10dp</dimen>
-    <dimen name="fab_margin">10dp</dimen>
-    <dimen name="informar_bug_padding">25dp</dimen>
-    <dimen name="bug_margin">10dp</dimen>
-    <dimen name="imgNoData_layout_width">200dp</dimen>
-    <dimen name="imgNoData_layout_height">100dp</dimen>
-    <dimen name="imgNoData_layout_marginTop">100dp</dimen>
-    <dimen name="toolbar_elevation">4dp</dimen>
-    <dimen name="tieSendMessage_layoutMarginStart">10dp</dimen>
-    <dimen name="fabMessage_margin">6dp</dimen>
-    <dimen name="rvChat_margin_top">50dp</dimen>
-    <dimen name="bug_info_gdlStart_begin">20dp</dimen>
-    <dimen name="bug_info_gdlEnd_begin">20dp</dimen>
-    <dimen name="tvBugTitulo">24sp</dimen>
-    <dimen name="tvBugDescripcion">18sp</dimen>
 </resources>

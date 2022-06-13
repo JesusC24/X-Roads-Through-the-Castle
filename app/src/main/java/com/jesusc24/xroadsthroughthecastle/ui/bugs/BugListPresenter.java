@@ -8,6 +8,7 @@ public class BugListPresenter implements BugListContract.Presenter, BugListContr
     BugListContract.View view;
     BugListInteractor listener;
     boolean order = false;
+    boolean searchName = false;
 
     public BugListPresenter(BugListContract.View view) {
         this.view = view;
@@ -75,5 +76,17 @@ public class BugListPresenter implements BugListContract.Presenter, BugListContr
     @Override
     public void orderByEstado() {
         view.showByEstadoOrder();
+    }
+
+    @Override
+    public void search() {
+        if(searchName) {
+            view.hideSearch();
+        } else {
+            view.showSearch();
+        }
+
+        searchName =! searchName;
+
     }
 }

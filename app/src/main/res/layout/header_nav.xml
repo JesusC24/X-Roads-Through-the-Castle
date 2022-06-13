@@ -30,7 +30,6 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/tvUser"
         android:textColor="@color/white"/>
 
     <TextView
@@ -38,6 +37,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/tvEmailr"
         android:textColor="@color/white"/>
 </LinearLayout>

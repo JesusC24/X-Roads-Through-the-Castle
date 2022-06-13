@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="@dimen/bug_info_gdlStart_begin"
+        app:layout_constraintGuide_begin="@dimen/_20sdp"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
@@ -20,8 +20,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold|italic"
-        android:textSize="@dimen/tvBugTitulo"
-        android:layout_marginTop="75dp"
+        android:textSize="@dimen/_24ssp"
+        android:layout_marginTop="@dimen/_75sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -30,8 +30,8 @@
         android:id="@+id/tvBugTipo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_40sdp"
         android:text="@string/tvBugTipo"
         app:layout_constraintStart_toStartOf="@+id/gdlStart"
         app:layout_constraintTop_toBottomOf="@+id/tvBugTitlo" />
@@ -49,8 +49,8 @@
         android:id="@+id/tvBugGravedad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_32sdp"
         android:text="@string/tvBugGravedad"
         app:layout_constraintStart_toStartOf="@+id/gdlStart"
         app:layout_constraintTop_toBottomOf="@+id/tvBugTipo" />
@@ -67,8 +67,8 @@
         android:id="@+id/tvBugDispositivo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_32sdp"
         android:text="@string/tvBugDispositivo"
         app:layout_constraintStart_toStartOf="@+id/gdlStart"
         app:layout_constraintTop_toBottomOf="@+id/tvBugGravedad" />
@@ -85,8 +85,8 @@
         android:id="@+id/tvBugSO"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_32sdp"
         android:text="@string/tvBugSO"
         app:layout_constraintStart_toStartOf="@+id/gdlStart"
         app:layout_constraintTop_toBottomOf="@+id/tvBugDispositivo" />
@@ -105,17 +105,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="end"
-        app:constraint_referenced_ids="tvBugTipo,tvBugGravedad,tvBugDispositivo,tvBugSO"
-        tools:layout_editor_absoluteX="139dp" />
+        app:constraint_referenced_ids="tvBugTipo,tvBugGravedad,tvBugDispositivo,tvBugSO" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gdlEnd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="@dimen/bug_info_gdlEnd_begin" />
-
-
-
+        app:layout_constraintGuide_end="@dimen/_20sdp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

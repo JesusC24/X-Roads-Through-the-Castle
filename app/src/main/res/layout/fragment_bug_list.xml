@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ll_buscar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:elevation="@dimen/_2sdp">
+
+        <SearchView
+            android:id="@+id/txt_buscar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:iconifiedByDefault="false"/>
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/llNoData_bug"
@@ -13,17 +26,16 @@
 
         <ImageView
             android:id="@+id/imgNoData"
-            android:layout_width="@dimen/imgNoData_layout_width"
+            android:layout_width="@dimen/_200sdp"
             android:layout_gravity="center"
-            android:paddingTop="150dp"
+            android:paddingTop="@dimen/_150sdp"
             android:layout_height="0dp"
             android:layout_weight="0.6"
             android:src="@drawable/img_no_data"/>
 
         <TextView
             android:id="@+id/tvNoData"
-            android:fontFamily="@font/noto_sans"
-            android:textSize="@dimen/tvNoData_dependencylist"
+            android:textSize="@dimen/_36ssp"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:gravity="top|center"
@@ -40,10 +52,10 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:contentDescription="@string/fabBug"
-        android:elevation="@dimen/fabBug_elevation"
+        android:elevation="@dimen/_3sdp"
         android:src="@drawable/ic_action_add"
         android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fabBug_margin"
+        android:layout_margin="@dimen/_34sdp"
         android:focusable="true" />
 
     <androidx.recyclerview.widget.RecyclerView

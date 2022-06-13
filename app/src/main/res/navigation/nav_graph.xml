@@ -65,7 +65,7 @@
     <dialog
         android:id="@+id/baseDialogFragment"
         android:name="com.jesusc24.xroadsthroughthecastle.ui.base.BaseDialogFragment"
-        android:label="BaseDialogFragment" />
+        android:label="BaseDialogFragment"/>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.jesusc24.xroadsthroughthecastle.ui.configuracion.SettingsFragment"
@@ -125,7 +125,8 @@
     <fragment
         android:id="@+id/guiaFragment"
         android:name="com.jesusc24.xroadsthroughthecastle.ui.guia.GuiaFragment"
-        android:label="@string/action_guia" />
+        android:label="@string/action_guia"
+        tools:layout="@layout/fragment_guia"/>
     <fragment
         android:id="@+id/bugFragment2"
         android:name="com.jesusc24.xroadsthroughthecastle.ui.configuracion.BugFragment"
