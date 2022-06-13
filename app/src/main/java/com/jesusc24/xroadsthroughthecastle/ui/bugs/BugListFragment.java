@@ -33,7 +33,6 @@ import com.jesusc24.xroadsthroughthecastle.utils.PreferencesManager;
 import java.util.ArrayList;
 import java.util.List;
 
-//TODO implementar la búsqueda
 /**
  * Fragmente que crea la lista de todos los bugs que se encuentran registrados
  */

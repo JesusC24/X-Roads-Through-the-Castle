@@ -13,7 +13,7 @@
     <string name="tieConfirmPassword">Confirmar contraseña</string>
 
     <string name="imgbtNoticias">Noticias</string>
-    <string name="imgbtForo">Foro</string>
+    <string name="imgbtChat" translatable="false">Chat</string>
     <string name="imgbtGuia">Guía</string>
     <string name="imgbtBugs" translatable="false">Bugs</string>
     <string name="imgbtSettings">Configuración</string>
@@ -69,9 +69,6 @@
     <string name="tilUser">Nombre</string>
     <string name="tieEmail">Email</string>
     <string name="btCambiarPassword">Cambiar contraseña</string>
-    <string name="dashboard_guia">Guía se encuentra en desarollo</string>
-    <string name="dashboard_news">Noticias se encuentra en desarrollo</string>
-    <string name="dashboard_help">Ayuda se encuentra en desarollo</string>
 
     <string name="menu_chat_ordenar">Ordenar por nombre</string>
     <string name="notification_header">Notificaciones</string>
@@ -135,56 +132,43 @@
     <string name="tvEmailr" translatable="false">jesus.cortesocana2408@gmail.com</string>
     <string name="putPasswoord">Poner la contraseña</string>
     <string name="delete_chat">Eliminar chat</string>
-    <string name="ask">¿Seguro que desea borrar el chat</string>
+    <string name="ask">¿Seguro que desea borrar el chat?</string>
     <string name="delete_chat_success">"Se ha borrado el chat "</string>
     <string name="undo_success">Operación cancelada</string>
     <string name="editSuccessChat">"Se ha editado el chat "</string>
-    <string name="exit">" con exito"</string>
+    <string name="exit">con exito</string>
 
     <string name="bug_description">Descripcion</string>
     <string name="bug_comentarios">Comentarios</string>
-    <string name="bug_info">Info</string>
-    <string name="title_foro">Foro</string>
-    <string name="summary_foro">Opciones para modificar el foro y los chats</string>
-    <string name="key_foro">foro</string>
-    <string name="key_bug">bug</string>
+    <string name="bug_info" translatable="false">Info</string>
+    <string name="title_foro">Chat</string>
+    <string name="summary_foro">Opciones para modificar el chat</string>
+    <string name="key_foro" translatable="false">foro</string>
+    <string name="key_bug" translatable="false">bug</string>
     <string name="summary_bug">Opciones para modificar los bugs</string>
-    <string name="title_bug">Bug</string>
-    <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
+    <string name="title_bug" translatable="false">Bug</string>
 
-    <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
-
-    <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="notification_title_add_dependency">Chat añadido</string>
-    <string name="notification_title_add_bug">Añadido bug</string>
+    <string name="notification_title_add_bug">Bug añadido</string>
     <string name="errEditBug">No se puede editar un bug que está resuelto o denegado</string>
     <string name="user_closed_session">Cerrar sesión</string>
     <string name="summary_user_closed_session">Cierra sesión del usuario</string>
-    <string name="key_user_closed_session">user_closed_session</string>
-    <string name="key_favorito_chat">favorito_chat</string>
+    <string name="key_user_closed_session" translatable="false">user_closed_session</string>
+    <string name="key_favorito_chat" translatable="false">favorito_chat</string>
     <string name="summaty_favorito_chat">Mostrar chat favoritos</string>
     <string name="title_favorito_chat">Mostrar chats favoritos</string>
     <string name="summary_favorito_chat">Muestra solo aquellos chats que están marcado como favoritos</string>
-    <string name="key_user_delete">user delete</string>
+    <string name="key_user_delete" translatable="false">user delete</string>
     <string name="user_delete">Eliminar cuenta</string>
     <string name="summary_user_delete">Cierra la cuenta y la elimina del sistema permanentemente</string>
-    <string name="key_resultado_bug">resultado_bug</string>
+    <string name="key_resultado_bug" translatable="false">resultado_bug</string>
     <string name="summary_resultado_bug">Mostrar la lista ordena por los que se han resultado</string>
     <string name="title_resuelto_bug">Ordenar por bug resuelto</string>
     <string name="tvBugTipo">Tipo</string>
     <string name="tvBugGravedad">Gravedad</string>
     <string name="tvBugDispositivo">Dispositivo</string>
     <string name="tvBugSO">Sistema operativo</string>
-    <string name="key_order_favorito_chat">order chat</string>
+    <string name="key_order_favorito_chat" translatable="false">order chat</string>
     <string name="summary_order_favorito_chat">Ordena por favoritos la lista de Chats</string>
     <string name="title_order_favorito_chat">Ordenar por favoritos</string>
     <string name="anadir_imagen">Añadir imagen</string>
@@ -193,8 +177,7 @@
     <string name="err_auth">Error de autenticación</string>
     <string name="err_emailRepeat">El email ya se encuentra registrado</string>
     <string name="err_noDisponible">Esta opción no se encuentra desponible</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="my_name">Jesús Cortés Ocaña</string>
     <string name="confirmCloseSession">¿Estás seguro que quieres cerrar la sesión?</string>
     <string name="yes">Sí</string>
@@ -202,19 +185,19 @@
     <string name="confirmDeleteAccount">¿Estás seguro que deseas borrar permanentemente tu cuenta?</string>
     <string name="user_preferences">Preferencias de usario</string>
     <string name="err_deleteAccount">Error al borrar la cuenta</string>
-    <string name="KEY_NAME">name</string>
+    <string name="KEY_NAME" translatable="false">name</string>
     <string name="err_changeUser">No se ha podido cambiar el usuario</string>
     <string name="tiePasswordActual">Introduzca la contraseña actual</string>
     <string name="tiePasswordNew">Nueva contraseña</string>
     <string name="err_changePassword">No se ha podido cambiar correctamente la contraseña</string>
     <string name="changePassword">Cambiar contraseña</string>
     <string name="errPasswordAllComplete">Algún campo está vacío</string>
-    <string name="key_user_change_image">user_change_image</string>
+    <string name="key_user_change_image" translatable="false">user_change_image</string>
     <string name="summary_user_change_image">Cambia la imagen de tu usuario</string>
     <string name="err_changeImage">No se ha podido actualizar la imagen</string>
-    <string name="foro_preferences">Preferencias del foro</string>
-    <string name="key_notification_bug">key_notification_bug</string>
-    <string name="key_order_bug">order bug</string>
+    <string name="foro_preferences">Preferencias del chat</string>
+    <string name="key_notification_bug" translatable="false">key_notification_bug</string>
+    <string name="key_order_bug" translatable="false">order bug</string>
     <string name="menu_mensaje_registrar">Activar chat notification</string>
     <string name="menu_mensaje_quitar">Desactivar chat notification</string>
 

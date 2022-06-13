@@ -44,7 +44,7 @@
         <entry key="app/src/main/res/font/noto_sans.xml" value="0.39791666666666664" />
         <entry key="app/src/main/res/font/noto_sans_bold.xml" value="0.39791666666666664" />
         <entry key="app/src/main/res/layout-land/fragment_crear_chat.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/activity_content.xml" value="0.3614583333333333" />
+        <entry key="app/src/main/res/layout/activity_content.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.20380434782608695" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.3170289855072464" />
@@ -57,9 +57,9 @@
         <entry key="app/src/main/res/layout/confirm_dialog.xml" value="0.24003623188405798" />
         <entry key="app/src/main/res/layout/fragment_about_us.xml" value="0.20380434782608695" />
         <entry key="app/src/main/res/layout/fragment_bug.xml" value="0.2826086956521739" />
-        <entry key="app/src/main/res/layout/fragment_bug_comentarios.xml" value="0.2826086956521739" />
+        <entry key="app/src/main/res/layout/fragment_bug_comentarios.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_bug_description.xml" value="0.2826086956521739" />
-        <entry key="app/src/main/res/layout/fragment_bug_info.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_bug_info.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_bug_item.xml" value="0.2755208333333333" />
         <entry key="app/src/main/res/layout/fragment_bug_list.xml" value="0.2755208333333333" />
         <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.23777173913043478" />
@@ -70,9 +70,9 @@
         <entry key="app/src/main/res/layout/fragment_guia.xml" value="0.24003623188405798" />
         <entry key="app/src/main/res/layout/fragment_informar_bug.xml" value="0.20625" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.32065217391304346" />
-        <entry key="app/src/main/res/layout/fragment_message.xml" value="0.3614583333333333" />
+        <entry key="app/src/main/res/layout/fragment_message.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_modificar_user.xml" value="0.2755208333333333" />
-        <entry key="app/src/main/res/layout/header_nav.xml" value="0.3614583333333333" />
+        <entry key="app/src/main/res/layout/header_nav.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_container_received_message.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_container_sent_message.xml" value="0.32065217391304346" />
         <entry key="app/src/main/res/layout/layout_progressbar.xml" value="0.375" />

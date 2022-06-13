@@ -16,7 +16,6 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.jesusc24.xroadsthroughthecastle.R;
 import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants;
 import com.jesusc24.xroadsthroughthecastle.data.model.Chat;
-import com.jesusc24.xroadsthroughthecastle.data.repository.UserRepository;
 import com.jesusc24.xroadsthroughthecastle.databinding.FragmentCrearChatBinding;
 import com.jesusc24.xroadsthroughthecastle.ui.MainActivity;
 import com.jesusc24.xroadsthroughthecastle.utils.PreferencesManager;
