@@ -35,13 +35,13 @@
             android:exported="true"
             android:theme="@style/Theme.XRoadsThroughTheCastle">
         </activity>
-        <receiver android:name=".EjemploIntentPersonalizado"
+        <service
+            android:name=".ui.foro.message.MessagingService"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.jesus24.xroadsthroughthecastle"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
-        </receiver>
-
+        </service>
     </application>
 
 </manifest>

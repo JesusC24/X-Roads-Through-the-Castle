@@ -1,7 +1,9 @@
 package com.jesusc24.xroadsthroughthecastle.ui;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -11,6 +13,9 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.preference.PreferenceFragmentCompat;
 
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.jesusc24.xroadsthroughthecastle.R;
 import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants;
 import com.jesusc24.xroadsthroughthecastle.databinding.ActivityMainBinding;
@@ -38,7 +43,10 @@ public class MainActivity extends AppCompatActivity implements PreferenceFragmen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Log.d("LOG", "esto es un ejemplo");
+
         inicializarVista();
+        getToken();
 
         preferenceManager = new PreferencesManager(getApplicationContext());
         actualizarDatos();
@@ -128,4 +136,24 @@ public class MainActivity extends AppCompatActivity implements PreferenceFragmen
             ((RoundedImageView)(binding.navigationView.getHeaderView(0).findViewById(R.id.imgUser))).setImageResource(R.drawable.img_logo);
         }
     }
+
+    private void getToken() {
+        FirebaseMessaging.getInstance().getToken().addOnSuccessListener(this::updateToken);
+    }
+
+    private void updateToken(String token) {
+        preferenceManager.putString(Constants.KEY_FCM_TOKEN, token);
+        FirebaseFirestore database = FirebaseFirestore.getInstance();
+        DocumentReference documentReference =
+                database.collection(Constants.KEY_COLLECTION_USERS).document(
+                        preferenceManager.getString(Constants.KEY_USER_ID)
+                );
+
+        documentReference.update(Constants.KEY_FCM_TOKEN, token)
+                .addOnSuccessListener(unused -> Toast.makeText(getApplicationContext(), "Token updated successfully", Toast.LENGTH_SHORT))
+                .addOnFailureListener(unused -> Toast.makeText(getApplicationContext(), "Unable to update token", Toast.LENGTH_SHORT));
+
+    }
+
+
 }

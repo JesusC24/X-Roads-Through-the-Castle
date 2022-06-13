@@ -21,10 +21,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.jesusc24.xroadsthroughthecastle.R;
+import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants;
 import com.jesusc24.xroadsthroughthecastle.data.model.Bug;
+import com.jesusc24.xroadsthroughthecastle.data.repository.UserRepository;
 import com.jesusc24.xroadsthroughthecastle.databinding.FragmentBugListBinding;
 import com.jesusc24.xroadsthroughthecastle.ui.DecorationRecyclerView;
 import com.jesusc24.xroadsthroughthecastle.ui.base.BaseDialogFragment;
+import com.jesusc24.xroadsthroughthecastle.utils.PreferencesManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,12 +41,14 @@ public class BugListFragment extends Fragment implements BugListContract.View, B
     private BugAdapter adapter;
     private BugListContract.Presenter presenter;
     private Bug deleted;
+    PreferencesManager preferenceManager;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
         presenter = new BugListPresenter(this);
+        preferenceManager = new PreferencesManager(getContext());
     }
 
     @Override
@@ -164,6 +169,12 @@ public class BugListFragment extends Fragment implements BugListContract.View, B
             binding.llNoDataBug.setVisibility(View.GONE);
         }
         adapter.update((List<Bug>) list);
+
+        if(preferenceManager.getBoolean(Constants.KEY_ORDER_BUG)) {
+            presenter.orderByEstado();
+        } else {
+            presenter.order();
+        }
     }
 
     @Override
@@ -208,4 +219,17 @@ public class BugListFragment extends Fragment implements BugListContract.View, B
             }
         });
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        UserRepository.setAvailability(true, preferenceManager.getString(Constants.KEY_USER_ID));
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        UserRepository.setAvailability(false, preferenceManager.getString(Constants.KEY_USER_ID));
+    }
+
 }

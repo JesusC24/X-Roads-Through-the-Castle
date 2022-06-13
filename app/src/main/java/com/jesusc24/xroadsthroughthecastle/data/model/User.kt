@@ -4,9 +4,10 @@ data class User(var email: String,
                 var password: String,
                 var name: String,
                 var image: String?,
-                var confirmPassword: String = "") {
+                var confirmPassword: String = "",
+                var token: String = ""){
 
-    constructor(email: String, password: String) : this(email, password, "", "", "")
+    constructor(email: String, password: String) : this(email, password, "", "", "", "")
 
     companion object {
         const val TAG = "user"

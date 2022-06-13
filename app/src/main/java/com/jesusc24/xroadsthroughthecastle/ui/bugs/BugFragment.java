@@ -16,22 +16,26 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.jesusc24.xroadsthroughthecastle.R;
 import com.jesusc24.xroadsthroughthecastle.data.constantes.ConstBugs;
+import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants;
 import com.jesusc24.xroadsthroughthecastle.data.model.Bug;
 import com.jesusc24.xroadsthroughthecastle.databinding.FragmentBugBinding;
 import com.jesusc24.xroadsthroughthecastle.ui.MainActivity;
 import com.jesusc24.xroadsthroughthecastle.ui.bugs.comentarios.BugComentariosFragment;
 import com.jesusc24.xroadsthroughthecastle.ui.bugs.especificaciones.BugDescriptionFragment;
 import com.jesusc24.xroadsthroughthecastle.ui.bugs.info.BugInfoFragment;
+import com.jesusc24.xroadsthroughthecastle.utils.PreferencesManager;
 
 public class BugFragment extends Fragment {
 
     FragmentBugBinding binding;
     Bug bug;
+    PreferencesManager preferenceManager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        preferenceManager = new PreferencesManager(getContext());
 
     }
 
@@ -120,5 +124,17 @@ public class BugFragment extends Fragment {
             BugFragmentDirections.ActionBugFragmentToBugManagerFragment action = BugFragmentDirections.actionBugFragmentToBugManagerFragment(bug);
             NavHostFragment.findNavController(this).navigate(action);
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        preferenceManager.putBoolean(Constants.KEY_AVAILABILITY, true);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        preferenceManager.putBoolean(Constants.KEY_AVAILABILITY, true);
     }
 }

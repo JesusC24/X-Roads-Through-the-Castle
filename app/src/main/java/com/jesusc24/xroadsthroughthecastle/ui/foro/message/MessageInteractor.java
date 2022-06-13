@@ -1,10 +1,11 @@
 package com.jesusc24.xroadsthroughthecastle.ui.foro.message;
 
-import com.jesusc24.xroadsthroughthecastle.data.model.Message;
+import com.jesusc24.xroadsthroughthecastle.data.model.Chat;
+import com.jesusc24.xroadsthroughthecastle.data.model.Mensaje;
+import com.jesusc24.xroadsthroughthecastle.data.repository.ChatRepository;
 import com.jesusc24.xroadsthroughthecastle.data.repository.MessageRepository;
-import com.jesusc24.xroadsthroughthecastle.ui.base.OnRepositoryCallback;
 
-public class MessageInteractor implements OnRepositoryCallback {
+public class MessageInteractor {
 
     private MessageContract.OnInteractorListener listener;
 
@@ -12,20 +13,17 @@ public class MessageInteractor implements OnRepositoryCallback {
         this.listener = listener;
     }
 
-    @Override
-    public void onSuccess() {
-
-    }
-
-    @Override
-    public void onFailure(int message) {
-
-    }
-
-    public void sendMessage(Message message) {
-        MessageRepository.getInstance().sendMessage(message);
+    public void sendMessage(Mensaje mensaje) {
+        MessageRepository.getInstance().sendMessage(mensaje);
         listener.clean();
     }
 
+    public void activeNotification(Chat chat, String token) {
+        ChatRepository.getInstance().chatEnableNotification(chat, token);
+    }
+
+    public void desableNotification(Chat chat, String token) {
+        ChatRepository.getInstance().chatDesableNotification(chat, token);
+    }
 
 }

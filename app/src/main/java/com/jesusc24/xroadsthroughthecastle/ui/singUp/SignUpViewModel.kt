@@ -45,7 +45,7 @@ class SignUpViewModel : ViewModel(), OnRepositoryCallback {
             !(password.value.equals(confirmPassword.value)) -> state.postValue(State.ConfirmPasswordError(R.string.errConfirmPassword))
             else -> {
                 state.postValue(State.Loading(true))
-                UserRepository.getInstance(this).signUp(User(email.value.toString(), password.value.toString(), name.value.toString(), imagen))
+                UserRepository.getInstance(this).signUp(User(email.value.toString(), password.value.toString(), name.value.toString(), imagen, ""))
             }
         }
     }

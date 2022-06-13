@@ -184,7 +184,7 @@
     <string name="tvBugGravedad">Gravedad</string>
     <string name="tvBugDispositivo">Dispositivo</string>
     <string name="tvBugSO">Sistema operativo</string>
-    <string name="key_order_favorito_chat">order_favorito_chat</string>
+    <string name="key_order_favorito_chat">order chat</string>
     <string name="summary_order_favorito_chat">Ordena por favoritos la lista de Chats</string>
     <string name="title_order_favorito_chat">Ordenar por favoritos</string>
     <string name="anadir_imagen">Añadir imagen</string>
@@ -214,7 +214,9 @@
     <string name="err_changeImage">No se ha podido actualizar la imagen</string>
     <string name="foro_preferences">Preferencias del foro</string>
     <string name="key_notification_bug">key_notification_bug</string>
-    <string name="key_order_bug">key_order_bug</string>
+    <string name="key_order_bug">order bug</string>
+    <string name="menu_mensaje_registrar">Activar chat notification</string>
+    <string name="menu_mensaje_quitar">Desactivar chat notification</string>
 
 
 </resources>

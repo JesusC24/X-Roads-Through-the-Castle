@@ -44,8 +44,8 @@ dependencies {
 
     implementation platform('com.google.firebase:firebase-bom:29.0.3')
     implementation 'com.google.firebase:firebase-analytics'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.6.0'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.annotation:annotation:1.3.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
@@ -60,6 +60,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:20.0.5'
     implementation 'com.google.firebase:firebase-messaging:23.0.5'
     implementation 'com.google.firebase:firebase-firestore:24.1.2'
+    implementation 'com.google.android.gms:play-services-nearby:18.2.0'
     testImplementation 'junit:junit:4.13.2'
 
 
@@ -68,8 +69,8 @@ dependencies {
 
     implementation 'com.github.jrvansuita:MaterialAbout:+'
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.6.10"
+    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.6.21"
 
     //Librería del event bus
     implementation 'org.greenrobot:eventbus:3.2.0'
@@ -84,8 +85,16 @@ dependencies {
     //Chat Kit
     implementation 'com.github.stfalcon:chatkit:0.3.3'
 
+    implementation 'com.google.firebase:firebase-messaging:23.0.5'
+    implementation 'com.google.firebase:firebase-core:21.0.0'
+
+
     //Libería ROOM
     def room_version = "2.4.2"
+
+    //Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.9.0'
 
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"

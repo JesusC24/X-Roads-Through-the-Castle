@@ -1,8 +1,7 @@
 package com.jesusc24.xroadsthroughthecastle.ui.foro.message;
 
-import com.jesusc24.xroadsthroughthecastle.data.model.Message;
-
-import java.util.List;
+import com.jesusc24.xroadsthroughthecastle.data.model.Chat;
+import com.jesusc24.xroadsthroughthecastle.data.model.Mensaje;
 
 public class MessagePresenter implements MessageContract.Presenter, MessageContract.OnInteractorListener {
 
@@ -15,37 +14,26 @@ public class MessagePresenter implements MessageContract.Presenter, MessageContr
     }
 
     @Override
-    public void onDestroy() {
-
+    public void sendMessage(Mensaje mensaje) {
+        interactor.sendMessage(mensaje);
+        view.cargarNotification(mensaje);
     }
 
     @Override
-    public void sendMessage(Message message) {
-        interactor.sendMessage(message);
+    public void activeNotification(Chat chat, String token) {
+        interactor.activeNotification(chat, token);
     }
+
+    @Override
+    public void desableNotification(Chat chat, String token) {
+        interactor.desableNotification(chat, token);
+    }
+
+
 
     @Override
     public void clean() {
         view.clean();
     }
 
-    @Override
-    public void onFailure(String message) {
-
-    }
-
-    @Override
-    public <T> void onSuccess(List<T> list) {
-
-    }
-
-    @Override
-    public void onDeleteSuccess(String message) {
-
-    }
-
-    @Override
-    public void onUndoSuccess() {
-
-    }
 }

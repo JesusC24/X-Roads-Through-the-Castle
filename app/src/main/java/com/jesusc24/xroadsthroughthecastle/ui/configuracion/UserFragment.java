@@ -135,4 +135,16 @@ public class UserFragment extends PreferenceFragmentCompat implements Preference
             UserRepository.getInstance(this).changeImage(encodeImage, preferenceManager.getString(Constants.KEY_USER_ID));
         }
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        UserRepository.setAvailability(true, preferenceManager.getString(Constants.KEY_USER_ID));
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        UserRepository.setAvailability(false, preferenceManager.getString(Constants.KEY_USER_ID));
+    }
 }

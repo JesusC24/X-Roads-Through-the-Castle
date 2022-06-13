@@ -1,6 +1,5 @@
 package com.jesusc24.xroadsthroughthecastle.ui.foro;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,19 +15,21 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
-import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.jesusc24.xroadsthroughthecastle.R;
+import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants;
 import com.jesusc24.xroadsthroughthecastle.data.model.Chat;
+import com.jesusc24.xroadsthroughthecastle.data.repository.UserRepository;
 import com.jesusc24.xroadsthroughthecastle.databinding.FragmentChatListBinding;
 import com.jesusc24.xroadsthroughthecastle.ui.DecorationRecyclerView;
 import com.jesusc24.xroadsthroughthecastle.ui.base.BaseDialogFragment;
 import com.jesusc24.xroadsthroughthecastle.ui.base.PasswordDialogFragment;
 import com.jesusc24.xroadsthroughthecastle.ui.base.PasswordDialogFragmentDirections;
+import com.jesusc24.xroadsthroughthecastle.utils.PreferencesManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,12 +39,16 @@ public class ChatListFragment extends Fragment implements ChatListContract.View,
     private ChatAdapter adapter;
     private ChatListContract.Presenter presenter;
     private Chat deleted;
+    private PreferencesManager preferenceManager;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
         presenter = new ChatListPresenter(this);
+        preferenceManager = new PreferencesManager(getContext());
+
     }
 
     @Override
@@ -75,13 +80,8 @@ public class ChatListFragment extends Fragment implements ChatListContract.View,
     public void onStart() {
         super.onStart();
         presenter.load();
-
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-
-        if(sharedPreferences.getBoolean(getString(R.string.key_favorito_chat), false)) {
-            presenter.orderByStar();
-        }
     }
+
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
@@ -178,6 +178,12 @@ public class ChatListFragment extends Fragment implements ChatListContract.View,
             binding.llNoDataChat.setVisibility(View.GONE);
         }
         adapter.update((List<Chat>) list);
+
+        if(preferenceManager.getBoolean(Constants.KEY_ORDER_CHAT)) {
+            presenter.orderByStar();
+        } else {
+            presenter.order();
+        }
     }
 
     @Override
@@ -221,6 +227,7 @@ public class ChatListFragment extends Fragment implements ChatListContract.View,
 
     @Override
     public void onOpenMessages(Chat chat) {
+        preferenceManager.putString(Constants.KEY_FORO_ID, chat.getId());
         if(chat.getTipo().equals(Chat.PRIVADO)) {
             Bundle bundle = new Bundle();
             bundle.putString(PasswordDialogFragment.TITLE, getString(R.string.putPasswoord));
@@ -271,6 +278,18 @@ public class ChatListFragment extends Fragment implements ChatListContract.View,
     public boolean onQueryTextChange(String newText) {
         adapter.filtrado(newText);
         return true;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        preferenceManager.putBoolean(Constants.KEY_AVAILABILITY, true);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        preferenceManager.putBoolean(Constants.KEY_AVAILABILITY, true);
     }
 
 

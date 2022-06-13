@@ -14,9 +14,12 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.jesusc24.xroadsthroughthecastle.R;
+import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants;
 import com.jesusc24.xroadsthroughthecastle.data.model.Chat;
+import com.jesusc24.xroadsthroughthecastle.data.repository.UserRepository;
 import com.jesusc24.xroadsthroughthecastle.databinding.FragmentCrearChatBinding;
 import com.jesusc24.xroadsthroughthecastle.ui.MainActivity;
+import com.jesusc24.xroadsthroughthecastle.utils.PreferencesManager;
 import com.jesusc24.xroadsthroughthecastle.utils.RellenarSpinner;
 
 /**
@@ -26,6 +29,7 @@ public class ChatManagerFragment extends Fragment implements ChatManagerContract
 
     private FragmentCrearChatBinding binding;
     ChatManagerContract.Presenter presenter;
+    PreferencesManager preferenceManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -38,6 +42,7 @@ public class ChatManagerFragment extends Fragment implements ChatManagerContract
         super.onViewCreated(view, savedInstanceState);
 
         RellenarSpinner.information(binding.spTipo, R.array.tipo_array, this);
+        preferenceManager = new PreferencesManager(getContext());
 
         if(ChatManagerFragmentArgs.fromBundle(getArguments()).getChat() != null) {
             //Se trata de editar
@@ -184,6 +189,18 @@ public class ChatManagerFragment extends Fragment implements ChatManagerContract
         binding.tilConfirmPassword.setError(getString(R.string.errConfirmPassword));
     }
     //endregion
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        preferenceManager.putBoolean(Constants.KEY_AVAILABILITY, true);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        preferenceManager.putBoolean(Constants.KEY_AVAILABILITY, true);
+    }
 
 
 }

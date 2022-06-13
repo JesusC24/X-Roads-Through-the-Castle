@@ -19,9 +19,11 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.jesusc24.xroadsthroughthecastle.R;
 import com.jesusc24.xroadsthroughthecastle.XRTCApplication;
 import com.jesusc24.xroadsthroughthecastle.data.constantes.ConstBugs;
+import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants;
 import com.jesusc24.xroadsthroughthecastle.data.model.Bug;
 import com.jesusc24.xroadsthroughthecastle.databinding.FragmentInformarBugBinding;
 import com.jesusc24.xroadsthroughthecastle.ui.MainActivity;
+import com.jesusc24.xroadsthroughthecastle.utils.PreferencesManager;
 import com.jesusc24.xroadsthroughthecastle.utils.RellenarSpinner;
 
 import java.util.Random;
@@ -33,10 +35,12 @@ public class BugManagerFragment extends Fragment implements BugManagerContract.V
 
     FragmentInformarBugBinding binding;
     BugManagerContract.Presenter presenter;
+    PreferencesManager preferenceManager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        preferenceManager = new PreferencesManager(getContext());
     }
 
     @Override
@@ -179,5 +183,17 @@ public class BugManagerFragment extends Fragment implements BugManagerContract.V
     @Override
     public void onFailure(String message) {
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        preferenceManager.putBoolean(Constants.KEY_AVAILABILITY, true);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        preferenceManager.putBoolean(Constants.KEY_AVAILABILITY, true);
     }
 }

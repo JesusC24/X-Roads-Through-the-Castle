@@ -3,10 +3,8 @@ package com.jesusc24.xroadsthroughthecastle;
 import android.app.Application;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.net.Uri;
 import android.preference.PreferenceManager;
 
 import com.jesusc24.xroadsthroughthecastle.data.XRTCDatabase;
@@ -14,7 +12,6 @@ import com.jesusc24.xroadsthroughthecastle.data.XRTCDatabase;
 public class XRTCApplication extends Application {
 
     public static final String IDCHANNEL = "123456";
-    public static final String LANGUAGE = "language";
 
     @Override
     public void onCreate() {
@@ -22,10 +19,6 @@ public class XRTCApplication extends Application {
         createNotificationChannel();
         //Se crea la base de datos en la primera ejecución de la aplicación
         XRTCDatabase.create(this);
-
-        EjemploIntentPersonalizado ejemploIntentPersonalizado = new EjemploIntentPersonalizado();
-        IntentFilter intentFilter = new IntentFilter("com.jesus24.xroadsthroughthecastle");
-        registerReceiver(ejemploIntentPersonalizado, intentFilter);
     }
 
 
@@ -54,13 +47,12 @@ public class XRTCApplication extends Application {
         notificationChannel.enableLights(true);
         notificationChannel.setLightColor(Color.GREEN);
 
-        String tono = establecerSonido();
+        /*String tono = establecerSonido();
 
         if(tono != null ){
             Uri sound = Uri.parse(tono);
-            //TODO cambiar sonido notificaciones
             //notificationChannel.setSound(sound, AudioAttributes.);
-        }
+        }*/
 
         //4. Añadir este canal a NotificationManager
         getSystemService(NotificationManager.class).createNotificationChannel(notificationChannel);

@@ -8,6 +8,7 @@ import androidx.preference.PreferenceFragmentCompat;
 
 import com.jesusc24.xroadsthroughthecastle.R;
 import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants;
+import com.jesusc24.xroadsthroughthecastle.data.repository.UserRepository;
 import com.jesusc24.xroadsthroughthecastle.utils.PreferencesManager;
 
 public class ForoFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener {
@@ -35,6 +36,18 @@ public class ForoFragment extends PreferenceFragmentCompat implements Preference
         }
 
         return false;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        UserRepository.setAvailability(true, preferenceManager.getString(Constants.KEY_USER_ID));
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        UserRepository.setAvailability(false, preferenceManager.getString(Constants.KEY_USER_ID));
     }
 
 

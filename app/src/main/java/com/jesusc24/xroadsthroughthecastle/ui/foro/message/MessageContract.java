@@ -1,11 +1,7 @@
 package com.jesusc24.xroadsthroughthecastle.ui.foro.message;
 
-import com.jesusc24.xroadsthroughthecastle.data.model.Message;
-import com.jesusc24.xroadsthroughthecastle.ui.base.BasePresenter;
-import com.jesusc24.xroadsthroughthecastle.ui.base.IProgressView;
-import com.jesusc24.xroadsthroughthecastle.ui.base.OnRepositoryListCallback;
-
-import java.util.List;
+import com.jesusc24.xroadsthroughthecastle.data.model.Chat;
+import com.jesusc24.xroadsthroughthecastle.data.model.Mensaje;
 
 public interface MessageContract {
     /**
@@ -14,18 +10,19 @@ public interface MessageContract {
      * - Los métodos necesarios para mostrar un progeso
      * - Los métodos necesario para gestionar los datos de un RecycleView
      */
-    interface View extends OnRepositoryListCallback, IProgressView {
-        <T> void showData(List<T> list);
-        void showNoData();
+    interface View {
         void clean();
+        void cargarNotification(Mensaje mensaje);
     }
 
     /**
      * Interfaz que debe implementar el presenter
      */
-    interface Presenter extends BasePresenter {
+    interface Presenter  {
         //Cargar los datos
-        void sendMessage(Message message);
+        void sendMessage(Mensaje mensaje);
+        void activeNotification(Chat chat, String token);
+        void desableNotification(Chat chat, String token);
     }
 
     /**
@@ -34,7 +31,7 @@ public interface MessageContract {
      */
     interface Repository {
         //Cargar los datos
-        void getList(OnRepositoryListCallback callback);
+        void sendMessage(Mensaje mensaje);
     }
 
     /**
@@ -44,7 +41,7 @@ public interface MessageContract {
      * - ELIMINAR (delete)
      * - DESHACER (Undo)
      */
-    interface OnInteractorListener extends OnRepositoryListCallback {
+    interface OnInteractorListener {
         void clean();
     }
 }

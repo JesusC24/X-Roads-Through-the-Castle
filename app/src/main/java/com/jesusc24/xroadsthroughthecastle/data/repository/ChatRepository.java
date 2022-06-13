@@ -1,5 +1,6 @@
 package com.jesusc24.xroadsthroughthecastle.data.repository;
 
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.jesusc24.xroadsthroughthecastle.data.XRTCDatabase;
@@ -124,6 +125,93 @@ public class ChatRepository implements ChatListContract.Repository, ChatManagerC
                 .addOnFailureListener(exception -> callback.onFailure(exception.getMessage()));
     }
 
+    public void chatEnableNotification(Chat chat, String token) {
+        FirebaseFirestore database = FirebaseFirestore.getInstance();
+
+        database.collection(Constants.KEY_COLLECTION_FORO)
+                .document(chat.getId())
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful() && task.getResult() != null) {
+                        Boolean encontrado = false;
+                        DocumentSnapshot documentSnapshot = task.getResult();
+                        List<String> tokens = (List<String>) documentSnapshot.get(Constants.KEY_NOTIFICATION_CHAT);
+
+                        if(tokens == null) {
+                            tokens = new ArrayList<>();
+                        }
+
+                        for(String t : tokens) {
+                            if(t.contentEquals(token)) {
+                                encontrado = true;
+                            }
+                        }
+
+                        if(!encontrado) {
+                            tokens.add(token);
+                        }
+
+                        HashMap<String, Object> newChat = new HashMap<>();
+                        newChat.put(Constants.KEY_NAME, chat.getNombre());
+                        newChat.put(Constants.KEY_TYPE, chat.getTipo());
+                        newChat.put(Constants.KEY_PASSWORD, chat.getPassword());
+                        newChat.put(Constants.KEY_DESCRIPTION, chat.getDescripcion());
+                        newChat.put(Constants.KEY_NOTIFICATION_CHAT, tokens);
+
+                        database.collection(Constants.KEY_COLLECTION_FORO).document(chat.getId())
+                                .update(newChat);
+                    }
+
+                });
+    }
+
+    public void chatDesableNotification(Chat chat, String token) {
+        FirebaseFirestore database = FirebaseFirestore.getInstance();
+
+        database.collection(Constants.KEY_COLLECTION_FORO)
+                .document(chat.getId())
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful() && task.getResult() != null) {
+                        Boolean encontrado = false;
+                        DocumentSnapshot documentSnapshot = task.getResult();
+                        List<String> tokens = (List<String>) documentSnapshot.get(Constants.KEY_NOTIFICATION_CHAT);
+
+                        if(tokens == null) {
+                            tokens = new ArrayList<>();
+                        }
+
+                        tokens.remove(token);
+
+                        HashMap<String, Object> newChat = new HashMap<>();
+                        newChat.put(Constants.KEY_NAME, chat.getNombre());
+                        newChat.put(Constants.KEY_TYPE, chat.getTipo());
+                        newChat.put(Constants.KEY_PASSWORD, chat.getPassword());
+                        newChat.put(Constants.KEY_DESCRIPTION, chat.getDescripcion());
+                        newChat.put(Constants.KEY_NOTIFICATION_CHAT, tokens);
+
+                        database.collection(Constants.KEY_COLLECTION_FORO).document(chat.getId())
+                                .update(newChat);
+                    }
+
+                });
+    }
+
+    public void takeTokens(Chat chat) {
+        FirebaseFirestore database = FirebaseFirestore.getInstance();
+        database.collection(Constants.KEY_COLLECTION_FORO)
+                .document(chat.getId())
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful() && task.getResult() != null) {
+                        DocumentSnapshot documentSnapshot = task.getResult();
+                        List<String> tokens = (List<String>) documentSnapshot.get(Constants.KEY_NOTIFICATION_CHAT);
+                    }
+
+
+                });
+    }
+
     public List<Chat> listStar() {
         List<Chat> chatStar = new ArrayList<>();
         try {
@@ -143,5 +231,9 @@ public class ChatRepository implements ChatListContract.Repository, ChatManagerC
         newChat.put(Constants.KEY_PASSWORD, chat.getPassword());
         newChat.put(Constants.KEY_DESCRIPTION, chat.getDescripcion());
         return newChat;
+    }
+
+    public void setEnableNotification() {
+
     }
 }
