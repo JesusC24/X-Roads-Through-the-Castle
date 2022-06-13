@@ -11,7 +11,7 @@
         tools:layout="@layout/fragment_about_us" />
     <fragment
         android:id="@+id/chatManagerFragment"
-        android:name="com.jesusc24.xroadsthroughthecastle.ui.foro.ChatManagerFragment"
+        android:name="com.jesusc24.xroadsthroughthecastle.ui.chat.ChatManagerFragment"
         android:label="@string/title_edit_chat"
         tools:layout="@layout/fragment_crear_chat">
         <argument
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/chatListFragment"
-        android:name="com.jesusc24.xroadsthroughthecastle.ui.foro.ChatListFragment"
+        android:name="com.jesusc24.xroadsthroughthecastle.ui.chat.ChatListFragment"
         android:label="@string/title_list_chat"
         tools:layout="@layout/fragment_chat_list">
         <action
@@ -93,7 +93,7 @@
     </fragment>
     <fragment
         android:id="@+id/messageFragment"
-        android:name="com.jesusc24.xroadsthroughthecastle.ui.foro.message.MessageFragment"
+        android:name="com.jesusc24.xroadsthroughthecastle.ui.chat.message.MessageFragment"
         android:label="@string/title_messages">
         <argument
             android:name="chat"

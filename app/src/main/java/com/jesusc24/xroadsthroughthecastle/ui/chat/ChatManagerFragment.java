@@ -1,4 +1,4 @@
-package com.jesusc24.xroadsthroughthecastle.ui.foro;
+package com.jesusc24.xroadsthroughthecastle.ui.chat;
 
 import android.content.Intent;
 import android.os.Bundle;

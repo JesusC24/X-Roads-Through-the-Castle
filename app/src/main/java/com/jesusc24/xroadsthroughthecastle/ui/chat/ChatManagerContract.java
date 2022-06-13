@@ -1,4 +1,4 @@
-package com.jesusc24.xroadsthroughthecastle.ui.foro;
+package com.jesusc24.xroadsthroughthecastle.ui.chat;
 
 import com.jesusc24.xroadsthroughthecastle.data.model.Chat;
 import com.jesusc24.xroadsthroughthecastle.ui.base.BasePresenter;

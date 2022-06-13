@@ -1,7 +1,7 @@
-package com.jesusc24.xroadsthroughthecastle.ui.foro.message;
+package com.jesusc24.xroadsthroughthecastle.ui.chat.message;
 
 import com.jesusc24.xroadsthroughthecastle.data.model.Chat;
-import com.jesusc24.xroadsthroughthecastle.data.model.Mensaje;
+import com.jesusc24.xroadsthroughthecastle.data.model.Message;
 
 public class MessagePresenter implements MessageContract.Presenter, MessageContract.OnInteractorListener {
 
@@ -14,9 +14,9 @@ public class MessagePresenter implements MessageContract.Presenter, MessageContr
     }
 
     @Override
-    public void sendMessage(Mensaje mensaje) {
-        interactor.sendMessage(mensaje);
-        view.cargarNotification(mensaje);
+    public void sendMessage(Message message) {
+        interactor.sendMessage(message);
+        view.cargarNotification(message);
     }
 
     @Override

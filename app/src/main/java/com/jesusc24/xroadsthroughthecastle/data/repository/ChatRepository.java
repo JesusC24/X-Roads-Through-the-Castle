@@ -9,8 +9,8 @@ import com.jesusc24.xroadsthroughthecastle.data.dao.ChatDAO;
 import com.jesusc24.xroadsthroughthecastle.data.model.Chat;
 import com.jesusc24.xroadsthroughthecastle.ui.base.OnRepositoryListCallback;
 import com.jesusc24.xroadsthroughthecastle.ui.base.OnRepositoryManageCallback;
-import com.jesusc24.xroadsthroughthecastle.ui.foro.ChatListContract;
-import com.jesusc24.xroadsthroughthecastle.ui.foro.ChatManagerContract;
+import com.jesusc24.xroadsthroughthecastle.ui.chat.ChatListContract;
+import com.jesusc24.xroadsthroughthecastle.ui.chat.ChatManagerContract;
 
 import java.util.ArrayList;
 import java.util.HashMap;

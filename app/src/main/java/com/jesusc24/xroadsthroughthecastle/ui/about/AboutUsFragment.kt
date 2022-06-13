@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.jesusc24.xroadsthroughthecastle.R
 import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants
-import com.jesusc24.xroadsthroughthecastle.data.repository.UserRepository
 import com.jesusc24.xroadsthroughthecastle.utils.PreferencesManager
 import com.vansuita.materialabout.builder.AboutBuilder
 

@@ -1,4 +1,4 @@
-package com.jesusc24.xroadsthroughthecastle.ui.foro.message;
+package com.jesusc24.xroadsthroughthecastle.ui.chat.message;
 
 import android.app.Notification;
 import android.app.NotificationManager;

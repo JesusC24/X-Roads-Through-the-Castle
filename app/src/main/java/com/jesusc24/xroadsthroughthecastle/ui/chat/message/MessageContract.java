@@ -1,7 +1,7 @@
-package com.jesusc24.xroadsthroughthecastle.ui.foro.message;
+package com.jesusc24.xroadsthroughthecastle.ui.chat.message;
 
 import com.jesusc24.xroadsthroughthecastle.data.model.Chat;
-import com.jesusc24.xroadsthroughthecastle.data.model.Mensaje;
+import com.jesusc24.xroadsthroughthecastle.data.model.Message;
 
 public interface MessageContract {
     /**
@@ -12,7 +12,7 @@ public interface MessageContract {
      */
     interface View {
         void clean();
-        void cargarNotification(Mensaje mensaje);
+        void cargarNotification(Message message);
     }
 
     /**
@@ -20,7 +20,7 @@ public interface MessageContract {
      */
     interface Presenter  {
         //Cargar los datos
-        void sendMessage(Mensaje mensaje);
+        void sendMessage(Message message);
         void activeNotification(Chat chat, String token);
         void desableNotification(Chat chat, String token);
     }
@@ -31,7 +31,7 @@ public interface MessageContract {
      */
     interface Repository {
         //Cargar los datos
-        void sendMessage(Mensaje mensaje);
+        void sendMessage(Message message);
     }
 
     /**

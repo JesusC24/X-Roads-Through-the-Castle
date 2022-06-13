@@ -1,7 +1,7 @@
-package com.jesusc24.xroadsthroughthecastle.ui.foro.message;
+package com.jesusc24.xroadsthroughthecastle.ui.chat.message;
 
 import com.jesusc24.xroadsthroughthecastle.data.model.Chat;
-import com.jesusc24.xroadsthroughthecastle.data.model.Mensaje;
+import com.jesusc24.xroadsthroughthecastle.data.model.Message;
 import com.jesusc24.xroadsthroughthecastle.data.repository.ChatRepository;
 import com.jesusc24.xroadsthroughthecastle.data.repository.MessageRepository;
 
@@ -13,8 +13,8 @@ public class MessageInteractor {
         this.listener = listener;
     }
 
-    public void sendMessage(Mensaje mensaje) {
-        MessageRepository.getInstance().sendMessage(mensaje);
+    public void sendMessage(Message message) {
+        MessageRepository.getInstance().sendMessage(message);
         listener.clean();
     }
 

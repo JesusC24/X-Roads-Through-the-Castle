@@ -1,4 +1,4 @@
-package com.jesusc24.xroadsthroughthecastle.ui.foro.message;
+package com.jesusc24.xroadsthroughthecastle.ui.chat.message;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -23,7 +23,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.jesusc24.xroadsthroughthecastle.R;
 import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants;
 import com.jesusc24.xroadsthroughthecastle.data.model.Chat;
-import com.jesusc24.xroadsthroughthecastle.data.model.Mensaje;
+import com.jesusc24.xroadsthroughthecastle.data.model.Message;
 import com.jesusc24.xroadsthroughthecastle.databinding.FragmentMessageBinding;
 import com.jesusc24.xroadsthroughthecastle.network.ApiClient;
 import com.jesusc24.xroadsthroughthecastle.network.ApiService;
@@ -47,7 +47,7 @@ public class MessageFragment extends Fragment implements MessageContract.View {
 
     FragmentMessageBinding binding;
     private Chat receiverChat;
-    private List<Mensaje> mensajes = new ArrayList<>();
+    private List<Message> messages = new ArrayList<>();
     private MessageAdapter adapter;
     private PreferencesManager preferenceManager;
     private MessageContract.Presenter presenter;
@@ -123,8 +123,8 @@ public class MessageFragment extends Fragment implements MessageContract.View {
     }
 
 
-    private Mensaje getMessage() {
-        Mensaje mensaje = new Mensaje(
+    private Message getMessage() {
+        Message message = new Message(
                 binding.tieSendMessage.getText().toString(),
                 preferenceManager.getString(Constants.KEY_USER_ID),
                 receiverChat.getId().toString(),
@@ -133,7 +133,7 @@ public class MessageFragment extends Fragment implements MessageContract.View {
                 preferenceManager.getString(Constants.KEY_NAME)
         );
 
-        return mensaje;
+        return message;
     }
 
     @Override
@@ -141,7 +141,7 @@ public class MessageFragment extends Fragment implements MessageContract.View {
         binding.tieSendMessage.setText(null);
     }
 
-    public void cargarNotification(Mensaje message) {
+    public void cargarNotification(Message message) {
             FirebaseFirestore database = FirebaseFirestore.getInstance();
             database.collection(Constants.KEY_COLLECTION_FORO)
                     .document(preferenceManager.getString(Constants.KEY_FORO_ID))
@@ -231,10 +231,10 @@ public class MessageFragment extends Fragment implements MessageContract.View {
         }
 
         if(value != null) {
-            int count = mensajes.size();
+            int count = messages.size();
             for(DocumentChange documentChange : value.getDocumentChanges()) {
                 if(documentChange.getType() == DocumentChange.Type.ADDED) {
-                    Mensaje mensaje = new Mensaje(
+                    Message message = new Message(
                             documentChange.getDocument().getString(Constants.KEY_MESSAGE),
                             documentChange.getDocument().getString(Constants.KEY_SENDER_ID),
                             documentChange.getDocument().getString(Constants.KEY_FORO_ID),
@@ -242,17 +242,17 @@ public class MessageFragment extends Fragment implements MessageContract.View {
                             documentChange.getDocument().getString(Constants.KEY_IMAGE),
                             documentChange.getDocument().getString(Constants.KEY_NAME));
 
-                    mensajes.add(mensaje);
+                    messages.add(message);
 
                 }
             }
 
-            Collections.sort(mensajes, Comparator.comparing(Mensaje::getFecha_envio));
+            Collections.sort(messages, Comparator.comparing(Message::getFecha_envio));
             if(count == 0) {
-                adapter.update(mensajes);
+                adapter.update(messages);
             } else {
-                adapter.newMessage(mensajes);
-                binding.rvMessage.smoothScrollToPosition(mensajes.size() - 1);
+                adapter.newMessage(messages);
+                binding.rvMessage.smoothScrollToPosition(messages.size() - 1);
             }
         }
     };
