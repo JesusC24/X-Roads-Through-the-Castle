@@ -1,6 +1,5 @@
 package com.jesusc24.xroadsthroughthecastle.data.repository;
 
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.jesusc24.xroadsthroughthecastle.R;
@@ -138,14 +137,6 @@ public class UserRepository {
                 .update(newUser)
 
                 .addOnFailureListener(exception -> callback.onFailure(R.string.err_changeImage));
-    }
-
-    public static void setAvailability(Boolean availability, String id) {
-        FirebaseFirestore database = FirebaseFirestore.getInstance();
-        DocumentReference documentReference =
-                database.collection(Constants.KEY_COLLECTION_USERS).document(id);
-
-        documentReference.update(Constants.KEY_AVAILABILITY, availability);
     }
 
     /*public void firebaseAuthWithGoogle(String idToken, Activity activity) {

@@ -39,7 +39,7 @@ public class ChatListFragment extends Fragment implements ChatListContract.View,
     private ChatListContract.Presenter presenter;
     private Chat deleted;
     private PreferencesManager preferenceManager;
-
+    private Boolean order = true;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,7 +47,6 @@ public class ChatListFragment extends Fragment implements ChatListContract.View,
         setHasOptionsMenu(true);
         presenter = new ChatListPresenter(this);
         preferenceManager = new PreferencesManager(getContext());
-
     }
 
     @Override
@@ -92,7 +91,8 @@ public class ChatListFragment extends Fragment implements ChatListContract.View,
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_chat_ordenar:
-                presenter.order();
+                order = !order;
+                presenter.order(order);
                 return true;
 
             case R.id.menu_chat_ordenar_favorito:
@@ -181,7 +181,7 @@ public class ChatListFragment extends Fragment implements ChatListContract.View,
         if(preferenceManager.getBoolean(Constants.KEY_ORDER_CHAT)) {
             presenter.orderByStar();
         } else {
-            presenter.order();
+            presenter.order(order);
         }
     }
 
@@ -288,7 +288,7 @@ public class ChatListFragment extends Fragment implements ChatListContract.View,
     @Override
     public void onPause() {
         super.onPause();
-        preferenceManager.putBoolean(Constants.KEY_AVAILABILITY, true);
+        preferenceManager.putBoolean(Constants.KEY_AVAILABILITY, false);
     }
 
 

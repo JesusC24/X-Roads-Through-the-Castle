@@ -7,8 +7,6 @@ import java.util.List;
 public class ChatListPresenter implements ChatListContract.Presenter, ChatListContract.OnInteractorListener {
     ChatListContract.View view;
     ChatListInteractor interactor;
-    boolean order = false;
-    boolean orderStar = false;
     boolean searchName = false;
 
     public ChatListPresenter(ChatListContract.View view) {
@@ -63,12 +61,10 @@ public class ChatListPresenter implements ChatListContract.Presenter, ChatListCo
     }
 
     @Override
-    public void order() {
-        if(order) {
-            order = false;
+    public void order(Boolean o) {
+        if(o) {
             view.showDataInverseOrder();
         } else {
-            order = true;
             view.showDataOrder();
         }
     }

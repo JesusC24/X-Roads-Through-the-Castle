@@ -211,7 +211,6 @@ public class MessageFragment extends Fragment implements MessageContract.View {
                     }catch (JSONException e) {
                         e.printStackTrace();
                     }
-                    showToast("Notification sent successfully");
 
                 } else {
                     showToast("Error: " + response.code());
@@ -266,6 +265,6 @@ public class MessageFragment extends Fragment implements MessageContract.View {
     @Override
     public void onPause() {
         super.onPause();
-        preferenceManager.putBoolean(Constants.KEY_AVAILABILITY, true);
+        preferenceManager.putBoolean(Constants.KEY_AVAILABILITY, false);
     }
 }

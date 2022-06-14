@@ -198,7 +198,7 @@ public class ChatManagerFragment extends Fragment implements ChatManagerContract
     @Override
     public void onPause() {
         super.onPause();
-        preferenceManager.putBoolean(Constants.KEY_AVAILABILITY, true);
+        preferenceManager.putBoolean(Constants.KEY_AVAILABILITY, false);
     }
 
 

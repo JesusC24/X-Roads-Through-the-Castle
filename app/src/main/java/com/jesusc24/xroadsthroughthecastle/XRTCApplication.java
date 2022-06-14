@@ -3,11 +3,13 @@ package com.jesusc24.xroadsthroughthecastle;
 import android.app.Application;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.preference.PreferenceManager;
+import android.media.AudioAttributes;
+import android.net.Uri;
 
 import com.jesusc24.xroadsthroughthecastle.data.XRTCDatabase;
+import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants;
+import com.jesusc24.xroadsthroughthecastle.utils.PreferencesManager;
 
 public class XRTCApplication extends Application {
 
@@ -45,31 +47,22 @@ public class XRTCApplication extends Application {
         notificationChannel.enableLights(true);
         notificationChannel.setLightColor(Color.GREEN);
 
-        /*String tono = establecerSonido();
+        String tono = establecerSonido();
 
         if(tono != null ){
             Uri sound = Uri.parse(tono);
-            //notificationChannel.setSound(sound, AudioAttributes.);
-        }*/
+            AudioAttributes att = new AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_NOTIFICATION)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH).build();
+            notificationChannel.setSound(sound, att);
+        }
 
         //4. Añadir este canal a NotificationManager
         getSystemService(NotificationManager.class).createNotificationChannel(notificationChannel);
     }
 
     private String establecerSonido() {
-        SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(this);
-
-        if(!(sharedPreferences.getString(getString(R.string.key_ringtone_chat), "").equals(""))) {
-            String tono = sharedPreferences.getString(getString(R.string.key_ringtone_chat), "");
-            String[] list = getResources().getStringArray(R.array.ringtone_values);
-            for (String s : list) {
-                if (tono.contains(s)) {
-                    return s;
-                }
-            }
-        }
-
-        return null;
+        PreferencesManager preferencesManager = new PreferencesManager(getApplicationContext());
+        return preferencesManager.getString(Constants.KEY_RIGNTONE_CHAT);
     }
 
 }

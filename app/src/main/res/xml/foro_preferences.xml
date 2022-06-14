@@ -13,14 +13,7 @@
     <PreferenceCategory app:title="@string/notification_header"
         app:icon="@drawable/ic_notification_menu">
 
-        <SwitchPreference
-            android:defaultValue="true"
-            app:key="@string/key_notification_chat"
-            app:summary="@string/summaty_notification_chat"
-            app:title="@string/title_notification_chat" />
-
         <ListPreference
-            android:dependency="@string/key_notification_chat"
             android:entries="@array/ringtone"
             android:entryValues="@array/ringtone_values"
             app:key="@string/key_ringtone_chat"

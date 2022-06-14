@@ -8,7 +8,6 @@ import androidx.preference.PreferenceFragmentCompat;
 
 import com.jesusc24.xroadsthroughthecastle.R;
 import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants;
-import com.jesusc24.xroadsthroughthecastle.data.repository.UserRepository;
 import com.jesusc24.xroadsthroughthecastle.utils.PreferencesManager;
 
 public class SettingsFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener {
@@ -29,14 +28,14 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
     @Override
     public void onPause() {
         super.onPause();
-        UserRepository.setAvailability(false, preferenceManager.getString(Constants.KEY_USER_ID));
+        preferenceManager.putBoolean(Constants.KEY_AVAILABILITY, false);
         getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        UserRepository.setAvailability(true, preferenceManager.getString(Constants.KEY_USER_ID));
+        preferenceManager.putBoolean(Constants.KEY_AVAILABILITY, true);
         getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
     }
 

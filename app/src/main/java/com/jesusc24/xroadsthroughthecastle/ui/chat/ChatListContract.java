@@ -37,7 +37,7 @@ public interface ChatListContract {
         //Cuando el usuario pulsa la opción undo del SnackBar
         void undo(Chat chat);
         //Que la lista se ordene por nombre
-        void order();
+        void order(Boolean o);
         //Que la lista se ordene por favorito
         void orderByStar();
         //Activa la opción de buscar

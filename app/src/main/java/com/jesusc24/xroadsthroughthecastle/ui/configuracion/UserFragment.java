@@ -140,12 +140,12 @@ public class UserFragment extends PreferenceFragmentCompat implements Preference
     @Override
     public void onResume() {
         super.onResume();
-        UserRepository.setAvailability(true, preferenceManager.getString(Constants.KEY_USER_ID));
+        preferenceManager.putBoolean(Constants.KEY_AVAILABILITY, true);
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        UserRepository.setAvailability(false, preferenceManager.getString(Constants.KEY_USER_ID));
+        preferenceManager.putBoolean(Constants.KEY_AVAILABILITY, false);
     }
 }
