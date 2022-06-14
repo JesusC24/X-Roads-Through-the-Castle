@@ -37,8 +37,6 @@ public class Constants {
     public static final String KEY_AVAILABILITY = "availability";
     public static final String KEY_NAME_FORO = "name foro";
 
-
-
     public static HashMap<String, String> remoteMsgHeaders = null;
 
     public static HashMap<String, String> getRemoteMsgHeaders() {

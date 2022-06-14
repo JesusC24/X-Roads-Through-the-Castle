@@ -5,7 +5,6 @@ import android.graphics.BitmapFactory;
 import android.util.Base64;
 import android.util.Patterns;
 
-import com.jesusc24.xroadsthroughthecastle.R;
 import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants;
 
 import java.io.ByteArrayOutputStream;
@@ -57,17 +56,6 @@ public final class CommonUtils {
         Pattern pattern = Pattern.compile(Patterns.EMAIL_ADDRESS.toString());
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
-    }
-
-    /**
-     * Para validar que solo contiene letras el string
-     */
-    public static int validarString(String nombre) {
-        Pattern patron = Pattern.compile("^[a-zA-Z ]+$");
-        if (!patron.matcher(nombre).matches() || nombre.length() > 30) {
-            return R.string.validarDatos_string;
-        }
-        return 0;
     }
 
     public static String getSHA512(String input) {

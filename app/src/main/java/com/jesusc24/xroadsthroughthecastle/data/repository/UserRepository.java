@@ -9,6 +9,7 @@ import com.jesusc24.xroadsthroughthecastle.data.model.User;
 import com.jesusc24.xroadsthroughthecastle.ui.base.OnRepositoryCallback;
 import com.jesusc24.xroadsthroughthecastle.ui.login.LoginActivity;
 import com.jesusc24.xroadsthroughthecastle.ui.singUp.SignUpActivity;
+import com.jesusc24.xroadsthroughthecastle.utils.CommonUtils;
 import com.jesusc24.xroadsthroughthecastle.utils.PreferencesManager;
 
 import java.util.HashMap;
@@ -36,7 +37,7 @@ public class UserRepository {
 
         database.collection(Constants.KEY_COLLECTION_USERS)
                 .whereEqualTo(Constants.KEY_EMAIL, user.getEmail())
-                .whereEqualTo(Constants.KEY_PASSWORD, user.getPassword())
+                .whereEqualTo(Constants.KEY_PASSWORD, CommonUtils.getSHA512(user.getPassword()))
                 .get()
 
                 .addOnCompleteListener(task -> {
@@ -61,7 +62,7 @@ public class UserRepository {
         HashMap<String, Object> newUser = new HashMap<>();
         newUser.put(Constants.KEY_NAME, user.getName());
         newUser.put(Constants.KEY_EMAIL, user.getEmail());
-        newUser.put(Constants.KEY_PASSWORD, user.getPassword());
+        newUser.put(Constants.KEY_PASSWORD, CommonUtils.getSHA512(user.getPassword()));
         newUser.put(Constants.KEY_IMAGE, user.getImage());
 
         preferenceManager = new PreferencesManager(SignUpActivity.context);
@@ -118,7 +119,7 @@ public class UserRepository {
     public void updatePassword(String password, String idUser) {
         FirebaseFirestore database = FirebaseFirestore.getInstance();
         HashMap<String, Object> newUser = new HashMap<>();
-        newUser.put(Constants.KEY_PASSWORD, password);
+        newUser.put(Constants.KEY_PASSWORD, CommonUtils.getSHA512(password));
 
         database.collection(Constants.KEY_COLLECTION_USERS)
                 .document(idUser)

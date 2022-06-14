@@ -21,7 +21,6 @@ public class XRTCApplication extends Application {
         XRTCDatabase.create(this);
     }
 
-
     @Override
     public void onTerminate() {
         super.onTerminate();
@@ -35,7 +34,6 @@ public class XRTCApplication extends Application {
         // Se crea una clase NotificationChannel sólo en el caso en el que que la API 26+
         //porque no se ha incluido en la librería de soporte
 
-        //if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
         //1. Difinir la importancia
         int importancia = NotificationManager.IMPORTANCE_DEFAULT;
         //2. Definir el nombre del canal
@@ -56,7 +54,6 @@ public class XRTCApplication extends Application {
 
         //4. Añadir este canal a NotificationManager
         getSystemService(NotificationManager.class).createNotificationChannel(notificationChannel);
-        //}
     }
 
     private String establecerSonido() {
@@ -65,9 +62,9 @@ public class XRTCApplication extends Application {
         if(!(sharedPreferences.getString(getString(R.string.key_ringtone_chat), "").equals(""))) {
             String tono = sharedPreferences.getString(getString(R.string.key_ringtone_chat), "");
             String[] list = getResources().getStringArray(R.array.ringtone_values);
-            for(int i=0; i<list.length; i++) {
-                if(tono.contains(list[i])) {
-                    return list[i];
+            for (String s : list) {
+                if (tono.contains(s)) {
+                    return s;
                 }
             }
         }

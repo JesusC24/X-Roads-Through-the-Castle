@@ -37,7 +37,7 @@ public class ChangePasswordDialogFragment extends DialogFragment {
             Bundle result = new Bundle();
 
             builder.setPositiveButton(R.string.yes, (dialogInterface, i) -> {
-                String passwordActual = ((TextView)view.findViewById(R.id.tiePasswordActual)).getText().toString();
+                String passwordActual = CommonUtils.getSHA512(((TextView)view.findViewById(R.id.tiePasswordActual)).getText().toString());
                 String passwordNew = ((TextView)view.findViewById(R.id.tiePasswordNew)).getText().toString();
                 String passwordNewConfirm = ((TextView)view.findViewById(R.id.tiePasswordNewConfim)).getText().toString();
 
@@ -46,14 +46,14 @@ public class ChangePasswordDialogFragment extends DialogFragment {
                 if(passwordActual.isEmpty() || passwordNew.isEmpty() || passwordNewConfirm.isEmpty()) {
                     result.putString(KEY_ERROR, getString(R.string.errPasswordAllComplete));
                 } else if(!(passwordActual.contentEquals(preferencesManager.getString(Constants.KEY_PASSWORD)))) {
-                    result.putString(KEY_ERROR, getString(R.string.errPassword));
-                } else if(CommonUtils.isPasswordValid(passwordNew)) {
+                    result.putString(KEY_ERROR, getString(R.string.errPasswordActual));
+                } else if(!(CommonUtils.isPasswordValid(passwordNew))) {
                     result.putString(KEY_ERROR, getString(R.string.errPassword));
                 } else if(!(passwordNew.contentEquals(passwordNewConfirm))) {
                     result.putString(KEY_ERROR, getString(R.string.errConfirmPassword));
                 } else {
                     result.putBoolean(KEY_BUNDLE, true);
-                    result.putString(KEY_PASSWORD, passwordNew);
+                    result.putString(KEY_PASSWORD, CommonUtils.getSHA512(passwordNew));
                 }
                 getActivity().getSupportFragmentManager().setFragmentResult(REQUEST, result);
 
@@ -64,8 +64,6 @@ public class ChangePasswordDialogFragment extends DialogFragment {
                 result.putString(KEY_ERROR, "Rechazada la confirmación");
                 getActivity().getSupportFragmentManager().setFragmentResult(REQUEST, result);
             });
-
-
 
             return builder.create();
         }

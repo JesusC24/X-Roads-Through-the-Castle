@@ -8,10 +8,8 @@
     <string name="btSingIn">Iniciar sesión</string>
     <string name="tvOtherLogin">Iniciar sesión con otras plataformas</string>
     <string name="tvTitleSingUp">Registrar</string>
-
     <string name="tieEmailHint">Introduce tu email</string>
     <string name="tieConfirmPassword">Confirmar contraseña</string>
-
     <string name="imgbtNoticias">Noticias</string>
     <string name="imgbtChat" translatable="false">Chat</string>
     <string name="imgbtGuia">Guía</string>
@@ -20,9 +18,7 @@
     <string name="imgbtAboutUs">Sobre nosotros</string>
     <string name="imgbtUser">Usuario</string>
     <string name="imgbtHelp">Ayuda</string>
-
     <string name="btCrear">Crear</string>
-
     <string name="tieDescripcion">Descripción</string>
     <string name="tiePassword">Contraseña</string>
     <string name="rbPrivado">Privado</string>
@@ -30,9 +26,7 @@
     <string name="tvTipo">Tipo</string>
     <string name="tieName">Nombre</string>
     <string name="tvCrearChat">Crear chat</string>
-
     <string name="aboutUs_description">Creador del juego X_RTC. Apasionado de los videojuegos</string>
-
     <string name="fabChat">Añadir nuevo chat</string>
     <string name="fabBug">Añadir nuevo bug</string>
     <string name="aboutUs_subTitle">Desarrollador Móvil</string>
@@ -69,7 +63,6 @@
     <string name="tilUser">Nombre</string>
     <string name="tieEmail">Email</string>
     <string name="btCambiarPassword">Cambiar contraseña</string>
-
     <string name="menu_chat_ordenar">Ordenar por nombre</string>
     <string name="notification_header">Notificaciones</string>
     <string name="help_header">Ayuda</string>
@@ -83,7 +76,6 @@
     <string name="key_user" translatable="false">user</string>
     <string name="title_user">Usuario</string>
     <string name="summary_user">Opciones para modificar tu usuario</string>
-
     <string name="summaty_notification_chat">Activar las notificaciones de los mensajes del chat</string>
     <string name="title_notification_chat">Activar notificaciones</string>
     <string name="defaul_web_client_id" translatable="false">751565801750-uqbur7sbpgs9tiou98ua4dbm34ht3lg9.apps.googleusercontent.com</string>
@@ -99,11 +91,9 @@
     <string name="menu_chat_ordenar_favorito">Ordenar por favoritos</string>
     <string name="errNameEmpty">El nombre no puede estar vacío</string>
     <string name="title_edit_chat">Editar chat</string>
-
     <string name="facebook_app_id" translatable="false">1047312215828067</string>
     <string name="fb_login_protocol_scheme" translatable="false">fb1047312215828067</string>
     <string name="prepareFacebook">el incio de sesión con facebook se encuentra en desarollo</string>
-
     <string name="title_list_chat">Listar chat</string>
     <string name="title_list_bug">Listar bug</string>
     <string name="title_edit_bug">Editar bug</string>
@@ -137,7 +127,6 @@
     <string name="undo_success">Operación cancelada</string>
     <string name="editSuccessChat">"Se ha editado el chat "</string>
     <string name="exit">con exito</string>
-
     <string name="bug_description">Descripcion</string>
     <string name="bug_comentarios">Comentarios</string>
     <string name="bug_info" translatable="false">Info</string>
@@ -147,7 +136,6 @@
     <string name="key_bug" translatable="false">bug</string>
     <string name="summary_bug">Opciones para modificar los bugs</string>
     <string name="title_bug" translatable="false">Bug</string>
-
     <string name="notification_title_add_dependency">Chat añadido</string>
     <string name="notification_title_add_bug">Bug añadido</string>
     <string name="errEditBug">No se puede editar un bug que está resuelto o denegado</string>
@@ -172,12 +160,10 @@
     <string name="summary_order_favorito_chat">Ordena por favoritos la lista de Chats</string>
     <string name="title_order_favorito_chat">Ordenar por favoritos</string>
     <string name="anadir_imagen">Añadir imagen</string>
-
     <string name="on_sucess_login">Se ha iniciado sesión</string>
     <string name="err_auth">Error de autenticación</string>
     <string name="err_emailRepeat">El email ya se encuentra registrado</string>
     <string name="err_noDisponible">Esta opción no se encuentra desponible</string>
-
     <string name="my_name">Jesús Cortés Ocaña</string>
     <string name="confirmCloseSession">¿Estás seguro que quieres cerrar la sesión?</string>
     <string name="yes">Sí</string>
@@ -200,6 +186,6 @@
     <string name="key_order_bug" translatable="false">order bug</string>
     <string name="menu_mensaje_registrar">Activar chat notification</string>
     <string name="menu_mensaje_quitar">Desactivar chat notification</string>
-
-
+    <string name="errPasswordActual">La contraseña actual no coincide</string>
+    <string name="passwordChageCorrect">Contraseña cambiada con exito</string>
 </resources>

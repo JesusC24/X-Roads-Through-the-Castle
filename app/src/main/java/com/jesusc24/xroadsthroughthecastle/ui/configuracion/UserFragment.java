@@ -80,6 +80,7 @@ public class UserFragment extends PreferenceFragmentCompat implements Preference
                 if(result.getBoolean(ChangePasswordDialogFragment.KEY_BUNDLE)) {
                     String password = result.getString(ChangePasswordDialogFragment.KEY_PASSWORD);
                     UserRepository.getInstance(this).updatePassword(password, preferenceManager.getString(Constants.KEY_USER_ID));
+                    Toast.makeText(getContext(), R.string.passwordChageCorrect, Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getContext(), result.getString(ChangePasswordDialogFragment.KEY_ERROR), Toast.LENGTH_SHORT).show();
                 }
