@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -90,6 +91,14 @@ public class MessageFragment extends Fragment implements MessageContract.View {
             case R.id.menu_mensaje_quitar:
                 presenter.desableNotification(receiverChat, preferenceManager.getString(Constants.KEY_FCM_TOKEN));
                 return true;
+            case R.id.menu_messages_editar:
+                if(receiverChat.getIdUser().contentEquals(preferenceManager.getString(Constants.KEY_USER_ID))) {
+                    MessageFragmentDirections.ActionChatFragmentToChatManagerFragment action = MessageFragmentDirections.actionChatFragmentToChatManagerFragment(receiverChat);
+                    NavHostFragment.findNavController(this).navigate(action);
+                } else {
+                    Toast.makeText(getContext(), getString(R.string.errEditChat), Toast.LENGTH_SHORT).show();
+                }
+
             default:
                 return super.onOptionsItemSelected(item);
 

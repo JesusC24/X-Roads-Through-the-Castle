@@ -33,6 +33,7 @@ import com.jesusc24.xroadsthroughthecastle.utils.PreferencesManager;
 import java.util.ArrayList;
 import java.util.List;
 
+//TODO que solo el que ha creado el chat pueda editarlo
 public class ChatListFragment extends Fragment implements ChatListContract.View, ChatAdapter.OnManageChatList, SearchView.OnQueryTextListener {
     FragmentChatListBinding binding;
     private ChatAdapter adapter;
@@ -45,7 +46,7 @@ public class ChatListFragment extends Fragment implements ChatListContract.View,
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        presenter = new ChatListPresenter(this);
+        presenter = new ChatListPresenter(this, new PreferencesManager(getContext()));
         preferenceManager = new PreferencesManager(getContext());
     }
 

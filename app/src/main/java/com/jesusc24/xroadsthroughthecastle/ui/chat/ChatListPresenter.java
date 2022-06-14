@@ -1,6 +1,7 @@
 package com.jesusc24.xroadsthroughthecastle.ui.chat;
 
 import com.jesusc24.xroadsthroughthecastle.data.model.Chat;
+import com.jesusc24.xroadsthroughthecastle.utils.PreferencesManager;
 
 import java.util.List;
 
@@ -9,9 +10,9 @@ public class ChatListPresenter implements ChatListContract.Presenter, ChatListCo
     ChatListInteractor interactor;
     boolean searchName = false;
 
-    public ChatListPresenter(ChatListContract.View view) {
+    public ChatListPresenter(ChatListContract.View view, PreferencesManager preferencesManager) {
         this.view = view;
-        interactor = new ChatListInteractor(this);
+        interactor = new ChatListInteractor(this, preferencesManager);
     }
     @Override
     public void onDestroy() {

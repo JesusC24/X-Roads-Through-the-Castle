@@ -7,8 +7,4 @@
     <item android:title="@string/bug_description"
         android:id="@+id/action_bug_description"
         android:icon="@drawable/ic_action_description"/>
-
-    <item android:title="@string/bug_comentarios"
-        android:id="@+id/action_bug_comentarios"
-        android:icon="@drawable/ic_action_comment"/>
 </menu>

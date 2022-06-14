@@ -10,4 +10,9 @@
         android:title="@string/menu_mensaje_quitar"
         android:orderInCategory="2"
         app:showAsAction="never"/>
+
+    <item android:id="@+id/menu_messages_editar"
+        android:title="@string/menu_messages_editar"
+        android:orderInCategory="3"
+        app:showAsAction="never"/>
 </menu>

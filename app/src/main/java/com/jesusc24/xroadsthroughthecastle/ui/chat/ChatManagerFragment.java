@@ -131,6 +131,8 @@ public class ChatManagerFragment extends Fragment implements ChatManagerContract
 
         chat.setFavorito(false);
 
+        chat.setIdUser(preferenceManager.getString(Constants.KEY_USER_ID));
+
         return chat;
     }
 

@@ -20,7 +20,6 @@ import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants;
 import com.jesusc24.xroadsthroughthecastle.data.model.Bug;
 import com.jesusc24.xroadsthroughthecastle.databinding.FragmentBugBinding;
 import com.jesusc24.xroadsthroughthecastle.ui.MainActivity;
-import com.jesusc24.xroadsthroughthecastle.ui.bugs.comentarios.BugComentariosFragment;
 import com.jesusc24.xroadsthroughthecastle.ui.bugs.especificaciones.BugDescriptionFragment;
 import com.jesusc24.xroadsthroughthecastle.ui.bugs.info.BugInfoFragment;
 import com.jesusc24.xroadsthroughthecastle.utils.PreferencesManager;
@@ -96,9 +95,6 @@ public class BugFragment extends Fragment {
                     break;
                 case R.id.action_bug_description:
                     loadFragment(BugDescriptionFragment.newInstance(bundle));
-                    break;
-                case R.id.action_bug_comentarios:
-                    loadFragment(BugComentariosFragment.newInstance(bundle));
                     break;
             }
 

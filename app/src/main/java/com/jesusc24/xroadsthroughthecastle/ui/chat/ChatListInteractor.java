@@ -1,16 +1,20 @@
 package com.jesusc24.xroadsthroughthecastle.ui.chat;
 
+import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants;
 import com.jesusc24.xroadsthroughthecastle.data.model.Chat;
 import com.jesusc24.xroadsthroughthecastle.data.repository.ChatRepository;
 import com.jesusc24.xroadsthroughthecastle.ui.base.OnRepositoryListCallback;
+import com.jesusc24.xroadsthroughthecastle.utils.PreferencesManager;
 
 import java.util.List;
 
 public class ChatListInteractor implements OnRepositoryListCallback {
     private ChatListContract.OnInteractorListener presenter;
+    PreferencesManager preferencesManager;
 
-    public ChatListInteractor(ChatListContract.OnInteractorListener presenter) {
+    public ChatListInteractor(ChatListContract.OnInteractorListener presenter, PreferencesManager preferencesManager) {
         this.presenter = presenter;
+        this.preferencesManager = preferencesManager;
     }
 
     public void load() {
@@ -22,7 +26,12 @@ public class ChatListInteractor implements OnRepositoryListCallback {
     }
 
     public void delete(Chat chat) {
-        ChatRepository.getInstance().delete(chat, this);
+        if(chat.getIdUser().contentEquals(preferencesManager.getString(Constants.KEY_USER_ID))) {
+            ChatRepository.getInstance().delete(chat, this);
+        } else {
+            onFailure("No puedes borrar un chat que no has creado");
+        }
+
     }
 
     public void updateStar(Chat chat) {

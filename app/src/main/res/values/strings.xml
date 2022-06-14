@@ -188,4 +188,7 @@
     <string name="menu_mensaje_quitar">Desactivar chat notification</string>
     <string name="errPasswordActual">La contraseña actual no coincide</string>
     <string name="passwordChageCorrect">Contraseña cambiada con exito</string>
+    <string name="menu_messages_editar">Editar</string>
+    <string name="errEditChatProperty">No puedes borrar un chat que no has creado</string>
+    <string name="errEditChat">No puedes borrar el chat porque no lo has creado</string>
 </resources>
