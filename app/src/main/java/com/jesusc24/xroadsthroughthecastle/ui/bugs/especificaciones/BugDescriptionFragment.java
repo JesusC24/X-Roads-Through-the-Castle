@@ -9,14 +9,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants;
 import com.jesusc24.xroadsthroughthecastle.data.model.Bug;
 import com.jesusc24.xroadsthroughthecastle.databinding.FragmentBugDescriptionBinding;
+import com.jesusc24.xroadsthroughthecastle.utils.PreferencesManager;
 
 public class BugDescriptionFragment extends Fragment {
 
     FragmentBugDescriptionBinding binding;
-    public static final String TAG = "BugDescriptionFragment";
     Bug bug;
+    PreferencesManager preferencesManager;
 
     public static Fragment newInstance(Bundle bundle) {
         BugDescriptionFragment fragment = new BugDescriptionFragment();
@@ -30,6 +32,7 @@ public class BugDescriptionFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        preferencesManager = new PreferencesManager(getContext());
     }
 
     @Override
@@ -47,7 +50,19 @@ public class BugDescriptionFragment extends Fragment {
     }
 
     private void initView(Bug bug) {
-        binding.tvBugTitulo.setText(bug.getNombre());
+        binding.tvBugTitleDescription.setText(bug.getNombre());
         binding.tvBugDescripcion.setText(bug.getDescripcion());
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        preferencesManager.putBoolean(Constants.KEY_AVAILABILITY, true);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        preferencesManager.putBoolean(Constants.KEY_AVAILABILITY, false);
     }
 }

@@ -130,7 +130,7 @@
     <fragment
         android:id="@+id/bugFragment2"
         android:name="com.jesusc24.xroadsthroughthecastle.ui.configuracion.BugFragment"
-        android:label="BugFragment" />
+        android:label="@string/bug_preferences" />
     <fragment
         android:id="@+id/foroFragment"
         android:name="com.jesusc24.xroadsthroughthecastle.ui.configuracion.ForoFragment"

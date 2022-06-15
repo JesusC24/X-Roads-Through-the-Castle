@@ -1,17 +1,16 @@
-package com.jesusc24.xroadsthroughthecastle.network;
+package com.jesusc24.xroadsthroughthecastle.network
 
-import java.util.HashMap;
+import retrofit2.Call
+import retrofit2.http.Body
+import retrofit2.http.HeaderMap
+import retrofit2.http.POST
+import java.util.HashMap
 
-import retrofit2.Call;
-import retrofit2.http.Body;
-import retrofit2.http.HeaderMap;
-import retrofit2.http.POST;
-
-public interface ApiService {
+interface ApiService {
 
     @POST("send")
-    Call<String> sendMessage(
-            @HeaderMap HashMap<String, String> headers,
-            @Body String messageBody
-    );
+    fun sendMessage(
+        @HeaderMap headers: HashMap<String?, String?>?,
+        @Body messageBody: String?
+    ): Call<String?>?
 }

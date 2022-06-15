@@ -1,7 +1,7 @@
-package com.jesusc24.xroadsthroughthecastle.ui.base;
+package com.jesusc24.xroadsthroughthecastle.ui.base
 
-public interface OnRepositoryManageCallback {
-    void onAddSuccess(String message);
-    void onEditSucess(String message);
-    void onFailure(String message);
+interface OnRepositoryManageCallback {
+    fun onAddSuccess(message: String?)
+    fun onEditSucess(message: String?)
+    fun onFailure(message: String?)
 }

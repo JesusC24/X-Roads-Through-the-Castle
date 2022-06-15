@@ -1,6 +1,7 @@
 package com.jesusc24.xroadsthroughthecastle.data.repository;
 
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.jesusc24.xroadsthroughthecastle.R;
 import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants;
@@ -20,10 +21,12 @@ public class UserRepository {
     private static PreferencesManager preferenceManager;
     private static UserRepository instance;
     private static OnRepositoryCallback callback;
+    private static FirebaseFirestore database;
 
     public static UserRepository getInstance(OnRepositoryCallback activity) {
         if(instance == null) {
             instance = new UserRepository();
+            database = FirebaseFirestore.getInstance();
         }
 
         callback = activity;
@@ -31,7 +34,6 @@ public class UserRepository {
     }
 
     public void login(User user) {
-        FirebaseFirestore database = FirebaseFirestore.getInstance();
         preferenceManager = new PreferencesManager(LoginActivity.context);
 
         database.collection(Constants.KEY_COLLECTION_USERS)
@@ -57,7 +59,6 @@ public class UserRepository {
 
 
     public void signUp(User user) {
-        FirebaseFirestore database = FirebaseFirestore.getInstance();
         HashMap<String, Object> newUser = new HashMap<>();
         newUser.put(Constants.KEY_NAME, user.getName());
         newUser.put(Constants.KEY_EMAIL, user.getEmail());
@@ -95,7 +96,6 @@ public class UserRepository {
     }
 
     public void deleteUser(String idUser) {
-        FirebaseFirestore database = FirebaseFirestore.getInstance();
         database.collection(Constants.KEY_COLLECTION_USERS)
                 .document(idUser)
                 .delete()
@@ -104,7 +104,6 @@ public class UserRepository {
     }
 
     public void updateNameUser(String name, String idUser) {
-        FirebaseFirestore database = FirebaseFirestore.getInstance();
         HashMap<String, Object> newUser = new HashMap<>();
         newUser.put(Constants.KEY_NAME, name);
 
@@ -116,7 +115,6 @@ public class UserRepository {
     }
 
     public void updatePassword(String password, String idUser) {
-        FirebaseFirestore database = FirebaseFirestore.getInstance();
         HashMap<String, Object> newUser = new HashMap<>();
         newUser.put(Constants.KEY_PASSWORD, CommonUtils.getSHA512(password));
 
@@ -128,7 +126,6 @@ public class UserRepository {
     }
 
     public void changeImage(String image, String idUser) {
-        FirebaseFirestore database = FirebaseFirestore.getInstance();
         HashMap<String, Object> newUser = new HashMap<>();
         newUser.put(Constants.KEY_IMAGE, image);
 
@@ -137,6 +134,22 @@ public class UserRepository {
                 .update(newUser)
 
                 .addOnFailureListener(exception -> callback.onFailure(R.string.err_changeImage));
+    }
+
+    public void deleteFCM(String idUser) {
+        HashMap<String, Object> newUser = new HashMap<>();
+        newUser.put(Constants.KEY_FCM_TOKEN, FieldValue.delete());
+
+        database.collection(Constants.KEY_COLLECTION_USERS)
+                .document(idUser)
+                .update(newUser)
+
+                .addOnCompleteListener(task -> {
+                    //database.collection(Constants.KEY_COLLECTION_FORO)
+                })
+
+                .addOnFailureListener(exception -> callback.onFailure(R.string.err_closeSesion));
+
     }
 
     /*public void firebaseAuthWithGoogle(String idToken, Activity activity) {

@@ -34,7 +34,7 @@ public class MessagingService extends FirebaseMessagingService {
     public void crearNotification(RemoteMessage message) {
         PreferencesManager preferencesManager = new PreferencesManager(getApplicationContext());
 
-        if(!(preferencesManager.getBoolean(Constants.KEY_AVAILABILITY))) {
+        if(!(preferencesManager.getBoolean(Constants.KEY_AVAILABILITY)) && !preferencesManager.getString(Constants.KEY_FCM_TOKEN).equals("")) {
             Bundle bundle = new Bundle();
             Chat chat = new Chat();
             chat.setId(message.getData().get(Constants.KEY_FORO_ID));
@@ -49,8 +49,8 @@ public class MessagingService extends FirebaseMessagingService {
 
             Notification.Builder builder = new Notification.Builder(getApplicationContext(), XRTCApplication.IDCHANNEL)
                     .setSmallIcon(R.drawable.ic_notification_menu)
-                    .setContentTitle("Notificación del chat - " + message.getData().get(Constants.KEY_NAME_FORO))
-                    .setContentText("El mensaje es: " + message.getData().get(Constants.KEY_MESSAGE) + "\ny ha sido mandado por " + message.getData().get(Constants.KEY_NAME))
+                    .setContentTitle(message.getData().get(Constants.KEY_TITLE_NOTIFICATION) + message.getData().get(Constants.KEY_NAME_FORO))
+                    .setContentText(message.getData().get(Constants.KEY_TEXT_NOTIFICATION) + message.getData().get(Constants.KEY_MESSAGE) + "\n" + message.getData().get(Constants.KEY_SEND_NOTIFICATION) + message.getData().get(Constants.KEY_NAME))
                     .setContentIntent(pendingIntent);
 
             NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);

@@ -1,60 +1,33 @@
-package com.jesusc24.xroadsthroughthecastle.ui.configuracion;
+package com.jesusc24.xroadsthroughthecastle.ui.configuracion
 
-import android.content.SharedPreferences;
-import android.os.Bundle;
+import androidx.preference.PreferenceFragmentCompat
 
-import androidx.annotation.Nullable;
-import androidx.preference.PreferenceFragmentCompat;
+import android.os.Bundle
+import com.jesusc24.xroadsthroughthecastle.R
 
-import com.jesusc24.xroadsthroughthecastle.R;
-import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants;
-import com.jesusc24.xroadsthroughthecastle.utils.PreferencesManager;
+import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants
+import com.jesusc24.xroadsthroughthecastle.utils.PreferencesManager
 
-public class SettingsFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener {
-
-    PreferencesManager preferenceManager;
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        getActivity().setTitle("Preferencias");
-        preferenceManager = new PreferencesManager(getContext());
+class SettingsFragment : PreferenceFragmentCompat() {
+    private lateinit var preferenceManager: PreferencesManager
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        activity!!.title = "Preferencias"
+        preferenceManager = PreferencesManager(context)
     }
 
-    @Override
-    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-        setPreferencesFromResource(R.xml.root_preferences, rootKey);
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        setPreferencesFromResource(R.xml.root_preferences, rootKey)
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        preferenceManager.putBoolean(Constants.KEY_AVAILABILITY, false);
-        getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+    override fun onPause() {
+        super.onPause()
+        preferenceManager.putBoolean(Constants.KEY_AVAILABILITY, false)
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        preferenceManager.putBoolean(Constants.KEY_AVAILABILITY, true);
-        getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+    override fun onResume() {
+        super.onResume()
+        preferenceManager.putBoolean(Constants.KEY_AVAILABILITY, true)
     }
 
-    @Override
-    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        /*Preference preference = findPreference(key);
-        //Voy a buscar si la preferencia es mi lista ringtone
-        if(key.equals(getString(R.string.key_ringtone_chat))) {
-            //Como he comprobado previamente que la preferencia que se ha modificado es la lista,
-            //se puede hacer downcasting
-            ListPreference listPreference = (ListPreference) preference;
-            //Se reocge el indice seleccionado
-            int index = listPreference.findIndexOfValue(sharedPreferences.getString(key, ""));
-            if(index >= 0) {
-                preference.setSummary(listPreference.getEntries()[index]);
-                //preference.setSummary(listPreference.getValue());
-            } else {
-                preference.setSummary(sharedPreferences.getString(key, ""));
-            }
-        }*/
-    }
 }

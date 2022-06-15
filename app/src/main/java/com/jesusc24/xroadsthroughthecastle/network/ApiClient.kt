@@ -1,20 +1,20 @@
-package com.jesusc24.xroadsthroughthecastle.network;
+package com.jesusc24.xroadsthroughthecastle.network
 
-import retrofit2.Retrofit;
-import retrofit2.converter.scalars.ScalarsConverterFactory;
+import retrofit2.Retrofit
+import retrofit2.converter.scalars.ScalarsConverterFactory
 
-public class ApiClient {
+object ApiClient {
+    private var retrofit: Retrofit? = null
 
-    private static Retrofit retrofit = null;
-
-    public static Retrofit getClient() {
-        if(retrofit == null) {
-            retrofit = new Retrofit.Builder()
+    @JvmStatic
+    val client: Retrofit?
+        get() {
+            if (retrofit == null) {
+                retrofit = Retrofit.Builder()
                     .baseUrl("https://fcm.googleapis.com/fcm/")
                     .addConverterFactory(ScalarsConverterFactory.create())
-                    .build();
+                    .build()
+            }
+            return retrofit
         }
-
-        return retrofit;
-    }
 }

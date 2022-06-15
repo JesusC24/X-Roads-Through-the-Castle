@@ -32,7 +32,7 @@ public interface BugListContract {
         //Cuando el usuario pulsa la opción undo del SnackBar
         void undo(Bug bug);
         //Que la lista se ordene por nombre
-        void order();
+        void order(Boolean o);
         void orderByEstado();
         void search();
     }

@@ -30,7 +30,6 @@ public class MessagePresenter implements MessageContract.Presenter, MessageContr
     }
 
 
-
     @Override
     public void clean() {
         view.clean();

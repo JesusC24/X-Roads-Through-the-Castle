@@ -1,9 +1,5 @@
 package com.jesusc24.xroadsthroughthecastle.ui.bugs;
 
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,20 +9,15 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavDeepLinkBuilder;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.jesusc24.xroadsthroughthecastle.R;
-import com.jesusc24.xroadsthroughthecastle.XRTCApplication;
-import com.jesusc24.xroadsthroughthecastle.data.constantes.ConstBugs;
 import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants;
 import com.jesusc24.xroadsthroughthecastle.data.model.Bug;
 import com.jesusc24.xroadsthroughthecastle.databinding.FragmentInformarBugBinding;
 import com.jesusc24.xroadsthroughthecastle.ui.MainActivity;
 import com.jesusc24.xroadsthroughthecastle.utils.PreferencesManager;
 import com.jesusc24.xroadsthroughthecastle.utils.RellenarSpinner;
-
-import java.util.Random;
 
 /**
  * Fragment que se utiliza para poder crear un nuevo Bug
@@ -84,25 +75,25 @@ public class BugManagerFragment extends Fragment implements BugManagerContract.V
         binding.tieName.setText(bug.getNombre());
         binding.tieDescripcion.setText(bug.getDescripcion());
 
-        for(int i = 0; i< ConstBugs.Tipo.TOTAL; i++) {
+        for(int i = 0; i< Constants.KEY_TOTAL_TYPE; i++) {
             if(binding.spTipo.getItemAtPosition(i).equals(bug.getTipo())) {
                 binding.spTipo.setSelection(i);
             }
         }
 
-        for(int i = 0; i< ConstBugs.Gravedad.TOTAL; i++) {
+        for(int i = 0; i< Constants.KEY_TOTAL_GRAVITY; i++) {
             if(binding.spGravedad.getItemAtPosition(i).equals(bug.getGravedad())) {
                 binding.spGravedad.setSelection(i);
             }
         }
 
-        for(int i = 0; i< ConstBugs.Dispositivo.TOTAL; i++) {
+        for(int i = 0; i< Constants.KEY_TOTAL_DEVICE; i++) {
             if(binding.spDispositivo.getItemAtPosition(i).equals(bug.getDispositivo())) {
                 binding.spDispositivo.setSelection(i);
             }
         }
 
-        for(int i = 0; i< ConstBugs.SO.TOTAL; i++) {
+        for(int i = 0; i< Constants.KEY_TOTAL_SO; i++) {
             if(binding.spSO.getItemAtPosition(i).equals(bug.getSo())) {
                 binding.spSO.setSelection(i);
             }
@@ -135,54 +126,33 @@ public class BugManagerFragment extends Fragment implements BugManagerContract.V
         bug.setGravedad(binding.spGravedad.getSelectedItem().toString());
         bug.setDispositivo(binding.spDispositivo.getSelectedItem().toString());
         bug.setSo(binding.spSO.getSelectedItem().toString());
-        bug.setEstado(ConstBugs.Estado.ENVIADO);
+        bug.setEstado(Constants.KEY_BUG_ENVIADO);
 
         if(BugManagerFragmentArgs.fromBundle(getArguments()).getBug()!=null){
             bug.setId(BugManagerFragmentArgs.fromBundle(getArguments()).getBug().getId());
             bug.setEstado(BugManagerFragmentArgs.fromBundle(getArguments()).getBug().getEstado());
         }
 
+        bug.setIdUser(preferenceManager.getString(Constants.KEY_USER_ID));
+
         return bug;
     }
 
     @Override
     public void onAddSuccess(String message) {
-        //Crear la notificación, pero ANTES se tiene que:
-
-        //1. Crear un bundle que almacene la DEPENDENCIA
-        Bundle bundle = new Bundle();
-        bundle.putSerializable(Bug.TAG, getBug());
-
-
-        PendingIntent pendingIntent = new NavDeepLinkBuilder(getActivity())
-                .setGraph(R.navigation.nav_graph)
-                .setDestination(R.id.bugFragment)
-                .setArguments(bundle)
-                .createPendingIntent();
-
-        //5. Crear la notificación
-        Notification.Builder builder = new Notification.Builder(getActivity(), XRTCApplication.IDCHANNEL)
-                .setSmallIcon(R.drawable.ic_add_alert)
-                .setContentTitle(getString(R.string.notification_title_add_bug))
-                .setContentText(message)
-                .setContentIntent(pendingIntent);
-
-        //6. Añadir la notificación al Manager
-        NotificationManager notificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(new Random().nextInt(1000), builder.build());
-
+        Toast.makeText(getContext(), getString(R.string.addBug) + " " + message + " " + getString(R.string.exit), Toast.LENGTH_SHORT).show();
         NavHostFragment.findNavController(this).popBackStack();
     }
 
     @Override
     public void onEditSucess(String message) {
-        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), getString(R.string.editBug) + " " + message + " " + getString(R.string.exit), Toast.LENGTH_SHORT).show();
         NavHostFragment.findNavController(this).popBackStack();
     }
 
     @Override
     public void onFailure(String message) {
-
+        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -194,6 +164,6 @@ public class BugManagerFragment extends Fragment implements BugManagerContract.V
     @Override
     public void onPause() {
         super.onPause();
-        preferenceManager.putBoolean(Constants.KEY_AVAILABILITY, true);
+        preferenceManager.putBoolean(Constants.KEY_AVAILABILITY, false);
     }
 }

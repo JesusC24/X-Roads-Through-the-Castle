@@ -16,6 +16,7 @@ import java.util.List;
 public class BugRepository implements BugListContract.Repository, BugManagerContract.Repository {
     public static BugRepository instace;
     private List<Bug> list;
+    private static FirebaseFirestore database;
 
     private BugRepository() {
         list = new ArrayList<>();
@@ -24,6 +25,7 @@ public class BugRepository implements BugListContract.Repository, BugManagerCont
     public static BugRepository getInstance() {
         if(instace == null) {
             instace = new BugRepository();
+            database = FirebaseFirestore.getInstance();
         }
 
         return instace;
@@ -33,7 +35,6 @@ public class BugRepository implements BugListContract.Repository, BugManagerCont
     public void getList(OnRepositoryListCallback callback) {
         list = new ArrayList<>();
 
-        FirebaseFirestore database = FirebaseFirestore.getInstance();
         database.collection(Constants.KEY_COLLECTION_BUGS)
                 .get()
                 .addOnCompleteListener(task -> {
@@ -48,6 +49,7 @@ public class BugRepository implements BugListContract.Repository, BugManagerCont
                             bug.setGravedad(queryDocumentSnapshot.getString(Constants.KEY_GRAVEDAD));
                             bug.setSo(queryDocumentSnapshot.getString(Constants.KEY_SO));
                             bug.setId(queryDocumentSnapshot.getId());
+                            bug.setIdUser(queryDocumentSnapshot.getString(Constants.KEY_USER_ID));
                             list.add(bug);
                         }
                     }
@@ -58,7 +60,6 @@ public class BugRepository implements BugListContract.Repository, BugManagerCont
 
     @Override
     public void delete(Bug bug, OnRepositoryListCallback callback) {
-        FirebaseFirestore database = FirebaseFirestore.getInstance();
         database.collection(Constants.KEY_COLLECTION_BUGS)
                 .document(bug.getId())
                 .delete()
@@ -68,7 +69,6 @@ public class BugRepository implements BugListContract.Repository, BugManagerCont
 
     @Override
     public void undo(Bug bug, OnRepositoryListCallback callback) {
-        FirebaseFirestore database = FirebaseFirestore.getInstance();
         HashMap<String, Object> newBug = createHashMap(bug);
 
         database.collection(Constants.KEY_COLLECTION_BUGS)
@@ -83,31 +83,25 @@ public class BugRepository implements BugListContract.Repository, BugManagerCont
 
     @Override
     public void add(Bug bug, OnRepositoryManageCallback callback) {
-        FirebaseFirestore database = FirebaseFirestore.getInstance();
         HashMap<String, Object> newBug = createHashMap(bug);
 
         database.collection(Constants.KEY_COLLECTION_BUGS)
                 .add(newBug)
 
-                .addOnSuccessListener(documentReference -> {
-                    callback.onAddSuccess("Se ha añadido el bug " + bug.getNombre() + " con exito");
-                })
+                .addOnSuccessListener(documentReference -> callback.onAddSuccess(bug.getNombre()))
 
                 .addOnFailureListener(exception -> callback.onFailure(exception.getMessage()));
     }
 
     @Override
     public void edit(Bug bug, OnRepositoryManageCallback callback) {
-        FirebaseFirestore database = FirebaseFirestore.getInstance();
         HashMap<String, Object> newBug = createHashMap(bug);
 
         database.collection(Constants.KEY_COLLECTION_BUGS)
                 .document(bug.getId())
                 .update(newBug)
 
-                .addOnSuccessListener(documentReference -> {
-                    callback.onEditSucess("Se ha editado el bug " + bug.getNombre() + " con exito");
-                })
+                .addOnSuccessListener(documentReference -> callback.onEditSucess(bug.getNombre()))
 
                 .addOnFailureListener(exception -> callback.onFailure(exception.getMessage()));
     }
@@ -121,6 +115,7 @@ public class BugRepository implements BugListContract.Repository, BugManagerCont
         newBug.put(Constants.KEY_ESTADO, bug.getEstado());
         newBug.put(Constants.KEY_GRAVEDAD, bug.getGravedad());
         newBug.put(Constants.KEY_SO, bug.getSo());
+        newBug.put(Constants.KEY_USER_ID, bug.getIdUser());
         return newBug;
     }
 }

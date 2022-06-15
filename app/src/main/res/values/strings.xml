@@ -186,9 +186,22 @@
     <string name="key_order_bug" translatable="false">order bug</string>
     <string name="menu_mensaje_registrar">Activar chat notification</string>
     <string name="menu_mensaje_quitar">Desactivar chat notification</string>
-    <string name="errPasswordActual">La contraseña actual no coincide</string>
     <string name="passwordChageCorrect">Contraseña cambiada con exito</string>
     <string name="menu_messages_editar">Editar</string>
-    <string name="errEditChatProperty">No puedes borrar un chat que no has creado</string>
-    <string name="errEditChat">No puedes borrar el chat porque no lo has creado</string>
+    <string name="errEditChatProperty">No puedes editar un chat que no has creado</string>
+    <string name="errEditChat">No puedes editar el chat porque no lo has creado</string>
+    <string name="err_closeSesion">Error al cerrar sesión</string>
+    <string name="err_deleteChatAuth">No puedes borrar el chat porque no lo has creado</string>
+    <string name="addChat">"Se ha añadido el chat "</string>
+    <string name="editChat">"Se ha editado el chat "</string>
+    <string name="addBug">"Se ha añadido el bug "</string>
+    <string name="editBug">"Se ha editado el bug "</string>
+    <string name="bug_preferences">Bug preferencias</string>
+    <string name="tvBugDescription">Descripción</string>
+    <string name="err_deleteBugAuth">No puedes borrar un bug que no has creado</string>
+    <string name="errEditBugAuth">No puedes editar un bug que nos creado</string>
+    <string name="title_notification" translatable="false">"Chat - "</string>
+    <string name="text_notification">"El mensaje es: "</string>
+    <string name="send_notification">"y ha sido mandado por "</string>
+    <string name="errPasswordActual">No coincide la contraseña actual</string>
 </resources>

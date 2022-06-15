@@ -1,6 +1,5 @@
 package com.jesusc24.xroadsthroughthecastle.ui.chat;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -150,16 +149,7 @@ public class ChatManagerFragment extends Fragment implements ChatManagerContract
 
     @Override
     public void onAddSuccess(String message) {
-        //Crear la notificación, pero ANTES se tiene que:
-
-        //1. Crear un bundle que almacene la DEPENDENCIA
-        Intent intent = new Intent("com.jesus24.xroadsthroughthecastle");
-        intent.putExtra("title", getString(R.string.title_add_chat));
-        intent.putExtra("message", message);
-        intent.putExtra(Chat.TAG, getChat());
-
-        getActivity().sendBroadcast(intent);
-
+        Toast.makeText(getContext(), getString(R.string.addChat) + " " + message + " " + getString(R.string.exit), Toast.LENGTH_SHORT).show();
         NavHostFragment.findNavController(this).popBackStack();
     }
 

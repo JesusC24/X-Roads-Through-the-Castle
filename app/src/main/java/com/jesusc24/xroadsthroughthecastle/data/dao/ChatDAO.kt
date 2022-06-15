@@ -1,22 +1,18 @@
-package com.jesusc24.xroadsthroughthecastle.data.dao;
+package com.jesusc24.xroadsthroughthecastle.data.dao
 
-import androidx.room.Dao;
-import androidx.room.Insert;
-import androidx.room.Query;
-
-import com.jesusc24.xroadsthroughthecastle.data.model.Chat;
-
-import java.util.List;
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.Query
+import com.jesusc24.xroadsthroughthecastle.data.model.Chat
 
 @Dao
-public interface ChatDAO {
-
+interface ChatDAO {
     @Insert
-    long insert(Chat chat);
+    fun insert(chat: Chat?): Long
 
     @Query("delete from chat where id = :id")
-    void delete(String id);
+    fun delete(id: String?)
 
     @Query("select * from chat order by nombre asc")
-    List<Chat> select();
+    fun select(): List<Chat?>?
 }

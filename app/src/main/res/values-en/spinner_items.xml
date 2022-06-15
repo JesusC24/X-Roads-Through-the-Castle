@@ -7,7 +7,7 @@
 
     <string-array name="tipo_bugs_array">
         <item>Logic</item>
-        <item>Dseign</item>
+        <item>Design</item>
         <item>Content</item>
         <item>Other</item>
     </string-array>

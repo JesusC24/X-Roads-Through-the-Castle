@@ -55,7 +55,7 @@
         android:elevation="@dimen/_3sdp"
         android:src="@drawable/ic_action_add"
         android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/_34sdp"
+        android:layout_margin="@dimen/_15sdp"
         android:focusable="true" />
 
     <androidx.recyclerview.widget.RecyclerView

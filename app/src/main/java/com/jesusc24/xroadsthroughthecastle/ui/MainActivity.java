@@ -3,7 +3,6 @@ package com.jesusc24.xroadsthroughthecastle.ui;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -149,9 +148,7 @@ public class MainActivity extends AppCompatActivity implements PreferenceFragmen
                         preferenceManager.getString(Constants.KEY_USER_ID)
                 );
 
-        documentReference.update(Constants.KEY_FCM_TOKEN, token)
-                .addOnSuccessListener(unused -> Toast.makeText(getApplicationContext(), "Token updated successfully", Toast.LENGTH_SHORT))
-                .addOnFailureListener(unused -> Toast.makeText(getApplicationContext(), "Unable to update token", Toast.LENGTH_SHORT));
+        documentReference.update(Constants.KEY_FCM_TOKEN, token);
 
     }
 

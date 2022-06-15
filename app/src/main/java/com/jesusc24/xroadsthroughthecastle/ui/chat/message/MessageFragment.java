@@ -171,6 +171,9 @@ public class MessageFragment extends Fragment implements MessageContract.View {
                                 data.put(Constants.KEY_NAME, preferenceManager.getString(Constants.KEY_NAME));
                                 data.put(Constants.KEY_MESSAGE, message.getTexto());
                                 data.put(Constants.KEY_NAME_FORO, receiverChat.getNombre());
+                                data.put(Constants.KEY_TITLE_NOTIFICATION, getString(R.string.title_notification));
+                                data.put(Constants.KEY_TEXT_NOTIFICATION, getString(R.string.text_notification));
+                                data.put(Constants.KEY_SEND_NOTIFICATION, getString(R.string.send_notification));
                                 data.put(Constants.KEY_FCM_TOKEN, preferenceManager.getString(Constants.KEY_FCM_TOKEN));
 
                                 JSONObject body = new JSONObject();

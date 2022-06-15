@@ -4,31 +4,67 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraint"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.bugs.comentarios.BugComentariosFragment">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tvBugTitulo"
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gdlStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/_20sdp"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvBugTitleDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
         android:textStyle="bold|italic"
         android:textSize="@dimen/_24ssp"
-        android:layout_marginTop="@dimen/_75sdp"
+        android:layout_marginTop="@dimen/_50sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/background_bugs_title"/>
+
+    <TextView
+        android:id="@+id/tvBugTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:text="@string/tvBugDescription"
+        android:background="@drawable/background_bugs"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/gdlStart"
+        app:layout_constraintTop_toBottomOf="@+id/tvBugTitleDescription" />
+
 
     <TextView
         android:id="@+id/tvBugDescripcion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/_18sdp"
-        android:textStyle="italic"
-        android:layout_marginTop="@dimen/_100sdp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvBugTitulo" />
+        android:layout_marginStart="@dimen/_30sdp"
+        android:layout_marginEnd="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:text="ejemplo"
+        app:layout_constraintEnd_toStartOf="@+id/gdlEnd"
+        app:layout_constraintStart_toEndOf="@+id/tvBugTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvBugTitleDescription" />
 
 
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="end"
+        app:constraint_referenced_ids="tvBugTitleDescription" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gdlEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/_20sdp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

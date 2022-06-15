@@ -33,7 +33,6 @@ import com.jesusc24.xroadsthroughthecastle.utils.PreferencesManager;
 import java.util.ArrayList;
 import java.util.List;
 
-//TODO que solo el que ha creado el chat pueda editarlo
 public class ChatListFragment extends Fragment implements ChatListContract.View, ChatAdapter.OnManageChatList, SearchView.OnQueryTextListener {
     FragmentChatListBinding binding;
     private ChatAdapter adapter;
@@ -249,17 +248,22 @@ public class ChatListFragment extends Fragment implements ChatListContract.View,
 
     @Override
     public void onDeleteChat(Chat chat) {
-        Bundle bundle = new Bundle();
-        bundle.putString(BaseDialogFragment.TITLE, getString(R.string.delete_chat));
-        bundle.putString(BaseDialogFragment.MESSAGE, String.format(getString(R.string.ask) + " %1$s?", chat.getNombre()));
-        NavHostFragment.findNavController(this).navigate(R.id.action_chatListFragment_to_baseDialogFragment, bundle);
+        if(chat.getIdUser().contentEquals(preferenceManager.getString(Constants.KEY_USER_ID))) {
+            Bundle bundle = new Bundle();
+            bundle.putString(BaseDialogFragment.TITLE, getString(R.string.delete_chat));
+            bundle.putString(BaseDialogFragment.MESSAGE, String.format(getString(R.string.ask) + " %1$s?", chat.getNombre()));
+            NavHostFragment.findNavController(this).navigate(R.id.action_chatListFragment_to_baseDialogFragment, bundle);
 
-        getActivity().getSupportFragmentManager().setFragmentResultListener(BaseDialogFragment.REQUEST, this, (requestKey, result) -> {
-            if(result.getBoolean(BaseDialogFragment.KEY_BUNDLE)) {
-                deleted = chat;
-                presenter.delete(chat);
-            }
-        });
+            getActivity().getSupportFragmentManager().setFragmentResultListener(BaseDialogFragment.REQUEST, this, (requestKey, result) -> {
+                if(result.getBoolean(BaseDialogFragment.KEY_BUNDLE)) {
+                    deleted = chat;
+                    presenter.delete(chat);
+                }
+            });
+        } else {
+            Toast.makeText(getContext(), R.string.err_deleteChatAuth, Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     @Override

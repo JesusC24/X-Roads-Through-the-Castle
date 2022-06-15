@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.jesusc24.xroadsthroughthecastle.R;
-import com.jesusc24.xroadsthroughthecastle.data.constantes.ConstBugs;
+import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants;
 import com.jesusc24.xroadsthroughthecastle.data.model.Bug;
 import com.jesusc24.xroadsthroughthecastle.data.model.BugComparator;
 
@@ -28,7 +28,7 @@ public class BugAdapter extends RecyclerView.Adapter<BugAdapter.ViewHolder> {
     private List<Bug> listOriginal;
     private OnManageBugList listener;
 
-    public BugAdapter(List<Bug> list, BugAdapter.OnManageBugList listener) {
+    public BugAdapter(BugAdapter.OnManageBugList listener) {
         //De momento solo vamos a mostrar el nombre, esto es un ejemplo de como se verá con datos reales
         this.list = new ArrayList<>();
         this.listener = listener;
@@ -60,13 +60,13 @@ public class BugAdapter extends RecyclerView.Adapter<BugAdapter.ViewHolder> {
 
         String estado = list.get(position).getEstado();
 
-        if(ConstBugs.Estado.ENVIADO.equals(estado)) {
+        if(Constants.KEY_BUG_ENVIADO.contentEquals(estado)) {
             holder.ivEstado.setImageResource(R.drawable.ic_action_bug_send);
-        } else if(ConstBugs.Estado.APROBADO.equals(estado)) {
+        } else if(Constants.KEY_BUG_APROBADO.contentEquals(estado)) {
             holder.ivEstado.setImageResource(R.drawable.ic_action_bug_passed);
-        } else if(ConstBugs.Estado.ARREGLADO.equals(estado)) {
+        } else if(Constants.KEY_BUG_ARREGLADO.contentEquals(estado)) {
             holder.ivEstado.setImageResource(R.drawable.ic_action_bug_result);
-        } else if(ConstBugs.Estado.DENEGADO.equals(estado)) {
+        } else if(Constants.KEY_BUG_DENAGADO.contentEquals(estado)) {
             holder.ivEstado.setImageResource(R.drawable.ic_action_bug_denied);
         }
 

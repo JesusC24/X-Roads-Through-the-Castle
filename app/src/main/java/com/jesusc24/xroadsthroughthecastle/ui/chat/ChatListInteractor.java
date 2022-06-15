@@ -1,5 +1,6 @@
 package com.jesusc24.xroadsthroughthecastle.ui.chat;
 
+import com.jesusc24.xroadsthroughthecastle.R;
 import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants;
 import com.jesusc24.xroadsthroughthecastle.data.model.Chat;
 import com.jesusc24.xroadsthroughthecastle.data.repository.ChatRepository;
@@ -29,9 +30,8 @@ public class ChatListInteractor implements OnRepositoryListCallback {
         if(chat.getIdUser().contentEquals(preferencesManager.getString(Constants.KEY_USER_ID))) {
             ChatRepository.getInstance().delete(chat, this);
         } else {
-            onFailure("No puedes borrar un chat que no has creado");
+            onFailure(R.string.err_deleteChatAuth + "");
         }
-
     }
 
     public void updateStar(Chat chat) {

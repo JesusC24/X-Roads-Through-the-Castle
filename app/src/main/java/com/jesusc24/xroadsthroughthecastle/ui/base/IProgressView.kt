@@ -1,6 +1,6 @@
-package com.jesusc24.xroadsthroughthecastle.ui.base;
+package com.jesusc24.xroadsthroughthecastle.ui.base
 
-public interface IProgressView {
-    void showProgress();
-    void hideProgress();
+interface IProgressView {
+    fun showProgress()
+    fun hideProgress()
 }

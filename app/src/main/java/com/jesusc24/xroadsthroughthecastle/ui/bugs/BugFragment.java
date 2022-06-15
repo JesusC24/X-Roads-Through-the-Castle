@@ -15,7 +15,6 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.jesusc24.xroadsthroughthecastle.R;
-import com.jesusc24.xroadsthroughthecastle.data.constantes.ConstBugs;
 import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants;
 import com.jesusc24.xroadsthroughthecastle.data.model.Bug;
 import com.jesusc24.xroadsthroughthecastle.databinding.FragmentBugBinding;
@@ -114,8 +113,10 @@ public class BugFragment extends Fragment {
     }
 
     private void edit() {
-        if(bug.getEstado().contains(ConstBugs.Estado.DENEGADO) || bug.getEstado().contains(ConstBugs.Estado.ARREGLADO)) {
+        if(bug.getEstado().contains(Constants.KEY_BUG_DENAGADO) || bug.getEstado().contains(Constants.KEY_BUG_ARREGLADO)) {
             Toast.makeText(getContext(), getString(R.string.errEditBug), Toast.LENGTH_SHORT).show();
+        } else if(!(bug.getIdUser().contentEquals(preferenceManager.getString(Constants.KEY_USER_ID)))) {
+            Toast.makeText(getContext(), getString(R.string.errEditBugAuth), Toast.LENGTH_SHORT).show();
         } else {
             BugFragmentDirections.ActionBugFragmentToBugManagerFragment action = BugFragmentDirections.actionBugFragmentToBugManagerFragment(bug);
             NavHostFragment.findNavController(this).navigate(action);
@@ -131,6 +132,6 @@ public class BugFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        preferenceManager.putBoolean(Constants.KEY_AVAILABILITY, true);
+        preferenceManager.putBoolean(Constants.KEY_AVAILABILITY, false);
     }
 }

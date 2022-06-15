@@ -1,46 +1,34 @@
-package com.jesusc24.xroadsthroughthecastle.ui.configuracion;
+package com.jesusc24.xroadsthroughthecastle.ui.configuracion
 
-import android.os.Bundle;
+import androidx.preference.PreferenceFragmentCompat
+import android.os.Bundle
+import androidx.preference.Preference
+import com.jesusc24.xroadsthroughthecastle.R
+import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants
+import com.jesusc24.xroadsthroughthecastle.utils.PreferencesManager
 
-import androidx.annotation.NonNull;
-import androidx.preference.Preference;
-import androidx.preference.PreferenceFragmentCompat;
-
-import com.jesusc24.xroadsthroughthecastle.R;
-import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants;
-import com.jesusc24.xroadsthroughthecastle.utils.PreferencesManager;
-
-public class BugFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener {
-
-    private PreferencesManager preferenceManager;
-
-    @Override
-    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-        addPreferencesFromResource(R.xml.bug_preferences);
-        preferenceManager = new PreferencesManager(getContext());
+class BugFragment : PreferenceFragmentCompat(), Preference.OnPreferenceChangeListener {
+    private lateinit var preferenceManager: PreferencesManager
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        addPreferencesFromResource(R.xml.bug_preferences)
+        preferenceManager = PreferencesManager(context)
     }
 
-
-    @Override
-    public boolean onPreferenceChange(@NonNull Preference preference, Object newValue) {
-        if(preference.getKey().equals(getString(R.string.key_order_bug))) {
-            preferenceManager.putBoolean(Constants.KEY_ORDER_BUG, (Boolean)newValue);
-            return true;
+    override fun onPreferenceChange(preference: Preference, newValue: Any): Boolean {
+        if (preference.key == getString(R.string.key_order_bug)) {
+            preferenceManager.putBoolean(Constants.KEY_ORDER_BUG, newValue as Boolean)
+            return true
         }
-
-        return false;
+        return false
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        preferenceManager.putBoolean(Constants.KEY_AVAILABILITY, true);
+    override fun onResume() {
+        super.onResume()
+        preferenceManager.putBoolean(Constants.KEY_AVAILABILITY, true)
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        preferenceManager.putBoolean(Constants.KEY_AVAILABILITY, false);
+    override fun onPause() {
+        super.onPause()
+        preferenceManager.putBoolean(Constants.KEY_AVAILABILITY, false)
     }
-
 }

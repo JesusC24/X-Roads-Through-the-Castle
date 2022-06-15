@@ -21,6 +21,7 @@ public class ChatRepository implements ChatListContract.Repository, ChatManagerC
     public static ChatRepository instance;
     private List<Chat> list;
     private ChatDAO chatDAO;
+    private static FirebaseFirestore database;
 
     private ChatRepository() {
         list = new ArrayList<>();
@@ -30,6 +31,7 @@ public class ChatRepository implements ChatListContract.Repository, ChatManagerC
     public static ChatRepository getInstance() {
         if(instance == null) {
             instance = new ChatRepository();
+            database = FirebaseFirestore.getInstance();
         }
 
         return instance;
@@ -38,7 +40,7 @@ public class ChatRepository implements ChatListContract.Repository, ChatManagerC
     @Override
     public void getList(OnRepositoryListCallback callback) {
         list = new ArrayList<>();
-        FirebaseFirestore database = FirebaseFirestore.getInstance();
+
         database.collection(Constants.KEY_COLLECTION_FORO)
                 .get()
                 .addOnCompleteListener(task -> {
@@ -50,6 +52,7 @@ public class ChatRepository implements ChatListContract.Repository, ChatManagerC
                             chat.setId(queryDocumentSnapshot.getId());
                             chat.setTipo(queryDocumentSnapshot.getString(Constants.KEY_TYPE));
                             chat.setPassword(queryDocumentSnapshot.getString(Constants.KEY_PASSWORD));
+                            chat.setIdUser(queryDocumentSnapshot.getString(Constants.KEY_USER_ID));
                             list.add(chat);
                         }
                     }
@@ -60,7 +63,6 @@ public class ChatRepository implements ChatListContract.Repository, ChatManagerC
 
     @Override
     public void delete(Chat chat, OnRepositoryListCallback callback) {
-        FirebaseFirestore database = FirebaseFirestore.getInstance();
         database.collection(Constants.KEY_COLLECTION_FORO)
                 .document(chat.getId())
                 .delete()
@@ -70,15 +72,12 @@ public class ChatRepository implements ChatListContract.Repository, ChatManagerC
 
     @Override
     public void undo(Chat chat, OnRepositoryListCallback callback) {
-        FirebaseFirestore database = FirebaseFirestore.getInstance();
         HashMap<String, Object> newChat = createHashMap(chat);
 
         database.collection(Constants.KEY_COLLECTION_FORO)
                 .add(newChat)
 
-                .addOnSuccessListener(documentReference -> {
-                    callback.onUndoSuccess();
-                })
+                .addOnSuccessListener(documentReference -> callback.onUndoSuccess())
 
                 .addOnFailureListener(exception -> callback.onFailure(exception.getMessage()));
 
@@ -95,15 +94,12 @@ public class ChatRepository implements ChatListContract.Repository, ChatManagerC
 
     @Override
     public void add(Chat chat, OnRepositoryManageCallback callback) {
-        FirebaseFirestore database = FirebaseFirestore.getInstance();
         HashMap<String, Object> newChat = createHashMap(chat);
 
         database.collection(Constants.KEY_COLLECTION_FORO)
                 .add(newChat)
 
-                .addOnSuccessListener(documentReference -> {
-                    callback.onAddSuccess("Se ha añadido el chat " + chat.getNombre() + " con exito");
-                })
+                .addOnSuccessListener(documentReference -> callback.onAddSuccess(chat.getNombre()))
 
                 .addOnFailureListener(exception -> callback.onFailure(exception.getMessage()));
 
@@ -111,7 +107,6 @@ public class ChatRepository implements ChatListContract.Repository, ChatManagerC
 
     @Override
     public void edit(Chat chat, OnRepositoryManageCallback callback) {
-        FirebaseFirestore database = FirebaseFirestore.getInstance();
         HashMap<String, Object> newChat = createHashMap(chat);
 
         database.collection(Constants.KEY_COLLECTION_FORO)
@@ -119,15 +114,13 @@ public class ChatRepository implements ChatListContract.Repository, ChatManagerC
                 .update(newChat)
 
                 .addOnSuccessListener(documentReference -> {
-                    callback.onEditSucess("Se ha editado el chat " + chat.getNombre() + " con exito");
+                    callback.onEditSucess(chat.getNombre());
                 })
 
                 .addOnFailureListener(exception -> callback.onFailure(exception.getMessage()));
     }
 
     public void chatEnableNotification(Chat chat, String token) {
-        FirebaseFirestore database = FirebaseFirestore.getInstance();
-
         database.collection(Constants.KEY_COLLECTION_FORO)
                 .document(chat.getId())
                 .get()
@@ -166,14 +159,11 @@ public class ChatRepository implements ChatListContract.Repository, ChatManagerC
     }
 
     public void chatDesableNotification(Chat chat, String token) {
-        FirebaseFirestore database = FirebaseFirestore.getInstance();
-
         database.collection(Constants.KEY_COLLECTION_FORO)
                 .document(chat.getId())
                 .get()
                 .addOnCompleteListener(task -> {
-                    if (task.isSuccessful() && task.getResult() != null) {
-                        Boolean encontrado = false;
+                    if (task.isSuccessful() && task.getResult() != null) { ;
                         DocumentSnapshot documentSnapshot = task.getResult();
                         List<String> tokens = (List<String>) documentSnapshot.get(Constants.KEY_NOTIFICATION_CHAT);
 
@@ -197,26 +187,10 @@ public class ChatRepository implements ChatListContract.Repository, ChatManagerC
                 });
     }
 
-    public void takeTokens(Chat chat) {
-        FirebaseFirestore database = FirebaseFirestore.getInstance();
-        database.collection(Constants.KEY_COLLECTION_FORO)
-                .document(chat.getId())
-                .get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful() && task.getResult() != null) {
-                        DocumentSnapshot documentSnapshot = task.getResult();
-                        List<String> tokens = (List<String>) documentSnapshot.get(Constants.KEY_NOTIFICATION_CHAT);
-                    }
-
-
-                });
-    }
-
     public List<Chat> listStar() {
         List<Chat> chatStar = new ArrayList<>();
         try {
             chatStar = XRTCDatabase.databaseWriteExecutor.submit(() -> chatDAO.select()).get();
-
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
         }
@@ -230,10 +204,7 @@ public class ChatRepository implements ChatListContract.Repository, ChatManagerC
         newChat.put(Constants.KEY_TYPE, chat.getTipo());
         newChat.put(Constants.KEY_PASSWORD, chat.getPassword());
         newChat.put(Constants.KEY_DESCRIPTION, chat.getDescripcion());
+        newChat.put(Constants.KEY_USER_ID, chat.getIdUser());
         return newChat;
-    }
-
-    public void setEnableNotification() {
-
     }
 }

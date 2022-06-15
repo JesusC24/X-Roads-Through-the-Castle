@@ -63,12 +63,10 @@ public class BugListPresenter implements BugListContract.Presenter, BugListContr
     }
 
     @Override
-    public void order() {
-        if(order) {
-            order = false;
+    public void order(Boolean o) {
+        if(o) {
             view.showDataInverseOrder();
         } else {
-            order = true;
             view.showDataOrder();
         }
     }

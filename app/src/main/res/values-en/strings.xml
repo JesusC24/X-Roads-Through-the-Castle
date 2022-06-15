@@ -166,5 +166,22 @@
     <string name="err_changeImage">Failed to update image</string>
     <string name="foro_preferences">Chat preferences</string>
     <string name="menu_mensaje_registrar">Enable chat notification</string>
-    <string name="menu_mensaje_quitar">" Disable chat notification"</string>
+    <string name="menu_mensaje_quitar">Disable chat notification</string>
+    <string name="errPasswordActual">Dom\'t macht the acutal password</string>
+    <string name="passwordChageCorrect">Password change</string>
+    <string name="menu_messages_editar">Edit</string>
+    <string name="errEditChatProperty">You can\'t edit a chat you haven\'t created</string>
+    <string name="errEditChat">You can\'t edit the chat because you haven\'t created it</string>
+    <string name="err_closeSesion">Error to closed session</string>
+    <string name="err_deleteChatAuth">You can\'t delete the chat because you haven\'t created it</string>
+    <string name="addChat">Add chat</string>
+    <string name="editChat">Edit chat</string>
+    <string name="addBug">Add bug</string>
+    <string name="editBug">Edit bug</string>
+    <string name="bug_preferences">Bug settings</string>
+    <string name="tvBugDescription">Description</string>
+    <string name="err_deleteBugAuth">You can\'t delete the bug because you haven\'t created it</string>
+    <string name="errEditBugAuth">You can\'t edit the bug because you haven\'t created it</string>
+    <string name="text_notification">"Message: "</string>
+    <string name="send_notification">" and has been sent by "</string>
 </resources>

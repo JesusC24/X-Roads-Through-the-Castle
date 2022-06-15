@@ -35,7 +35,6 @@ public class UserFragment extends PreferenceFragmentCompat implements Preference
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-
         addPreferencesFromResource(R.xml.user_preferences);
         preferenceManager = new PreferencesManager(getContext());
     }
@@ -50,7 +49,9 @@ public class UserFragment extends PreferenceFragmentCompat implements Preference
                 getActivity().getSupportFragmentManager().setFragmentResultListener(ConfirmDialogFragment.REQUEST, this, (requestKey, result) -> {
                     if(result.getBoolean(PasswordDialogFragment.KEY_BUNDLE)) {
                         preferenceManager.putBoolean(Constants.REMEMBER_USER, false);
+                        preferenceManager.putString(Constants.KEY_FCM_TOKEN, "");
                         startActivity(new Intent(getContext(), LoginActivity.class));
+                        UserRepository.getInstance(this).deleteFCM(preferenceManager.getString(Constants.KEY_USER_ID));
                         getActivity().finish();
                     }
 
@@ -65,6 +66,7 @@ public class UserFragment extends PreferenceFragmentCompat implements Preference
             getActivity().getSupportFragmentManager().setFragmentResultListener(ConfirmDialogFragment.REQUEST, this, (requestKey, result) -> {
                 if(result.getBoolean(PasswordDialogFragment.KEY_BUNDLE)) {
                     preferenceManager.putBoolean(Constants.REMEMBER_USER, false);
+                    preferenceManager.putString(Constants.KEY_FCM_TOKEN, "");
                     UserRepository.getInstance(this).deleteUser(preferenceManager.getString(Constants.KEY_USER_ID));
                 }
             });

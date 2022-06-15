@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,13 +25,11 @@ import com.google.android.material.snackbar.Snackbar;
 import com.jesusc24.xroadsthroughthecastle.R;
 import com.jesusc24.xroadsthroughthecastle.data.constantes.Constants;
 import com.jesusc24.xroadsthroughthecastle.data.model.Bug;
-import com.jesusc24.xroadsthroughthecastle.data.repository.UserRepository;
 import com.jesusc24.xroadsthroughthecastle.databinding.FragmentBugListBinding;
 import com.jesusc24.xroadsthroughthecastle.ui.DecorationRecyclerView;
 import com.jesusc24.xroadsthroughthecastle.ui.base.BaseDialogFragment;
 import com.jesusc24.xroadsthroughthecastle.utils.PreferencesManager;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -42,6 +41,7 @@ public class BugListFragment extends Fragment implements BugListContract.View, B
     private BugListContract.Presenter presenter;
     private Bug deleted;
     PreferencesManager preferenceManager;
+    private Boolean order = true;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -82,7 +82,7 @@ public class BugListFragment extends Fragment implements BugListContract.View, B
      */
     private void initRvBug() {
         //1. Será inicilizar el adapter
-        adapter = new BugAdapter(new ArrayList<>(), this);
+        adapter = new BugAdapter(this);
 
         //2. OBLIGATORIAMENTE se debe indicar qué diseño (layout) tendrá el recyclerview
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
@@ -119,7 +119,8 @@ public class BugListFragment extends Fragment implements BugListContract.View, B
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_bug_ordenar:
-                presenter.order();
+                order = !order;
+                presenter.order(order);
                 return true;
             case R.id.menu_bug_ordenar_resultsado:
                 presenter.orderByEstado();
@@ -181,7 +182,7 @@ public class BugListFragment extends Fragment implements BugListContract.View, B
         if(preferenceManager.getBoolean(Constants.KEY_ORDER_BUG)) {
             presenter.orderByEstado();
         } else {
-            presenter.order();
+            presenter.order(order);
         }
     }
 
@@ -228,17 +229,22 @@ public class BugListFragment extends Fragment implements BugListContract.View, B
 
     @Override
     public void onDeleteBug(Bug bug) {
-        Bundle bundle = new Bundle();
-        bundle.putString(BaseDialogFragment.TITLE, "Elimnar bug");
-        bundle.putString(BaseDialogFragment.MESSAGE, String.format("¿Seguro que desea borrar el bug %1$s?", bug.getNombre()));
-        NavHostFragment.findNavController(this).navigate(R.id.action_bugListFragment_to_baseDialogFragment, bundle);
+        if(bug.getIdUser().contentEquals(preferenceManager.getString(Constants.KEY_USER_ID))) {
+            Bundle bundle = new Bundle();
+            bundle.putString(BaseDialogFragment.TITLE, "Elimnar bug");
+            bundle.putString(BaseDialogFragment.MESSAGE, String.format("¿Seguro que desea borrar el bug %1$s?", bug.getNombre()));
+            NavHostFragment.findNavController(this).navigate(R.id.action_bugListFragment_to_baseDialogFragment, bundle);
 
-        getActivity().getSupportFragmentManager().setFragmentResultListener(BaseDialogFragment.REQUEST, this, (requestKey, result) -> {
-            if(result.getBoolean(BaseDialogFragment.KEY_BUNDLE)) {
-                deleted = bug;
-                presenter.delete(bug);
-            }
-        });
+            getActivity().getSupportFragmentManager().setFragmentResultListener(BaseDialogFragment.REQUEST, this, (requestKey, result) -> {
+                if(result.getBoolean(BaseDialogFragment.KEY_BUNDLE)) {
+                    deleted = bug;
+                    presenter.delete(bug);
+                }
+            });
+        } else {
+            Toast.makeText(getContext(), R.string.err_deleteBugAuth, Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     @Override
