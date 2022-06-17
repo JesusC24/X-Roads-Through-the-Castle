@@ -184,4 +184,6 @@
     <string name="errEditBugAuth">You can\'t edit the bug because you haven\'t created it</string>
     <string name="text_notification">"Message: "</string>
     <string name="send_notification">" and has been sent by "</string>
+    <string name="bug_update">Update</string>
+    <string name="chat_update">Update</string>
 </resources>

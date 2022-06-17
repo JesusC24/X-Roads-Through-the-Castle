@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item android:id="@+id/menu_bug_buscar"
+    <item android:title="@string/bug_update"
+        android:id="@+id/menu_bug_update"
         android:orderInCategory="1"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_update"/>
+
+    <item android:id="@+id/menu_bug_buscar"
+        android:orderInCategory="2"
         app:showAsAction="always"
         android:icon="@drawable/ic_action_lupa"
         android:title="@string/menu_bug_lupa" />
 
     <item android:id="@+id/menu_bug_ordenar"
         android:title="@string/menu_chat_ordenar"
-        android:orderInCategory="2"
+        android:orderInCategory="3"
         app:showAsAction="never"/>
 
     <item android:id="@+id/menu_bug_ordenar_resultsado"
         android:title="@string/menu_bug_ordenar_resultado"
-        android:orderInCategory="3"
+        android:orderInCategory="4"
         app:showAsAction="never"/>
 </menu>

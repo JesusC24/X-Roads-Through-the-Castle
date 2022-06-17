@@ -192,6 +192,4 @@ public class ChatManagerFragment extends Fragment implements ChatManagerContract
         super.onPause();
         preferenceManager.putBoolean(Constants.KEY_AVAILABILITY, false);
     }
-
-
 }

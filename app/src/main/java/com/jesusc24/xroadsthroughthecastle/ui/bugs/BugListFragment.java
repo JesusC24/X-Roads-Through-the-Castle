@@ -128,6 +128,9 @@ public class BugListFragment extends Fragment implements BugListContract.View, B
             case R.id.menu_bug_buscar:
                 presenter.search();
                 return true;
+            case R.id.menu_bug_update:
+                presenter.load();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
 

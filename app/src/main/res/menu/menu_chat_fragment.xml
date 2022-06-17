@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:title="@string/chat_update"
+        android:id="@+id/menu_chat_update"
+        android:orderInCategory="1"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_update"/>
 
     <item android:id="@+id/menu_chat_buscar"
-       android:orderInCategory="1"
+       android:orderInCategory="2"
         app:showAsAction="always"
         android:icon="@drawable/ic_action_lupa"
         android:title="@string/menu_chat_lupa" />
     <item android:id="@+id/menu_chat_ordenar"
         android:title="@string/menu_chat_ordenar"
-        android:orderInCategory="2"
+        android:orderInCategory="3"
         app:showAsAction="never"/>
 
     <item android:id="@+id/menu_chat_ordenar_favorito"
         android:title="@string/menu_chat_ordenar_favorito"
-        android:orderInCategory="3"
+        android:orderInCategory="4"
         app:showAsAction="never"/>
 </menu>

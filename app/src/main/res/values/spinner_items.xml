@@ -6,24 +6,24 @@
     </string-array>
 
     <string-array name="tipo_bugs_array">
-        <item>Lógica</item>
-        <item>Diseño</item>
-        <item>Contenido</item>
-        <item>Otro</item>
+        <item>Logic</item>
+        <item>Design</item>
+        <item>Content</item>
+        <item>Other</item>
     </string-array>
 
     <string-array name="gravedad_bugs_array">
-        <item>Insignificante</item>
-        <item>Escasa</item>
+        <item>Insignificant</item>
+        <item>Limited</item>
         <item>Normal</item>
-        <item>Grave</item>
-        <item>Crítico</item>
+        <item>Serious</item>
+        <item>Critical</item>
     </string-array>
 
     <string-array name="dispositivo_bugs_array">
         <item>PC</item>
         <item>Mac</item>
-        <item>Móvil</item>
+        <item>Mobile</item>
         <item>Tablet</item>
     </string-array>
 

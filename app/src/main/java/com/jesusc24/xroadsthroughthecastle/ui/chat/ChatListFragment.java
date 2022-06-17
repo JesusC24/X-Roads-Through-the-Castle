@@ -102,6 +102,10 @@ public class ChatListFragment extends Fragment implements ChatListContract.View,
             case R.id.menu_chat_buscar:
                 presenter.search();
                 return true;
+
+            case R.id.menu_chat_update:
+                presenter.load();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
 

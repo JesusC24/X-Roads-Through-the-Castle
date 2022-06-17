@@ -204,4 +204,6 @@
     <string name="text_notification">"El mensaje es: "</string>
     <string name="send_notification">"y ha sido mandado por "</string>
     <string name="errPasswordActual">No coincide la contraseña actual</string>
+    <string name="bug_update">Actualizar</string>
+    <string name="chat_update">Actualizar</string>
 </resources>
